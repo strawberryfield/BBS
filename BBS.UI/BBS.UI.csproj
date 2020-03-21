@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Casasoft.BBS.UI</RootNamespace>
+    <PackageId>Casasoft BBS.UI</PackageId>
+    <Authors>Roberto Ceccarelli - Casasoft</Authors>
+    <Company>Casasoft</Company>
+    <Product>Casasoft BBS</Product>
+    <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
+  </PropertyGroup>
+
+</Project>
