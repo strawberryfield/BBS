@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29911.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBS", "BBS\BBS.csproj", "{5F39F250-8F53-4ABA-B13B-786E23293312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BBS", "BBS\BBS.csproj", "{5F39F250-8F53-4ABA-B13B-786E23293312}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBS.UI", "BBS.UI\BBS.UI.csproj", "{4E456894-0D11-4BA9-BE25-3C2B7B142250}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BBS.UI", "BBS.UI\BBS.UI.csproj", "{4E456894-0D11-4BA9-BE25-3C2B7B142250}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5C2-590A-4BD8-BF22-7E8231B518FB}"
+	ProjectSection(SolutionItems) = preProject
+		assets\Banner.txt = assets\Banner.txt
+		assets\Logout.txt = assets\Logout.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

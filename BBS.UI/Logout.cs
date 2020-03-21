@@ -4,12 +4,11 @@ using System.Text;
 
 namespace Casasoft.BBS.UI
 {
-    public class Banner : TextScreenBase
+    public class Logout : TextScreenBase
     {
-        public Banner() : base()
+        public Logout() : base()
         {
-            ReadText("Banner");
+            ReadText("Logout");
         }
-
     }
 }

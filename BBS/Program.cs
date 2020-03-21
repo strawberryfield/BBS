@@ -7,8 +7,13 @@ namespace Casasoft.BBS
     {
         static void Main(string[] args)
         {
-            Banner banner = new Banner();
-            banner.Show();
+            IScreen screen = new Banner();
+            while (screen != null)
+            {
+                screen = screen.Show();
+            }
+            screen = new Logout();
+            screen.Show();
         }
     }
 }
