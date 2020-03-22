@@ -18,21 +18,28 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using System;
+using Antlr4.Runtime.Misc;
 
-namespace Casasoft.BBS.UI
+namespace Casasoft.BBS.Parser
 {
-    public class Logout : TextScreenBase
+    public class BBSCodeListener : BBSCodeParserBaseListener
     {
-        public Logout() : base()
+        public string Parsed { get; private set; }
+
+        public BBSCodeListener() : base()
         {
-            ReadText("Logout");
+            Parsed = string.Empty;
         }
 
-        public override IScreen Show()
+        public override void EnterBbsCodeElement([NotNull] BBSCodeParser.BbsCodeElementContext context)
         {
-            ShowLines(0, 24);
-            return null;
+            string tag = context.children[1].GetText().Trim().ToUpper();
+            if (tag == "CLS") Parsed += "\u001b[2J";
+        }
+
+        public override void EnterBbsCodeChardata([NotNull] BBSCodeParser.BbsCodeChardataContext context)
+        {
+            Parsed += context.GetText();
         }
     }
 }

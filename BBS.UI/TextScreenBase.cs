@@ -18,10 +18,12 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.Parser;
 using System;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace Casasoft.BBS.UI
 {
@@ -33,24 +35,24 @@ namespace Casasoft.BBS.UI
             string assets = ConfigurationManager.AppSettings.Get("assets");
             NameValueCollection texts = (NameValueCollection)ConfigurationManager.GetSection("Texts");
             string filename = Path.Combine(assets, texts[name]);
-            Text = File.ReadAllLines(filename);
+            BBSCodeTranslator translator = new BBSCodeTranslator();
+            Text = Regex.Split(translator.GetProcessed(filename), "\r\n");
         }
 
         public override IScreen Show()
         {
-            Console.Clear();
             ShowText();
             return null;
         }
 
         protected void ShowText()
         {
-            int currentLine = ShowLines(0,24);
+            int currentLine = ShowLines(0, 24);
             bool inLoop = true;
-            while(inLoop)
+            while (inLoop)
             {
                 ConsoleKeyInfo k = Console.ReadKey(true);
-                switch(k.KeyChar)
+                switch (k.KeyChar)
                 {
                     case 'x':
                     case 'X':
@@ -72,16 +74,16 @@ namespace Casasoft.BBS.UI
                             newStart = newStart < 0 ? 0 : newStart;
                             ShowLines(newStart, 24);
                         }
-                        break;                    
+                        break;
                 }
             }
         }
 
- 
+
         protected int ShowLines(int start, int len)
         {
             int ret = start;
-            for(;ret < start+len && ret < Text.Length; ++ret)
+            for (; ret < start + len && ret < Text.Length; ++ret)
             {
                 Console.WriteLine(Text[ret]);
             }

@@ -14,4 +14,8 @@
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BBS.Parser\BBS.Parser.csproj" />
+  </ItemGroup>
+
 </Project>
