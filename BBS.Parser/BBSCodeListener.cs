@@ -24,18 +24,27 @@ namespace Casasoft.BBS.Parser
 {
     public class BBSCodeListener : BBSCodeParserBaseListener
     {
+        public enum Tags { CLS, BLINK, REVERSE, COLOR, BACKCOLOR }
+
+        private Tags? currentTag = null;
+
         public string Parsed { get; private set; }
 
         public BBSCodeListener() : base()
         {
             Parsed = string.Empty;
+            currentTag = null;
         }
 
         public override void EnterBbsCodeElement([NotNull] BBSCodeParser.BbsCodeElementContext context)
         {
             string tag = context.children[1].GetText().Trim().ToUpper();
-            if (tag == "CLS") Parsed += "\u001b[2J";
+            if (tag == Tags.CLS.ToString()) Parsed += ANSICodes.ClearScreen();
+            if (isStartOrStop(tag, Tags.BLINK)) Parsed += ANSICodes.SetMode(ANSICodes.Modes.Blink);
+            if (isStartOrStop(tag, Tags.REVERSE)) Parsed += ANSICodes.SetMode(ANSICodes.Modes.Reverse);
         }
+
+        private bool isStartOrStop(string tag, Tags t) => tag == t.ToString() || tag == "/" + t.ToString();
 
         public override void EnterBbsCodeChardata([NotNull] BBSCodeParser.BbsCodeChardataContext context)
         {

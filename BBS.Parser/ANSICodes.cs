@@ -18,27 +18,29 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.UI;
-using Casasoft.TCPServer;
-using System.Net;
-
-namespace Casasoft.BBS
+namespace Casasoft.BBS.Parser
 {
-    class Program
+    public static class ANSICodes
     {
-        private static Server server;
+        public enum Colors { Black, Red, Green, Yellow, Blue, Magenta, Cyan, White }
 
-        static void Main(string[] args)
-        {
-            server = new Server(IPAddress.Any);
+        public enum Modes { Normal, Bold, Underline = 4, Blink, Reverse = 7 }
 
-            IScreen screen = new Banner();
-            while (screen != null)
-            {
-                screen = screen.Show();
-            }
-            screen = new Logout();
-            screen.Show();
-        }
+        public static string ClearScreen() => "\u001b[2J" + Home();
+
+        public static string Move(byte x, byte y) => string.Format("\u001b[{0};{1}f", x, y);
+
+        public static string Home() => Move(0, 0);
+
+        public static string SetMode(int m) => string.Format("\u001b[{0}m", m);
+
+        public static string SetMode() => SetMode((int)0);
+
+        public static string SetMode(Modes m) => SetMode((int)m);
+
+        public static string SetColor(Colors c) => SetMode((int)c + 30);
+
+        public static string SetBackColor(Colors c) => SetMode((int)c + 40);
+
     }
 }

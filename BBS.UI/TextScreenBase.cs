@@ -51,8 +51,8 @@ namespace Casasoft.BBS.UI
             bool inLoop = true;
             while (inLoop)
             {
-                ConsoleKeyInfo k = Console.ReadKey(true);
-                switch (k.KeyChar)
+                int k = Console.ReadKey().KeyChar;
+                switch (k)
                 {
                     case 'x':
                     case 'X':

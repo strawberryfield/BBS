@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>Casasoft.TCPServer</RootNamespace>
+    <PackageId>Casasoft TCPServer</PackageId>
+    <Authors>Roberto Ceccarelli - Casasoft</Authors>
+    <Product>Casasoft BBS</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+  </ItemGroup>
+
+</Project>

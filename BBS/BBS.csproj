@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BBS.UI\BBS.UI.csproj" />
+    <ProjectReference Include="..\TCPServer\TCPServer.csproj" />
   </ItemGroup>
 
 </Project>

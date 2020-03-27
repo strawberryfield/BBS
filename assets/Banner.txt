@@ -1,1 +1,3 @@
-[[CLS/]]Welcome to «The Strawberry Field»!
+[[CLS/]]Welcome to [[REVERSE]]«The Strawberry Field»![[/REVERSE]]
+
+Press [[BLINK]]X[[/BLINK]] to continue.
