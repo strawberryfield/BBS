@@ -20,6 +20,7 @@
 
 using Casasoft.BBS.UI;
 using Casasoft.TCPServer;
+using System;
 using System.Net;
 
 namespace Casasoft.BBS
@@ -31,14 +32,42 @@ namespace Casasoft.BBS
         static void Main(string[] args)
         {
             server = new Server(IPAddress.Any);
+            server.ClientConnected += clientConnected;
+            server.ClientDisconnected += clientDisconnected;
+            server.start();
 
-            IScreen screen = new Banner();
+            Console.WriteLine("SERVER STARTED: " + DateTime.Now);
+
+            char read = Console.ReadKey(true).KeyChar;
+
+            do
+            {
+                if (read == 'b')
+                {
+                    server.sendMessageToAll(Console.ReadLine());
+                }
+            } while ((read = Console.ReadKey(true).KeyChar) != 'q');
+
+            server.stop();
+        }
+
+        private static void clientConnected(Client c)
+        {
+            IScreen screen = new Banner(c, server);
             while (screen != null)
             {
                 screen = screen.Show();
             }
-            screen = new Logout();
+            screen = new Logout(c, server);
             screen.Show();
         }
+
+        private static void clientDisconnected(Client c)
+        {
+            Console.WriteLine("DISCONNECTED: " + c);
+        }
+
+
+
     }
 }

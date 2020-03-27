@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.Parser;
+using Casasoft.TCPServer;
 using System;
 using System.Collections.Specialized;
 using System.Configuration;
@@ -30,7 +31,10 @@ namespace Casasoft.BBS.UI
     public class TextScreenBase : ScreenBase
     {
         protected string[] Text;
-        protected void ReadText(string name)
+
+        public TextScreenBase(Client c, Server s) : base(c, s) { }
+
+        public void ReadText(string name)
         {
             string assets = ConfigurationManager.AppSettings.Get("assets");
             NameValueCollection texts = (NameValueCollection)ConfigurationManager.GetSection("Texts");
@@ -85,7 +89,7 @@ namespace Casasoft.BBS.UI
             int ret = start;
             for (; ret < start + len && ret < Text.Length; ++ret)
             {
-                Console.WriteLine(Text[ret]);
+                server.sendMessageToClient(client, Text[ret] + "\n");
             }
             return ret;
         }

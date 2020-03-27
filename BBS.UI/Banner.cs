@@ -18,11 +18,13 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.TCPServer;
+
 namespace Casasoft.BBS.UI
 {
     public class Banner : TextScreenBase
     {
-        public Banner() : base()
+        public Banner(Client c, Server s) : base(c, s)
         {
             ReadText("Banner");
         }

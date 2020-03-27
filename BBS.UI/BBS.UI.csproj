@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BBS.Parser\BBS.Parser.csproj" />
+    <ProjectReference Include="..\TCPServer\TCPServer.csproj" />
   </ItemGroup>
 
 </Project>
