@@ -6,6 +6,7 @@
     <PackageId>Casasoft TCPServer</PackageId>
     <Authors>Roberto Ceccarelli - Casasoft</Authors>
     <Product>Casasoft BBS</Product>
+    <AssemblyName>BBS.TCPServer</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
