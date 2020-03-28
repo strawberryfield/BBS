@@ -49,7 +49,7 @@ public partial class BBSCodeParser : Parser {
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, null, "'[['", null, "']]'", "'/]]'", "'/'", "'='"
+		null, null, "'{'", null, "'}'", "'/}'", "'/'", "'='"
 	};
 	private static readonly string[] _SymbolicNames = {
 		null, "SEA_WS", "TAG_OPEN", "BBS_TEXT", "TAG_CLOSE", "TAG_SLASH_CLOSE", 

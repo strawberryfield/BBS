@@ -26,11 +26,11 @@ SEA_WS
     ;
 
 TAG_OPEN
-    : '[[' -> pushMode(TAG)
+    : '{' -> pushMode(TAG)
     ;
 
 BBS_TEXT
-    : ~'['+
+    : ~'{'+
     ;
 
 //
@@ -39,11 +39,11 @@ BBS_TEXT
 mode TAG;
 
 TAG_CLOSE
-    : ']]' -> popMode
+    : '}' -> popMode
     ;
 
 TAG_SLASH_CLOSE
-    : '/]]' -> popMode
+    : '/}' -> popMode
     ;
 
 TAG_SLASH
