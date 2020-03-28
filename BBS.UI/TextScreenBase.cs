@@ -55,7 +55,10 @@ namespace Casasoft.BBS.UI
             bool inLoop = true;
             while (inLoop)
             {
-                int k = Console.ReadKey().KeyChar;
+                string rd = client.getReceivedData();
+                if (string.IsNullOrEmpty(rd)) continue;
+                char k = rd[0];
+                client.resetReceivedData();
                 switch (k)
                 {
                     case 'x':
@@ -89,7 +92,7 @@ namespace Casasoft.BBS.UI
             int ret = start;
             for (; ret < start + len && ret < Text.Length; ++ret)
             {
-                server.sendMessageToClient(client, Text[ret] + "\n");
+                server.sendMessageToClient(client, Text[ret] + "\r\n");
             }
             return ret;
         }

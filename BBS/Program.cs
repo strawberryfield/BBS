@@ -60,6 +60,7 @@ namespace Casasoft.BBS
             }
             screen = new Logout(c, server);
             screen.Show();
+            server.kickClient(c);
         }
 
         private static void clientDisconnected(Client c)
