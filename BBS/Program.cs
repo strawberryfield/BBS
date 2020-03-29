@@ -18,6 +18,7 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.Logger;
 using Casasoft.BBS.UI;
 using Casasoft.TCPServer;
 using System;
@@ -36,7 +37,7 @@ namespace Casasoft.BBS
             server.ClientDisconnected += clientDisconnected;
             server.start();
 
-            Console.WriteLine("SERVER STARTED: " + DateTime.Now);
+            EventLogger.Write("SERVER STARTED");
 
             char read = Console.ReadKey(true).KeyChar;
 
@@ -53,6 +54,7 @@ namespace Casasoft.BBS
 
         private static void clientConnected(Client c)
         {
+            EventLogger.Write("CONNECTED: " + c);
             IScreen screen = new Banner(c, server);
             while (screen != null)
             {
@@ -65,7 +67,7 @@ namespace Casasoft.BBS
 
         private static void clientDisconnected(Client c)
         {
-            Console.WriteLine("DISCONNECTED: " + c);
+            EventLogger.Write("DISCONNECTED: " + c);
         }
 
 

@@ -153,7 +153,7 @@ namespace Casasoft.TCPServer
         {
             string ip = string.Format("{0}:{1}", remoteAddr.Address.ToString(), remoteAddr.Port);
 
-            string res = string.Format("Client #{0} (From: {1}, Status: {2}, Connection time: {3})", id, ip, status, connectedAt);
+            string res = string.Format("Client #{0} (From: {1}, Status: {2})", id, ip, status);
 
             return res;
         }
