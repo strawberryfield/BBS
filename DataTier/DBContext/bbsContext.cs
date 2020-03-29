@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Casasoft.BBS.DataTier.DataModel;
+using System.Configuration;
 
 namespace Casasoft.BBS.DataTier.DBContext
 {
@@ -26,8 +27,7 @@ namespace Casasoft.BBS.DataTier.DBContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseMySql("server=my_server;database=bbs;user=my_user;password=my_password", x => x.ServerVersion("10.3.22-mariadb"));
+                optionsBuilder.UseMySql(ConfigurationManager.ConnectionStrings["DB"].ConnectionString, x => x.ServerVersion("10.3.22-mariadb"));
             }
         }
 
