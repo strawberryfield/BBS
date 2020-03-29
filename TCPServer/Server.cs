@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Configuration;
 using System.Linq;
 using System.Net;
@@ -86,7 +87,8 @@ namespace Casasoft.TCPServer
             this.acceptIncomingConnections = true;
 
             this.serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            this.port = Convert.ToInt32(ConfigurationManager.AppSettings.Get("port"));
+            NameValueCollection netconfig = (NameValueCollection)ConfigurationManager.GetSection("Networking");
+            this.port = Convert.ToInt32(netconfig["port"]);
         }
 
         /// <summary>
