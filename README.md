@@ -1,6 +1,8 @@
 # Casasoft BBS
 ## Telnet BBS - «The Strawberry Field» returns after 30 years.
 
+![Project Logo](cover.jpg)
+
 This project is currently Alpha stage.
 
 Written in C# with .net core 3.1   
