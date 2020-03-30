@@ -19,32 +19,70 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Antlr4.Runtime.Misc;
+using Antlr4.Runtime.Tree;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace Casasoft.BBS.Parser
 {
     public class BBSCodeListener : BBSCodeParserBaseListener
     {
-        public enum Tags { CLS, BLINK, REVERSE, COLOR, BACKCOLOR }
+        public enum Tags { CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR }
 
-        private Tags? currentTag = null;
+        private ANSICodes.Colors currentForeColor = ANSICodes.Colors.White;
+        private ANSICodes.Colors currentBackColor = ANSICodes.Colors.Black;
 
         public string Parsed { get; private set; }
 
         public BBSCodeListener() : base()
         {
             Parsed = string.Empty;
-            currentTag = null;
+            NameValueCollection appearance = (NameValueCollection)ConfigurationManager.GetSection("Appearance");
+            ANSICodes.ColorTable.TryGetValue(appearance["ForeColor"].ToUpper(), out currentForeColor);
+            ANSICodes.ColorTable.TryGetValue(appearance["BackColor"].ToUpper(), out currentBackColor);
         }
 
         public override void EnterBbsCodeElement([NotNull] BBSCodeParser.BbsCodeElementContext context)
         {
             string tag = context.children[1].GetText().Trim().ToUpper();
             if (tag == Tags.CLS.ToString()) Parsed += ANSICodes.ClearScreen();
-            if (isStartOrStop(tag, Tags.BLINK)) Parsed += ANSICodes.SetMode(ANSICodes.Modes.Blink);
-            if (isStartOrStop(tag, Tags.REVERSE)) Parsed += ANSICodes.SetMode(ANSICodes.Modes.Reverse);
+            DisplayModeTags(tag);
+            if (tag == Tags.COLOR.ToString()) ColorTags(context.children[2]);
+            if (tag == Tags.BACKCOLOR.ToString()) ColorTags(context.children[2]);
         }
 
-        private bool isStartOrStop(string tag, Tags t) => tag == t.ToString() || tag == "/" + t.ToString();
+        public override void ExitBbsCodeElement([NotNull] BBSCodeParser.BbsCodeElementContext context)
+        {
+            string tag = context.children[1].GetText().Trim().ToUpper();
+            DisplayModeTags(tag);
+            if (tag == Tags.COLOR.ToString()) Parsed += ANSICodes.SetColor(currentForeColor);
+            if (tag == Tags.BACKCOLOR.ToString()) Parsed += ANSICodes.SetBackColor(currentBackColor);
+        }
+
+        private void DisplayModeTags(string tag)
+        {
+            if (tag == Tags.REVERSE.ToString()) Parsed += ANSICodes.SetMode(ANSICodes.Modes.Reverse);
+            if (tag == Tags.BLINK.ToString()) Parsed += ANSICodes.SetMode(ANSICodes.Modes.Blink);
+            if (tag == Tags.BOLD.ToString()) Parsed += ANSICodes.SetMode(ANSICodes.Modes.Bold);
+            if (tag == Tags.UNDERLINE.ToString()) Parsed += ANSICodes.SetMode(ANSICodes.Modes.Underline);
+        }
+
+        private void ColorTags(IParseTree t, bool isBack = false)
+        {
+            string colorName = t.GetChild(2).GetText().Trim('"');
+            if (isBack)
+            {
+                ANSICodes.Colors color = currentBackColor;
+                ANSICodes.ColorTable.TryGetValue(colorName, out color);
+                Parsed += ANSICodes.SetBackColor(color);
+            }
+            else
+            {
+                ANSICodes.Colors color = currentForeColor;
+                ANSICodes.ColorTable.TryGetValue(colorName, out color);
+                Parsed += ANSICodes.SetColor(color);
+            }
+        }
 
         public override void EnterBbsCodeChardata([NotNull] BBSCodeParser.BbsCodeChardataContext context)
         {

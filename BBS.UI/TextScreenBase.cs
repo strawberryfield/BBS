@@ -92,7 +92,7 @@ namespace Casasoft.BBS.UI
             int ret = start;
             for (; ret < start + len && ret < Text.Length; ++ret)
             {
-                server.sendMessageToClient(client, Text[ret] + "\r\n");
+                server.sendMessageToClient(client, Text[ret] + Server.END_LINE);
             }
             return ret;
         }
