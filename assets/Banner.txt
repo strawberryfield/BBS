@@ -1,3 +1,3 @@
 {CLS/}Welcome to {REVERSE}«The Strawberry Field»!{/REVERSE}
 
-Press {COLOR value="Yellow"}[X]{/COLOR} to continue.
+Press {COLOR value="Yellow"}{REVERSE}[X]{/REVERSE}{/COLOR} to continue.

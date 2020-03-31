@@ -69,7 +69,7 @@ namespace Casasoft.BBS.Parser
 
         private void ColorTags(IParseTree t, bool isBack = false)
         {
-            string colorName = t.GetChild(2).GetText().Trim('"');
+            string colorName = t.GetChild(2).GetText().Trim('"').ToUpper();
             if (isBack)
             {
                 ANSICodes.Colors color = currentBackColor;
