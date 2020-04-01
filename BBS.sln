@@ -10,6 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5C2-590A-4BD8-BF22-7E8231B518FB}"
 	ProjectSection(SolutionItems) = preProject
 		assets\Banner.txt = assets\Banner.txt
+		assets\Login.txt = assets\Login.txt
+		assets\logo.ansi.txt = assets\logo.ansi.txt
 		assets\Logout.txt = assets\Logout.txt
 	EndProjectSection
 EndProject
@@ -19,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TCPServer", "TCPServer\TCPS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataTier", "DataTier\DataTier.csproj", "{E4981F9F-44CC-4D48-ACB4-F9970BD28F81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBS.Logger", "BBS.Logger\BBS.Logger.csproj", "{BDBE4584-2A8A-4DA2-9A5C-BE91C21C69BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BBS.Logger", "BBS.Logger\BBS.Logger.csproj", "{BDBE4584-2A8A-4DA2-9A5C-BE91C21C69BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

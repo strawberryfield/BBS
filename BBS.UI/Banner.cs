@@ -29,5 +29,11 @@ namespace Casasoft.BBS.UI
             ReadText("Banner");
         }
 
+        public override IScreen Show()
+        {
+            base.Show();
+            Login ret = new Login(client, server);
+            return ret;
+        }
     }
 }
