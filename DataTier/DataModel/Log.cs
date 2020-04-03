@@ -7,6 +7,7 @@ namespace Casasoft.BBS.DataTier.DataModel
     {
         public int Id { get; set; }
         public DateTime DateTime { get; set; }
+        public string Remote { get; set; }
         public sbyte Level { get; set; }
         public string Description { get; set; }
     }

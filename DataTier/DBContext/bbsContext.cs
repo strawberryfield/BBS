@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Casasoft.BBS.DataTier.DataModel;
-using System.Configuration;
 
 namespace Casasoft.BBS.DataTier.DBContext
 {
@@ -17,47 +16,26 @@ namespace Casasoft.BBS.DataTier.DBContext
         {
         }
 
-        public virtual DbSet<Groups> Groups { get; set; }
         public virtual DbSet<Log> Log { get; set; }
-        public virtual DbSet<Logins> Logins { get; set; }
+        public virtual DbSet<MessageAreas> MessageAreas { get; set; }
+        public virtual DbSet<MessageAreasGroups> MessageAreasGroups { get; set; }
+        public virtual DbSet<MessageSeenBy> MessageSeenBy { get; set; }
+        public virtual DbSet<Messages> Messages { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<UsersGroups> UsersGroups { get; set; }
+        public virtual DbSet<UsersGroupsLinks> UsersGroupsLinks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql(ConfigurationManager.ConnectionStrings["DB"].ConnectionString, x => x.ServerVersion("10.3.22-mariadb"));
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=192.168.1.10;database=bbs;user=bbs;password=password", x => x.ServerVersion("10.3.22-mariadb"));
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Groups>(entity =>
-            {
-                entity.HasKey(e => e.Groupid)
-                    .HasName("PRIMARY");
-
-                entity.ToTable("groups");
-
-                entity.HasComment("Users groups definition");
-
-                entity.Property(e => e.Groupid)
-                    .HasColumnName("groupid")
-                    .HasColumnType("varchar(30)")
-                    .HasDefaultValueSql("''")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasColumnName("description")
-                    .HasColumnType("varchar(200)")
-                    .HasDefaultValueSql("''")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-            });
-
             modelBuilder.Entity<Log>(entity =>
             {
                 entity.ToTable("log");
@@ -81,48 +59,176 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Level).HasColumnType("tinyint(4)");
+                entity.Property(e => e.Level)
+                    .HasColumnType("tinyint(4)")
+                    .HasDefaultValueSql("'1'");
+
+                entity.Property(e => e.Remote)
+                    .IsRequired()
+                    .HasColumnType("varchar(24)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
             });
 
-            modelBuilder.Entity<Logins>(entity =>
+            modelBuilder.Entity<MessageAreas>(entity =>
             {
-                entity.ToTable("logins");
+                entity.HasComment("Message Areas List");
 
-                entity.HasComment("List of users logins");
+                entity.HasIndex(e => e.Description)
+                    .HasName("Description");
 
-                entity.HasIndex(e => e.DateTime)
-                    .HasName("DateTime");
-
-                entity.HasIndex(e => e.Userid)
-                    .HasName("userid");
+                entity.HasIndex(e => e.Fidoid)
+                    .HasName("FIDOID");
 
                 entity.Property(e => e.Id)
-                    .HasColumnName("id")
+                    .HasColumnName("ID")
+                    .HasColumnType("varchar(20)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Areagroup)
+                    .IsRequired()
+                    .HasColumnName("AREAGROUP")
+                    .HasColumnType("varchar(20)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(200)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Fidoid)
+                    .IsRequired()
+                    .HasColumnName("FIDOID")
+                    .HasColumnType("varchar(30)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+            modelBuilder.Entity<MessageAreasGroups>(entity =>
+            {
+                entity.HasIndex(e => e.Description)
+                    .HasName("Description");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("varchar(20)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(200)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+            modelBuilder.Entity<MessageSeenBy>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.HasComment("System that already received the message");
+
+                entity.HasIndex(e => e.MessageId)
+                    .HasName("MessageId");
+
+                entity.HasIndex(e => e.SeenBy)
+                    .HasName("SeenBy");
+
+                entity.Property(e => e.MessageId).HasColumnType("int(11)");
+
+                entity.Property(e => e.SeenBy)
+                    .IsRequired()
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+            modelBuilder.Entity<Messages>(entity =>
+            {
+                entity.HasComment("Messages");
+
+                entity.HasIndex(e => e.Area)
+                    .HasName("Area");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
                     .HasColumnType("int(11)");
+
+                entity.Property(e => e.Area)
+                    .IsRequired()
+                    .HasColumnType("varchar(20)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Body)
+                    .IsRequired()
+                    .HasColumnType("text")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.DateTime)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("'current_timestamp()'");
 
-                entity.Property(e => e.From)
+                entity.Property(e => e.DestNet).HasColumnType("int(11)");
+
+                entity.Property(e => e.DestNode).HasColumnType("int(11)");
+
+                entity.Property(e => e.DestPoint).HasColumnType("int(11)");
+
+                entity.Property(e => e.DestZone).HasColumnType("int(11)");
+
+                entity.Property(e => e.FidoId)
                     .IsRequired()
-                    .HasColumnType("varchar(15)")
-                    .HasDefaultValueSql("'0.0.0.0'")
+                    .HasColumnName("FidoID")
+                    .HasColumnType("varchar(50)")
+                    .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Userid)
+                entity.Property(e => e.FidoReplyTo)
                     .IsRequired()
-                    .HasColumnName("userid")
-                    .HasColumnType("varchar(30)")
+                    .HasColumnType("varchar(50)")
+                    .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.HasOne(d => d.User)
-                    .WithMany(p => p.Logins)
-                    .HasForeignKey(d => d.Userid)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("logins_users");
+                entity.Property(e => e.MessageFrom)
+                    .IsRequired()
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.MessageTo)
+                    .HasColumnType("varchar(100)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.OrigNet).HasColumnType("int(11)");
+
+                entity.Property(e => e.OrigNode).HasColumnType("int(11)");
+
+                entity.Property(e => e.OrigPoint).HasColumnType("int(11)");
+
+                entity.Property(e => e.OrigZone).HasColumnType("int(11)");
+
+                entity.Property(e => e.Subject)
+                    .IsRequired()
+                    .HasColumnType("varchar(72)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.TimesRead).HasColumnType("int(11)");
             });
 
             modelBuilder.Entity<Users>(entity =>
@@ -130,13 +236,19 @@ namespace Casasoft.BBS.DataTier.DBContext
                 entity.HasKey(e => e.Userid)
                     .HasName("PRIMARY");
 
-                entity.ToTable("users");
-
                 entity.HasComment("BBS users");
 
                 entity.Property(e => e.Userid)
                     .HasColumnName("userid")
                     .HasColumnType("varchar(30)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.City)
+                    .IsRequired()
+                    .HasColumnName("city")
+                    .HasColumnType("varchar(50)")
+                    .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -151,10 +263,19 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
+                entity.Property(e => e.Nation)
+                    .IsRequired()
+                    .HasColumnName("nation")
+                    .HasColumnType("varchar(50)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasColumnName("password")
-                    .HasColumnType("varchar(20)")
+                    .HasColumnType("varchar(32)")
+                    .HasComment("MD5 Hash of the password")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -185,8 +306,27 @@ namespace Casasoft.BBS.DataTier.DBContext
 
             modelBuilder.Entity<UsersGroups>(entity =>
             {
-                entity.ToTable("users_groups");
+                entity.HasKey(e => e.Groupid)
+                    .HasName("PRIMARY");
 
+                entity.HasComment("Users groups definition");
+
+                entity.Property(e => e.Groupid)
+                    .HasColumnType("varchar(30)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(200)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+            modelBuilder.Entity<UsersGroupsLinks>(entity =>
+            {
                 entity.HasComment("Users groups");
 
                 entity.HasIndex(e => e.Groupid)
@@ -212,12 +352,12 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCollation("utf8_general_ci");
 
                 entity.HasOne(d => d.Group)
-                    .WithMany(p => p.UsersGroups)
+                    .WithMany(p => p.UsersGroupsLinks)
                     .HasForeignKey(d => d.Groupid)
                     .HasConstraintName("group_groups");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.UsersGroups)
+                    .WithMany(p => p.UsersGroupsLinks)
                     .HasForeignKey(d => d.Userid)
                     .HasConstraintName("user_users");
             });

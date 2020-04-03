@@ -18,31 +18,29 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.DataTier.DataModel;
-using Casasoft.BBS.DataTier;
-using System;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 
-namespace Casasoft.BBS.Logger
+namespace Casasoft.BBS.DataTier
 {
-    public static class EventLogger
+    public class bbsContext : DBContext.bbsContext
     {
-        private static bbsContext db;
-
-        static EventLogger()
+        public bbsContext()
         {
-            db = new bbsContext();
         }
 
-        public static void Write(string message, sbyte level)
+        public bbsContext(DbContextOptions<DBContext.bbsContext> options)
+            : base(options)
         {
-            db.Log.Add(new Log() { Level = level, Description = message });
-            db.SaveChanges();
-            Console.Error.WriteLine("{0} {1} {2}", DateTime.Now, level, message);
         }
 
-        public static void Write(string message)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Write(message, 0);
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql(ConfigurationManager.ConnectionStrings["DB"].ConnectionString, x => x.ServerVersion("10.3.22-mariadb"));
+            }
         }
+
     }
 }
