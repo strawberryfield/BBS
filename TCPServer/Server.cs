@@ -213,7 +213,7 @@ namespace Casasoft.TCPServer
                 {
                     Client c = clients[s];
 
-                    if (c.getCurrentStatus() == EClientStatus.LoggedIn)
+                    if (c.status == EClientStatus.LoggedIn)
                     {
                         sendMessageToSocket(s, END_LINE + message + END_LINE + CURSOR);
                         c.resetReceivedData();
@@ -253,7 +253,7 @@ namespace Casasoft.TCPServer
         {
             Socket s;
 
-            s = clients.FirstOrDefault(x => x.Value.getClientID() == client.getClientID()).Key;
+            s = clients.FirstOrDefault(x => x.Value.id == client.id).Key;
 
             return s;
         }
@@ -366,14 +366,14 @@ namespace Casasoft.TCPServer
 
                 else if (data[0] < 0xF0)
                 {
-                    string receivedData = client.getReceivedData();
+                    string receivedData = client.receivedData;
 
                     // 0x2E = '.', 0x0D = carriage return, 0x0A = new line
                     if ((data[0] == 0x2E && data[1] == 0x0D && receivedData.Length == 0) ||
                         (data[0] == 0x0D && data[1] == 0x0A))
                     {
                         //sendMessageToSocket(clientSocket, "\u001B[1J\u001B[H");
-                        MessageReceived(client, client.getReceivedData());
+                        MessageReceived(client, client.receivedData);
                         client.resetReceivedData();
                     }
 
@@ -402,7 +402,7 @@ namespace Casasoft.TCPServer
 
                             // Echo back the received character
                             // if client is not writing any password
-                            if (client.getCurrentStatus() != EClientStatus.Authenticating)
+                            if (client.status != EClientStatus.Authenticating)
                                 sendBytesToSocket(clientSocket, new byte[] { data[0] });
 
                             // Echo back asterisks if client is

@@ -18,11 +18,12 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.Interfaces;
+using Casasoft.BBS.DataTier;
+using Casasoft.BBS.DataTier.DataModel;
+using Casasoft.BBS.Logger;
 using Casasoft.TCPServer;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
@@ -51,6 +52,7 @@ namespace Casasoft.BBS.UI
             {
                 case states.WaitForUsername:
                     username = msg.Trim().ToUpper();
+                    if (username == string.Empty) break;
                     switch (username)
                     {
                         case "GUEST":
@@ -67,16 +69,53 @@ namespace Casasoft.BBS.UI
                             break;
                     }
                     break;
-                case states.WaitForPassword:        
+                case states.WaitForPassword:
+                    string pwd = msg.Trim();
+                    string hash = Helpers.CreateMD5(username + pwd);
+
+                    bool success = false;
+                    using (bbsContext bbs = new bbsContext())
+                    {
+                        Users user = bbs.Users.Where(u => u.Userid == username).FirstOrDefault();
+                        if (user != null)
+                        {
+                            if (user.Password == hash)
+                            {
+                                // successful login
+                                success = true;
+                                user.LastLoginDate = DateTime.Now;
+                                user.LastLoginFrom = client.Remote;
+                                bbs.SaveChanges();
+                            }
+                            else
+                            {
+                                EventLogger.Write(string.Format("Password failed for user '{0}'", username),
+                                    client.Remote);
+                            }
+                        }
+                        else
+                        {
+                            EventLogger.Write(string.Format("Unknown user '{0}'", username),
+                                client.Remote);
+                        }
+                    }
+
+                    if (success)
+                    {
+                        client.username = username;
+                        client.screen = new TextScreenBase(client, server, "LoggedIn");
+                        client.screen.Show();
+                    }
+                    else
+                    {
+                        server.sendMessageToClient(client, "\r\nUsername or password incorrect. Please try again.");
+                        server.sendMessageToClient(client, "\r\nUsername: ");
+                        status = states.WaitForUsername;
+                    }
                     break;
                 default:
                     break;
             }
-            
         }
-
-        
     }
-
-
 }

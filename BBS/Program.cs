@@ -40,29 +40,23 @@ namespace Casasoft.BBS
 
             EventLogger.Write("SERVER STARTED");
 
-            char read = Console.ReadKey(true).KeyChar;
-
             do
             {
-                if (read == 'b')
-                {
-                    server.sendMessageToAll(Console.ReadLine());
-                }
-            } while ((read = Console.ReadKey(true).KeyChar) != 'q');
+            } while ((Console.ReadKey(true).KeyChar) != 'q');
 
             server.stop();
         }
 
         private static void clientConnected(Client c)
         {
-            EventLogger.Write("CONNECTED: #" + c.getClientID().ToString(), c.Remote);
+            EventLogger.Write("CONNECTED: #" + c.id.ToString(), c.Remote);
             c.screen = new Banner(c, server);
             c.screen.Show();
         }
 
         private static void clientDisconnected(Client c)
         {
-            EventLogger.Write("DISCONNECTED: #" + c.getClientID().ToString(), c.Remote);
+            EventLogger.Write("DISCONNECTED: #" + c.id.ToString(), c.Remote);
         }
 
         private static void clientHandleMessage(Client c, string msg)

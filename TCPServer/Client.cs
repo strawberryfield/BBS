@@ -1,4 +1,6 @@
-﻿// copyright (c) 2020 Roberto Ceccarelli - CasaSoft
+﻿
+
+// copyright (c) 2020 Roberto Ceccarelli - CasaSoft
 // http://strawberryfield.altervista.org 
 //
 // original work from https://gist.github.com/UngarMax/6394321573dc0791dff9
@@ -48,24 +50,26 @@ namespace Casasoft.TCPServer
         /// <summary>
         /// The client's identifier.
         /// </summary>
-        private uint id;
+        public uint id { get; private set; }
         /// <summary>
         /// The client's remote address.
         /// </summary>
-        private IPEndPoint remoteAddr;
+        public IPEndPoint remoteAddr { get; private set; }
         /// <summary>
         /// The connection datetime.
         /// </summary>
-        private DateTime connectedAt;
+        public DateTime connectedAt { get; private set; }
         /// <summary>
         /// The client's current status.
         /// </summary>
-        private EClientStatus status;
+        public EClientStatus status { get; set; }
         /// <summary>
         /// The last received data from the client.
         /// </summary>
-        private string receivedData;
-        public IScreen screen;
+        public string receivedData { get; set; }
+
+        public string username { get; set; }
+        public IScreen screen { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client"/> class.
@@ -79,8 +83,9 @@ namespace Casasoft.TCPServer
             this.connectedAt = DateTime.Now;
             this.status = EClientStatus.Guest;
             this.receivedData = string.Empty;
+            this.username = string.Empty;
         }
-
+/*
         /// <summary>
         /// Gets the client identifier.
         /// </summary>
@@ -143,7 +148,7 @@ namespace Casasoft.TCPServer
         {
             this.receivedData = newReceivedData;
         }
-
+*/
         /// <summary>
         /// Appends a string to the client's last
         /// received data.
