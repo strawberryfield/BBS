@@ -18,10 +18,12 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-namespace Casasoft.BBS.UI
+namespace Casasoft.BBS.Interfaces
 {
     public interface IScreen
     {
-        public IScreen Show();
+        public void Show();
+        public void HandleMessage(string msg);
+        public void ShowNext();
     }
 }

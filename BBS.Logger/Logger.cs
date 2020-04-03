@@ -37,7 +37,7 @@ namespace Casasoft.BBS.Logger
         {
             db.Log.Add(new Log() { Level = level, Description = message, Remote = remote });
             db.SaveChanges();
-            Console.Error.WriteLine("{0} {1} {2,22} {3}",  
+            Console.Error.WriteLine("{0} {1} {2,-22} {3}",  
                 new object[] { DateTime.Now, level, remote, message });
         }
 

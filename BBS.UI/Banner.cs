@@ -24,16 +24,13 @@ namespace Casasoft.BBS.UI
 {
     public class Banner : TextScreenBase
     {
-        public Banner(Client c, Server s) : base(c, s)
-        {
-            ReadText("Banner");
-        }
+        public Banner(Client c, Server s) : base(c, s, "Banner") { }
+        public Banner(Client c, Server s, string txt) : base(c, s, txt) { }
 
-        public override IScreen Show()
+        public override void ShowNext()
         {
-            base.Show();
-            Login ret = new Login(client, server);
-            return ret;
+            client.screen = new Login(client, server);
+            client.screen.Show();
         }
     }
 }

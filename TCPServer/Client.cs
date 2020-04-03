@@ -20,6 +20,7 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.Interfaces;
 using System;
 using System.Net;
 
@@ -63,7 +64,8 @@ namespace Casasoft.TCPServer
         /// <summary>
         /// The last received data from the client.
         /// </summary>
-        private string receivedData;     
+        private string receivedData;
+        public IScreen screen;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client"/> class.

@@ -25,15 +25,13 @@ namespace Casasoft.BBS.UI
 {
     public class Logout : TextScreenBase
     {
-        public Logout(Client c, Server s) : base(c, s)
-        {
-            ReadText("Logout");
-        }
+        public Logout(Client c, Server s) : base(c, s, "Logout")  { }
+        public Logout(Client c, Server s, string txt) : base(c, s, txt) { }
 
-        public override IScreen Show()
+        public override void Show()
         {
-            ShowLines(0, 24);
-            return null;
+            base.Show();
+            server.kickClient(client);
         }
     }
 }

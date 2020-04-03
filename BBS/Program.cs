@@ -35,6 +35,7 @@ namespace Casasoft.BBS
             server = new Server(IPAddress.Any);
             server.ClientConnected += clientConnected;
             server.ClientDisconnected += clientDisconnected;
+            server.MessageReceived += clientHandleMessage;
             server.start();
 
             EventLogger.Write("SERVER STARTED");
@@ -55,22 +56,19 @@ namespace Casasoft.BBS
         private static void clientConnected(Client c)
         {
             EventLogger.Write("CONNECTED: #" + c.getClientID().ToString(), c.Remote);
-            IScreen screen = new Banner(c, server);
-            while (screen != null)
-            {
-                screen = screen.Show();
-            }
-            screen = new Logout(c, server);
-            screen.Show();
-            server.kickClient(c);
+            c.screen = new Banner(c, server);
+            c.screen.Show();
         }
 
         private static void clientDisconnected(Client c)
         {
-            EventLogger.Write("DISCONNECTED: #" + c.getClientID().ToString(),c.Remote);
+            EventLogger.Write("DISCONNECTED: #" + c.getClientID().ToString(), c.Remote);
         }
 
-
+        private static void clientHandleMessage(Client c, string msg)
+        {
+            c.screen.HandleMessage(msg);
+        }
 
     }
 }

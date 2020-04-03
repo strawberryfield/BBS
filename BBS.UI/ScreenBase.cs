@@ -18,6 +18,7 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.Interfaces;
 using Casasoft.TCPServer;
 
 namespace Casasoft.BBS.UI
@@ -33,10 +34,9 @@ namespace Casasoft.BBS.UI
             server = s;
         }
 
-        public virtual IScreen Show()
-        {
-            return null;
-        }
+        public virtual void Show() { }
+        public virtual void HandleMessage(string msg) { }
+        public virtual void ShowNext() { }
 
     }
 }

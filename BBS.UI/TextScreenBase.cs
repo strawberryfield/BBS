@@ -34,6 +34,11 @@ namespace Casasoft.BBS.UI
 
         public TextScreenBase(Client c, Server s) : base(c, s) { }
 
+        public TextScreenBase(Client c, Server s, string txt) : this(c,s)
+        {
+            ReadText(txt);
+        }
+
         public void ReadText(string name)
         {
             string assets = ConfigurationManager.AppSettings.Get("assets");
@@ -43,49 +48,32 @@ namespace Casasoft.BBS.UI
             Text = Regex.Split(translator.GetProcessed(filename), "\r\n");
         }
 
-        public override IScreen Show()
+        private int currentLine;
+        public override void Show()
         {
-            ShowText();
-            return null;
+            currentLine = ShowLines(0, 24);
         }
 
-        protected void ShowText()
+        public override void HandleMessage(string msg)
         {
-            int currentLine = ShowLines(0, 24);
-            bool inLoop = true;
-            while (inLoop)
+            if(!string.IsNullOrWhiteSpace(msg) && msg.Substring(0,1).ToUpper() == "B")
             {
-                string rd = client.getReceivedData();
-                if (string.IsNullOrEmpty(rd)) continue;
-                char k = rd[0];
-                client.resetReceivedData();
-                switch (k)
+                if (Text.Length > 24 && currentLine > 23)
                 {
-                    case 'x':
-                    case 'X':
-                        inLoop = false;
-                        break;
-                    case '\r':
-                        if (Text.Length > 24 && currentLine < Text.Length - 1)
-                            ShowLines(currentLine - 23, 24);
-                        break;
-                    case ' ':
-                        if (Text.Length > 24 && currentLine < Text.Length - 1)
-                            ShowLines(currentLine, 24);
-                        break;
-                    case 'b':
-                    case 'B':
-                        if (Text.Length > 24 && currentLine > 23)
-                        {
-                            int newStart = currentLine - 48;
-                            newStart = newStart < 0 ? 0 : newStart;
-                            ShowLines(newStart, 24);
-                        }
-                        break;
+                    int newStart = currentLine - 48;
+                    newStart = newStart < 0 ? 0 : newStart;
+                    ShowLines(newStart, 24);
                 }
             }
-        }
 
+            if(string.IsNullOrWhiteSpace(msg))
+            {
+                if (Text.Length > 24 && currentLine < Text.Length - 1)
+                    ShowLines(currentLine, 24);
+                else
+                    ShowNext();
+            }
+        }
 
         protected int ShowLines(int start, int len)
         {

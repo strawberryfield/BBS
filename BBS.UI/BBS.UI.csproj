@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BBS.Interfaces\BBS.Interfaces.csproj" />
     <ProjectReference Include="..\BBS.Parser\BBS.Parser.csproj" />
     <ProjectReference Include="..\TCPServer\TCPServer.csproj" />
   </ItemGroup>
