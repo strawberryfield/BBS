@@ -33,16 +33,27 @@ namespace Casasoft.BBS.Logger
             db = new bbsContext();
         }
 
+        public static void Write(string message, sbyte level, string remote)
+        {
+            db.Log.Add(new Log() { Level = level, Description = message, Remote = remote });
+            db.SaveChanges();
+            Console.Error.WriteLine("{0} {1} {2,22} {3}",  
+                new object[] { DateTime.Now, level, remote, message });
+        }
+
         public static void Write(string message, sbyte level)
         {
-            db.Log.Add(new Log() { Level = level, Description = message });
-            db.SaveChanges();
-            Console.Error.WriteLine("{0} {1} {2}", DateTime.Now, level, message);
+            Write(message, level, string.Empty);
+        }
+
+        public static void Write(string message, string remote)
+        {
+            Write(message, 1, remote);
         }
 
         public static void Write(string message)
         {
-            Write(message, 0);
+            Write(message, 1);
         }
     }
 }

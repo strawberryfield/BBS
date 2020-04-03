@@ -54,7 +54,7 @@ namespace Casasoft.BBS
 
         private static void clientConnected(Client c)
         {
-            EventLogger.Write("CONNECTED: " + c);
+            EventLogger.Write("CONNECTED: #" + c.getClientID().ToString(), c.Remote);
             IScreen screen = new Banner(c, server);
             while (screen != null)
             {
@@ -67,7 +67,7 @@ namespace Casasoft.BBS
 
         private static void clientDisconnected(Client c)
         {
-            EventLogger.Write("DISCONNECTED: " + c);
+            EventLogger.Write("DISCONNECTED: #" + c.getClientID().ToString(),c.Remote);
         }
 
 
