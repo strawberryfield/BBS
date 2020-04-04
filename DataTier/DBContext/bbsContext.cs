@@ -16,14 +16,16 @@ namespace Casasoft.BBS.DataTier.DBContext
         {
         }
 
-        public virtual DbSet<Log> Log { get; set; }
-        public virtual DbSet<MessageAreas> MessageAreas { get; set; }
-        public virtual DbSet<MessageAreasGroups> MessageAreasGroups { get; set; }
-        public virtual DbSet<MessageSeenBy> MessageSeenBy { get; set; }
-        public virtual DbSet<Messages> Messages { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<UsersGroups> UsersGroups { get; set; }
-        public virtual DbSet<UsersGroupsLinks> UsersGroupsLinks { get; set; }
+        public virtual DbSet<Log> Logs { get; set; }
+        public virtual DbSet<Login> Logins { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<MessageArea> MessageAreas { get; set; }
+        public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
+        public virtual DbSet<MessageRead> MessageReads { get; set; }
+        public virtual DbSet<MessageSeenBy> MessagesSeenBy { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UsersGroup> UsersGroups { get; set; }
+        public virtual DbSet<UsersGroupsLink> UsersGroupsLinks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -38,7 +40,7 @@ namespace Casasoft.BBS.DataTier.DBContext
         {
             modelBuilder.Entity<Log>(entity =>
             {
-                entity.ToTable("log");
+                entity.ToTable("Log");
 
                 entity.HasComment("Events log");
 
@@ -71,87 +73,45 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCollation("utf8_general_ci");
             });
 
-            modelBuilder.Entity<MessageAreas>(entity =>
+            modelBuilder.Entity<Login>(entity =>
             {
-                entity.HasComment("Message Areas List");
+                entity.HasComment("Users logins");
 
-                entity.HasIndex(e => e.Description)
-                    .HasName("Description");
+                entity.HasIndex(e => e.DateTime)
+                    .HasName("DateTime");
 
-                entity.HasIndex(e => e.Fidoid)
-                    .HasName("FIDOID");
+                entity.HasIndex(e => e.UserId)
+                    .HasName("UserId");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
-                    .HasColumnType("varchar(20)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
+                    .HasColumnType("int(11)");
 
-                entity.Property(e => e.Areagroup)
+                entity.Property(e => e.DateTime)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'current_timestamp()'");
+
+                entity.Property(e => e.From)
                     .IsRequired()
-                    .HasColumnName("AREAGROUP")
-                    .HasColumnType("varchar(20)")
+                    .HasColumnType("varchar(24)")
                     .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.Property(e => e.Description)
+                entity.Property(e => e.UserId)
                     .IsRequired()
-                    .HasColumnType("varchar(200)")
-                    .HasDefaultValueSql("''")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.Fidoid)
-                    .IsRequired()
-                    .HasColumnName("FIDOID")
                     .HasColumnType("varchar(30)")
-                    .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Logins)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("UserId_Users");
             });
 
-            modelBuilder.Entity<MessageAreasGroups>(entity =>
-            {
-                entity.HasIndex(e => e.Description)
-                    .HasName("Description");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .HasColumnType("varchar(20)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.Description)
-                    .IsRequired()
-                    .HasColumnType("varchar(200)")
-                    .HasDefaultValueSql("''")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-            });
-
-            modelBuilder.Entity<MessageSeenBy>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.HasComment("System that already received the message");
-
-                entity.HasIndex(e => e.MessageId)
-                    .HasName("MessageId");
-
-                entity.HasIndex(e => e.SeenBy)
-                    .HasName("SeenBy");
-
-                entity.Property(e => e.MessageId).HasColumnType("int(11)");
-
-                entity.Property(e => e.SeenBy)
-                    .IsRequired()
-                    .HasColumnType("varchar(50)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-            });
-
-            modelBuilder.Entity<Messages>(entity =>
+            modelBuilder.Entity<Message>(entity =>
             {
                 entity.HasComment("Messages");
 
@@ -231,11 +191,121 @@ namespace Casasoft.BBS.DataTier.DBContext
                 entity.Property(e => e.TimesRead).HasColumnType("int(11)");
             });
 
-            modelBuilder.Entity<Users>(entity =>
+            modelBuilder.Entity<MessageArea>(entity =>
             {
-                entity.HasKey(e => e.Userid)
-                    .HasName("PRIMARY");
+                entity.HasComment("Message Areas List");
 
+                entity.HasIndex(e => e.Description)
+                    .HasName("Description");
+
+                entity.HasIndex(e => e.Fidoid)
+                    .HasName("FIDOID");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("varchar(20)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Areagroup)
+                    .IsRequired()
+                    .HasColumnName("AREAGROUP")
+                    .HasColumnType("varchar(20)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(200)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Fidoid)
+                    .IsRequired()
+                    .HasColumnName("FIDOID")
+                    .HasColumnType("varchar(30)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+            modelBuilder.Entity<MessageAreasGroup>(entity =>
+            {
+                entity.HasIndex(e => e.Description)
+                    .HasName("Description");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("varchar(20)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(200)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+            modelBuilder.Entity<MessageRead>(entity =>
+            {
+                entity.ToTable("MessageRead");
+
+                entity.HasComment("Flags for messages read");
+
+                entity.HasIndex(e => e.MessgeId)
+                    .HasName("MessageId");
+
+                entity.HasIndex(e => e.UserId)
+                    .HasName("UserId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.MessgeId).HasColumnType("int(11)");
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasColumnType("varchar(30)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.HasOne(d => d.Messge)
+                    .WithMany(p => p.MessageReads)
+                    .HasForeignKey(d => d.MessgeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("MessageId_Messages");
+            });
+
+            modelBuilder.Entity<MessageSeenBy>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToTable("MessageSeenBy");
+
+                entity.HasComment("System that already received the message");
+
+                entity.HasIndex(e => e.MessageId)
+                    .HasName("MessageId");
+
+                entity.HasIndex(e => e.SeenBy)
+                    .HasName("SeenBy");
+
+                entity.Property(e => e.MessageId).HasColumnType("int(11)");
+
+                entity.Property(e => e.SeenBy)
+                    .IsRequired()
+                    .HasColumnType("varchar(50)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
                 entity.HasComment("BBS users");
 
                 entity.Property(e => e.Userid)
@@ -304,7 +374,7 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCollation("utf8_general_ci");
             });
 
-            modelBuilder.Entity<UsersGroups>(entity =>
+            modelBuilder.Entity<UsersGroup>(entity =>
             {
                 entity.HasKey(e => e.Groupid)
                     .HasName("PRIMARY");
@@ -325,7 +395,7 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCollation("utf8_general_ci");
             });
 
-            modelBuilder.Entity<UsersGroupsLinks>(entity =>
+            modelBuilder.Entity<UsersGroupsLink>(entity =>
             {
                 entity.HasComment("Users groups");
 

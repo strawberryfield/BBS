@@ -76,7 +76,7 @@ namespace Casasoft.BBS.UI
                     bool success = false;
                     using (bbsContext bbs = new bbsContext())
                     {
-                        Users user = bbs.Users.Where(u => u.Userid == username).FirstOrDefault();
+                        User user = bbs.Users.Where(u => u.Userid == username).FirstOrDefault();
                         if (user != null)
                         {
                             if (user.Password == hash)

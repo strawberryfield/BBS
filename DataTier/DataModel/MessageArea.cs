@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
-    public partial class MessageAreasGroups
+    public partial class MessageArea
     {
         public string Id { get; set; }
         public string Description { get; set; }
+        public string Fidoid { get; set; }
+        public string Areagroup { get; set; }
     }
 }

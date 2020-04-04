@@ -3,8 +3,13 @@ using System.Collections.Generic;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
-    public partial class Messages
+    public partial class Message
     {
+        public Message()
+        {
+            MessageReads = new HashSet<MessageRead>();
+        }
+
         public int Id { get; set; }
         public string Area { get; set; }
         public string MessageFrom { get; set; }
@@ -23,5 +28,7 @@ namespace Casasoft.BBS.DataTier.DataModel
         public int DestNode { get; set; }
         public int DestPoint { get; set; }
         public string Body { get; set; }
+
+        public virtual ICollection<MessageRead> MessageReads { get; set; }
     }
 }

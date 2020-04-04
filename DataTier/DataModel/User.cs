@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
-    public partial class Users
+    public partial class User
     {
-        public Users()
+        public User()
         {
-            UsersGroupsLinks = new HashSet<UsersGroupsLinks>();
+            Logins = new HashSet<Login>();
+            UsersGroupsLinks = new HashSet<UsersGroupsLink>();
         }
 
         public string Userid { get; set; }
@@ -20,6 +21,7 @@ namespace Casasoft.BBS.DataTier.DataModel
         public string LastLoginFrom { get; set; }
         public DateTime LastLoginDate { get; set; }
 
-        public virtual ICollection<UsersGroupsLinks> UsersGroupsLinks { get; set; }
+        public virtual ICollection<Login> Logins { get; set; }
+        public virtual ICollection<UsersGroupsLink> UsersGroupsLinks { get; set; }
     }
 }

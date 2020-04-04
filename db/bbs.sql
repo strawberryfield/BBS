@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Apr 02, 2020 alle 22:16
+-- Creato il: Apr 04, 2020 alle 10:38
 -- Versione del server: 10.3.22-MariaDB-0+deb10u1
 -- Versione PHP: 7.3.14-1~deb10u1
 
@@ -26,16 +26,40 @@ USE `bbs`;
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `log`
+-- Struttura della tabella `Log`
 --
 
-CREATE TABLE `log` (
+CREATE TABLE `Log` (
   `id` int(11) NOT NULL,
   `DateTime` datetime NOT NULL DEFAULT current_timestamp(),
   `Remote` varchar(24) NOT NULL DEFAULT '',
   `Level` tinyint(4) NOT NULL DEFAULT 1,
   `Description` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Events log';
+
+--
+-- RELAZIONI PER TABELLA `Log`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `Logins`
+--
+
+CREATE TABLE `Logins` (
+  `ID` int(11) NOT NULL,
+  `UserId` varchar(30) NOT NULL,
+  `DateTime` datetime NOT NULL DEFAULT current_timestamp(),
+  `From` varchar(24) NOT NULL DEFAULT '',
+  `Success` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users logins';
+
+--
+-- RELAZIONI PER TABELLA `Logins`:
+--   `UserId`
+--       `Users` -> `userid`
+--
 
 -- --------------------------------------------------------
 
@@ -50,6 +74,10 @@ CREATE TABLE `MessageAreas` (
   `AREAGROUP` varchar(20) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Message Areas List';
 
+--
+-- RELAZIONI PER TABELLA `MessageAreas`:
+--
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +88,28 @@ CREATE TABLE `MessageAreasGroups` (
   `ID` varchar(20) NOT NULL,
   `Description` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- RELAZIONI PER TABELLA `MessageAreasGroups`:
+--
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `MessageRead`
+--
+
+CREATE TABLE `MessageRead` (
+  `ID` int(11) NOT NULL,
+  `MessgeId` int(11) NOT NULL,
+  `UserId` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Flags for messages read';
+
+--
+-- RELAZIONI PER TABELLA `MessageRead`:
+--   `MessgeId`
+--       `Messages` -> `ID`
+--
 
 -- --------------------------------------------------------
 
@@ -88,6 +138,10 @@ CREATE TABLE `Messages` (
   `Body` text NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Messages';
 
+--
+-- RELAZIONI PER TABELLA `Messages`:
+--
+
 -- --------------------------------------------------------
 
 --
@@ -98,6 +152,10 @@ CREATE TABLE `MessageSeenBy` (
   `MessageId` int(11) NOT NULL,
   `SeenBy` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='System that already received the message';
+
+--
+-- RELAZIONI PER TABELLA `MessageSeenBy`:
+--
 
 -- --------------------------------------------------------
 
@@ -117,6 +175,10 @@ CREATE TABLE `Users` (
   `LastLoginDate` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='BBS users' ROW_FORMAT=COMPACT;
 
+--
+-- RELAZIONI PER TABELLA `Users`:
+--
+
 -- --------------------------------------------------------
 
 --
@@ -127,6 +189,10 @@ CREATE TABLE `UsersGroups` (
   `Groupid` varchar(30) NOT NULL DEFAULT '',
   `Description` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups definition' ROW_FORMAT=COMPACT;
+
+--
+-- RELAZIONI PER TABELLA `UsersGroups`:
+--
 
 -- --------------------------------------------------------
 
@@ -141,14 +207,34 @@ CREATE TABLE `UsersGroupsLinks` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups' ROW_FORMAT=COMPACT;
 
 --
+-- RELAZIONI PER TABELLA `UsersGroupsLinks`:
+--   `groupid`
+--       `UsersGroups` -> `Groupid`
+--   `userid`
+--       `Users` -> `ID`
+--   `groupid`
+--       `UsersGroups` -> `groupid`
+--   `userid`
+--       `Users` -> `userid`
+--
+
+--
 -- Indici per le tabelle scaricate
 --
 
 --
--- Indici per le tabelle `log`
+-- Indici per le tabelle `Log`
 --
-ALTER TABLE `log`
+ALTER TABLE `Log`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `DateTime` (`DateTime`);
+
+--
+-- Indici per le tabelle `Logins`
+--
+ALTER TABLE `Logins`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `UserId` (`UserId`),
   ADD KEY `DateTime` (`DateTime`);
 
 --
@@ -165,6 +251,14 @@ ALTER TABLE `MessageAreas`
 ALTER TABLE `MessageAreasGroups`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Description` (`Description`);
+
+--
+-- Indici per le tabelle `MessageRead`
+--
+ALTER TABLE `MessageRead`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `MessageId` (`MessgeId`),
+  ADD KEY `UserId` (`UserId`) USING BTREE;
 
 --
 -- Indici per le tabelle `Messages`
@@ -205,10 +299,22 @@ ALTER TABLE `UsersGroupsLinks`
 --
 
 --
--- AUTO_INCREMENT per la tabella `log`
+-- AUTO_INCREMENT per la tabella `Log`
 --
-ALTER TABLE `log`
+ALTER TABLE `Log`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `Logins`
+--
+ALTER TABLE `Logins`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `MessageRead`
+--
+ALTER TABLE `MessageRead`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT per la tabella `Messages`
@@ -225,6 +331,18 @@ ALTER TABLE `UsersGroupsLinks`
 --
 -- Limiti per le tabelle scaricate
 --
+
+--
+-- Limiti per la tabella `Logins`
+--
+ALTER TABLE `Logins`
+  ADD CONSTRAINT `UserId_Users` FOREIGN KEY (`UserId`) REFERENCES `Users` (`userid`);
+
+--
+-- Limiti per la tabella `MessageRead`
+--
+ALTER TABLE `MessageRead`
+  ADD CONSTRAINT `MessageId_Messages` FOREIGN KEY (`MessgeId`) REFERENCES `Messages` (`ID`);
 
 --
 -- Limiti per la tabella `UsersGroupsLinks`

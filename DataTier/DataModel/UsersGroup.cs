@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
-    public partial class Groups
+    public partial class UsersGroup
     {
-        public Groups()
+        public UsersGroup()
         {
-            UsersGroups = new HashSet<UsersGroups>();
+            UsersGroupsLinks = new HashSet<UsersGroupsLink>();
         }
 
         public string Groupid { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<UsersGroups> UsersGroups { get; set; }
+        public virtual ICollection<UsersGroupsLink> UsersGroupsLinks { get; set; }
     }
 }
