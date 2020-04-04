@@ -29,7 +29,7 @@ namespace Casasoft.BBS.UI
 
         public override void ShowNext()
         {
-            client.screen = new Login(client, server);
+            client.screen = new LoginScreen(client, server);
             client.screen.Show();
         }
     }

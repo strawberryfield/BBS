@@ -27,9 +27,11 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class Login : TextScreenBase
+    public class LoginScreen : TextScreenBase
     {
-        public Login(Client c, Server s) : base(c, s)
+        public LoginScreen(Client c, Server s) : this(c, s, "Login") { }
+
+        public LoginScreen(Client c, Server s, string text) : base(c, s, text)
         {
             ReadText("Login");
             status = states.WaitForUsername;
@@ -60,18 +62,20 @@ namespace Casasoft.BBS.UI
                             client.screen.Show();
                             break;
                         case "NEW":
-                            client.screen = new TextScreenBase(client, server, "NewUser");
+                            client.screen = new NewUser(client, server);
                             client.screen.Show();
                             break;
                         default:
                             server.sendMessageToClient(client, "\r\nPassword: ");
                             status = states.WaitForPassword;
+                            client.status = EClientStatus.Authenticating;
                             break;
                     }
                     break;
                 case states.WaitForPassword:
                     string pwd = msg.Trim();
                     string hash = Helpers.CreateMD5(username + pwd);
+                    client.status = EClientStatus.Guest;
 
                     bool success = false;
                     using (bbsContext bbs = new bbsContext())
@@ -79,16 +83,25 @@ namespace Casasoft.BBS.UI
                         User user = bbs.Users.Where(u => u.Userid == username).FirstOrDefault();
                         if (user != null)
                         {
+                            Login login = new Login() { UserId = username, From = client.Remote };
                             if (user.Password == hash)
                             {
                                 // successful login
                                 success = true;
                                 user.LastLoginDate = DateTime.Now;
                                 user.LastLoginFrom = client.Remote;
+                                login.Success = true;
+                                bbs.Logins.Add(login);
                                 bbs.SaveChanges();
+                                EventLogger.Write(string.Format("Successful login for user '{0}'", username),
+                                    client.Remote);
+                                client.status = EClientStatus.LoggedIn;
                             }
                             else
                             {
+                                login.Success = false;
+                                bbs.Logins.Add(login);
+                                bbs.SaveChanges();
                                 EventLogger.Write(string.Format("Password failed for user '{0}'", username),
                                     client.Remote);
                             }
