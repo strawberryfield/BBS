@@ -1,6 +1,4 @@
-﻿
-
-// copyright (c) 2020 Roberto Ceccarelli - CasaSoft
+﻿// copyright (c) 2020 Roberto Ceccarelli - CasaSoft
 // http://strawberryfield.altervista.org 
 //
 // original work from https://gist.github.com/UngarMax/6394321573dc0791dff9
@@ -28,37 +26,20 @@ using System.Net;
 
 namespace Casasoft.TCPServer
 {
-    public enum EClientStatus
-    {
-        /// <summary>
-        /// The client has not been
-        /// authenticated yet.
-        /// </summary>
-        Guest = 0,
-        /// <summary>
-        /// The client is authenticating.
-        /// </summary>
-        Authenticating = 1,
-        /// <summary>
-        /// The client is logged in.
-        /// </summary>
-        LoggedIn = 2
-    }
-
-    public class Client
+    public class Client : IClient
     {
         /// <summary>
         /// The client's identifier.
         /// </summary>
-        public uint id { get; private set; }
+        public uint id { get; set; }
         /// <summary>
         /// The client's remote address.
         /// </summary>
-        public IPEndPoint remoteAddr { get; private set; }
+        public IPEndPoint remoteAddr { get; set; }
         /// <summary>
         /// The connection datetime.
         /// </summary>
-        public DateTime connectedAt { get; private set; }
+        public DateTime connectedAt { get; set; }
         /// <summary>
         /// The client's current status.
         /// </summary>
@@ -85,70 +66,6 @@ namespace Casasoft.TCPServer
             this.receivedData = string.Empty;
             this.username = string.Empty;
         }
-/*
-        /// <summary>
-        /// Gets the client identifier.
-        /// </summary>
-        /// <returns>Client's identifier.</returns>
-        public uint getClientID()
-        {
-            return id;
-        }
-
-        /// <summary>
-        /// Gets the remote address.
-        /// </summary>
-        /// <returns>Client's remote address.</returns>
-        public IPEndPoint getRemoteAddress()
-        {
-            return remoteAddr;
-        }
-
-        /// <summary>
-        /// Gets the connection time.
-        /// </summary>
-        /// <returns>The connection time.</returns>
-        public DateTime getConnectionTime()
-        {
-            return connectedAt;
-        }
-
-        /// <summary>
-        /// Gets the client's current status.
-        /// </summary>
-        /// <returns>The client's status.</returns>
-        public EClientStatus getCurrentStatus()
-        {
-            return status;
-        }
-
-        /// <summary>
-        /// Gets the client's last received data.
-        /// </summary>
-        /// <returns>Client's last received data.</returns>
-        public string getReceivedData()
-        {
-            return receivedData;
-        }
-
-        /// <summary>
-        /// Sets the client's current status.
-        /// </summary>
-        /// <param name="newStatus">The new status.</param>
-        public void setStatus(EClientStatus newStatus)
-        {
-            this.status = newStatus;
-        }
-
-        /// <summary>
-        /// Sets the client's last received data.
-        /// </summary>
-        /// <param name="newReceivedData">The new received data.</param>
-        public void setReceivedData(string newReceivedData)
-        {
-            this.receivedData = newReceivedData;
-        }
-*/
         /// <summary>
         /// Appends a string to the client's last
         /// received data.

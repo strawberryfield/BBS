@@ -20,6 +20,7 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -31,7 +32,7 @@ using System.Text;
 
 namespace Casasoft.TCPServer
 {
-    public class Server
+    public class Server : IServer
     {
         /// <summary>
         /// Telnet's default port.
@@ -70,7 +71,7 @@ namespace Casasoft.TCPServer
         /// </summary>
         private Dictionary<Socket, Client> clients;
 
-        public delegate void ConnectionEventHandler(Client c);
+        public delegate void ConnectionEventHandler(IClient c);
         /// <summary>
         /// Occurs when a client is connected.
         /// </summary>
@@ -84,7 +85,7 @@ namespace Casasoft.TCPServer
         /// Occurs when an incoming connection is blocked.
         /// </summary>
         public event ConnectionBlockedEventHandler ConnectionBlocked;
-        public delegate void MessageReceivedEventHandler(Client c, string message);
+        public delegate void MessageReceivedEventHandler(IClient c, string message);
         /// <summary>
         /// Occurs when a message is received.
         /// </summary>
@@ -162,7 +163,7 @@ namespace Casasoft.TCPServer
         /// </summary>
         /// <param name="c">The client on which
         /// to clear the screen.</param>
-        public void clearClientScreen(Client c)
+        public void clearClientScreen(IClient c)
         {
             sendMessageToClient(c, "\u001B[1J\u001B[H");
         }
@@ -173,7 +174,7 @@ namespace Casasoft.TCPServer
         /// </summary>
         /// <param name="c">The client.</param>
         /// <param name="message">The message.</param>
-        public void sendMessageToClient(Client c, string message)
+        public void sendMessageToClient(IClient c, string message)
         {
             Socket clientSocket = getSocketByClient(c);
             sendMessageToSocket(clientSocket, message);
@@ -249,7 +250,7 @@ namespace Casasoft.TCPServer
         /// <param name="client">The client instance.</param>
         /// <returns>If the client is found, the socket is
         /// returned; otherwise null is returned.</returns>
-        private Socket getSocketByClient(Client client)
+        private Socket getSocketByClient(IClient client)
         {
             Socket s;
 
@@ -262,7 +263,7 @@ namespace Casasoft.TCPServer
         /// Kicks the specified client from the server.
         /// </summary>
         /// <param name="client">The client.</param>
-        public void kickClient(Client client)
+        public void kickClient(IClient client)
         {
             closeSocket(getSocketByClient(client));
             ClientDisconnected(client);

@@ -20,8 +20,8 @@
 
 using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
+using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
-using Casasoft.TCPServer;
 using System;
 using System.Linq;
 
@@ -29,9 +29,9 @@ namespace Casasoft.BBS.UI
 {
     public class LoginScreen : TextScreenBase
     {
-        public LoginScreen(Client c, Server s) : this(c, s, "Login") { }
+        public LoginScreen(IClient c, IServer s) : this(c, s, "Login") { }
 
-        public LoginScreen(Client c, Server s, string text) : base(c, s, text)
+        public LoginScreen(IClient c, IServer s, string text) : base(c, s, text)
         {
             ReadText("Login");
             status = states.WaitForUsername;
@@ -58,11 +58,11 @@ namespace Casasoft.BBS.UI
                     switch (username)
                     {
                         case "GUEST":
-                            client.screen = new TextScreenBase(client, server, "GuestAccess");
+                            client.screen = ScreenFactory.Create(client, server, "TextScreen", "GuestAccess");
                             client.screen.Show();
                             break;
                         case "NEW":
-                            client.screen = new NewUser(client, server);
+                            client.screen = ScreenFactory.Create(client, server, "NewUser");
                             client.screen.Show();
                             break;
                         default:
@@ -116,7 +116,7 @@ namespace Casasoft.BBS.UI
                     if (success)
                     {
                         client.username = username;
-                        client.screen = new TextScreenBase(client, server, "LoggedIn");
+                        client.screen = ScreenFactory.Create(client, server, "TextScreen", "LoggedIn");
                         client.screen.Show();
                     }
                     else

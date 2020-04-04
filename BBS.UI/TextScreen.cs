@@ -22,15 +22,9 @@ using Casasoft.BBS.Interfaces;
 
 namespace Casasoft.BBS.UI
 {
-    public class Banner : TextScreenBase
+    public class TextScreen : TextScreenBase
     {
-        public Banner(IClient c, IServer s) : base(c, s, "Banner") { }
-        public Banner(IClient c, IServer s, string txt) : base(c, s, txt) { }
-
-        public override void ShowNext()
-        {
-            client.screen = ScreenFactory.Create(client, server, "Login");
-            client.screen.Show();
-        }
+        public TextScreen(IClient c, IServer s) : base(c, s) { }
+        public TextScreen(IClient c, IServer s, string txt) : base(c, s, txt) { }
     }
 }

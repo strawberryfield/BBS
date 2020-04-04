@@ -18,15 +18,14 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.TCPServer;
-using System;
+using Casasoft.BBS.Interfaces;
 
 namespace Casasoft.BBS.UI
 {
     public class Logout : TextScreenBase
     {
-        public Logout(Client c, Server s) : base(c, s, "Logout")  { }
-        public Logout(Client c, Server s, string txt) : base(c, s, txt) { }
+        public Logout(IClient c, IServer s) : base(c, s, "Logout") { }
+        public Logout(IClient c, IServer s, string txt) : base(c, s, txt) { }
 
         public override void Show()
         {

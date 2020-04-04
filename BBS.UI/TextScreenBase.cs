@@ -18,9 +18,8 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Parser;
-using Casasoft.TCPServer;
-using System;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
@@ -32,9 +31,9 @@ namespace Casasoft.BBS.UI
     {
         protected string[] Text;
 
-        public TextScreenBase(Client c, Server s) : base(c, s) { }
+        public TextScreenBase(IClient c, IServer s) : base(c, s) { }
 
-        public TextScreenBase(Client c, Server s, string txt) : this(c,s)
+        public TextScreenBase(IClient c, IServer s, string txt) : this(c, s)
         {
             ReadText(txt);
         }
@@ -56,7 +55,7 @@ namespace Casasoft.BBS.UI
 
         public override void HandleMessage(string msg)
         {
-            if(!string.IsNullOrWhiteSpace(msg) && msg.Substring(0,1).ToUpper() == "B")
+            if (!string.IsNullOrWhiteSpace(msg) && msg.Substring(0, 1).ToUpper() == "B")
             {
                 if (Text.Length > 24 && currentLine > 23)
                 {
@@ -66,7 +65,7 @@ namespace Casasoft.BBS.UI
                 }
             }
 
-            if(string.IsNullOrWhiteSpace(msg))
+            if (string.IsNullOrWhiteSpace(msg))
             {
                 if (Text.Length > 24 && currentLine < Text.Length - 1)
                     ShowLines(currentLine, 24);
@@ -80,7 +79,7 @@ namespace Casasoft.BBS.UI
             int ret = start;
             for (; ret < start + len && ret < Text.Length; ++ret)
             {
-                server.sendMessageToClient(client, Text[ret] + Server.END_LINE);
+                server.sendMessageToClient(client, Text[ret] + "\r\n");
             }
             return ret;
         }

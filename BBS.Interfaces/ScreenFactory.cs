@@ -18,19 +18,28 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.Interfaces;
+using System;
+using System.Reflection;
 
-namespace Casasoft.BBS.UI
+namespace Casasoft.BBS.Interfaces
 {
-    public class Banner : TextScreenBase
+    public static class ScreenFactory
     {
-        public Banner(IClient c, IServer s) : base(c, s, "Banner") { }
-        public Banner(IClient c, IServer s, string txt) : base(c, s, txt) { }
-
-        public override void ShowNext()
+        public static IScreen Create(IClient c, IServer s, string module, string param)
         {
-            client.screen = ScreenFactory.Create(client, server, "Login");
-            client.screen.Show();
+            module = "Casasoft.BBS.UI." + module.Trim();
+            Assembly asm = Assembly.LoadFrom("BBS.UI.dll");
+            Type t = asm.GetType(module);
+            if (string.IsNullOrWhiteSpace(param))
+            {
+                return (IScreen)Activator.CreateInstance(t, new object[] { c, s });
+            }
+            else
+            {
+                return (IScreen)Activator.CreateInstance(t, new object[] { c, s, param });
+            }
         }
+
+        public static IScreen Create(IClient c, IServer s, string module) => Create(c, s, module, null);
     }
 }

@@ -19,16 +19,15 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.Interfaces;
-using Casasoft.TCPServer;
 
 namespace Casasoft.BBS.UI
 {
     public class ScreenBase : IScreen
     {
-        protected Client client;
-        protected Server server;
+        protected IClient client;
+        protected IServer server;
 
-        public ScreenBase(Client c, Server s)
+        public ScreenBase(IClient c, IServer s)
         {
             client = c;
             server = s;

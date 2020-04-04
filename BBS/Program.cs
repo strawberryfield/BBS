@@ -18,6 +18,7 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
 using Casasoft.BBS.UI;
 using Casasoft.TCPServer;
@@ -47,19 +48,19 @@ namespace Casasoft.BBS
             server.stop();
         }
 
-        private static void clientConnected(Client c)
+        private static void clientConnected(IClient c)
         {
             EventLogger.Write("CONNECTED: #" + c.id.ToString(), c.Remote);
-            c.screen = new Banner(c, server);
+            c.screen = ScreenFactory.Create(c, server, "Banner");
             c.screen.Show();
         }
 
-        private static void clientDisconnected(Client c)
+        private static void clientDisconnected(IClient c)
         {
             EventLogger.Write("DISCONNECTED: #" + c.id.ToString(), c.Remote);
         }
 
-        private static void clientHandleMessage(Client c, string msg)
+        private static void clientHandleMessage(IClient c, string msg)
         {
             c.screen.HandleMessage(msg);
         }

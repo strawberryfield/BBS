@@ -20,25 +20,27 @@
 
 using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
+using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
-using Casasoft.TCPServer;
-using System;
 using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
     public class NewUser : TextScreenBase
     {
-        public NewUser(Client c, Server s, string txt) : base(c, s, txt)
+        public NewUser(IClient c, IServer s, string txt) : base(c, s, txt)
         {
             status = states.WaitForUsername;
             user = new User();
         }
 
-        public NewUser(Client c, Server s) : this(c, s, "NewUser") { }
+        public NewUser(IClient c, IServer s) : this(c, s, "NewUser") { }
 
-        private enum states { WaitForUsername, WaitForPassword, WaitForConfirmPassword, 
-            WaitForRealName, WaitForCity, WaitForNation, WaitForConfirm }
+        private enum states
+        {
+            WaitForUsername, WaitForPassword, WaitForConfirmPassword,
+            WaitForRealName, WaitForCity, WaitForNation, WaitForConfirm
+        }
         private states status;
         private User user;
 
@@ -55,7 +57,7 @@ namespace Casasoft.BBS.UI
             msg = msg.Trim();
             if (string.IsNullOrWhiteSpace(msg))
             {
-                if (status == states.WaitForConfirm) msg = "Yes"; 
+                if (status == states.WaitForConfirm) msg = "Yes";
                 else return;
             }
             switch (status)
@@ -72,11 +74,11 @@ namespace Casasoft.BBS.UI
                             using (bbsContext bbs = new bbsContext())
                             {
                                 User user = bbs.Users.Where(u => u.Userid == username).FirstOrDefault();
-                                if (user == null) success = true;                              
+                                if (user == null) success = true;
                             }
                             break;
                     }
-                    if(success)
+                    if (success)
                     {
                         user.Userid = username;
                         server.sendMessageToClient(client, "\r\nPassword: ");
@@ -96,8 +98,8 @@ namespace Casasoft.BBS.UI
                     status = states.WaitForConfirmPassword;
                     break;
 
-                case states.WaitForConfirmPassword:               
-                    if(password == msg)
+                case states.WaitForConfirmPassword:
+                    if (password == msg)
                     {
                         user.Password = Helpers.CreateMD5(user.Userid + password);
                         client.status = EClientStatus.Guest;
@@ -141,15 +143,13 @@ namespace Casasoft.BBS.UI
                         }
                         string m = string.Format("Created new user '{0}'", user.Userid);
                         EventLogger.Write(m, client.Remote);
-                        client.screen = new LoginScreen(client, server);
-                        client.screen.Show();
-
+                        client.screen = ScreenFactory.Create(client, server, "LoginScreen");
                     }
                     else
                     {
-                        client.screen = new LoginScreen(client, server);
-                        client.screen.Show();
+                        client.screen = ScreenFactory.Create(client, server, "LoginScreen");
                     }
+                    client.screen.Show();
                     break;
 
                 default:
