@@ -29,6 +29,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Timers;
 
 namespace Casasoft.TCPServer
 {
@@ -91,6 +92,8 @@ namespace Casasoft.TCPServer
         /// </summary>
         public event MessageReceivedEventHandler MessageReceived;
 
+        private Timer keepAliveTimer;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Server"/> class.
         /// </summary>
@@ -110,6 +113,11 @@ namespace Casasoft.TCPServer
             this.serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             NameValueCollection netconfig = (NameValueCollection)ConfigurationManager.GetSection("Networking");
             this.port = Convert.ToInt32(netconfig["port"]);
+
+            keepAliveTimer = new Timer(5000);
+            keepAliveTimer.Elapsed += clearInactiveSockets;
+            keepAliveTimer.AutoReset = true;
+            keepAliveTimer.Enabled = true;
         }
 
         /// <summary>
@@ -362,6 +370,7 @@ namespace Casasoft.TCPServer
                 if (bytesReceived == 0)
                 {
                     closeSocket(clientSocket);
+                    ClientDisconnected(client);
                     serverSocket.BeginAccept(new AsyncCallback(handleIncomingConnection), serverSocket);
                 }
 
@@ -422,6 +431,30 @@ namespace Casasoft.TCPServer
 
             catch { }
         }
+
+        #region watchdog
+        private bool testActiveSocket(Socket socket)
+        {
+            try
+            {
+                return !(socket.Poll(1, SelectMode.SelectRead) && socket.Available == 0);
+            }
+            catch (SocketException) { return false; }
+        }
+
+        private void clearInactiveSockets(Object source, ElapsedEventArgs e)
+        {
+            foreach (KeyValuePair<Socket, Client> sc in clients)
+            {
+                if (!testActiveSocket(sc.Key))
+                {
+                    ClientDisconnected(sc.Value);
+                    closeSocket(sc.Key);
+                }
+            }
+        }
+        #endregion
+
     }
 
 }
