@@ -74,17 +74,16 @@ namespace Casasoft.BBS.UI
                     break;
                 case states.WaitForPassword:
                     string pwd = msg.Trim();
-                    string hash = Helpers.CreateMD5(username + pwd);
                     client.status = EClientStatus.Guest;
 
                     bool success = false;
                     using (bbsContext bbs = new bbsContext())
                     {
-                        User user = bbs.Users.Where(u => u.Userid == username).FirstOrDefault();
+                        bbsUser user = new bbsUser(bbs.Users.Where(u => u.Userid == username).FirstOrDefault());
                         if (user != null)
                         {
                             Login login = new Login() { UserId = username, From = client.Remote };
-                            if (user.Password == hash)
+                            if (user.CheckPassword(pwd))
                             {
                                 // successful login
                                 success = true;

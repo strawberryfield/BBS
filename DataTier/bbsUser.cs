@@ -18,28 +18,31 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using System.Text;
+using Casasoft.BBS.DataTier.DataModel;
 
-namespace Casasoft.BBS.UI
+namespace Casasoft.BBS.DataTier
 {
-    public static class Helpers
+    public class bbsUser : User
     {
-        public static string CreateMD5(string input)
-        {
-            // Use input string to calculate MD5 hash
-            using (System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create())
-            {
-                byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(input);
-                byte[] hashBytes = md5.ComputeHash(inputBytes);
+        public bbsUser() : base() { }
 
-                // Convert the byte array to hexadecimal string
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < hashBytes.Length; i++)
+        public bbsUser(User baseClass) : base()
+        {
+            var type = this.GetType();
+            var properties = baseClass.GetType().GetProperties();
+            foreach (var property in properties)
+            {
+                var propToSet = type.GetProperty(property.Name);
+                if (propToSet.SetMethod != null)
                 {
-                    sb.Append(hashBytes[i].ToString("X2"));
+                    propToSet.SetValue(this, property.GetValue(baseClass));
                 }
-                return sb.ToString();
             }
         }
+
+        public bool CheckPassword(string pwd) => Password == Helpers.CreateMD5(Userid + pwd);
+
+        public void SetPassword(string pwd) => Password = Helpers.CreateMD5(Userid + pwd);
+
     }
 }

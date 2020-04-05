@@ -31,7 +31,7 @@ namespace Casasoft.BBS.UI
         public NewUser(IClient c, IServer s, string txt) : base(c, s, txt)
         {
             status = states.WaitForUsername;
-            user = new User();
+            user = new bbsUser();
         }
 
         public NewUser(IClient c, IServer s) : this(c, s, "NewUser") { }
@@ -42,7 +42,7 @@ namespace Casasoft.BBS.UI
             WaitForRealName, WaitForCity, WaitForNation, WaitForConfirm
         }
         private states status;
-        private User user;
+        private bbsUser user;
 
         public override void Show()
         {
@@ -101,7 +101,7 @@ namespace Casasoft.BBS.UI
                 case states.WaitForConfirmPassword:
                     if (password == msg)
                     {
-                        user.Password = Helpers.CreateMD5(user.Userid + password);
+                        user.SetPassword(password);
                         client.status = EClientStatus.Guest;
                         server.sendMessageToClient(client, "\r\nYour real name: ");
                         status = states.WaitForRealName;
