@@ -79,7 +79,7 @@ namespace Casasoft.BBS.UI
                     bool success = false;
                     using (bbsContext bbs = new bbsContext())
                     {
-                        bbsUser user = new bbsUser(bbs.Users.Where(u => u.Userid == username).FirstOrDefault());
+                        bbsUser user = bbs.GetUserByUsername(username);
                         if (user != null)
                         {
                             Login login = new Login() { UserId = username, From = client.Remote };

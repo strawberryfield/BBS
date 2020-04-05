@@ -18,8 +18,10 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.DataTier.DataModel;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
+using System.Linq;
 
 namespace Casasoft.BBS.DataTier
 {
@@ -34,6 +36,10 @@ namespace Casasoft.BBS.DataTier
         {
         }
 
+        /// <summary>
+        /// Gets connection string from app.config
+        /// </summary>
+        /// <param name="optionsBuilder"></param>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -42,5 +48,12 @@ namespace Casasoft.BBS.DataTier
             }
         }
 
+        #region custom methods
+        public bbsUser GetUserByUsername(string username)
+        {
+            User user = Users.Where(u => u.Userid == username).FirstOrDefault();
+            return user == null ? null : new bbsUser(user);
+        }
+        #endregion
     }
 }

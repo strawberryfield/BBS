@@ -73,7 +73,7 @@ namespace Casasoft.BBS.UI
                         default:
                             using (bbsContext bbs = new bbsContext())
                             {
-                                User user = bbs.Users.Where(u => u.Userid == username).FirstOrDefault();
+                                User user = bbs.GetUserByUsername(username);
                                 if (user == null) success = true;
                             }
                             break;
