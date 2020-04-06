@@ -7,7 +7,7 @@ This project is currently Alpha stage.
 
 ## Brief history of the project
 
-In 1989 i bought a 2400 bps modem and used it to connect to some BBS in my town (Rimini, Italy).
+In 1989 I bought a 2400 bps modem and used it to connect to some BBS in my town (Rimini, Italy).
 
 ## Software environment
 
