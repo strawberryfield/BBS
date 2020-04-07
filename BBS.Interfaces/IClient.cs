@@ -49,6 +49,7 @@ namespace Casasoft.BBS.Interfaces
         public uint id { get; set; }
         public IPEndPoint remoteAddr { get; set; }
         public DateTime connectedAt { get; set; }
+        public DateTime lastActivity { get; set; }
         public EClientStatus status { get; set; }
         public string receivedData { get; set; }
 

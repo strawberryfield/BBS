@@ -93,6 +93,7 @@ namespace Casasoft.TCPServer
         public event MessageReceivedEventHandler MessageReceived;
 
         private Timer keepAliveTimer;
+        private int inactivityTimeout;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Server"/> class.
@@ -113,6 +114,7 @@ namespace Casasoft.TCPServer
             this.serverSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             NameValueCollection netconfig = (NameValueCollection)ConfigurationManager.GetSection("Networking");
             this.port = Convert.ToInt32(netconfig["port"]);
+            this.inactivityTimeout = Convert.ToInt32(netconfig["InactivityTimeout"]);
 
             keepAliveTimer = new Timer(5000);
             keepAliveTimer.Elapsed += clearInactiveSockets;
@@ -377,6 +379,7 @@ namespace Casasoft.TCPServer
                 else if (data[0] < 0xF0)
                 {
                     string receivedData = client.receivedData;
+                    client.lastActivity = DateTime.Now;
 
                     // 0x2E = '.', 0x0D = carriage return, 0x0A = new line
                     if ((data[0] == 0x2E && data[1] == 0x0D && receivedData.Length == 0) ||
@@ -442,11 +445,13 @@ namespace Casasoft.TCPServer
             catch (SocketException) { return false; }
         }
 
+        private bool testClientTimeout(Client c) => (DateTime.Now - c.lastActivity).TotalSeconds > inactivityTimeout;
+
         private void clearInactiveSockets(Object source, ElapsedEventArgs e)
         {
             foreach (KeyValuePair<Socket, Client> sc in clients)
             {
-                if (!testActiveSocket(sc.Key))
+                if (testClientTimeout(sc.Value) || !testActiveSocket(sc.Key))
                 {
                     ClientDisconnected(sc.Value);
                     closeSocket(sc.Key);

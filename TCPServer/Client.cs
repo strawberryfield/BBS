@@ -49,6 +49,7 @@ namespace Casasoft.TCPServer
         /// </summary>
         public string receivedData { get; set; }
 
+        public DateTime lastActivity { get; set; }
         public string username { get; set; }
         public IScreen screen { get; set; }
 
