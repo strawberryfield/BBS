@@ -18,31 +18,12 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.DataTier.DataModel;
-
-namespace Casasoft.BBS.DataTier
+namespace Casasoft.BBS.DataTier.DataModel
 {
-    public class bbsUser : User
+    public partial class User
     {
-        public bbsUser() : base() { }
+        public bool CheckPassword(string pwd) => Password == DbHelpers.CreateMD5(Userid + pwd);
 
-        public bbsUser(User baseClass) : base()
-        {
-            var type = this.GetType();
-            var properties = baseClass.GetType().GetProperties();
-            foreach (var property in properties)
-            {
-                var propToSet = type.GetProperty(property.Name);
-                if (propToSet.SetMethod != null)
-                {
-                    propToSet.SetValue(this, property.GetValue(baseClass));
-                }
-            }
-        }
-
-        public bool CheckPassword(string pwd) => Password == Helpers.CreateMD5(Userid + pwd);
-
-        public void SetPassword(string pwd) => Password = Helpers.CreateMD5(Userid + pwd);
-
+        public void SetPassword(string pwd) => Password = DbHelpers.CreateMD5(Userid + pwd);
     }
 }

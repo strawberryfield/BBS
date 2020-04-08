@@ -31,7 +31,7 @@ namespace Casasoft.BBS.UI
         public NewUser(IClient c, IServer s, string txt) : base(c, s, txt)
         {
             status = states.WaitForUsername;
-            user = new bbsUser();
+            user = new User();
         }
 
         public NewUser(IClient c, IServer s) : this(c, s, "NewUser") { }
@@ -42,7 +42,7 @@ namespace Casasoft.BBS.UI
             WaitForRealName, WaitForCity, WaitForNation, WaitForConfirm
         }
         private states status;
-        private bbsUser user;
+        private User user;
 
         public override void Show()
         {

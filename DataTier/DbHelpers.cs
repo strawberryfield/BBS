@@ -22,7 +22,7 @@ using System.Text;
 
 namespace Casasoft.BBS.DataTier
 {
-    public static class Helpers
+    public static class DbHelpers
     {
         public static string CreateMD5(string input)
         {

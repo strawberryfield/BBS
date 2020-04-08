@@ -49,11 +49,7 @@ namespace Casasoft.BBS.DataTier
         }
 
         #region custom methods
-        public bbsUser GetUserByUsername(string username)
-        {
-            User user = Users.Where(u => u.Userid == username).FirstOrDefault();
-            return user == null ? null : new bbsUser(user);
-        }
+        public User GetUserByUsername(string username) => Users.Where(u => u.Userid == username).FirstOrDefault();
         #endregion
     }
 }

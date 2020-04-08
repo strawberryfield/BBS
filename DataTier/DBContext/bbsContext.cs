@@ -21,7 +21,7 @@ namespace Casasoft.BBS.DataTier.DBContext
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<MessageArea> MessageAreas { get; set; }
         public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
-        public virtual DbSet<MessageRead> MessageReads { get; set; }
+        public virtual DbSet<MessageRead> MessagesRead { get; set; }
         public virtual DbSet<MessageSeenBy> MessagesSeenBy { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersGroup> UsersGroups { get; set; }
@@ -356,6 +356,10 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Registered)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'current_timestamp()'");
 
                 entity.Property(e => e.Signature)
                     .IsRequired()

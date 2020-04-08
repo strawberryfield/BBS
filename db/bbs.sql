@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Apr 04, 2020 alle 10:38
+-- Creato il: Apr 08, 2020 alle 20:50
 -- Versione del server: 10.3.22-MariaDB-0+deb10u1
 -- Versione PHP: 7.3.14-1~deb10u1
 
@@ -37,10 +37,6 @@ CREATE TABLE `Log` (
   `Description` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Events log';
 
---
--- RELAZIONI PER TABELLA `Log`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -55,12 +51,6 @@ CREATE TABLE `Logins` (
   `Success` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users logins';
 
---
--- RELAZIONI PER TABELLA `Logins`:
---   `UserId`
---       `Users` -> `userid`
---
-
 -- --------------------------------------------------------
 
 --
@@ -74,10 +64,6 @@ CREATE TABLE `MessageAreas` (
   `AREAGROUP` varchar(20) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Message Areas List';
 
---
--- RELAZIONI PER TABELLA `MessageAreas`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -88,10 +74,6 @@ CREATE TABLE `MessageAreasGroups` (
   `ID` varchar(20) NOT NULL,
   `Description` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- RELAZIONI PER TABELLA `MessageAreasGroups`:
---
 
 -- --------------------------------------------------------
 
@@ -104,12 +86,6 @@ CREATE TABLE `MessageRead` (
   `MessgeId` int(11) NOT NULL,
   `UserId` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Flags for messages read';
-
---
--- RELAZIONI PER TABELLA `MessageRead`:
---   `MessgeId`
---       `Messages` -> `ID`
---
 
 -- --------------------------------------------------------
 
@@ -138,10 +114,6 @@ CREATE TABLE `Messages` (
   `Body` text NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Messages';
 
---
--- RELAZIONI PER TABELLA `Messages`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -152,10 +124,6 @@ CREATE TABLE `MessageSeenBy` (
   `MessageId` int(11) NOT NULL,
   `SeenBy` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='System that already received the message';
-
---
--- RELAZIONI PER TABELLA `MessageSeenBy`:
---
 
 -- --------------------------------------------------------
 
@@ -172,12 +140,9 @@ CREATE TABLE `Users` (
   `status` varchar(1) NOT NULL DEFAULT '0',
   `signature` text NOT NULL DEFAULT '',
   `LastLoginFrom` varchar(15) NOT NULL DEFAULT '0.0.0.0',
-  `LastLoginDate` datetime NOT NULL DEFAULT current_timestamp()
+  `LastLoginDate` datetime NOT NULL DEFAULT current_timestamp(),
+  `Registered` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='BBS users' ROW_FORMAT=COMPACT;
-
---
--- RELAZIONI PER TABELLA `Users`:
---
 
 -- --------------------------------------------------------
 
@@ -190,10 +155,6 @@ CREATE TABLE `UsersGroups` (
   `Description` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups definition' ROW_FORMAT=COMPACT;
 
---
--- RELAZIONI PER TABELLA `UsersGroups`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -205,18 +166,6 @@ CREATE TABLE `UsersGroupsLinks` (
   `userid` varchar(30) DEFAULT NULL,
   `groupid` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups' ROW_FORMAT=COMPACT;
-
---
--- RELAZIONI PER TABELLA `UsersGroupsLinks`:
---   `groupid`
---       `UsersGroups` -> `Groupid`
---   `userid`
---       `Users` -> `ID`
---   `groupid`
---       `UsersGroups` -> `groupid`
---   `userid`
---       `Users` -> `userid`
---
 
 --
 -- Indici per le tabelle scaricate

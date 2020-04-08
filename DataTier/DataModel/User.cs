@@ -20,6 +20,7 @@ namespace Casasoft.BBS.DataTier.DataModel
         public string Signature { get; set; }
         public string LastLoginFrom { get; set; }
         public DateTime LastLoginDate { get; set; }
+        public DateTime Registered { get; set; }
 
         public virtual ICollection<Login> Logins { get; set; }
         public virtual ICollection<UsersGroupsLink> UsersGroupsLinks { get; set; }
