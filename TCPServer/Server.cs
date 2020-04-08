@@ -119,7 +119,7 @@ namespace Casasoft.TCPServer
             keepAliveTimer = new Timer(5000);
             keepAliveTimer.Elapsed += clearInactiveSockets;
             keepAliveTimer.AutoReset = true;
-            keepAliveTimer.Enabled = true;
+//            keepAliveTimer.Enabled = true;
         }
 
         /// <summary>
@@ -451,7 +451,7 @@ namespace Casasoft.TCPServer
         {
             foreach (KeyValuePair<Socket, Client> sc in clients)
             {
-                if (testClientTimeout(sc.Value) || !testActiveSocket(sc.Key))
+                if (testClientTimeout(sc.Value))
                 {
                     ClientDisconnected(sc.Value);
                     closeSocket(sc.Key);
