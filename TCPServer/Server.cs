@@ -119,7 +119,7 @@ namespace Casasoft.TCPServer
             keepAliveTimer = new Timer(5000);
             keepAliveTimer.Elapsed += clearInactiveSockets;
             keepAliveTimer.AutoReset = true;
-//            keepAliveTimer.Enabled = true;
+            keepAliveTimer.Enabled = true;
         }
 
         /// <summary>
@@ -436,15 +436,6 @@ namespace Casasoft.TCPServer
         }
 
         #region watchdog
-        private bool testActiveSocket(Socket socket)
-        {
-            try
-            {
-                return !(socket.Poll(1, SelectMode.SelectRead) && socket.Available == 0);
-            }
-            catch (SocketException) { return false; }
-        }
-
         private bool testClientTimeout(Client c) => (DateTime.Now - c.lastActivity).TotalSeconds > inactivityTimeout;
 
         private void clearInactiveSockets(Object source, ElapsedEventArgs e)

@@ -66,6 +66,7 @@ namespace Casasoft.TCPServer
             this.status = EClientStatus.Guest;
             this.receivedData = string.Empty;
             this.username = string.Empty;
+            this.lastActivity = DateTime.Now;
         }
         /// <summary>
         /// Appends a string to the client's last
