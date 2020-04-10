@@ -1,6 +1,5 @@
-{CLS/}
+{CLS forecolor="White" backcolor="Blue" /}
 
 Enter {COLOR value="Yellow"}New{/COLOR} if you want to register 
 or {COLOR value="Yellow"}Guest{/COLOR} to continue without register 
-in either case leave the password empty.
 

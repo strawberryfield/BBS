@@ -33,10 +33,9 @@ namespace Casasoft.BBS.Parser
         public static Dictionary<string, Tags> TagsTable;
         private Stack<Tags> tagsStack;
 
-        private ANSICodes.Colors currentForeColor = ANSICodes.Colors.White;
-        private ANSICodes.Colors currentBackColor = ANSICodes.Colors.Black;
-
         public string Parsed { get; private set; }
+
+        private ANSICodes ANSI;
 
         public BBSCodeListener() : base()
         {
@@ -45,9 +44,7 @@ namespace Casasoft.BBS.Parser
             foreach (Tags t in Enum.GetValues(typeof(Tags)))
                 TagsTable.Add(t.ToString().ToUpper(), t);
 
-            NameValueCollection appearance = (NameValueCollection)ConfigurationManager.GetSection("Appearance");
-            ANSICodes.ColorTable.TryGetValue(appearance["ForeColor"].ToUpper(), out currentForeColor);
-            ANSICodes.ColorTable.TryGetValue(appearance["BackColor"].ToUpper(), out currentBackColor);
+            ANSI = new ANSICodes();
         }
 
         public override void EnterBbsCodeElement([NotNull] BBSCodeParser.BbsCodeElementContext context)
@@ -58,24 +55,31 @@ namespace Casasoft.BBS.Parser
             switch (tag)
             {
                 case Tags.CLS:
+                    ANSI.ClearMode();
                     break;
                 case Tags.BLINK:
-                    Parsed += ANSICodes.SetMode(ANSICodes.Modes.Blink);
+                    ANSI.SetMode(ANSICodes.Modes.Blink);
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.REVERSE:
-                    Parsed += ANSICodes.SetMode(ANSICodes.Modes.Reverse);
+                    ANSI.SetMode(ANSICodes.Modes.Reverse);
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.BOLD:
-                    Parsed += ANSICodes.SetMode(ANSICodes.Modes.Bold);
+                    ANSI.SetMode(ANSICodes.Modes.Bold);
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.UNDERLINE:
-                    Parsed += ANSICodes.SetMode(ANSICodes.Modes.Underline);
+                    ANSI.SetMode(ANSICodes.Modes.Underline);
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.COLOR:
-                    ColorTags(context.children[2]);
+                    ANSI.pushForeColor(context.children[2].GetChild(2).GetText());
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.BACKCOLOR:
-                    ColorTags(context.children[2], true);
+                    ANSI.pushBackColor(context.children[2].GetChild(2).GetText());
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.ACTION:
                     break;
@@ -93,25 +97,31 @@ namespace Casasoft.BBS.Parser
             switch (tag)
             {
                 case Tags.CLS:
-                    Parsed += ANSICodes.ClearScreen();
+                    Parsed += ANSI.ClearScreen();
                     break;
                 case Tags.BLINK:
-                    Parsed += ANSICodes.SetMode(ANSICodes.Modes.Blink);
+                    ANSI.ResetMode(ANSICodes.Modes.Blink);
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.REVERSE:
-                    Parsed += ANSICodes.SetMode(ANSICodes.Modes.Reverse);
+                    ANSI.ResetMode(ANSICodes.Modes.Reverse);
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.BOLD:
-                    Parsed += ANSICodes.SetMode(ANSICodes.Modes.Bold);
+                    ANSI.ResetMode(ANSICodes.Modes.Bold);
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.UNDERLINE:
-                    Parsed += ANSICodes.SetMode(ANSICodes.Modes.Underline);
+                    ANSI.ResetMode(ANSICodes.Modes.Underline);
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.COLOR:
-                    Parsed += ANSICodes.SetColor(currentForeColor);
+                    ANSI.popForeColor();
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.BACKCOLOR:
-                    Parsed += ANSICodes.SetBackColor(currentBackColor);
+                    ANSI.popBackColor();
+                    Parsed += ANSI.WriteMode();
                     break;
                 case Tags.ACTION:
                     break;
@@ -131,8 +141,8 @@ namespace Casasoft.BBS.Parser
             switch (tag)
             {
                 case Tags.CLS:
-                    if (attributeName == "FORECOLOR") ColorTags(context);
-                    if (attributeName == "BACKCOLOR") ColorTags(context, true);
+                    if (attributeName == "FORECOLOR") ANSI.pushForeColor(attributeValue);
+                    if (attributeName == "BACKCOLOR") ANSI.pushBackColor(attributeValue);
                     break;
                 case Tags.BLINK:
                     break;
@@ -151,22 +161,6 @@ namespace Casasoft.BBS.Parser
                 case Tags.UNKNOWN:
                 default:
                     break;
-            }
-        }
-        private void ColorTags(IParseTree t, bool isBack = false)
-        {
-            string colorName = t.GetChild(2).GetText().Trim('"').Trim().ToUpper();
-            if (isBack)
-            {
-                ANSICodes.Colors color = currentBackColor;
-                ANSICodes.ColorTable.TryGetValue(colorName, out color);
-                Parsed += ANSICodes.SetBackColor(color);
-            }
-            else
-            {
-                ANSICodes.Colors color = currentForeColor;
-                ANSICodes.ColorTable.TryGetValue(colorName, out color);
-                Parsed += ANSICodes.SetColor(color);
             }
         }
 

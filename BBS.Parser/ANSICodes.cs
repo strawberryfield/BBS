@@ -20,12 +20,27 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace Casasoft.BBS.Parser
 {
-    public static class ANSICodes
+    public class ANSICodes
     {
         public enum Colors { Black, Red, Green, Yellow, Blue, Magenta, Cyan, White }
+
+        private Colors defaultForeColor = Colors.White;
+        private Colors defaultBackColor = Colors.Black;
+
+        private Stack<Colors> foreColorStack;
+        private Stack<Colors> backColorStack;
+
+        public Colors GetColorByName(string name, bool isBack = false)
+        {
+            Colors color = isBack ? defaultBackColor : defaultForeColor;
+            ColorTable.TryGetValue(name.Trim('"').Trim().ToUpper(), out color);
+            return color;
+        }
 
         public enum Modes { Normal, Bold, Underline = 4, Blink, Reverse = 7 }
         public const byte ModeNormal = 0b00000000;
@@ -34,17 +49,17 @@ namespace Casasoft.BBS.Parser
         public const byte ModeBlink = 0b00001000;
         public const byte ModeReverse = 0b00010000;
 
-        public static string ModeFromBits(byte status)
+        public string ModeFromBits(byte status)
         {
-            string ret = SetMode();
-            if ((status & ModeBold) != 0) ret += SetMode(Modes.Bold);
-            if ((status & ModeUnderline) != 0) ret += SetMode(Modes.Underline);
-            if ((status & ModeBlink) != 0) ret += SetMode(Modes.Blink);
-            if ((status & ModeReverse) != 0) ret += SetMode(Modes.Reverse);
+            string ret = "0;";
+            if ((status & ModeBold) != 0) ret += string.Format("{0};",(int)Modes.Bold);
+            if ((status & ModeUnderline) != 0) ret += string.Format("{0};", (int)Modes.Underline);
+            if ((status & ModeBlink) != 0) ret += string.Format("{0};", (int)Modes.Blink);
+            if ((status & ModeReverse) != 0) ret += string.Format("{0};", (int)Modes.Reverse);
             return ret;
         }
 
-        public static byte BitsFromMode(Modes m)
+        public byte BitsFromMode(Modes m)
         {
             if (m == Modes.Bold) return ModeBold;
             if (m == Modes.Underline) return ModeUnderline;
@@ -53,30 +68,65 @@ namespace Casasoft.BBS.Parser
             return ModeNormal;
         }
 
-        public static Dictionary<string, Colors> ColorTable;
+        public byte BitsFromMode(int m) => BitsFromMode((Modes)m);
 
-        static ANSICodes()
+        public Dictionary<string, Colors> ColorTable;
+        private byte currentMode;
+
+        public ANSICodes()
         {
             ColorTable = new Dictionary<string, Colors>();
             foreach (Colors color in Enum.GetValues(typeof(Colors)))
                 ColorTable.Add(color.ToString().ToUpper(), color);
+            currentMode = 0;
+
+            NameValueCollection appearance = (NameValueCollection)ConfigurationManager.GetSection("Appearance");
+            ColorTable.TryGetValue(appearance["ForeColor"].ToUpper(), out defaultForeColor);
+            ColorTable.TryGetValue(appearance["BackColor"].ToUpper(), out defaultBackColor);
+
+            foreColorStack = new Stack<Colors>();
+            backColorStack = new Stack<Colors>();
+            resetColorStack();
         }
 
-        public static string ClearScreen() => "\u001b[2J" + Home();
+        public void resetColorStack()
+        {
+            foreColorStack.Clear();
+            foreColorStack.Push(defaultForeColor);
+            backColorStack.Clear();
+            backColorStack.Push(defaultBackColor);
+        }
 
-        public static string Move(byte x, byte y) => string.Format("\u001b[{0};{1}f", x, y);
+        public void pushForeColor(Colors c) => foreColorStack.Push(c);
+        public void pushForeColor(string name) => pushForeColor(GetColorByName(name));
+        public void pushBackColor(Colors c) => backColorStack.Push(c);
+        public void pushBackColor(string name) => pushBackColor(GetColorByName(name, true));
 
-        public static string Home() => Move(0, 0);
+        public Colors popForeColor() => foreColorStack.Pop();
+        public Colors popBackColor() => backColorStack.Pop();
 
-        public static string SetMode(int m) => string.Format("\u001b[{0}m", m);
+        public string ClearScreen() => WriteMode() + "\u001b[2J" + Home();
 
-        public static string SetMode() => SetMode((int)0);
+        public string Move(byte x, byte y) => string.Format("\u001b[{0};{1}f", x, y);
 
-        public static string SetMode(Modes m) => SetMode((int)m);
+        public string Home() => Move(0, 0);
 
-        public static string SetColor(Colors c) => SetMode((int)c + 30);
+        public void ClearMode()
+        {
+            currentMode = 0;
+            resetColorStack();
+        }
 
-        public static string SetBackColor(Colors c) => SetMode((int)c + 40);
+        public void SetMode(int m) => currentMode |= BitsFromMode(m);
+        public void SetMode() => SetMode((int)0);
+        public void SetMode(Modes m) => SetMode((int)m);
 
+        public void ResetMode(Modes m) => currentMode &= (byte)~BitsFromMode(m);
+
+
+        public int peekForeColor() => (int)foreColorStack.Peek() + 30;
+        public int peekBackColor() => (int)backColorStack.Peek() + 40;
+        public string WriteMode() =>
+            string.Format("\u001b[{0}{1};{2}m", ModeFromBits(currentMode),  peekForeColor(), peekBackColor());
     }
 }
