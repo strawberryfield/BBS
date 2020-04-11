@@ -71,7 +71,22 @@ namespace Casasoft.BBS.UI
                 else
                     ShowNext();
             }
+
+            if (Data.Actions.Count > 0) execAction(msg.Trim().ToUpper());
         }
+
+        private void execAction(string act)
+        {
+            BBSCodeResult.Action a = null;
+            Data.Actions.TryGetValue(act, out a);
+            if (a != null)
+            {
+                client.screen = ScreenFactory.Create(client, server, a.module, a.data);
+                client.screen.Show();
+            }
+        }
+
+        public override void ShowNext() => execAction(string.Empty);
 
         protected int ShowLines(int start, int len)
         {

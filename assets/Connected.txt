@@ -1,0 +1,5 @@
+{CLS/}
+Connected users:
+
+
+{ACTION key="" text="@GuestAccess"}Press [Return] to main menu{/ACTION}

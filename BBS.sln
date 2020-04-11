@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5C2-590A-4BD8-BF22-7E8231B518FB}"
 	ProjectSection(SolutionItems) = preProject
 		assets\Banner.txt = assets\Banner.txt
+		assets\Connected.txt = assets\Connected.txt
 		assets\GuestAccess.txt = assets\GuestAccess.txt
 		assets\Login.txt = assets\Login.txt
 		assets\logo.ansi.txt = assets\logo.ansi.txt

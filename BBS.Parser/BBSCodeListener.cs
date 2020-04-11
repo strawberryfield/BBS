@@ -33,6 +33,8 @@ namespace Casasoft.BBS.Parser
         public BBSCodeResult Parsed { get; private set; }
 
         private ANSICodes ANSI;
+        private BBSCodeResult.Action action;
+        private string actionKey;
 
         public BBSCodeListener() : base()
         {
@@ -79,6 +81,8 @@ namespace Casasoft.BBS.Parser
                     Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.ACTION:
+                    action = new BBSCodeResult.Action();
+                    actionKey = string.Empty;
                     break;
                 case Tags.UNKNOWN:
                 default:
@@ -121,6 +125,7 @@ namespace Casasoft.BBS.Parser
                     Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.ACTION:
+                    Parsed.Actions.Add(actionKey, action);
                     break;
                 case Tags.UNKNOWN:
                 default:
@@ -141,6 +146,7 @@ namespace Casasoft.BBS.Parser
                     if (attributeName == "FORECOLOR") ANSI.pushForeColor(attributeValue);
                     if (attributeName == "BACKCOLOR") ANSI.pushBackColor(attributeValue);
                     break;
+
                 case Tags.BLINK:
                     break;
                 case Tags.REVERSE:
@@ -153,8 +159,24 @@ namespace Casasoft.BBS.Parser
                     break;
                 case Tags.BACKCOLOR:
                     break;
+
                 case Tags.ACTION:
+                    switch (attributeName)
+                    {
+                        case "KEY":
+                            actionKey = attributeValue;
+                            break;
+                        case "MODULE":
+                            action.module = attributeValue;
+                            break;
+                        case "TEXT":
+                            action.data = attributeValue;
+                            break;
+                        default:
+                            break;
+                    }
                     break;
+
                 case Tags.UNKNOWN:
                 default:
                     break;
