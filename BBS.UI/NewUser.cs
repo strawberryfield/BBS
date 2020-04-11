@@ -34,7 +34,7 @@ namespace Casasoft.BBS.UI
             user = new User();
         }
 
-        public NewUser(IClient c, IServer s) : this(c, s, "NewUser") { }
+        public NewUser(IClient c, IServer s) : this(c, s, "@NewUser") { }
 
         private enum states
         {

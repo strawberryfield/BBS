@@ -30,6 +30,7 @@ namespace Casasoft.BBS.UI
     public class TextScreenBase : ScreenBase
     {
         protected string[] Text;
+        protected BBSCodeResult Data;
 
         public TextScreenBase(IClient c, IServer s) : base(c, s) { }
 
@@ -40,11 +41,9 @@ namespace Casasoft.BBS.UI
 
         public void ReadText(string name)
         {
-            string assets = ConfigurationManager.AppSettings.Get("assets");
-            NameValueCollection texts = (NameValueCollection)ConfigurationManager.GetSection("Texts");
-            string filename = Path.Combine(assets, texts[name]);
             BBSCodeTranslator translator = new BBSCodeTranslator();
-            Text = Regex.Split(translator.GetProcessed(filename), "\r\n");
+            Data = translator.GetProcessed(name);
+            Text = Data.GetRows();
         }
 
         private int currentLine;

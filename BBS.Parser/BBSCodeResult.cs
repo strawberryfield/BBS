@@ -18,19 +18,39 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.Interfaces;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
-namespace Casasoft.BBS.UI
+namespace Casasoft.BBS.Parser
 {
-    public class Banner : TextScreenBase
+    public class BBSCodeResult
     {
-        public Banner(IClient c, IServer s) : base(c, s, "@Banner") { }
-        public Banner(IClient c, IServer s, string txt) : base(c, s, txt) { }
+        public string Parsed;
 
-        public override void ShowNext()
+        public class Action
         {
-            client.screen = ScreenFactory.Create(client, server, "LoginScreen");
-            client.screen.Show();
+            public string module;
+            public string data;
+
+            public Action()
+            {
+                module = "TextScreen";
+                data = string.Empty;
+            }
+
+        }
+
+        public Dictionary<string, Action> Actions;
+
+        public BBSCodeResult()
+        {
+            Parsed = string.Empty;
+            Actions = new Dictionary<string, Action>();
+        }
+
+        public string[] GetRows()
+        {
+            return Regex.Split(Parsed, "\r\n");
         }
     }
 }

@@ -29,11 +29,11 @@ namespace Casasoft.BBS.UI
 {
     public class LoginScreen : TextScreenBase
     {
-        public LoginScreen(IClient c, IServer s) : this(c, s, "Login") { }
+        public LoginScreen(IClient c, IServer s) : this(c, s, "@Login") { }
 
         public LoginScreen(IClient c, IServer s, string text) : base(c, s, text)
         {
-            ReadText("Login");
+            ReadText(text);
             status = states.WaitForUsername;
         }
 
@@ -58,7 +58,7 @@ namespace Casasoft.BBS.UI
                     switch (username)
                     {
                         case "GUEST":
-                            client.screen = ScreenFactory.Create(client, server, "TextScreen", "GuestAccess");
+                            client.screen = ScreenFactory.Create(client, server, "TextScreen", "@GuestAccess");
                             client.screen.Show();
                             break;
                         case "NEW":
@@ -115,7 +115,7 @@ namespace Casasoft.BBS.UI
                     if (success)
                     {
                         client.username = username;
-                        client.screen = ScreenFactory.Create(client, server, "TextScreen", "LoggedIn");
+                        client.screen = ScreenFactory.Create(client, server, "TextScreen", "@LoggedIn");
                         client.screen.Show();
                     }
                     else

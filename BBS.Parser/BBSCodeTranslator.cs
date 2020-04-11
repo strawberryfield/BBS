@@ -20,17 +20,19 @@
 
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using System.Collections.Specialized;
+using System.Configuration;
 using System.IO;
 
 namespace Casasoft.BBS.Parser
 {
     public class BBSCodeTranslator
     {
-        public string GetProcessed(string FileName)
+        public BBSCodeResult GetProcessed(string FileName)
         {
-            string ret = string.Empty;
+            BBSCodeResult ret = new BBSCodeResult();
 
-            using (StreamReader fileStream = new StreamReader(FileName))
+            using (StreamReader fileStream = new StreamReader(GetFile(FileName)))
             {
                 AntlrInputStream inputStream = new AntlrInputStream(fileStream);
                 BBSCodeLexer lexer = new BBSCodeLexer(inputStream);
@@ -45,5 +47,21 @@ namespace Casasoft.BBS.Parser
             }
             return ret;
         }
+
+        private string GetFile(string data)
+        {
+            if (data.Length < 2) return string.Empty;
+            string assets = ConfigurationManager.AppSettings.Get("assets");
+            if (data[0] == '@')
+            {
+                NameValueCollection texts = (NameValueCollection)ConfigurationManager.GetSection("Texts");
+                return Path.Combine(assets, texts[data.Substring(1)]);
+            }
+            else
+            {
+                return Path.Combine(assets, data);
+            }
+        }
+
     }
 }

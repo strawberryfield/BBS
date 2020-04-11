@@ -24,7 +24,7 @@ namespace Casasoft.BBS.UI
 {
     public class Logout : TextScreenBase
     {
-        public Logout(IClient c, IServer s) : base(c, s, "Logout") { }
+        public Logout(IClient c, IServer s) : base(c, s, "@Logout") { }
         public Logout(IClient c, IServer s, string txt) : base(c, s, txt) { }
 
         public override void Show()

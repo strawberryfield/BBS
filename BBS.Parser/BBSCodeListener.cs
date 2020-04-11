@@ -19,11 +19,8 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Antlr4.Runtime.Misc;
-using Antlr4.Runtime.Tree;
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
 
 namespace Casasoft.BBS.Parser
 {
@@ -33,13 +30,13 @@ namespace Casasoft.BBS.Parser
         public static Dictionary<string, Tags> TagsTable;
         private Stack<Tags> tagsStack;
 
-        public string Parsed { get; private set; }
+        public BBSCodeResult Parsed { get; private set; }
 
         private ANSICodes ANSI;
 
         public BBSCodeListener() : base()
         {
-            Parsed = string.Empty;
+            Parsed = new BBSCodeResult();
             TagsTable = new Dictionary<string, Tags>();
             foreach (Tags t in Enum.GetValues(typeof(Tags)))
                 TagsTable.Add(t.ToString().ToUpper(), t);
@@ -59,27 +56,27 @@ namespace Casasoft.BBS.Parser
                     break;
                 case Tags.BLINK:
                     ANSI.SetMode(ANSICodes.Modes.Blink);
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.REVERSE:
                     ANSI.SetMode(ANSICodes.Modes.Reverse);
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.BOLD:
                     ANSI.SetMode(ANSICodes.Modes.Bold);
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.UNDERLINE:
                     ANSI.SetMode(ANSICodes.Modes.Underline);
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.COLOR:
                     ANSI.pushForeColor(context.children[2].GetChild(2).GetText());
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.BACKCOLOR:
                     ANSI.pushBackColor(context.children[2].GetChild(2).GetText());
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.ACTION:
                     break;
@@ -97,31 +94,31 @@ namespace Casasoft.BBS.Parser
             switch (tag)
             {
                 case Tags.CLS:
-                    Parsed += ANSI.ClearScreen();
+                    Parsed.Parsed += ANSI.ClearScreen();
                     break;
                 case Tags.BLINK:
                     ANSI.ResetMode(ANSICodes.Modes.Blink);
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.REVERSE:
                     ANSI.ResetMode(ANSICodes.Modes.Reverse);
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.BOLD:
                     ANSI.ResetMode(ANSICodes.Modes.Bold);
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.UNDERLINE:
                     ANSI.ResetMode(ANSICodes.Modes.Underline);
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.COLOR:
                     ANSI.popForeColor();
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.BACKCOLOR:
                     ANSI.popBackColor();
-                    Parsed += ANSI.WriteMode();
+                    Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.ACTION:
                     break;
@@ -166,7 +163,7 @@ namespace Casasoft.BBS.Parser
 
         public override void EnterBbsCodeChardata([NotNull] BBSCodeParser.BbsCodeChardataContext context)
         {
-            Parsed += context.GetText();
+            Parsed.Parsed += context.GetText();
         }
     }
 }
