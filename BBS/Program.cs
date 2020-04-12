@@ -28,15 +28,13 @@ namespace Casasoft.BBS
 {
     class Program
     {
-        private static Server server;
-
         static void Main(string[] args)
         {
-            server = new Server(IPAddress.Any);
-            server.ClientConnected += clientConnected;
-            server.ClientDisconnected += clientDisconnected;
-            server.MessageReceived += clientHandleMessage;
-            server.start();
+            ServerGlobal.Server = new Server(IPAddress.Any);
+            ServerGlobal.Server.ClientConnected += clientConnected;
+            ServerGlobal.Server.ClientDisconnected += clientDisconnected;
+            ServerGlobal.Server.MessageReceived += clientHandleMessage;
+            ServerGlobal.Server.start();
 
             EventLogger.Write("SERVER STARTED");
 
@@ -44,13 +42,13 @@ namespace Casasoft.BBS
             {
             } while ((Console.ReadKey(true).KeyChar) != 'q');
 
-            server.stop();
+            ServerGlobal.Server.stop();
         }
 
         private static void clientConnected(IClient c)
         {
             EventLogger.Write("CONNECTED: #" + c.id.ToString(), c.Remote);
-            c.screen = ScreenFactory.Create(c, server, "Banner");
+            c.screen = ScreenFactory.Create(c, ServerGlobal.Server, "Banner");
             c.screen.Show();
         }
 

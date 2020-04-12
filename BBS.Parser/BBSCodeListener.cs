@@ -138,9 +138,11 @@ namespace Casasoft.BBS.Parser
                     Parsed.Actions.Add(actionKey, action);
                     break;
                 case Tags.CONNECTED:
-                    Parsed.Parsed += string.Format("{0,-30} {1,-19} {2}\r\n", "Username", "Connected", "From");
+                    Parsed.Parsed += string.Format("{0,-30} {1,-16} {2}\r\n", "Username", "Connected", "From");
                     Parsed.Parsed += new string('-', 79) + "\r\n";
-
+                    foreach (var c in TCPServer.ServerGlobal.Server.clients.Values)
+                        Parsed.Parsed += string.Format("{0,-30} {1:g} {2}\r\n",
+                            string.IsNullOrWhiteSpace(c.username) ? "GUEST" : c.username, c.connectedAt, c.Remote);
                     break;
                 case Tags.JOINED:
                     Parsed.Parsed += string.Format("{0,-30} {1,-10} {2}\r\n", "Username", "Since", "From");
