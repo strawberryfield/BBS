@@ -3,6 +3,7 @@ Welcome as guest.
 
 Select an option:
 {ACTION key="C" text="Connected.txt"} [C] - Show connected users{/ACTION}
+{ACTION key="R" text="Joined.txt"} [R] - Show registered users{/ACTION}
 {ACTION key="L" module="Logout"} [L] - Logout{/ACTION}
 
 Enter choice: 

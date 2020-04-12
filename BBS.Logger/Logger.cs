@@ -26,17 +26,13 @@ namespace Casasoft.BBS.Logger
 {
     public static class EventLogger
     {
-        private static bbsContext db;
-
-        static EventLogger()
-        {
-            db = new bbsContext();
-        }
-
         public static void Write(string message, sbyte level, string remote)
         {
-            db.Logs.Add(new Log() { Level = level, Description = message, Remote = remote });
-            db.SaveChanges();
+            using (bbsContext db = new bbsContext())
+            {
+                db.Logs.Add(new Log() { Level = level, Description = message, Remote = remote });
+                db.SaveChanges();
+            }
             Console.Error.WriteLine("{0} {1} {2,-22} {3}",  
                 new object[] { DateTime.Now, level, remote, message });
         }

@@ -70,7 +70,7 @@ namespace Casasoft.TCPServer
         /// Contains all connected clients indexed
         /// by their socket.
         /// </summary>
-        private Dictionary<Socket, Client> clients;
+        public Dictionary<Socket, Client> clients { get; private set; }
 
         public delegate void ConnectionEventHandler(IClient c);
         /// <summary>

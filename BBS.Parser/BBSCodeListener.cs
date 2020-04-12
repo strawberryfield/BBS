@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Antlr4.Runtime.Misc;
+using Casasoft.BBS.DataTier;
 using System;
 using System.Collections.Generic;
 
@@ -26,7 +27,10 @@ namespace Casasoft.BBS.Parser
 {
     public class BBSCodeListener : BBSCodeParserBaseListener
     {
-        public enum Tags { UNKNOWN, CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR, ACTION }
+        public enum Tags { UNKNOWN, 
+            CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR, 
+            BEEP, HR, CONNECTED, JOINED, USER,
+            ACTION }
         public static Dictionary<string, Tags> TagsTable;
         private Stack<Tags> tagsStack;
 
@@ -84,6 +88,12 @@ namespace Casasoft.BBS.Parser
                     action = new BBSCodeResult.Action();
                     actionKey = string.Empty;
                     break;
+                case Tags.BEEP:
+                    Parsed.Parsed += (char)7;
+                    break;
+                case Tags.HR:
+                    Parsed.Parsed += new string('-', 79);
+                    break;
                 case Tags.UNKNOWN:
                 default:
                     break;
@@ -126,6 +136,23 @@ namespace Casasoft.BBS.Parser
                     break;
                 case Tags.ACTION:
                     Parsed.Actions.Add(actionKey, action);
+                    break;
+                case Tags.CONNECTED:
+                    Parsed.Parsed += string.Format("{0,-30} {1,-19} {2}\r\n", "Username", "Connected", "From");
+                    Parsed.Parsed += new string('-', 79) + "\r\n";
+
+                    break;
+                case Tags.JOINED:
+                    Parsed.Parsed += string.Format("{0,-30} {1,-10} {2}\r\n", "Username", "Since", "From");
+                    Parsed.Parsed += new string('-', 79) + "\r\n";
+                    using (bbsContext bbs = new bbsContext())
+                    {
+                        foreach(var user in bbs.Users)
+                            Parsed.Parsed += string.Format("{0,-30} {1:d} {2}\r\n", 
+                                user.Userid, user.Registered.Date, user.City.Trim() + ", " + user.Nation.Trim());
+                    }
+                    break;
+                case Tags.USER:
                     break;
                 case Tags.UNKNOWN:
                 default:
