@@ -1,8 +1,26 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Casasoft.BBS.Interfaces</RootNamespace>
+    <PackageId>Casasoft.BBS.Interfaces</PackageId>
+    <Authors>Roberto Ceccarelli - Casasoft</Authors>
+    <Company>Casasoft</Company>
+    <Product>Casasoft BBS</Product>
+    <Description>Old style telnet BBS - Interfaces and class factory</Description>
+    <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/strawberryfield/BBS</PackageProjectUrl>
+    <PackageIcon>package.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>

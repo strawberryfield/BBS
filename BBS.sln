@@ -11,8 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 	ProjectSection(SolutionItems) = preProject
 		assets\Banner.txt = assets\Banner.txt
 		assets\Connected.txt = assets\Connected.txt
-		assets\Joined.txt = assets\Joined.txt
 		assets\GuestAccess.txt = assets\GuestAccess.txt
+		assets\Joined.txt = assets\Joined.txt
 		assets\LoggedIn.txt = assets\LoggedIn.txt
 		assets\Login.txt = assets\Login.txt
 		assets\logo.ansi.txt = assets\logo.ansi.txt
@@ -38,7 +38,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{559F89ED-2E1F-4DF3-9699-DDD5396A7C41}"
 	ProjectSection(SolutionItems) = preProject
 		cover.jpg = cover.jpg
+		package.png = package.png
 		README.md = README.md
+		terminal.ico = terminal.ico
 	EndProjectSection
 EndProject
 Global

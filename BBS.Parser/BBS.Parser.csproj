@@ -1,8 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Casasoft.BBS.Parser</RootNamespace>
+    <PackageId>Casasoft.BBS.Parser</PackageId>
+    <Authors>Roberto Ceccarelli - Casasoft</Authors>
+    <Company>Casasoft</Company>
+    <Product>Casasoft BBS</Product>
+    <Description>Old style telnet BBS - Internal markup processor</Description>
+    <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/strawberryfield/BBS</PackageProjectUrl>
+    <PackageIcon>package.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +24,13 @@
   <ItemGroup>
     <ProjectReference Include="..\DataTier\DataTier.csproj" />
     <ProjectReference Include="..\TCPServer\TCPServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,13 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Casasoft.BBS.UI</RootNamespace>
-    <PackageId>Casasoft BBS.UI</PackageId>
+    <PackageId>Casasoft.BBS.UI</PackageId>
     <Authors>Roberto Ceccarelli - Casasoft</Authors>
     <Company>Casasoft</Company>
     <Product>Casasoft BBS</Product>
+    <Description>Old style telnet BBS - User interface modules</Description>
     <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/strawberryfield/BBS</PackageProjectUrl>
+    <PackageIcon>package.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +25,13 @@
     <ProjectReference Include="..\BBS.Logger\BBS.Logger.csproj" />
     <ProjectReference Include="..\BBS.Parser\BBS.Parser.csproj" />
     <ProjectReference Include="..\DataTier\DataTier.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

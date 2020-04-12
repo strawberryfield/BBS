@@ -4,17 +4,29 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Casasoft.BBS</RootNamespace>
-    <PackageId>Casasoft BBS</PackageId>
+    <PackageId>Casasoft.BBS</PackageId>
     <Authors>Roberto Ceccarelli - Casasoft</Authors>
     <Company>Casasoft</Company>
     <Product>Casasoft BBS</Product>
     <Description>Old style telnet BBS</Description>
     <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <ApplicationIcon>terminal.ico</ApplicationIcon>
+    <PackageProjectUrl>https://github.com/strawberryfield/BBS</PackageProjectUrl>
+    <PackageIcon>package.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
+    <PackageTags>BBS, telnet, tcp/ip server, antlr, markup parser, entity framework</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\package.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>

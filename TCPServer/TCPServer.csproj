@@ -3,10 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Casasoft.TCPServer</RootNamespace>
-    <PackageId>Casasoft TCPServer</PackageId>
+    <PackageId>Casasoft.TCPServer</PackageId>
     <Authors>Roberto Ceccarelli - Casasoft</Authors>
+    <Company>Casasoft</Company>
     <Product>Casasoft BBS</Product>
-    <AssemblyName>BBS.TCPServer</AssemblyName>
+    <Description>Old style telnet BBS - TCP/IP Server</Description>
+    <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/strawberryfield/BBS</PackageProjectUrl>
+    <PackageIcon>package.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +22,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BBS.Interfaces\BBS.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
