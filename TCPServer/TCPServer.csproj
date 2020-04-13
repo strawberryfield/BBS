@@ -9,7 +9,6 @@
     <Product>Casasoft BBS</Product>
     <Description>Old style telnet BBS - TCP/IP Server</Description>
     <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/strawberryfield/BBS</PackageProjectUrl>
     <PackageIcon>package.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
@@ -22,13 +21,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BBS.Interfaces\BBS.Interfaces.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\LICENSE.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>

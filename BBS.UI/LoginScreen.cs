@@ -23,15 +23,15 @@ using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
 using System;
-using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
     public class LoginScreen : TextScreenBase
     {
         public LoginScreen(IClient c, IServer s) : this(c, s, "@Login") { }
-
-        public LoginScreen(IClient c, IServer s, string text) : base(c, s, text)
+        public LoginScreen(IClient c, IServer s, IScreen prev) : this(c, s, "@Login", prev) { }
+        public LoginScreen(IClient c, IServer s, string text) : this(c, s, text, null) { }
+        public LoginScreen(IClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
             ReadText(text);
             status = states.WaitForUsername;

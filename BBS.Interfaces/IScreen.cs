@@ -22,6 +22,7 @@ namespace Casasoft.BBS.Interfaces
 {
     public interface IScreen
     {
+        public IScreen Previous { get; set; }
         public void Show();
         public void HandleMessage(string msg);
         public void ShowNext();

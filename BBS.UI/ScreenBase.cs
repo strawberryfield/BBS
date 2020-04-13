@@ -26,11 +26,15 @@ namespace Casasoft.BBS.UI
     {
         protected IClient client;
         protected IServer server;
+        public IScreen Previous { get; set; }
 
-        public ScreenBase(IClient c, IServer s)
+        public ScreenBase(IClient c, IServer s) : this(c,s,null) { }
+
+        public ScreenBase(IClient c, IServer s, IScreen prev)
         {
             client = c;
             server = s;
+            Previous = prev;
         }
 
         public virtual void Show() { }

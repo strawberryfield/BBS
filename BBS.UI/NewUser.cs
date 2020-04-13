@@ -22,18 +22,18 @@ using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
-using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
     public class NewUser : TextScreenBase
     {
-        public NewUser(IClient c, IServer s, string txt) : base(c, s, txt)
+        public NewUser(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             status = states.WaitForUsername;
             user = new User();
         }
-
+        public NewUser(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public NewUser(IClient c, IServer s, IScreen prev) : this(c, s, "@NewUser", prev) { }
         public NewUser(IClient c, IServer s) : this(c, s, "@NewUser") { }
 
         private enum states
@@ -143,12 +143,8 @@ namespace Casasoft.BBS.UI
                         }
                         string m = string.Format("Created new user '{0}'", user.Userid);
                         EventLogger.Write(m, client.Remote);
-                        client.screen = ScreenFactory.Create(client, server, "LoginScreen");
                     }
-                    else
-                    {
-                        client.screen = ScreenFactory.Create(client, server, "LoginScreen");
-                    }
+                    client.screen = ScreenFactory.Create(client, server, "LoginScreen");
                     client.screen.Show();
                     break;
 

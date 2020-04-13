@@ -20,10 +20,6 @@
 
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Parser;
-using System.Collections.Specialized;
-using System.Configuration;
-using System.IO;
-using System.Text.RegularExpressions;
 
 namespace Casasoft.BBS.UI
 {
@@ -33,8 +29,9 @@ namespace Casasoft.BBS.UI
         protected BBSCodeResult Data;
 
         public TextScreenBase(IClient c, IServer s) : base(c, s) { }
-
-        public TextScreenBase(IClient c, IServer s, string txt) : this(c, s)
+        public TextScreenBase(IClient c, IServer s, IScreen prev) : base(c, s, prev) { }
+        public TextScreenBase(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public TextScreenBase(IClient c, IServer s, string txt, IScreen prev) : this(c, s, prev)
         {
             ReadText(txt);
         }
@@ -81,13 +78,20 @@ namespace Casasoft.BBS.UI
             Data.Actions.TryGetValue(act, out a);
             if (a != null)
             {
-                client.screen = ScreenFactory.Create(client, server, a.module, a.data);
+                client.screen = ScreenFactory.Create(client, server, a.module, a.data, this);
                 client.screen.Show();
             }
         }
 
-        public override void ShowNext() => execAction(string.Empty);
-
+        public override void ShowNext()
+        {
+            execAction(string.Empty);
+            if(Previous != null)
+            {
+                client.screen = Previous;
+                client.screen.Show();
+            }
+        }
         protected int ShowLines(int start, int len)
         {
             int ret = start;

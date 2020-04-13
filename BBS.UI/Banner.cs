@@ -26,6 +26,8 @@ namespace Casasoft.BBS.UI
     {
         public Banner(IClient c, IServer s) : base(c, s, "@Banner") { }
         public Banner(IClient c, IServer s, string txt) : base(c, s, txt) { }
+        public Banner(IClient c, IServer s, IScreen prev) : base(c, s, "@Banner", prev) { }
+        public Banner(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
 
         public override void ShowNext()
         {

@@ -25,21 +25,30 @@ namespace Casasoft.BBS.Interfaces
 {
     public static class ScreenFactory
     {
-        public static IScreen Create(IClient c, IServer s, string module, string param)
+        public static IScreen Create(IClient c, IServer s, string module, string param, IScreen prev)
         {
             module = "Casasoft.BBS.UI." + module.Trim();
             Assembly asm = Assembly.LoadFrom("BBS.UI.dll");
             Type t = asm.GetType(module);
             if (string.IsNullOrWhiteSpace(param))
             {
-                return (IScreen)Activator.CreateInstance(t, new object[] { c, s });
+                if (prev == null) return (IScreen)Activator.CreateInstance(t, new object[] { c, s });
+                else return (IScreen)Activator.CreateInstance(t, new object[] { c, s, prev });
             }
             else
             {
-                return (IScreen)Activator.CreateInstance(t, new object[] { c, s, param });
+                if(prev==null) return (IScreen)Activator.CreateInstance(t, new object[] { c, s, param });
+                else return (IScreen)Activator.CreateInstance(t, new object[] { c, s, param, prev });
             }
         }
 
-        public static IScreen Create(IClient c, IServer s, string module) => Create(c, s, module, null);
+        public static IScreen Create(IClient c, IServer s, string module) => Create(c, s, module, string.Empty);
+
+        public static IScreen Create(IClient c, IServer s, string module, string param) =>
+            Create(c, s, module, param, null);
+
+        public static IScreen Create(IClient c, IServer s, string module, IScreen prev) =>
+            Create(c, s, module, string.Empty, prev);
+
     }
 }
