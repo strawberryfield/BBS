@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BBS.Logger\BBS.Logger.csproj" />
     <ProjectReference Include="..\DataTier\DataTier.csproj" />
     <ProjectReference Include="..\TCPServer\TCPServer.csproj" />
   </ItemGroup>

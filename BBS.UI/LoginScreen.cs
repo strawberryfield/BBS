@@ -65,6 +65,10 @@ namespace Casasoft.BBS.UI
                             client.screen = ScreenFactory.Create(client, server, "NewUser");
                             client.screen.Show();
                             break;
+                        case "LOGOUT":
+                            client.screen = ScreenFactory.Create(client, server, "Logout");
+                            client.screen.Show();
+                            break;
                         default:
                             server.sendMessageToClient(client, "\r\nPassword: ");
                             status = states.WaitForPassword;

@@ -22,6 +22,7 @@ using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
+using System.Configuration;
 
 namespace Casasoft.BBS.UI
 {
@@ -58,7 +59,7 @@ namespace Casasoft.BBS.UI
             if (string.IsNullOrWhiteSpace(msg))
             {
                 if (status == states.WaitForConfirm) msg = "Yes";
-                else return;
+                else if (status != states.WaitForUsername) return;
             }
             switch (status)
             {
@@ -67,15 +68,24 @@ namespace Casasoft.BBS.UI
                     bool success = false;
                     switch (username)
                     {
+                        case "":
+                            client.screen = ScreenFactory.Create(client, server, "LoginScreen");
+                            client.screen.Show();
+                            break;
+                        case "LOGOUT":
+                            client.screen = ScreenFactory.Create(client, server, "Logout");
+                            client.screen.Show();
+                            return;
                         case "GUEST":
                         case "NEW":
                             break;
                         default:
-                            using (bbsContext bbs = new bbsContext())
-                            {
-                                User user = bbs.GetUserByUsername(username);
-                                if (user == null) success = true;
-                            }
+                            if (validName(username))
+                                using (bbsContext bbs = new bbsContext())
+                                {
+                                    User user = bbs.GetUserByUsername(username);
+                                    if (user == null) success = true;
+                                }
                             break;
                     }
                     if (success)
@@ -151,6 +161,22 @@ namespace Casasoft.BBS.UI
                 default:
                     break;
             }
+        }
+
+        private bool validName(string name)
+        {
+            bool ret = true;
+            string unwanted = ConfigurationManager.AppSettings.Get("unwanted");
+            if (!string.IsNullOrWhiteSpace(unwanted))
+            {
+                string[] prefixes = unwanted.ToUpper().Split(',');
+                foreach (string s in prefixes)
+                {
+                    ret = !name.StartsWith(s.Trim());
+                    if (!ret) break;
+                }
+            }
+            return ret;
         }
 
     }

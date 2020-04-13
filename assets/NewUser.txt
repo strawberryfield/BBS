@@ -1,3 +1,10 @@
-{CLS/}
-Welcome new user
+{CLS/} The Strawberry Field BBS  -  New user registration
+{HR/}
 
+Thank you for joining The Strawberry Field.
+Registering to the BBS you accept the rules that you can read in the public area.
+
+Leave blank the user name to return to login screen
+or type {COLOR value="Red"}LOGOUT{/COLOR} to quit.
+
+{HR/}

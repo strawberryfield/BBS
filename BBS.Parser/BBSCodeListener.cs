@@ -20,6 +20,7 @@
 
 using Antlr4.Runtime.Misc;
 using Casasoft.BBS.DataTier;
+using Casasoft.BBS.Logger;
 using System;
 using System.Collections.Generic;
 
@@ -32,7 +33,7 @@ namespace Casasoft.BBS.Parser
             BEEP, HR, CONNECTED, JOINED, USER,
             ACTION }
         public static Dictionary<string, Tags> TagsTable;
-        private Stack<Tags> tagsStack;
+        public string FileName;
 
         public BBSCodeResult Parsed { get; private set; }
 
@@ -135,7 +136,8 @@ namespace Casasoft.BBS.Parser
                     Parsed.Parsed += ANSI.WriteMode();
                     break;
                 case Tags.ACTION:
-                    Parsed.Actions.Add(actionKey, action);
+                    if (!Parsed.Actions.TryAdd(actionKey, action))
+                        EventLogger.Write(string.Format("Error adding action '{0}' in '{1}'", actionKey, FileName), 0);
                     break;
                 case Tags.CONNECTED:
                     Parsed.Parsed += string.Format("{0,-30} {1,-16} {2}\r\n", "Username", "Connected", "From");

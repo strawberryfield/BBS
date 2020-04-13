@@ -40,6 +40,7 @@ namespace Casasoft.BBS.Parser
                 BBSCodeParser parser = new BBSCodeParser(tokenStream);
                 BBSCodeParser.BbsCodeContentContext context = parser.bbsCodeContent();
                 BBSCodeListener listener = new BBSCodeListener();
+                listener.FileName = FileName;
                 ParseTreeWalker walker = new ParseTreeWalker();
                 bool built = parser.BuildParseTree;
                 walker.Walk(listener, context);

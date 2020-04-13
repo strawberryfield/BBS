@@ -1,3 +1,10 @@
-{CLS/}
-Welcome back
+{CLS/}The Strawberry Field BBS  -  Main menu
+{HR/}
 
+Select an option:
+{ACTION key="C" text="Connected.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[C]{/BACKCOLOR}{/COLOR} - Show connected users{/ACTION}
+{ACTION key="U" text="Joined.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[U]{/BACKCOLOR}{/COLOR} - Show registered users{/ACTION}
+{ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - BBS Rules / Disclaimer{/ACTION}
+{ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Logout{/ACTION}
+
+Enter choice: 

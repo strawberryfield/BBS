@@ -1,5 +1,6 @@
 {CLS/}Registered users:
+{HR/}
 
 {JOINED/}
 
-Press [Return] to main menu
+Press {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to return to menu

@@ -1,5 +1,14 @@
-{CLS forecolor="White" backcolor="Blue" /}
+{CLS backcolor="White" forecolor="Blue" /}
+ The Strawberry Field Bulletin Board System  -  Login
+{HR/}
 
-Enter {COLOR value="Yellow"}New{/COLOR} if you want to register 
-or {COLOR value="Yellow"}Guest{/COLOR} to continue without register 
+Enter {COLOR value="Red"}New{/COLOR} if you want to register as a new user
+or {COLOR value="Red"}Guest{/COLOR} to continue without registering
+
+If you continue you accept the rules of this BBS and
+you agree that your action could by recorder for security
+and statistica pourposes.
+Enter {COLOR value="Red"}Logout{/COLOR} to leave this BBS.
+
+{HR/}
 

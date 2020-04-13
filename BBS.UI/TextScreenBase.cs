@@ -57,14 +57,14 @@ namespace Casasoft.BBS.UI
                 {
                     int newStart = currentLine - 48;
                     newStart = newStart < 0 ? 0 : newStart;
-                    ShowLines(newStart, 24);
+                    currentLine = ShowLines(newStart, 24);
                 }
             }
 
             if (string.IsNullOrWhiteSpace(msg))
             {
                 if (Text.Length > 24 && currentLine < Text.Length - 1)
-                    ShowLines(currentLine, 24);
+                    currentLine = ShowLines(currentLine, 24);
                 else
                     ShowNext();
             }

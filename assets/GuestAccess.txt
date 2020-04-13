@@ -1,9 +1,10 @@
-{CLS/}
-Welcome as guest.
+{CLS/}The Strawberry Field BBS  -  Public area main menu
+{HR/}
 
 Select an option:
-{ACTION key="C" text="Connected.txt"} [C] - Show connected users{/ACTION}
-{ACTION key="R" text="Joined.txt"} [R] - Show registered users{/ACTION}
-{ACTION key="L" module="Logout"} [L] - Logout{/ACTION}
+{ACTION key="N" module="NewUser"} {COLOR value="White"}{BACKCOLOR value="Blue"}[N]{/BACKCOLOR}{/COLOR} - Create a new user{/ACTION}
+{ACTION key="L" module="LoginScreen"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - Login{/ACTION}
+{ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - BBS Rules / Disclaimer{/ACTION}
+{ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Logout{/ACTION}
 
 Enter choice: 
