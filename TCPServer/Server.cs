@@ -383,7 +383,7 @@ namespace Casasoft.TCPServer
 
                     // 0x2E = '.', 0x0D = carriage return, 0x0A = new line
                     if ((data[0] == 0x2E && data[1] == 0x0D && receivedData.Length == 0) ||
-                        (data[0] == 0x0D && data[1] == 0x0A))
+                        (data[0] == 0x0D && data[1] == 0x0A) || data[0] == 0x0D || data[0] == 0x0A)
                     {
                         //sendMessageToSocket(clientSocket, "\u001B[1J\u001B[H");
                         MessageReceived(client, client.receivedData);
