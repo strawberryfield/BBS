@@ -8,6 +8,7 @@ namespace Casasoft.BBS.DataTier.DataModel
         public User()
         {
             Logins = new HashSet<Login>();
+            MessageReads = new HashSet<MessageRead>();
             UsersGroupsLinks = new HashSet<UsersGroupsLink>();
         }
 
@@ -21,8 +22,12 @@ namespace Casasoft.BBS.DataTier.DataModel
         public string LastLoginFrom { get; set; }
         public DateTime LastLoginDate { get; set; }
         public DateTime Registered { get; set; }
+        public DateTime LastPasswordModify { get; set; }
+        public string Email { get; set; }
+        public bool Locked { get; set; }
 
         public virtual ICollection<Login> Logins { get; set; }
+        public virtual ICollection<MessageRead> MessageReads { get; set; }
         public virtual ICollection<UsersGroupsLink> UsersGroupsLinks { get; set; }
     }
 }

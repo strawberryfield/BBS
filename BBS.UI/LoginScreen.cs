@@ -33,7 +33,6 @@ namespace Casasoft.BBS.UI
         public LoginScreen(IClient c, IServer s, string text) : this(c, s, text, null) { }
         public LoginScreen(IClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
-            ReadText(text);
             status = states.WaitForUsername;
         }
 
@@ -43,7 +42,7 @@ namespace Casasoft.BBS.UI
         public override void Show()
         {
             base.Show();
-            server.sendMessageToClient(client, "\r\nUsername: ");
+            LnWrite("Username: ");
             status = states.WaitForUsername;
         }
 

@@ -10,5 +10,6 @@ namespace Casasoft.BBS.DataTier.DataModel
         public string UserId { get; set; }
 
         public virtual Message Messge { get; set; }
+        public virtual User User { get; set; }
     }
 }

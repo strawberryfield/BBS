@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Apr 08, 2020 alle 20:50
+-- Creato il: Apr 14, 2020 alle 16:00
 -- Versione del server: 10.3.22-MariaDB-0+deb10u1
 -- Versione PHP: 7.3.14-1~deb10u1
 
@@ -50,6 +50,30 @@ CREATE TABLE `Logins` (
   `From` varchar(24) NOT NULL DEFAULT '',
   `Success` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users logins';
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `MessageAreaAllowedUsersGroups`
+--
+
+CREATE TABLE `MessageAreaAllowedUsersGroups` (
+  `ID` int(11) NOT NULL,
+  `MessageAreaId` varchar(20) NOT NULL,
+  `UsersGroupId` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Groups allowed to message areas';
+
+-- --------------------------------------------------------
+
+--
+-- Struttura della tabella `MessageAreaGroupsAllowedUsersGroups`
+--
+
+CREATE TABLE `MessageAreaGroupsAllowedUsersGroups` (
+  `ID` int(11) NOT NULL,
+  `MessageAreaGroupId` varchar(20) NOT NULL,
+  `UsersGroupId` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Groups allowed to message areas groups';
 
 -- --------------------------------------------------------
 
@@ -117,10 +141,11 @@ CREATE TABLE `Messages` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `MessageSeenBy`
+-- Struttura della tabella `MessagesSeenBy`
 --
 
-CREATE TABLE `MessageSeenBy` (
+CREATE TABLE `MessagesSeenBy` (
+  `ID` int(11) NOT NULL,
   `MessageId` int(11) NOT NULL,
   `SeenBy` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='System that already received the message';
@@ -141,7 +166,10 @@ CREATE TABLE `Users` (
   `signature` text NOT NULL DEFAULT '',
   `LastLoginFrom` varchar(15) NOT NULL DEFAULT '0.0.0.0',
   `LastLoginDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `Registered` datetime NOT NULL DEFAULT current_timestamp()
+  `Registered` datetime NOT NULL DEFAULT current_timestamp(),
+  `LastPasswordModify` datetime NOT NULL DEFAULT current_timestamp(),
+  `email` varchar(100) NOT NULL DEFAULT '',
+  `Locked` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='BBS users' ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
@@ -187,12 +215,29 @@ ALTER TABLE `Logins`
   ADD KEY `DateTime` (`DateTime`);
 
 --
+-- Indici per le tabelle `MessageAreaAllowedUsersGroups`
+--
+ALTER TABLE `MessageAreaAllowedUsersGroups`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `MessageAreaId` (`MessageAreaId`),
+  ADD KEY `MAAUG_UsersGroupID_UsersGroups` (`UsersGroupId`);
+
+--
+-- Indici per le tabelle `MessageAreaGroupsAllowedUsersGroups`
+--
+ALTER TABLE `MessageAreaGroupsAllowedUsersGroups`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `MessageAreaGroupId` (`MessageAreaGroupId`),
+  ADD KEY `MAGAUG_UsersGroupID_UsersGroups` (`UsersGroupId`);
+
+--
 -- Indici per le tabelle `MessageAreas`
 --
 ALTER TABLE `MessageAreas`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Description` (`Description`),
-  ADD KEY `FIDOID` (`FIDOID`);
+  ADD KEY `FIDOID` (`FIDOID`),
+  ADD KEY `MessageAreas_AreaGroupId_MessageAreasGroups` (`AREAGROUP`);
 
 --
 -- Indici per le tabelle `MessageAreasGroups`
@@ -217,9 +262,10 @@ ALTER TABLE `Messages`
   ADD KEY `Area` (`Area`);
 
 --
--- Indici per le tabelle `MessageSeenBy`
+-- Indici per le tabelle `MessagesSeenBy`
 --
-ALTER TABLE `MessageSeenBy`
+ALTER TABLE `MessagesSeenBy`
+  ADD PRIMARY KEY (`ID`),
   ADD KEY `MessageId` (`MessageId`),
   ADD KEY `SeenBy` (`SeenBy`);
 
@@ -241,7 +287,7 @@ ALTER TABLE `UsersGroups`
 ALTER TABLE `UsersGroupsLinks`
   ADD PRIMARY KEY (`id`),
   ADD KEY `userid` (`userid`),
-  ADD KEY `group_groups` (`groupid`);
+  ADD KEY `UsersGroupsLinks_groupid_groups` (`groupid`);
 
 --
 -- AUTO_INCREMENT per le tabelle scaricate
@@ -260,6 +306,18 @@ ALTER TABLE `Logins`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT per la tabella `MessageAreaAllowedUsersGroups`
+--
+ALTER TABLE `MessageAreaAllowedUsersGroups`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `MessageAreaGroupsAllowedUsersGroups`
+--
+ALTER TABLE `MessageAreaGroupsAllowedUsersGroups`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT per la tabella `MessageRead`
 --
 ALTER TABLE `MessageRead`
@@ -269,6 +327,12 @@ ALTER TABLE `MessageRead`
 -- AUTO_INCREMENT per la tabella `Messages`
 --
 ALTER TABLE `Messages`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `MessagesSeenBy`
+--
+ALTER TABLE `MessagesSeenBy`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -285,20 +349,41 @@ ALTER TABLE `UsersGroupsLinks`
 -- Limiti per la tabella `Logins`
 --
 ALTER TABLE `Logins`
-  ADD CONSTRAINT `UserId_Users` FOREIGN KEY (`UserId`) REFERENCES `Users` (`userid`);
+  ADD CONSTRAINT `Logins_UserId_Users` FOREIGN KEY (`UserId`) REFERENCES `Users` (`userid`);
+
+--
+-- Limiti per la tabella `MessageAreaAllowedUsersGroups`
+--
+ALTER TABLE `MessageAreaAllowedUsersGroups`
+  ADD CONSTRAINT `MAAUG_MessageAreaId_MessageAreas` FOREIGN KEY (`MessageAreaId`) REFERENCES `MessageAreas` (`ID`),
+  ADD CONSTRAINT `MAAUG_UsersGroupID_UsersGroups` FOREIGN KEY (`UsersGroupId`) REFERENCES `UsersGroups` (`groupid`);
+
+--
+-- Limiti per la tabella `MessageAreaGroupsAllowedUsersGroups`
+--
+ALTER TABLE `MessageAreaGroupsAllowedUsersGroups`
+  ADD CONSTRAINT `MAGAUG_MessageAreaGroupId_MessageAreasGroups` FOREIGN KEY (`MessageAreaGroupId`) REFERENCES `MessageAreasGroups` (`ID`),
+  ADD CONSTRAINT `MAGAUG_UsersGroupID_UsersGroups` FOREIGN KEY (`UsersGroupId`) REFERENCES `UsersGroups` (`groupid`);
+
+--
+-- Limiti per la tabella `MessageAreas`
+--
+ALTER TABLE `MessageAreas`
+  ADD CONSTRAINT `MessageAreas_AreaGroupId_MessageAreasGroups` FOREIGN KEY (`AREAGROUP`) REFERENCES `MessageAreasGroups` (`ID`);
 
 --
 -- Limiti per la tabella `MessageRead`
 --
 ALTER TABLE `MessageRead`
-  ADD CONSTRAINT `MessageId_Messages` FOREIGN KEY (`MessgeId`) REFERENCES `Messages` (`ID`);
+  ADD CONSTRAINT `MessageRead_MessageId_Messages` FOREIGN KEY (`MessgeId`) REFERENCES `Messages` (`ID`),
+  ADD CONSTRAINT `MessageRead_UserId_Users` FOREIGN KEY (`UserId`) REFERENCES `Users` (`userid`);
 
 --
 -- Limiti per la tabella `UsersGroupsLinks`
 --
 ALTER TABLE `UsersGroupsLinks`
-  ADD CONSTRAINT `group_groups` FOREIGN KEY (`groupid`) REFERENCES `UsersGroups` (`groupid`),
-  ADD CONSTRAINT `user_users` FOREIGN KEY (`userid`) REFERENCES `Users` (`userid`);
+  ADD CONSTRAINT `UsersGroupsLinks_groupid_groups` FOREIGN KEY (`groupid`) REFERENCES `UsersGroups` (`groupid`),
+  ADD CONSTRAINT `UsersGroupsLinks_userid_users` FOREIGN KEY (`userid`) REFERENCES `Users` (`userid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

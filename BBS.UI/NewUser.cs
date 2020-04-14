@@ -48,7 +48,7 @@ namespace Casasoft.BBS.UI
         public override void Show()
         {
             base.Show();
-            server.sendMessageToClient(client, "\r\nUsername: ");
+            LnWrite("Username: ");
             status = states.WaitForUsername;
         }
 
@@ -80,10 +80,10 @@ namespace Casasoft.BBS.UI
                         case "NEW":
                             break;
                         default:
-                            if (validName(username))
+                            if (user.AcceptableUsername(username))
                                 using (bbsContext bbs = new bbsContext())
                                 {
-                                    User user = bbs.GetUserByUsername(username);
+                                    user = bbs.GetUserByUsername(username);
                                     if (user == null) success = true;
                                 }
                             break;
@@ -91,21 +91,30 @@ namespace Casasoft.BBS.UI
                     if (success)
                     {
                         user.Userid = username;
-                        server.sendMessageToClient(client, "\r\nPassword: ");
+                        LnWrite("Password: ");
                         status = states.WaitForPassword;
                         client.status = EClientStatus.Authenticating;
                     }
                     else
                     {
-                        server.sendMessageToClient(client, "\r\nThis name is already in use. Try another.");
-                        server.sendMessageToClient(client, "\r\nUsername: ");
+                        LnWrite("This name is already in use. Try another.");
+                        LnWrite("Username: ");
                     }
                     break;
 
                 case states.WaitForPassword:
                     password = msg;
-                    server.sendMessageToClient(client, "\r\nConfirm password: ");
-                    status = states.WaitForConfirmPassword;
+                    if (user.AcceptablePassword(password))
+                    {
+                        LnWrite("Confirm password: ");
+                        status = states.WaitForConfirmPassword;
+                    }
+                    else
+                    {
+                        LnWrite("Password do not meet security criteria.");
+                        LnWrite("Password: ");
+                        status = states.WaitForPassword;
+                    }
                     break;
 
                 case states.WaitForConfirmPassword:
@@ -113,32 +122,32 @@ namespace Casasoft.BBS.UI
                     {
                         user.SetPassword(password);
                         client.status = EClientStatus.Guest;
-                        server.sendMessageToClient(client, "\r\nYour real name: ");
+                        LnWrite("Your real name: ");
                         status = states.WaitForRealName;
                     }
                     else
                     {
-                        server.sendMessageToClient(client, "\r\nThe two passwords do not match. Try again.");
-                        server.sendMessageToClient(client, "\r\nPassword: ");
+                        LnWrite("The two passwords do not match. Try again.");
+                        LnWrite("Password: ");
                         status = states.WaitForPassword;
                     }
                     break;
 
                 case states.WaitForRealName:
                     user.Realname = msg;
-                    server.sendMessageToClient(client, "\r\nYour city: ");
+                    LnWrite("Your city: ");
                     status = states.WaitForCity;
                     break;
 
                 case states.WaitForCity:
                     user.City = msg;
-                    server.sendMessageToClient(client, "\r\nYour country: ");
+                    LnWrite("Your country: ");
                     status = states.WaitForNation;
                     break;
 
                 case states.WaitForNation:
                     user.Nation = msg;
-                    server.sendMessageToClient(client, "\r\nConfirm new user creation? [Yes]/No: ");
+                    LnWrite("Confirm new user creation? [Yes]/No: ");
                     status = states.WaitForConfirm;
                     break;
 
@@ -162,22 +171,5 @@ namespace Casasoft.BBS.UI
                     break;
             }
         }
-
-        private bool validName(string name)
-        {
-            bool ret = true;
-            string unwanted = ConfigurationManager.AppSettings.Get("unwanted");
-            if (!string.IsNullOrWhiteSpace(unwanted))
-            {
-                string[] prefixes = unwanted.ToUpper().Split(',');
-                foreach (string s in prefixes)
-                {
-                    ret = !name.StartsWith(s.Trim());
-                    if (!ret) break;
-                }
-            }
-            return ret;
-        }
-
     }
 }

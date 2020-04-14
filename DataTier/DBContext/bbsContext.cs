@@ -20,9 +20,11 @@ namespace Casasoft.BBS.DataTier.DBContext
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<MessageArea> MessageAreas { get; set; }
+        public virtual DbSet<MessageAreaAllowedUsersGroup> MessageAreaAllowedUsersGroups { get; set; }
+        public virtual DbSet<MessageAreaGroupsAllowedUsersGroup> MessageAreaGroupsAllowedUsersGroups { get; set; }
         public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
-        public virtual DbSet<MessageRead> MessagesRead { get; set; }
-        public virtual DbSet<MessageSeenBy> MessagesSeenBy { get; set; }
+        public virtual DbSet<MessageRead> MessageReads { get; set; }
+        public virtual DbSet<MessagesSeenBy> MessagesSeenBy { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersGroup> UsersGroups { get; set; }
         public virtual DbSet<UsersGroupsLink> UsersGroupsLinks { get; set; }
@@ -108,7 +110,7 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .WithMany(p => p.Logins)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("UserId_Users");
+                    .HasConstraintName("Logins_UserId_Users");
             });
 
             modelBuilder.Entity<Message>(entity =>
@@ -195,6 +197,9 @@ namespace Casasoft.BBS.DataTier.DBContext
             {
                 entity.HasComment("Message Areas List");
 
+                entity.HasIndex(e => e.Areagroup)
+                    .HasName("MessageAreas_AreaGroupId_MessageAreasGroups");
+
                 entity.HasIndex(e => e.Description)
                     .HasName("Description");
 
@@ -229,6 +234,90 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
+
+                entity.HasOne(d => d.AreagroupNavigation)
+                    .WithMany(p => p.MessageAreas)
+                    .HasForeignKey(d => d.Areagroup)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("MessageAreas_AreaGroupId_MessageAreasGroups");
+            });
+
+            modelBuilder.Entity<MessageAreaAllowedUsersGroup>(entity =>
+            {
+                entity.HasComment("Groups allowed to message areas");
+
+                entity.HasIndex(e => e.MessageAreaId)
+                    .HasName("MessageAreaId");
+
+                entity.HasIndex(e => e.UsersGroupId)
+                    .HasName("MAAUG_UsersGroupID_UsersGroups");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.MessageAreaId)
+                    .IsRequired()
+                    .HasColumnType("varchar(20)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.UsersGroupId)
+                    .IsRequired()
+                    .HasColumnType("varchar(30)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.HasOne(d => d.MessageArea)
+                    .WithMany(p => p.MessageAreaAllowedUsersGroups)
+                    .HasForeignKey(d => d.MessageAreaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("MAAUG_MessageAreaId_MessageAreas");
+
+                entity.HasOne(d => d.UsersGroup)
+                    .WithMany(p => p.MessageAreaAllowedUsersGroups)
+                    .HasForeignKey(d => d.UsersGroupId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("MAAUG_UsersGroupID_UsersGroups");
+            });
+
+            modelBuilder.Entity<MessageAreaGroupsAllowedUsersGroup>(entity =>
+            {
+                entity.HasComment("Groups allowed to message areas groups");
+
+                entity.HasIndex(e => e.MessageAreaGroupId)
+                    .HasName("MessageAreaGroupId");
+
+                entity.HasIndex(e => e.UsersGroupId)
+                    .HasName("MAGAUG_UsersGroupID_UsersGroups");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.MessageAreaGroupId)
+                    .IsRequired()
+                    .HasColumnType("varchar(20)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.UsersGroupId)
+                    .IsRequired()
+                    .HasColumnType("varchar(30)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.HasOne(d => d.MessageAreaGroup)
+                    .WithMany(p => p.MessageAreaGroupsAllowedUsersGroups)
+                    .HasForeignKey(d => d.MessageAreaGroupId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("MAGAUG_MessageAreaGroupId_MessageAreasGroups");
+
+                entity.HasOne(d => d.UsersGroup)
+                    .WithMany(p => p.MessageAreaGroupsAllowedUsersGroups)
+                    .HasForeignKey(d => d.UsersGroupId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("MAGAUG_UsersGroupID_UsersGroups");
             });
 
             modelBuilder.Entity<MessageAreasGroup>(entity =>
@@ -278,14 +367,18 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .WithMany(p => p.MessageReads)
                     .HasForeignKey(d => d.MessgeId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("MessageId_Messages");
+                    .HasConstraintName("MessageRead_MessageId_Messages");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.MessageReads)
+                    .HasForeignKey(d => d.UserId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("MessageRead_UserId_Users");
             });
 
-            modelBuilder.Entity<MessageSeenBy>(entity =>
+            modelBuilder.Entity<MessagesSeenBy>(entity =>
             {
-                entity.HasNoKey();
-
-                entity.ToTable("MessageSeenBy");
+                entity.ToTable("MessagesSeenBy");
 
                 entity.HasComment("System that already received the message");
 
@@ -294,6 +387,10 @@ namespace Casasoft.BBS.DataTier.DBContext
 
                 entity.HasIndex(e => e.SeenBy)
                     .HasName("SeenBy");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
 
                 entity.Property(e => e.MessageId).HasColumnType("int(11)");
 
@@ -322,6 +419,14 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasColumnName("email")
+                    .HasColumnType("varchar(100)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
                 entity.Property(e => e.LastLoginDate)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("'current_timestamp()'");
@@ -332,6 +437,10 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasDefaultValueSql("'0.0.0.0'")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.LastPasswordModify)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("'current_timestamp()'");
 
                 entity.Property(e => e.Nation)
                     .IsRequired()
@@ -404,7 +513,7 @@ namespace Casasoft.BBS.DataTier.DBContext
                 entity.HasComment("Users groups");
 
                 entity.HasIndex(e => e.Groupid)
-                    .HasName("group_groups");
+                    .HasName("UsersGroupsLinks_groupid_groups");
 
                 entity.HasIndex(e => e.Userid)
                     .HasName("userid");
@@ -428,12 +537,12 @@ namespace Casasoft.BBS.DataTier.DBContext
                 entity.HasOne(d => d.Group)
                     .WithMany(p => p.UsersGroupsLinks)
                     .HasForeignKey(d => d.Groupid)
-                    .HasConstraintName("group_groups");
+                    .HasConstraintName("UsersGroupsLinks_groupid_groups");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.UsersGroupsLinks)
                     .HasForeignKey(d => d.Userid)
-                    .HasConstraintName("user_users");
+                    .HasConstraintName("UsersGroupsLinks_userid_users");
             });
 
             OnModelCreatingPartial(modelBuilder);
