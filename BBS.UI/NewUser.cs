@@ -83,8 +83,8 @@ namespace Casasoft.BBS.UI
                             if (user.AcceptableUsername(username))
                                 using (bbsContext bbs = new bbsContext())
                                 {
-                                    user = bbs.GetUserByUsername(username);
-                                    if (user == null) success = true;
+                                    User test = bbs.GetUserByUsername(username);
+                                    if (test == null) success = true;
                                 }
                             break;
                     }
