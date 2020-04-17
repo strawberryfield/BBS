@@ -23,16 +23,26 @@ using Casasoft.BBS.DataTier;
 using Casasoft.BBS.Logger;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace Casasoft.BBS.Parser
 {
     public class BBSCodeListener : BBSCodeParserBaseListener
     {
-        public enum Tags { UNKNOWN, 
-            CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR, 
+        public enum Tags
+        {
+            UNKNOWN,
+            CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR,
             BEEP, HR, CONNECTED, JOINED, USER,
-            ACTION }
+            ACTION
+        }
         public static Dictionary<string, Tags> TagsTable;
+
+        public enum Entities { AMP, USERNAME, REMOTE }
+        public static Dictionary<string, Entities> EntitiesTable;
+        public static Dictionary<string, string> CustomEntitiesTable;
+
         public string FileName;
 
         public BBSCodeResult Parsed { get; private set; }
@@ -47,6 +57,15 @@ namespace Casasoft.BBS.Parser
             TagsTable = new Dictionary<string, Tags>();
             foreach (Tags t in Enum.GetValues(typeof(Tags)))
                 TagsTable.Add(t.ToString().ToUpper(), t);
+
+            EntitiesTable = new Dictionary<string, Entities>();
+            foreach (Entities t in Enum.GetValues(typeof(Entities)))
+                EntitiesTable.Add(t.ToString().ToUpper(), t);
+
+            CustomEntitiesTable = new Dictionary<string, string>();
+            NameValueCollection config = (NameValueCollection)ConfigurationManager.GetSection("Entities");
+            foreach (string key in config)
+                CustomEntitiesTable.Add(key.Trim().ToUpper(), config[key]);
 
             ANSI = new ANSICodes();
         }
@@ -151,8 +170,8 @@ namespace Casasoft.BBS.Parser
                     Parsed.Parsed += new string('-', 79) + "\r\n";
                     using (bbsContext bbs = new bbsContext())
                     {
-                        foreach(var user in bbs.Users)
-                            Parsed.Parsed += string.Format("{0,-30} {1:d} {2}\r\n", 
+                        foreach (var user in bbs.Users)
+                            Parsed.Parsed += string.Format("{0,-30} {1:d} {2}\r\n",
                                 user.Userid, user.Registered.Date, user.City.Trim() + ", " + user.Nation.Trim());
                     }
                     break;
@@ -211,6 +230,31 @@ namespace Casasoft.BBS.Parser
                 case Tags.UNKNOWN:
                 default:
                     break;
+            }
+        }
+
+        public override void EnterBbsCodeEntity([NotNull] BBSCodeParser.BbsCodeEntityContext context)
+        {
+            string entityName = context.GetText().Trim().ToUpper();
+            entityName = entityName.Substring(1, entityName.Length - 2);
+            Entities entity;
+            if (EntitiesTable.TryGetValue(entityName, out entity)) switch (entity)
+                {
+                    case Entities.AMP:
+                        Parsed.Parsed += "&";
+                        break;
+                    case Entities.USERNAME:
+                        break;
+                    case Entities.REMOTE:
+                        break;
+                    default:
+                        break;
+                }
+            else
+            {
+                string customEntity;
+                if (CustomEntitiesTable.TryGetValue(entityName, out customEntity))
+                    Parsed.Parsed += customEntity;
             }
         }
 

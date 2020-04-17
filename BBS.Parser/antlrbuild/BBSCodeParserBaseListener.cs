@@ -36,6 +36,18 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class BBSCodeParserBaseListener : IBBSCodeParserListener {
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="BBSCodeParser.bbsCodeEntity"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterBbsCodeEntity([NotNull] BBSCodeParser.BbsCodeEntityContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="BBSCodeParser.bbsCodeEntity"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitBbsCodeEntity([NotNull] BBSCodeParser.BbsCodeEntityContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="BBSCodeParser.bbsCodeElement"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

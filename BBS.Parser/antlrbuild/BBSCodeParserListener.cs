@@ -32,6 +32,16 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface IBBSCodeParserListener : IParseTreeListener {
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="BBSCodeParser.bbsCodeEntity"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterBbsCodeEntity([NotNull] BBSCodeParser.BbsCodeEntityContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="BBSCodeParser.bbsCodeEntity"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitBbsCodeEntity([NotNull] BBSCodeParser.BbsCodeEntityContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="BBSCodeParser.bbsCodeElement"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

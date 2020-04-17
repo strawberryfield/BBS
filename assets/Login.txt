@@ -1,5 +1,5 @@
 {CLS backcolor="White" forecolor="Blue" /}
- The Strawberry Field Bulletin Board System  -  Login
+ &BBSname;  -  Login
 {HR/}
 
 Enter {COLOR value="Red"}New{/COLOR} if you want to register as a new user

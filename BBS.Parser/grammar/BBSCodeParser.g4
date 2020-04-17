@@ -22,6 +22,10 @@ parser grammar BBSCodeParser;
 
 options { tokenVocab='../antlrbuild/BBSCodeLexer'; }
 
+bbsCodeEntity
+    : EntityRef
+    ;
+
 bbsCodeElement
     : TAG_OPEN bbsCodeTagName bbsCodeAttribute* TAG_CLOSE bbsCodeContent TAG_OPEN TAG_SLASH bbsCodeTagName TAG_CLOSE
     | TAG_OPEN bbsCodeTagName bbsCodeAttribute* TAG_SLASH_CLOSE
@@ -29,7 +33,7 @@ bbsCodeElement
     ;
 
 bbsCodeContent
-    : bbsCodeChardata? (bbsCodeElement bbsCodeChardata?)*
+    : bbsCodeChardata? ((bbsCodeElement | bbsCodeEntity) bbsCodeChardata?)*
     ;
 
 bbsCodeAttribute
