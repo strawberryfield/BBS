@@ -70,7 +70,7 @@ namespace Casasoft.TCPServer
         /// Contains all connected clients indexed
         /// by their socket.
         /// </summary>
-        public Dictionary<Socket, Client> clients { get; private set; }
+        public Dictionary<Socket, IClient> clients { get; private set; }
 
         public delegate void ConnectionEventHandler(IClient c);
         /// <summary>
@@ -107,7 +107,7 @@ namespace Casasoft.TCPServer
             this.dataSize = dataSize;
             this.data = new byte[dataSize];
 
-            this.clients = new Dictionary<Socket, Client>();
+            this.clients = new Dictionary<Socket, IClient>();
 
             this.acceptIncomingConnections = true;
 
@@ -222,7 +222,7 @@ namespace Casasoft.TCPServer
             {
                 try
                 {
-                    Client c = clients[s];
+                    Client c = (Client)clients[s];
 
                     if (c.status == EClientStatus.LoggedIn)
                     {
@@ -246,12 +246,12 @@ namespace Casasoft.TCPServer
         /// is returned; otherwise null is returned.</returns>
         private Client getClientBySocket(Socket clientSocket)
         {
-            Client c;
+            IClient c;
 
             if (!clients.TryGetValue(clientSocket, out c))
                 c = null;
 
-            return c;
+            return (Client)c;
         }
 
         /// <summary>
@@ -436,11 +436,11 @@ namespace Casasoft.TCPServer
         }
 
         #region watchdog
-        private bool testClientTimeout(Client c) => (DateTime.Now - c.lastActivity).TotalSeconds > inactivityTimeout;
+        private bool testClientTimeout(IClient c) => (DateTime.Now - c.lastActivity).TotalSeconds > inactivityTimeout;
 
         private void clearInactiveSockets(Object source, ElapsedEventArgs e)
         {
-            foreach (KeyValuePair<Socket, Client> sc in clients)
+            foreach (KeyValuePair<Socket, IClient> sc in clients)
             {
                 if (testClientTimeout(sc.Value))
                 {

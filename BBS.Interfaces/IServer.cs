@@ -18,6 +18,9 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using System.Collections.Generic;
+using System.Net.Sockets;
+
 namespace Casasoft.BBS.Interfaces
 {
     public interface IServer
@@ -30,5 +33,10 @@ namespace Casasoft.BBS.Interfaces
         public void sendMessageToClient(IClient c, string message);
         public void sendMessageToAll(string message);
         public void kickClient(IClient client);
+        /// <summary>
+        /// Contains all connected clients indexed
+        /// by their socket.
+        /// </summary>
+        public Dictionary<Socket, IClient> clients { get; }
     }
 }

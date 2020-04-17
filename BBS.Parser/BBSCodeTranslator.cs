@@ -20,6 +20,7 @@
 
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
+using Casasoft.BBS.Interfaces;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
@@ -28,6 +29,15 @@ namespace Casasoft.BBS.Parser
 {
     public class BBSCodeTranslator
     {
+        private IClient client;
+        private IServer server;
+
+        public BBSCodeTranslator(IClient c, IServer s)
+        {
+            client = c;
+            server = s;
+        }
+
         public BBSCodeResult GetProcessed(string FileName)
         {
             BBSCodeResult ret = new BBSCodeResult();
@@ -39,8 +49,7 @@ namespace Casasoft.BBS.Parser
                 CommonTokenStream tokenStream = new CommonTokenStream(lexer);
                 BBSCodeParser parser = new BBSCodeParser(tokenStream);
                 BBSCodeParser.BbsCodeContentContext context = parser.bbsCodeContent();
-                BBSCodeListener listener = new BBSCodeListener();
-                listener.FileName = FileName;
+                BBSCodeListener listener = new BBSCodeListener(client, server, FileName);
                 ParseTreeWalker walker = new ParseTreeWalker();
                 bool built = parser.BuildParseTree;
                 walker.Walk(listener, context);

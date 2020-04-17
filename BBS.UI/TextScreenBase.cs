@@ -38,7 +38,7 @@ namespace Casasoft.BBS.UI
 
         public void ReadText(string name)
         {
-            BBSCodeTranslator translator = new BBSCodeTranslator();
+            BBSCodeTranslator translator = new BBSCodeTranslator(client, server);
             Data = translator.GetProcessed(name);
             Text = Data.GetRows();
         }

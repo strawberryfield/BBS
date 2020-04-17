@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BBS.Interfaces\BBS.Interfaces.csproj" />
     <ProjectReference Include="..\BBS.Logger\BBS.Logger.csproj" />
     <ProjectReference Include="..\DataTier\DataTier.csproj" />
-    <ProjectReference Include="..\TCPServer\TCPServer.csproj" />
   </ItemGroup>
 
 </Project>
