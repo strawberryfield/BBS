@@ -7,6 +7,10 @@
     <RootNamespace>Casasoft.BBS.Daemon</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\projects\BBS\bin\</OutputPath>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\BBS\App.config" Link="App.config" />
   </ItemGroup>
