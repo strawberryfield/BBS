@@ -20,6 +20,7 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Runtime.InteropServices;
 
 namespace Casasoft.BBS.Daemon
 {
@@ -27,7 +28,12 @@ namespace Casasoft.BBS.Daemon
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                CreateHostBuilderWindows(args).Build().Run();
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+                CreateHostBuilderLinux(args).Build().Run();
+            else
+                CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -36,5 +42,19 @@ namespace Casasoft.BBS.Daemon
                 {
                     services.AddHostedService<Worker>();
                 });
+
+        public static IHostBuilder CreateHostBuilderWindows(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddHostedService<Worker>();
+            }).UseWindowsService();
+
+        public static IHostBuilder CreateHostBuilderLinux(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+            .ConfigureServices((hostContext, services) =>
+            {
+                services.AddHostedService<Worker>();
+            }).UseSystemd();
     }
 }
