@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Apr 14, 2020 alle 16:00
+-- Creato il: Apr 18, 2020 alle 21:17
 -- Versione del server: 10.3.22-MariaDB-0+deb10u1
 -- Versione PHP: 7.3.14-1~deb10u1
 
@@ -141,10 +141,10 @@ CREATE TABLE `Messages` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `MessagesSeenBy`
+-- Struttura della tabella `MessageSeenBy`
 --
 
-CREATE TABLE `MessagesSeenBy` (
+CREATE TABLE `MessageSeenBy` (
   `ID` int(11) NOT NULL,
   `MessageId` int(11) NOT NULL,
   `SeenBy` varchar(50) NOT NULL
@@ -164,13 +164,20 @@ CREATE TABLE `Users` (
   `password` varchar(32) NOT NULL COMMENT 'MD5 Hash of the password',
   `status` varchar(1) NOT NULL DEFAULT '0',
   `signature` text NOT NULL DEFAULT '',
-  `LastLoginFrom` varchar(15) NOT NULL DEFAULT '0.0.0.0',
+  `LastLoginFrom` varchar(24) NOT NULL DEFAULT '0.0.0.0',
   `LastLoginDate` datetime NOT NULL DEFAULT current_timestamp(),
   `Registered` datetime NOT NULL DEFAULT current_timestamp(),
   `LastPasswordModify` datetime NOT NULL DEFAULT current_timestamp(),
   `email` varchar(100) NOT NULL DEFAULT '',
   `Locked` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='BBS users' ROW_FORMAT=COMPACT;
+
+--
+-- Dump dei dati per la tabella `Users`
+--
+
+INSERT INTO `Users` (`userid`, `realname`, `city`, `nation`, `password`, `status`, `signature`, `LastLoginFrom`, `LastLoginDate`, `Registered`, `LastPasswordModify`, `email`, `Locked`) VALUES
+('SYSOP', 'Your real name', 'Your city', 'Your Country', '7A7B1FFA5FD5C25177AD14AA6FE4F3CD', '0', '', '127.0.0.1:49907', '2020-04-17 22:36:42', '2020-04-14 18:49:41', '2020-04-14 18:49:10', '', 0);
 
 -- --------------------------------------------------------
 
@@ -182,6 +189,15 @@ CREATE TABLE `UsersGroups` (
   `Groupid` varchar(30) NOT NULL DEFAULT '',
   `Description` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups definition' ROW_FORMAT=COMPACT;
+
+--
+-- Dump dei dati per la tabella `UsersGroups`
+--
+
+INSERT INTO `UsersGroups` (`Groupid`, `Description`) VALUES
+('POWERUSERS', 'Users with extended privileges'),
+('ROOT', 'Administrators'),
+('USERS', 'Standard Users');
 
 -- --------------------------------------------------------
 
@@ -262,9 +278,9 @@ ALTER TABLE `Messages`
   ADD KEY `Area` (`Area`);
 
 --
--- Indici per le tabelle `MessagesSeenBy`
+-- Indici per le tabelle `MessageSeenBy`
 --
-ALTER TABLE `MessagesSeenBy`
+ALTER TABLE `MessageSeenBy`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `MessageId` (`MessageId`),
   ADD KEY `SeenBy` (`SeenBy`);
@@ -330,9 +346,9 @@ ALTER TABLE `Messages`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `MessagesSeenBy`
+-- AUTO_INCREMENT per la tabella `MessageSeenBy`
 --
-ALTER TABLE `MessagesSeenBy`
+ALTER TABLE `MessageSeenBy`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --

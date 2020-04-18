@@ -24,7 +24,7 @@ namespace Casasoft.BBS.DataTier.DBContext
         public virtual DbSet<MessageAreaGroupsAllowedUsersGroup> MessageAreaGroupsAllowedUsersGroups { get; set; }
         public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
         public virtual DbSet<MessageRead> MessageReads { get; set; }
-        public virtual DbSet<MessagesSeenBy> MessagesSeenBy { get; set; }
+        public virtual DbSet<MessageSeenBy> MessagesSeenBy { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersGroup> UsersGroups { get; set; }
         public virtual DbSet<UsersGroupsLink> UsersGroupsLinks { get; set; }
@@ -376,9 +376,9 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasConstraintName("MessageRead_UserId_Users");
             });
 
-            modelBuilder.Entity<MessagesSeenBy>(entity =>
+            modelBuilder.Entity<MessageSeenBy>(entity =>
             {
-                entity.ToTable("MessagesSeenBy");
+                entity.ToTable("MessageSeenBy");
 
                 entity.HasComment("System that already received the message");
 
@@ -433,7 +433,7 @@ namespace Casasoft.BBS.DataTier.DBContext
 
                 entity.Property(e => e.LastLoginFrom)
                     .IsRequired()
-                    .HasColumnType("varchar(15)")
+                    .HasColumnType("varchar(24)")
                     .HasDefaultValueSql("'0.0.0.0'")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");

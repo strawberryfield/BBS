@@ -94,7 +94,16 @@ namespace Casasoft.BBS.UI
                                 user.LastLoginFrom = client.Remote;
                                 login.Success = true;
                                 bbs.Logins.Add(login);
-                                bbs.SaveChanges();
+                                try
+                                {
+                                    bbs.SaveChanges();
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine(e.Message);
+                                    Console.WriteLine(e.InnerException.Message);
+                                }
+                                
                                 EventLogger.Write(string.Format("Successful login for user '{0}'", username),
                                     client.Remote);
                                 client.status = EClientStatus.LoggedIn;
