@@ -39,7 +39,11 @@ namespace Casasoft.BBS.Parser
         }
         public static Dictionary<string, Tags> TagsTable;
 
-        public enum Entities { AMP, LEFTCURLY, RIGHTCURLY }
+        public enum Entities
+        {
+            AMP, LEFTCURLY, RIGHTCURLY,
+            USERNAME, REMOTE, CONNECTIONTIME
+        }
         public static Dictionary<string, Entities> EntitiesTable;
         public static Dictionary<string, string> CustomEntitiesTable;
 
@@ -248,6 +252,15 @@ namespace Casasoft.BBS.Parser
                         break;
                     case Entities.RIGHTCURLY:
                         Parsed.Parsed += "}";
+                        break;
+                    case Entities.USERNAME:
+                        Parsed.Parsed += string.IsNullOrWhiteSpace(Client.username) ? "GUEST" : Client.username;
+                        break;
+                    case Entities.REMOTE:
+                        Parsed.Parsed += Client.Remote;
+                        break;
+                    case Entities.CONNECTIONTIME:
+                        Parsed.Parsed += Client.connectedAt.ToString("g");
                         break;
                     default:
                         break;

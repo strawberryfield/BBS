@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.IO;
 using System.Reflection;
 
 namespace Casasoft.BBS.Interfaces
@@ -28,7 +29,8 @@ namespace Casasoft.BBS.Interfaces
         public static IScreen Create(IClient c, IServer s, string module, string param, IScreen prev)
         {
             module = "Casasoft.BBS.UI." + module.Trim();
-            Assembly asm = Assembly.LoadFrom("BBS.UI.dll");
+            string base_dir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            Assembly asm = Assembly.LoadFrom(Path.Combine(base_dir, "BBS.UI.dll"));
             Type t = asm.GetType(module);
             if (string.IsNullOrWhiteSpace(param))
             {
