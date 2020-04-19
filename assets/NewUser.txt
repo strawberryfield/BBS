@@ -1,4 +1,4 @@
-{CLS/} The Strawberry Field BBS  -  New user registration
+{CLS/} &BBSname;  -  New user registration
 {HR/}
 
 Thank you for joining The Strawberry Field.

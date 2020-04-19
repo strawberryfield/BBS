@@ -1,4 +1,4 @@
-{CLS/}Registered users:
+{CLS/} &BBSname  -  Registered users:
 {HR/}
 
 {JOINED/}

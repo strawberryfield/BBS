@@ -9,6 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 	ProjectSection(SolutionItems) = preProject
 		assets\Banner.txt = assets\Banner.txt
 		assets\ChangePassword.txt = assets\ChangePassword.txt
+		assets\ChangePasswordSu.txt = assets\ChangePasswordSu.txt
 		assets\Connected.txt = assets\Connected.txt
 		assets\Disclaimer.txt = assets\Disclaimer.txt
 		assets\GuestAccess.txt = assets\GuestAccess.txt

@@ -1,4 +1,4 @@
-{CLS/}Connected users:
+{CLS/} &BBSname;  -  Connected users:
 {HR/}
 
 {CONNECTED/}

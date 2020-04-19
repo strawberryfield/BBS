@@ -80,5 +80,19 @@ namespace Casasoft.BBS.DataTier.DataModel
             if ((DateTime.Now - LastPasswordModify).TotalDays > days) return true;
             return false;
         }
+
+        public bool HasRights(string required)
+        {
+            if (string.IsNullOrWhiteSpace(required)) return true;
+            string[] groupsArray = required.ToUpper().Split(',');
+            foreach(string g in groupsArray)
+            {
+                foreach(var has in UsersGroupsLinks)
+                {
+                    if (has.Groupid.ToUpper() == g) return true;
+                }
+            }
+            return false;
+        }
     }
 }

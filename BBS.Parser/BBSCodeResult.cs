@@ -31,13 +31,14 @@ namespace Casasoft.BBS.Parser
         {
             public string module;
             public string data;
+            public string requires;
 
             public Action()
             {
                 module = "TextScreen";
                 data = string.Empty;
+                requires = string.Empty;
             }
-
         }
 
         public Dictionary<string, Action> Actions;

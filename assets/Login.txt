@@ -1,5 +1,4 @@
-{CLS backcolor="White" forecolor="Blue" /}
- &BBSname;  -  Login
+{CLS backcolor="White" forecolor="Blue" /} &BBSname;  -  Login
 {HR/}
 
 Enter {COLOR value="Red"}New{/COLOR} if you want to register as a new user

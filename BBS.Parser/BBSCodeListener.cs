@@ -20,6 +20,7 @@
 
 using Antlr4.Runtime.Misc;
 using Casasoft.BBS.DataTier;
+using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
 using System;
@@ -162,6 +163,15 @@ namespace Casasoft.BBS.Parser
                         Parsed.Parsed += ANSI.WriteMode();
                         break;
                     case Tags.ACTION:
+                        if(!string.IsNullOrWhiteSpace(action.requires))
+                        {
+                            if (string.IsNullOrWhiteSpace(Client.username)) return;
+                            using(bbsContext bbs = new bbsContext())
+                            {
+                                User user = bbs.GetUserByUsername(Client.username);
+                                if (!user.HasRights(action.requires)) return;
+                            }
+                        }
                         if (!Parsed.Actions.TryAdd(actionKey, action))
                             EventLogger.Write(string.Format("Error adding action '{0}' in '{1}'", actionKey, FileName), 0);
                         break;
@@ -226,6 +236,9 @@ namespace Casasoft.BBS.Parser
                                 break;
                             case "TEXT":
                                 action.data = attributeValue;
+                                break;
+                            case "REQUIRES":
+                                action.requires = attributeValue;
                                 break;
                             default:
                                 break;

@@ -1,4 +1,4 @@
-{CLS/}The Strawberry Field BBS  -  Main menu
+{CLS/} &BBSname;  -  Main menu
 {HR/}
 
 Select an option:
@@ -6,6 +6,7 @@ Select an option:
 {ACTION key="U" text="Joined.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[U]{/BACKCOLOR}{/COLOR} - Show registered users{/ACTION}
 {ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - BBS Rules / Disclaimer{/ACTION}
 {ACTION key="P" module="ChangePassword"} {COLOR value="White"}{BACKCOLOR value="Blue"}[P]{/BACKCOLOR}{/COLOR} - Change Password{/ACTION}
+{ACTION key="S" module="ChangePasswordSu" requires="ROOT"} {COLOR value="White"}{BACKCOLOR value="Blue"}[S]{/BACKCOLOR}{/COLOR} - Change Password{/ACTION}
 {ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Logout{/ACTION}
 
 Enter choice: 

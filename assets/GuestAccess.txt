@@ -1,4 +1,4 @@
-{CLS/}The Strawberry Field BBS  -  Public area main menu
+{CLS/} &BBSname;  -  Public area main menu
 {HR/}
 
 Select an option:
