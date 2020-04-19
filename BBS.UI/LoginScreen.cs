@@ -23,6 +23,8 @@ using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
 using System;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace Casasoft.BBS.UI
 {
@@ -34,16 +36,21 @@ namespace Casasoft.BBS.UI
         public LoginScreen(IClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
             status = states.WaitForUsername;
+            NameValueCollection SecurityOptions = (NameValueCollection)ConfigurationManager.GetSection("Security");
+            maxtries = Convert.ToInt16(SecurityOptions["MaxTries"]);
         }
 
         private enum states { WaitForUsername, WaitForPassword }
         private states status;
+        private int tries = 0;
+        private int maxtries;
 
         public override void Show()
         {
             base.Show();
             LnWrite("Username: ");
             status = states.WaitForUsername;
+            tries = 0;
         }
 
         private string username = string.Empty;
@@ -132,9 +139,17 @@ namespace Casasoft.BBS.UI
                     }
                     else
                     {
-                        server.sendMessageToClient(client, "\r\nUsername or password incorrect. Please try again.");
-                        server.sendMessageToClient(client, "\r\nUsername: ");
-                        status = states.WaitForUsername;
+                        if (++tries >= maxtries)
+                        {
+                            client.screen = ScreenFactory.Create(client, server, "Logout");
+                            client.screen.Show();
+                        }
+                        else
+                        {
+                            server.sendMessageToClient(client, "\r\nUsername or password incorrect. Please try again.");
+                            server.sendMessageToClient(client, "\r\nUsername: ");
+                            status = states.WaitForUsername;
+                        }
                     }
                     break;
                 default:
