@@ -45,8 +45,8 @@ namespace Casasoft.BBS.DataTier
             if (!optionsBuilder.IsConfigured)
             {
                 string connString = ConfigurationManager.ConnectionStrings["DB"].ConnectionString;
-//                optionsBuilder.UseMySql(connString, x => x.ServerVersion("10.3.22-mariadb"));
-                optionsBuilder.UseLazyLoadingProxies().UseMySql(connString, x => x.ServerVersion("10.3.22-mariadb"));
+                string serverVersion = ConfigurationManager.ConnectionStrings["DB"].ProviderName;
+                optionsBuilder.UseLazyLoadingProxies().UseMySql(connString, x => x.ServerVersion(serverVersion));
             }
         }
 

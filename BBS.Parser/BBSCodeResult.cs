@@ -42,16 +42,33 @@ namespace Casasoft.BBS.Parser
         }
 
         public Dictionary<string, Action> Actions;
+        private Stack<string> tagsTextStack;
 
         public BBSCodeResult()
         {
             Parsed = string.Empty;
             Actions = new Dictionary<string, Action>();
+            tagsTextStack = new Stack<string>();
         }
 
-        public string[] GetRows()
+        public string[] GetRows() => Regex.Split(Parsed, "\r\n");
+
+        public void TextClear()
         {
-            return Regex.Split(Parsed, "\r\n");
+            Parsed = string.Empty;
+            tagsTextStack.Clear();
         }
+
+        public void TextConcat(string s) => Parsed += s;
+        public void TextConcat(char c) => Parsed += c;
+
+        public void TextPush()
+        {
+            tagsTextStack.Push(Parsed);
+            Parsed = string.Empty;
+        }
+
+        public void TextPop(bool concat) => Parsed = tagsTextStack.Pop() + (concat ? Parsed : string.Empty);
+        
     }
 }
