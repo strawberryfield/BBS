@@ -1,13 +1,4 @@
-# Casasoft BBS
-## Telnet BBS - «The Strawberry Field» returns after 30 years?
-
-![Project Logo](cover.jpg)
-
-This project is currently Alpha stage.
-
-Per documentazione e informazioni in italiano fare riferimento a [LEGGIMI.md](LEGGIMI.md)
-
-## Brief history of the project
+# Brief history of the project
 
 Back in 1989 I purchased a 2400 bps modem with which I could connect to some BBS in my city (Rimini, Italy).
 
@@ -39,9 +30,6 @@ A GIT repository and its sharing on GitHub cannot be missing.
 
 We are finally ready to go.
 
-## Software environment
+---
 
-Written in C# with .net core 3.1, Entity Framework Core 3.1.1, Antlr 4.8  
-Database hosted on MariaDB 10.3.22
-
-Tested under Windows 10 1909 and RaspberryPi 2 (Raspbian buster)
+[Back](index.md)		[Home](index.md)		[Next](database.md)
