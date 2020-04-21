@@ -32,4 +32,5 @@ Finalmente siamo pronti per partire.
 
 ---
 
-[Indietro](index.md)		[Indice](index.md)		[Avanti](database.md)
+|[Indietro](index.md)|[Indice](index.md)|[Avanti](database.md)|
+|---|---|---|

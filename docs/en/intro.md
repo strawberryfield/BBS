@@ -32,4 +32,5 @@ We are finally ready to go.
 
 ---
 
-[Back](index.md)		[Home](index.md)		[Next](database.md)
+|[Back](index.md)|[Home](index.md)|[Next](database.md)|
+|---|---|---|

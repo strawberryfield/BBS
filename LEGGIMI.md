@@ -45,3 +45,7 @@ Scritto in C# con .net core 3.1, Entity Framework Core 3.1.1, Antlr 4.8
 Database ospitato su MariaDB 10.3.22
 
 Testato sotto Windows 10 1909 e RaspberryPi 2 (Raspbian buster)
+
+## Documentazione
+
+Qui trovate il [Manuale di installazione e configurazione](docs/index.md)
