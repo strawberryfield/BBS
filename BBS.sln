@@ -33,18 +33,36 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BBS.Interfaces", "BBS.Inter
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{4791A72C-C34B-4616-9381-765DB64A605B}"
 	ProjectSection(SolutionItems) = preProject
+		docs\config.md = docs\config.md
+		docs\database.md = docs\database.md
 		docs\index.md = docs\index.md
+		docs\intro.md = docs\intro.md
+		docs\linux.md = docs\linux.md
+		docs\markup.md = docs\markup.md
+		docs\windows.md = docs\windows.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{559F89ED-2E1F-4DF3-9699-DDD5396A7C41}"
 	ProjectSection(SolutionItems) = preProject
 		cover.jpg = cover.jpg
+		LEGGIMI.md = LEGGIMI.md
 		package.png = package.png
 		README.md = README.md
 		terminal.ico = terminal.ico
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daemon", "Daemon\Daemon.csproj", "{5C26818A-7B8F-4AD6-8084-C3DD86735EA5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "en", "en", "{4D2F34BF-6BD1-4A85-95C1-08BB0A59886F}"
+	ProjectSection(SolutionItems) = preProject
+		docs\en\config.md = docs\en\config.md
+		docs\en\database.md = docs\en\database.md
+		docs\en\index.md = docs\en\index.md
+		docs\en\intro.md = docs\en\intro.md
+		docs\en\linux.md = docs\en\linux.md
+		docs\en\markup.md = docs\en\markup.md
+		docs\en\windows.md = docs\en\windows.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +101,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4D2F34BF-6BD1-4A85-95C1-08BB0A59886F} = {4791A72C-C34B-4616-9381-765DB64A605B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ECFC60A8-9CB0-4186-A946-6EB0B892AACC}

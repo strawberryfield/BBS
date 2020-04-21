@@ -25,12 +25,13 @@ test -x "$DAEMON" || exit 0
 case "$1" in
     start)
         log_daemon_msg "Starting Casasoft BBS daemon " "$NAME"
-        start-stop-daemon --pidfile "$PIDFILE" --start --quiet --background --exec "$DAEMON" 
+        start-stop-daemon --make-pidfile --pidfile "$PIDFILE" --start --quiet --background --exec "$DAEMON" 
         log_end_msg $?
         ;;
     stop)
         log_daemon_msg "Stopping Casasoft BBS daemon " "$NAME"
         start-stop-daemon --pidfile "$PIDFILE" --stop --signal 3 --quiet --oknodo --exec "$DAEMON"
+		rm $PIDFILE
         log_end_msg $?
         ;;
     restart|force-reload)
