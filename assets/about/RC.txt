@@ -1,0 +1,43 @@
+{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Conoscere l'autore del sito.{/color}{/BOLD}
+﻿
+ Ho 54 anni, sono nato a Rimini, vivo a Cesena con mia moglie e i nostri due 
+ figli. 
+ 
+ Ho avuto la prima macchina fotografica a 8 anni e da allora non ho mai smesso 
+ di fotografare. Rimpiango solo di non avere tempo per lavorare un po' in 
+ camera oscura. (fare le stampe in digitale non da' affatto le stesse 
+ meravigliose senzazioni). 
+ 
+ Anni fa sono stato convinto ad acquistare una videocamera digitale e allora ho 
+ cominciato a cercare di creare dei DVD interattivi ispirandomi a quelli della 
+ Walt Disney che guardano i miei figli. Anzi, siccome sono loro i principali 
+ spettatori dei miei DVD dovevano essere proprio uguali. 
+ 
+ Mi interesso di programmazione dal 1981 quando mi hanno regalato una 
+ calcolatrice Texas TI-58. Poi sono passato al glorioso Commodore 64 e infine 
+ sono arrivato al pc, prima con il dos, poi OS/2, linux (una vecchia slackware 
+ allegata a una rivista) e alla fine Windows (prima NT poi 2000). 
+ 
+ Oggi uso Windows 10, Raspbian e Android oltre a divertirmi con 
+ microcontrollori come Arduino e ESP8266. 
+ 
+ Per la strada ho incontrato i VAX-VMS dell'universita', un IBM-36 e un AS-400. 
+ Per lavoro ho conosciuto SCO, AIX su RS-6000 e tutta la gamma dei server 
+ windows da NT4 in poi. Ho sempre desiderato un Mac, ma gli ambienti in cui ho 
+ operato erano sempre rivolti altrove: una volta da un cliente ho messo le mani 
+ sulla tastiera di un iMac e non sapendo come fare per configurarlo ho scritto 
+ "vi"... 
+ 
+ Lavoro per una software-house dove coordino lo sviluppo di software 
+ gestionale.
+ 
+ In passato (anni 80) ho collaborato con le riviste MCmicrocomputer e Nuova 
+ Elettronica. Inoltre RadioRAI ha trasmesso alcuni miei programmi per il 
+ Commodore64 (si, hanno messo in onda la cassetta con registrato il programma: 
+ a quei tempi si facevano anche di queste cose) 
+ 
+ Più recente (inizio 2008) è invece la pubblicazione del tutorial sui DVD da 
+ parte di Computer Programming 
+ 
+ Da alcuni anni faccio parte del team di sviluppo del simulatore ferroviario 
+ open source OpenRails (http://openrails.org). 

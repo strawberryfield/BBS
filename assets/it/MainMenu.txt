@@ -1,0 +1,17 @@
+{CLS/} &BBSname;  -  Menu principale
+{HR/}
+
+Select an option:
+{ACTION key="C" text="Connected.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[C]{/BACKCOLOR}{/COLOR} - Mostra utenti connessi{/ACTION}
+{ACTION key="U" text="Joined.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[U]{/BACKCOLOR}{/COLOR} - Mostra utenti registrati{/ACTION}
+
+{ACTION key="T" text="about/TSF.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[T]{/BACKCOLOR}{/COLOR} - Informazioni su The Strawberry Field{/ACTION}
+{ACTION key="A" text="about/RC.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - Informazioni sull'autore{/ACTION}
+{ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - Regolamento della BBS{/ACTION}
+
+{ACTION key="P" module="ChangePassword"} {COLOR value="White"}{BACKCOLOR value="Blue"}[P]{/BACKCOLOR}{/COLOR} - Cambia Password{/ACTION}
+{ACTION key="S" module="ChangePasswordSu" requires="ROOT"} {COLOR value="White"}{BACKCOLOR value="Blue"}[S]{/BACKCOLOR}{/COLOR} - Cambia Passord (Amministratore){/ACTION}
+
+{ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Disconnessione{/ACTION}
+
+&scelta; 

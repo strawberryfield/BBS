@@ -1,0 +1,64 @@
+{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Brief history of the brand The Strawberry Field.{/color}{/BOLD}
+
+ In 1989 I found myself making a small newspaper with a program of pagination 
+ called Ventura Publisher. At the time, similar jobs were being done with the 
+ typewriter and someone also taught me to justify the packet text (i.e. aligned 
+ left and right) by first writing on a squared sheet. The sheet with three 
+ proportional columns justified as a package and many other small goodies did 
+ not seem certain came out of a needle printer (which worked for interminable 
+ time making a deafening noise). The captivating graphic aspect he got me the 
+ commission of various booklets and leaflets and I also had the possibility to 
+ print with a laser printer. The laser wasn't more quick since it took a 
+ quarter of an hour before the page to come out (much to the dismay of the 
+ owner who was told the printer was capable of 11 pages per minute), but the 
+ resolution, although it cannot go beyond 150 dpi for memory problems, it 
+ really gave a show. 
+ 
+ At the bottom of these publications appeared the trademark The Strawberry 
+ Field or, in some cases, the most autarchic and mocking Antica Stramberia 
+ delle Fragole. 
+ 
+ Also in that year I bought a modem with which to connect to some BBS of the 
+ FidoNet network. A sysop (the owner of the BBS) gave me the opportunity to 
+ install a point for which I used the same nickname "The Strawberry Field." For 
+ those unfamiliar with it, the Fidonet network was a amateur network in which 
+ the various nodes (BBS) called each other in the night hours (due the problem 
+ of telephone costs) with analog modems and exchanged the messages that users 
+ of single nodes left on the BBS; there were two types of mail: echomail 
+ similar to a newsgroup and the matrix where the messages went "privately" from 
+ one user to another as the internet mail. One "point" was that a personal BBS 
+ able to connect only to the node that granted this possibility and it allowed 
+ you to read your mail offline, otherwise you would have to read it standing 
+ connected as you do today with webmail services. 
+ 
+ But my main interest was in photography, I had started following my father's 
+ teachings with the instamatic Kodak he had given when I was 8 years old. The 
+ photos I took have always been very popular I remember that the incredulous 
+ teacher spread the whole school to show the photos that I had taken during the 
+ school trip; incidentally those same photos were a lot criticized by my 
+ father... Later I started using his reflex cameras (strictly Pentax) and some 
+ services were also commissioned (fashion shows); while instead I have always 
+ categorically refused to do photo shoots for weddings. In fact, at weddings I 
+ always went armed with a photo camera, but I wanted to feel free to photograph 
+ what I wanted; then maybe someone put a my photo in the frame and not that of 
+ the official photographer. 
+ 
+ For a few years the three things traveled separately: the graphic works, the 
+ telematic links in plain text and photographs on films. Then CD players 
+ arrived and by scanning a photo from a service you could have a PhotoCD with 
+ your own images to work with the computer where the photos could be combined 
+ with the graphics. Also one fine day I happened to hands a program called 
+ Netscape Navigator: thanks to this system you could create a "BBS" with 
+ graphics and photos (what we today we call "website"). I had finally found the 
+ link between the two souls of The Strawberry Field: the "artistic" part and 
+ that of communication. 
+ 
+ More recently my wife insisted that I buy a video camera for to take back our 
+ son so that we could remember some amusing moments. This it was already 
+ digital and the relative filming immediately became part of it an integral 
+ part of The Strawberry Field productions exploiting the possible synergies as 
+ can be seen from the tutorial on my site 
+ (https://strawberryfield.altervista.org). 
+ 
+ Today the brand The Strawberry Field gathers all the productions photographic, 
+ video and graphics like this BBS. 

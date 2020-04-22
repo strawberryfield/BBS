@@ -13,11 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 		assets\Connected.txt = assets\Connected.txt
 		assets\Disclaimer.txt = assets\Disclaimer.txt
 		assets\GuestAccess.txt = assets\GuestAccess.txt
+		assets\GuestMenu.txt = assets\GuestMenu.txt
 		assets\Joined.txt = assets\Joined.txt
 		assets\LoggedIn.txt = assets\LoggedIn.txt
 		assets\Login.txt = assets\Login.txt
 		assets\logo.ansi.txt = assets\logo.ansi.txt
 		assets\Logout.txt = assets\Logout.txt
+		assets\MainMenu.txt = assets\MainMenu.txt
 		assets\NewUser.txt = assets\NewUser.txt
 	EndProjectSection
 EndProject
@@ -64,6 +66,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "en", "en", "{4D2F34BF-6BD1-
 		docs\en\windows.md = docs\en\windows.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "it", "it", "{02CA5356-C685-4738-A42F-B30190D04FC5}"
+	ProjectSection(SolutionItems) = preProject
+		assets\it\ChangePassword.txt = assets\it\ChangePassword.txt
+		assets\it\ChangePasswordSu.txt = assets\it\ChangePasswordSu.txt
+		assets\it\Connected.txt = assets\it\Connected.txt
+		assets\it\GuestMenu.txt = assets\it\GuestMenu.txt
+		assets\it\Joined.txt = assets\it\Joined.txt
+		assets\it\MainMenu.txt = assets\it\MainMenu.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "about", "about", "{EE906F6C-5D3D-44E4-BF68-52A832A4FBA0}"
+	ProjectSection(SolutionItems) = preProject
+		assets\about\RC-en.txt = assets\about\RC-en.txt
+		assets\about\RC.txt = assets\about\RC.txt
+		assets\about\TSF-en.txt = assets\about\TSF-en.txt
+		assets\about\TSF.txt = assets\about\TSF.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -104,6 +124,8 @@ Global
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4D2F34BF-6BD1-4A85-95C1-08BB0A59886F} = {4791A72C-C34B-4616-9381-765DB64A605B}
+		{02CA5356-C685-4738-A42F-B30190D04FC5} = {BDD4F5C2-590A-4BD8-BF22-7E8231B518FB}
+		{EE906F6C-5D3D-44E4-BF68-52A832A4FBA0} = {BDD4F5C2-590A-4BD8-BF22-7E8231B518FB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ECFC60A8-9CB0-4186-A946-6EB0B892AACC}

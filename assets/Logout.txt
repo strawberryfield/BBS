@@ -1,2 +1,2 @@
-{CLS/}Thank you for visiting The Strawberry Field BBS.
+{CLS/}Thank you for visiting &BBSname;.
 See you again.
