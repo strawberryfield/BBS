@@ -35,7 +35,7 @@ namespace Casasoft.BBS.Parser
         public enum Tags
         {
             CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR,
-            BEEP, HR, CONNECTED, JOINED, USER,
+            FIGGLE, BEEP, HR, CONNECTED, JOINED, USER,
             ACTION
         }
         public static Dictionary<string, Tags> TagsTable;
@@ -114,6 +114,9 @@ namespace Casasoft.BBS.Parser
                         ANSI.pushBackColor(context.children[2].GetChild(2).GetText());
                         Parsed.TextConcat(ANSI.WriteMode());
                         break;
+                    case Tags.FIGGLE:
+                        Parsed.TextPush();
+                        break;
                     case Tags.ACTION:
                         action = new BBSCodeResult.Action();
                         actionKey = string.Empty;
@@ -162,6 +165,10 @@ namespace Casasoft.BBS.Parser
                     case Tags.BACKCOLOR:
                         ANSI.popBackColor();
                         Parsed.TextConcat(ANSI.WriteMode());
+                        break;
+                    case Tags.FIGGLE:
+                        Parsed.Parsed = Figgle.FiggleFonts.Standard.Render(Parsed.Parsed);
+                        Parsed.TextPop(true);
                         break;
                     case Tags.ACTION:
                         if (!string.IsNullOrWhiteSpace(action.requires))
