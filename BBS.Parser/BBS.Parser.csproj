@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Antlr4.Runtime.Standard" Version="4.8.0" />
-    <PackageReference Include="Figgle" Version="0.3.0" />
+    <PackageReference Include="Casasoft.Figgle" Version="0.3.1" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
 

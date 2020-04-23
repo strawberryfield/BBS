@@ -84,6 +84,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "about", "about", "{EE906F6C
 		assets\about\TSF.txt = assets\about\TSF.txt
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "local_packages", "local_packages", "{69028C6D-53D5-46D4-938D-38A146A37E0B}"
+	ProjectSection(SolutionItems) = preProject
+		packages\Casasoft.Figgle.0.3.1.nupkg = packages\Casasoft.Figgle.0.3.1.nupkg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
