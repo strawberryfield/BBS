@@ -1,0 +1,1 @@
+dotnet build -o bin/Portable

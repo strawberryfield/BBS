@@ -1,0 +1,1 @@
+dotnet publish -o bin/Linux-Arm -c Release -p:PublishTrimmed=true --self-contained true --runtime linux-arm
