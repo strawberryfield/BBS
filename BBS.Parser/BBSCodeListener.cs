@@ -167,7 +167,7 @@ namespace Casasoft.BBS.Parser
                         Parsed.TextConcat(ANSI.WriteMode());
                         break;
                     case Tags.FIGGLE:
-                        Parsed.Parsed = Figgle.FiggleFonts.Standard.Render(Parsed.Parsed);
+                        Parsed.Parsed = Figgle.FiggleFonts.Lookup("standard").Render(Parsed.Parsed);
                         Parsed.TextPop(true);
                         break;
                     case Tags.ACTION:
