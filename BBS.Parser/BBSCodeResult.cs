@@ -51,7 +51,7 @@ namespace Casasoft.BBS.Parser
             tagsTextStack = new Stack<string>();
         }
 
-        public string[] GetRows() => Regex.Split(Parsed, "\r\n");
+        public string[] GetRows() => Regex.Split(Parsed.Replace("\r", ""), "\n");
 
         public void TextClear()
         {
