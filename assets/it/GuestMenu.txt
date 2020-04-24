@@ -1,6 +1,5 @@
-{CLS/} &BBSname;  -  Menu area pubblica
-{HR/}
-
+{CLS/} &BBSname;
+{backcolor value="cyan"}{color value="black"}{Figgle font="small"} Menu area pubblica {/Figgle}{/color}{/backcolor}{HR/}
 Scegli una opzione:
 {ACTION key="N" module="NewUser"} {COLOR value="White"}{BACKCOLOR value="Blue"}[N]{/BACKCOLOR}{/COLOR} - Crea un nuovo utente{/ACTION}
 {ACTION key="L" module="LoginScreen"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - Login{/ACTION}

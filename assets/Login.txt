@@ -1,6 +1,5 @@
 {CLS backcolor="White" forecolor="Blue" /} &BBSname; 
-{Figgle}Login{/Figgle}
-{hr/}
+{backcolor value="cyan"}{color value="black"}{Figgle} Login {/Figgle}{/color}{/backcolor}{HR/}
 Enter {COLOR value="Red"}New{/COLOR} if you want to register as a new user
 or {COLOR value="Red"}Guest{/COLOR} to continue without registering
 

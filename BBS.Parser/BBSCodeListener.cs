@@ -57,6 +57,7 @@ namespace Casasoft.BBS.Parser
         private ANSICodes ANSI;
         private BBSCodeResult.Action action;
         private string actionKey;
+        private string figgleFont;
 
         public BBSCodeListener(IClient c, IServer s, string filename) : base()
         {
@@ -116,6 +117,7 @@ namespace Casasoft.BBS.Parser
                         break;
                     case Tags.FIGGLE:
                         Parsed.TextPush();
+                        figgleFont = string.Empty;
                         break;
                     case Tags.ACTION:
                         action = new BBSCodeResult.Action();
@@ -167,7 +169,13 @@ namespace Casasoft.BBS.Parser
                         Parsed.TextConcat(ANSI.WriteMode());
                         break;
                     case Tags.FIGGLE:
-                        Parsed.Parsed = Figgle.FiggleFonts.Lookup("standard").Render(Parsed.Parsed);
+                        if (string.IsNullOrWhiteSpace(figgleFont)) figgleFont = "standard";
+                        try
+                        {
+                            Parsed.Parsed = Figgle.FiggleFonts.Lookup(figgleFont.ToLower()).Render(Parsed.Parsed);
+                        }
+                        catch (Exception e)
+                        { }                                
                         Parsed.TextPop(true);
                         break;
                     case Tags.ACTION:
@@ -239,7 +247,9 @@ namespace Casasoft.BBS.Parser
                         break;
                     case Tags.BACKCOLOR:
                         break;
-
+                    case Tags.FIGGLE:
+                        figgleFont = attributeValue;
+                        break;
                     case Tags.ACTION:
                         switch (attributeName)
                         {

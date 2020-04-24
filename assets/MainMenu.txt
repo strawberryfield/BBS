@@ -1,6 +1,5 @@
-{CLS/} &BBSname;  -  Main menu
-{HR/}
-
+{CLS/} &BBSname;
+{backcolor value="cyan"}{color value="black"}{Figgle font="small"} Main menu {/Figgle}{/color}{/backcolor}{HR/}
 Select an option:
 {ACTION key="C" text="Connected.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[C]{/BACKCOLOR}{/COLOR} - Show connected users{/ACTION}
 {ACTION key="U" text="Joined.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[U]{/BACKCOLOR}{/COLOR} - Show registered users{/ACTION}
