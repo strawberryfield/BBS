@@ -3,4 +3,4 @@
 
 {JOINED/}
 
-Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Invio]{/BACKCOLOR}{/COLOR} per tornare al menu
+Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Invio]{/BACKCOLOR}{/COLOR} per tornare al menu 

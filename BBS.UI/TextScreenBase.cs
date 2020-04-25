@@ -95,9 +95,12 @@ namespace Casasoft.BBS.UI
         protected int ShowLines(int start, int len)
         {
             int ret = start;
+            bool isFirst = true;
             for (; ret < start + len && ret < Text.Length; ++ret)
             {
-                server.sendMessageToClient(client, Text[ret] + "\r\n");
+                if (!isFirst) server.sendMessageToClient(client, "\r\n");
+                else isFirst = false;
+                server.sendMessageToClient(client, Text[ret]);
             }
             return ret;
         }
