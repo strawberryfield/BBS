@@ -8,6 +8,8 @@ Select an option:
 {ACTION key="A" text="about/RC-en.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - About the author{/ACTION}
 {ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - BBS Rules / Disclaimer{/ACTION}
 
+{ACTION key="M" module="MessageAreaGroups" requires="USERS"} {COLOR value="White"}{BACKCOLOR value="Blue"}[M]{/BACKCOLOR}{/COLOR} - Message Areas{/ACTION}
+
 {ACTION key="P" module="ChangePassword"} {COLOR value="White"}{BACKCOLOR value="Blue"}[P]{/BACKCOLOR}{/COLOR} - Change Password{/ACTION}
 {ACTION key="S" module="ChangePasswordSu" requires="ROOT"} {COLOR value="White"}{BACKCOLOR value="Blue"}[S]{/BACKCOLOR}{/COLOR} - Change Password (Administrator){/ACTION}
 

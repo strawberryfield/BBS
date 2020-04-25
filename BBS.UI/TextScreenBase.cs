@@ -20,20 +20,23 @@
 
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Parser;
+using System.Collections.Generic;
 
 namespace Casasoft.BBS.UI
 {
     public class TextScreenBase : ScreenBase
     {
-        protected string[] Text;
+        protected List<string> Text;
         protected BBSCodeResult Data;
+        protected string[] Params;
 
         public TextScreenBase(IClient c, IServer s) : base(c, s) { }
         public TextScreenBase(IClient c, IServer s, IScreen prev) : base(c, s, prev) { }
         public TextScreenBase(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
         public TextScreenBase(IClient c, IServer s, string txt, IScreen prev) : this(c, s, prev)
         {
-            ReadText(txt);
+            Params = txt.Split(';');
+            ReadText(Params[0]);
         }
 
         public void ReadText(string name)
@@ -53,7 +56,7 @@ namespace Casasoft.BBS.UI
         {
             if (!string.IsNullOrWhiteSpace(msg) && msg.Substring(0, 1).ToUpper() == "B")
             {
-                if (Text.Length > 24 && currentLine > 23)
+                if (Text.Count > 24 && currentLine > 23)
                 {
                     int newStart = currentLine - 48;
                     newStart = newStart < 0 ? 0 : newStart;
@@ -63,7 +66,7 @@ namespace Casasoft.BBS.UI
 
             if (string.IsNullOrWhiteSpace(msg))
             {
-                if (Text.Length > 24 && currentLine < Text.Length - 1)
+                if (Text.Count > 24 && currentLine < Text.Count - 1)
                     currentLine = ShowLines(currentLine, 24);
                 else
                     ShowNext();
@@ -96,7 +99,7 @@ namespace Casasoft.BBS.UI
         {
             int ret = start;
             bool isFirst = true;
-            for (; ret < start + len && ret < Text.Length; ++ret)
+            for (; ret < start + len && ret < Text.Count; ++ret)
             {
                 if (!isFirst) server.sendMessageToClient(client, "\r\n");
                 else isFirst = false;

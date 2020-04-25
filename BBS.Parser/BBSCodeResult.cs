@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace Casasoft.BBS.Parser
@@ -51,7 +52,7 @@ namespace Casasoft.BBS.Parser
             tagsTextStack = new Stack<string>();
         }
 
-        public string[] GetRows() => Regex.Split(Parsed.Replace("\r", ""), "\n");
+        public List<string> GetRows() => Regex.Split(Parsed.Replace("\r", ""), "\n").ToList();
 
         public void TextClear()
         {

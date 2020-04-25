@@ -52,6 +52,9 @@ namespace Casasoft.BBS.DataTier
 
         #region custom methods
         public User GetUserByUsername(string username) => Users.Where(u => u.Userid == username).FirstOrDefault();
+
+        public IQueryable<MessageArea> GetMessageAreasByGroup(string group) =>
+            string.IsNullOrWhiteSpace(group) ? MessageAreas : MessageAreas.Where(a => a.Areagroup == group.ToUpper());
         #endregion
     }
 }

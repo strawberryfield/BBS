@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 		assets\logo.ansi.txt = assets\logo.ansi.txt
 		assets\Logout.txt = assets\Logout.txt
 		assets\MainMenu.txt = assets\MainMenu.txt
+		assets\MessageAreaGroups.txt = assets\MessageAreaGroups.txt
 		assets\NewUser.txt = assets\NewUser.txt
 	EndProjectSection
 EndProject
