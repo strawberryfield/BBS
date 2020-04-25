@@ -30,9 +30,12 @@ namespace Casasoft.BBS.UI
         public MessageAreas(IClient c, IServer s) : base(c, s, "@MessageAreas") { }
         public MessageAreas(IClient c, IServer s, IScreen prev) : this(c, s, "@MessageAreas", prev) { }
         public MessageAreas(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public MessageAreas(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        public MessageAreas(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        {
+            AddList();
+        }
 
-        public override void Show()
+        private void AddList()
         {
             string fmt = "{0,-20} {1,-58}";
             Text.Add(string.Format(fmt, "Area", "Description"));
@@ -40,7 +43,8 @@ namespace Casasoft.BBS.UI
 
             using (bbsContext bbs = new bbsContext())
             {
-                var list = bbs.GetMessageAreasByGroup(Params.Length > 1 ? Params[1] : string.Empty);
+                var list = bbs.GetMessageAllowedAreasByGroup(
+                    Params.Length > 1 ? Params[1] : string.Empty, client.username);
                 foreach (MessageArea area in list)
                 {
                     Text.Add(string.Format(fmt, area.Id, area.Description));
@@ -51,7 +55,6 @@ namespace Casasoft.BBS.UI
 
             Text.Add(string.Empty);
             Text.Add("Select group (leave empty to return): ");
-            base.Show();
         }
     }
 }

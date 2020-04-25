@@ -20,8 +20,6 @@ namespace Casasoft.BBS.DataTier.DBContext
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
         public virtual DbSet<MessageArea> MessageAreas { get; set; }
-        public virtual DbSet<MessageAreaAllowedUsersGroup> MessageAreaAllowedUsersGroups { get; set; }
-        public virtual DbSet<MessageAreaGroupsAllowedUsersGroup> MessageAreaGroupsAllowedUsersGroups { get; set; }
         public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
         public virtual DbSet<MessageRead> MessageReads { get; set; }
         public virtual DbSet<MessageSeenBy> MessagesSeenBy { get; set; }
@@ -212,6 +210,20 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
+                entity.Property(e => e.AllowedGroupRead)
+                    .IsRequired()
+                    .HasColumnType("varchar(30)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.AllowedGroupWrite)
+                    .IsRequired()
+                    .HasColumnType("varchar(30)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
                 entity.Property(e => e.Areagroup)
                     .IsRequired()
                     .HasColumnName("AREAGROUP")
@@ -242,86 +254,11 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasConstraintName("MessageAreas_AreaGroupId_MessageAreasGroups");
             });
 
-            modelBuilder.Entity<MessageAreaAllowedUsersGroup>(entity =>
-            {
-                entity.HasComment("Groups allowed to message areas");
-
-                entity.HasIndex(e => e.MessageAreaId)
-                    .HasName("MessageAreaId");
-
-                entity.HasIndex(e => e.UsersGroupId)
-                    .HasName("MAAUG_UsersGroupID_UsersGroups");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.MessageAreaId)
-                    .IsRequired()
-                    .HasColumnType("varchar(20)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.UsersGroupId)
-                    .IsRequired()
-                    .HasColumnType("varchar(30)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.HasOne(d => d.MessageArea)
-                    .WithMany(p => p.MessageAreaAllowedUsersGroups)
-                    .HasForeignKey(d => d.MessageAreaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("MAAUG_MessageAreaId_MessageAreas");
-
-                entity.HasOne(d => d.UsersGroup)
-                    .WithMany(p => p.MessageAreaAllowedUsersGroups)
-                    .HasForeignKey(d => d.UsersGroupId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("MAAUG_UsersGroupID_UsersGroups");
-            });
-
-            modelBuilder.Entity<MessageAreaGroupsAllowedUsersGroup>(entity =>
-            {
-                entity.HasComment("Groups allowed to message areas groups");
-
-                entity.HasIndex(e => e.MessageAreaGroupId)
-                    .HasName("MessageAreaGroupId");
-
-                entity.HasIndex(e => e.UsersGroupId)
-                    .HasName("MAGAUG_UsersGroupID_UsersGroups");
-
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .HasColumnType("int(11)");
-
-                entity.Property(e => e.MessageAreaGroupId)
-                    .IsRequired()
-                    .HasColumnType("varchar(20)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.Property(e => e.UsersGroupId)
-                    .IsRequired()
-                    .HasColumnType("varchar(30)")
-                    .HasCharSet("utf8")
-                    .HasCollation("utf8_general_ci");
-
-                entity.HasOne(d => d.MessageAreaGroup)
-                    .WithMany(p => p.MessageAreaGroupsAllowedUsersGroups)
-                    .HasForeignKey(d => d.MessageAreaGroupId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("MAGAUG_MessageAreaGroupId_MessageAreasGroups");
-
-                entity.HasOne(d => d.UsersGroup)
-                    .WithMany(p => p.MessageAreaGroupsAllowedUsersGroups)
-                    .HasForeignKey(d => d.UsersGroupId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("MAGAUG_UsersGroupID_UsersGroups");
-            });
-
             modelBuilder.Entity<MessageAreasGroup>(entity =>
             {
+                entity.HasIndex(e => e.AllowedGroupId)
+                    .HasName("MessageAreasGroups_Allowed_UsersGroups");
+
                 entity.HasIndex(e => e.Description)
                     .HasName("Description");
 
@@ -331,12 +268,23 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
+                entity.Property(e => e.AllowedGroupId)
+                    .HasColumnType("varchar(30)")
+                    .HasDefaultValueSql("''")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasColumnType("varchar(200)")
                     .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
+
+                entity.HasOne(d => d.AllowedGroup)
+                    .WithMany(p => p.MessageAreasGroups)
+                    .HasForeignKey(d => d.AllowedGroupId)
+                    .HasConstraintName("MessageAreasGroups_Allowed_UsersGroups");
             });
 
             modelBuilder.Entity<MessageRead>(entity =>

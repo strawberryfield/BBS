@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Apr 18, 2020 alle 21:17
+-- Creato il: Apr 25, 2020 alle 19:14
 -- Versione del server: 10.3.22-MariaDB-0+deb10u1
 -- Versione PHP: 7.3.14-1~deb10u1
 
@@ -54,30 +54,6 @@ CREATE TABLE `Logins` (
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `MessageAreaAllowedUsersGroups`
---
-
-CREATE TABLE `MessageAreaAllowedUsersGroups` (
-  `ID` int(11) NOT NULL,
-  `MessageAreaId` varchar(20) NOT NULL,
-  `UsersGroupId` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Groups allowed to message areas';
-
--- --------------------------------------------------------
-
---
--- Struttura della tabella `MessageAreaGroupsAllowedUsersGroups`
---
-
-CREATE TABLE `MessageAreaGroupsAllowedUsersGroups` (
-  `ID` int(11) NOT NULL,
-  `MessageAreaGroupId` varchar(20) NOT NULL,
-  `UsersGroupId` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Groups allowed to message areas groups';
-
--- --------------------------------------------------------
-
---
 -- Struttura della tabella `MessageAreas`
 --
 
@@ -85,8 +61,22 @@ CREATE TABLE `MessageAreas` (
   `ID` varchar(20) NOT NULL,
   `Description` varchar(200) NOT NULL DEFAULT '',
   `FIDOID` varchar(30) NOT NULL DEFAULT '',
-  `AREAGROUP` varchar(20) NOT NULL DEFAULT ''
+  `AREAGROUP` varchar(20) NOT NULL DEFAULT '',
+  `AllowedGroupRead` varchar(30) NOT NULL DEFAULT '',
+  `AllowedGroupWrite` varchar(30) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Message Areas List';
+
+--
+-- Dump dei dati per la tabella `MessageAreas`
+--
+
+INSERT INTO `MessageAreas` (`ID`, `Description`, `FIDOID`, `AREAGROUP`, `AllowedGroupRead`, `AllowedGroupWrite`) VALUES
+('BBSDEV', 'Topics about developing the BBS software', '', 'BBSSUPPORT', '', 'BBSSUPPORT'),
+('BBSNEWS', 'News and annuncements', '', 'BBSSUPPORT', '', 'POWERUSERS'),
+('BBSSETUP', 'Topics about BBS install', '', 'BBSSUPPORT', '', 'BBSSUPPORT'),
+('BBSUSE', 'Topics about operating the BBS', '', 'BBSSUPPORT', '', 'BBSSUPPORT'),
+('CHAT', 'Chiacchiere in libertà', '', 'GENERAL', '', ''),
+('PRESENTAZIONI', 'Presentazioni e prove', '', 'GENERAL', '', '');
 
 -- --------------------------------------------------------
 
@@ -96,8 +86,17 @@ CREATE TABLE `MessageAreas` (
 
 CREATE TABLE `MessageAreasGroups` (
   `ID` varchar(20) NOT NULL,
-  `Description` varchar(200) NOT NULL DEFAULT ''
+  `Description` varchar(200) NOT NULL DEFAULT '',
+  `AllowedGroupId` varchar(30) DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dump dei dati per la tabella `MessageAreasGroups`
+--
+
+INSERT INTO `MessageAreasGroups` (`ID`, `Description`, `AllowedGroupId`) VALUES
+('BBSSUPPORT', 'Casasoft BBS support', 'BBSSUPPORT'),
+('GENERAL', 'Generic message areas', '');
 
 -- --------------------------------------------------------
 
@@ -178,7 +177,6 @@ CREATE TABLE `Users` (
 
 INSERT INTO `Users` (`userid`, `realname`, `city`, `nation`, `password`, `status`, `signature`, `LastLoginFrom`, `LastLoginDate`, `Registered`, `LastPasswordModify`, `email`, `Locked`) VALUES
 ('SYSOP', 'Your real name', 'Your city', 'Your Country', '7A7B1FFA5FD5C25177AD14AA6FE4F3CD', '0', '', '127.0.0.1:49907', '2020-04-17 22:36:42', '2020-04-14 18:49:41', '2020-04-14 18:49:10', '', 0);
-
 -- --------------------------------------------------------
 
 --
@@ -195,6 +193,8 @@ CREATE TABLE `UsersGroups` (
 --
 
 INSERT INTO `UsersGroups` (`Groupid`, `Description`) VALUES
+('', 'Everyone'),
+('BBSSUPPORT', 'BBS support message areas access'),
 ('POWERUSERS', 'Users with extended privileges'),
 ('ROOT', 'Administrators'),
 ('USERS', 'Standard Users');
@@ -210,6 +210,15 @@ CREATE TABLE `UsersGroupsLinks` (
   `userid` varchar(30) DEFAULT NULL,
   `groupid` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups' ROW_FORMAT=COMPACT;
+
+--
+-- Dump dei dati per la tabella `UsersGroupsLinks`
+--
+
+INSERT INTO `UsersGroupsLinks` (`id`, `userid`, `groupid`) VALUES
+(1, 'SYSOP', 'POWERUSERS'),
+(2, 'SYSOP', 'USERS'),
+(3, 'SYSOP', 'ROOT'),
 
 --
 -- Indici per le tabelle scaricate
@@ -231,22 +240,6 @@ ALTER TABLE `Logins`
   ADD KEY `DateTime` (`DateTime`);
 
 --
--- Indici per le tabelle `MessageAreaAllowedUsersGroups`
---
-ALTER TABLE `MessageAreaAllowedUsersGroups`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `MessageAreaId` (`MessageAreaId`),
-  ADD KEY `MAAUG_UsersGroupID_UsersGroups` (`UsersGroupId`);
-
---
--- Indici per le tabelle `MessageAreaGroupsAllowedUsersGroups`
---
-ALTER TABLE `MessageAreaGroupsAllowedUsersGroups`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `MessageAreaGroupId` (`MessageAreaGroupId`),
-  ADD KEY `MAGAUG_UsersGroupID_UsersGroups` (`UsersGroupId`);
-
---
 -- Indici per le tabelle `MessageAreas`
 --
 ALTER TABLE `MessageAreas`
@@ -260,7 +253,8 @@ ALTER TABLE `MessageAreas`
 --
 ALTER TABLE `MessageAreasGroups`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `Description` (`Description`);
+  ADD KEY `Description` (`Description`),
+  ADD KEY `MessageAreasGroups_Allowed_UsersGroups` (`AllowedGroupId`);
 
 --
 -- Indici per le tabelle `MessageRead`
@@ -322,18 +316,6 @@ ALTER TABLE `Logins`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT per la tabella `MessageAreaAllowedUsersGroups`
---
-ALTER TABLE `MessageAreaAllowedUsersGroups`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT per la tabella `MessageAreaGroupsAllowedUsersGroups`
---
-ALTER TABLE `MessageAreaGroupsAllowedUsersGroups`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT per la tabella `MessageRead`
 --
 ALTER TABLE `MessageRead`
@@ -355,7 +337,7 @@ ALTER TABLE `MessageSeenBy`
 -- AUTO_INCREMENT per la tabella `UsersGroupsLinks`
 --
 ALTER TABLE `UsersGroupsLinks`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Limiti per le tabelle scaricate
@@ -368,24 +350,16 @@ ALTER TABLE `Logins`
   ADD CONSTRAINT `Logins_UserId_Users` FOREIGN KEY (`UserId`) REFERENCES `Users` (`userid`);
 
 --
--- Limiti per la tabella `MessageAreaAllowedUsersGroups`
---
-ALTER TABLE `MessageAreaAllowedUsersGroups`
-  ADD CONSTRAINT `MAAUG_MessageAreaId_MessageAreas` FOREIGN KEY (`MessageAreaId`) REFERENCES `MessageAreas` (`ID`),
-  ADD CONSTRAINT `MAAUG_UsersGroupID_UsersGroups` FOREIGN KEY (`UsersGroupId`) REFERENCES `UsersGroups` (`groupid`);
-
---
--- Limiti per la tabella `MessageAreaGroupsAllowedUsersGroups`
---
-ALTER TABLE `MessageAreaGroupsAllowedUsersGroups`
-  ADD CONSTRAINT `MAGAUG_MessageAreaGroupId_MessageAreasGroups` FOREIGN KEY (`MessageAreaGroupId`) REFERENCES `MessageAreasGroups` (`ID`),
-  ADD CONSTRAINT `MAGAUG_UsersGroupID_UsersGroups` FOREIGN KEY (`UsersGroupId`) REFERENCES `UsersGroups` (`groupid`);
-
---
 -- Limiti per la tabella `MessageAreas`
 --
 ALTER TABLE `MessageAreas`
   ADD CONSTRAINT `MessageAreas_AreaGroupId_MessageAreasGroups` FOREIGN KEY (`AREAGROUP`) REFERENCES `MessageAreasGroups` (`ID`);
+
+--
+-- Limiti per la tabella `MessageAreasGroups`
+--
+ALTER TABLE `MessageAreasGroups`
+  ADD CONSTRAINT `MessageAreasGroups_Allowed_UsersGroups` FOREIGN KEY (`AllowedGroupId`) REFERENCES `UsersGroups` (`groupid`);
 
 --
 -- Limiti per la tabella `MessageRead`

@@ -26,12 +26,15 @@ namespace Casasoft.BBS.UI
 {
     public class MessageAreaGroups : TextScreenBase
     {
-        public MessageAreaGroups(IClient c, IServer s) : base(c, s, "@MessageAreaGroups") { }
+        public MessageAreaGroups(IClient c, IServer s) : this(c, s, "@MessageAreaGroups", null) { }
         public MessageAreaGroups(IClient c, IServer s, IScreen prev) : this(c, s, "@MessageAreaGroups", prev) { }
         public MessageAreaGroups(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public MessageAreaGroups(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        public MessageAreaGroups(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        {
+            AddList();
+        }
 
-        public override void Show()
+        private void AddList()
         {
             string fmt = "{0,-20} {1,-58}";
             Text.Add(string.Format(fmt, "Group", "Description"));
@@ -39,7 +42,8 @@ namespace Casasoft.BBS.UI
 
             using (bbsContext bbs = new bbsContext())
             {
-                foreach (MessageAreasGroup group in bbs.MessageAreasGroups)
+                var list = bbs.GetAllowedMessageAreasGroup(client.username);
+                foreach (MessageAreasGroup group in list)
                 {
                     Text.Add(string.Format(fmt, group.Id, group.Description));
                     Data.Actions.Add(group.Id,
@@ -49,7 +53,6 @@ namespace Casasoft.BBS.UI
 
             Text.Add(string.Empty);
             Text.Add("Select group (leave empty to return): ");
-            base.Show();
         }
     }
 }
