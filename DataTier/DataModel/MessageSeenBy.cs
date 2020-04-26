@@ -8,5 +8,7 @@ namespace Casasoft.BBS.DataTier.DataModel
         public int Id { get; set; }
         public int MessageId { get; set; }
         public string SeenBy { get; set; }
+
+        public virtual Message Message { get; set; }
     }
 }

@@ -8,6 +8,7 @@ namespace Casasoft.BBS.DataTier.DataModel
         public Message()
         {
             MessageReads = new HashSet<MessageRead>();
+            MessageSeenBies = new HashSet<MessageSeenBy>();
         }
 
         public int Id { get; set; }
@@ -29,6 +30,8 @@ namespace Casasoft.BBS.DataTier.DataModel
         public int DestPoint { get; set; }
         public string Body { get; set; }
 
+        public virtual MessageArea AreaNavigation { get; set; }
         public virtual ICollection<MessageRead> MessageReads { get; set; }
+        public virtual ICollection<MessageSeenBy> MessageSeenBies { get; set; }
     }
 }
