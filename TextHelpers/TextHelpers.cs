@@ -19,14 +19,15 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Linq;
 
-namespace Casasoft.BBS.DataTier.DataModel
+namespace Casasoft.TextHelpers
 {
-    public partial class Message
+    public static class TextHelper
     {
-        public bool IsNew(DateTime since) => DateTime >= since;
+        static public string Truncate(string s, int size) => s.Substring(0, Math.Min(size, s.Length));
 
-        public bool IsRead(string username) => MessageReads.Select(u => u.UserId).Contains(username);
+        static public string HR(char c, int len) => new string(c, len);
+        static public string HR(char c) => HR(c, 79);
+        static public string HR() => HR('-');
     }
 }

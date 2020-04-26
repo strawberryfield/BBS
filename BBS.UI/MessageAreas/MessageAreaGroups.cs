@@ -21,6 +21,9 @@
 using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
+using Casasoft.TextHelpers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
@@ -36,16 +39,17 @@ namespace Casasoft.BBS.UI
 
         private void AddList()
         {
-            string fmt = "{0,-20} {1,-58}";
-            Text.Add(string.Format(fmt, "Group", "Description"));
-            Text.Add(new string('-', 79));
+            string fmt = "{0,-20} {1,2} {2,-55}";
+            Text.Add(string.Format(fmt, "Group", "N.", "Description"));
+            Text.Add(TextHelper.HR());
 
             using (bbsContext bbs = new bbsContext())
             {
-                var list = bbs.GetAllowedMessageAreasGroup(client.username);
+                List<MessageAreasGroup> list = bbs.GetAllowedMessageAreasGroup(client.username).ToList();
                 foreach (MessageAreasGroup group in list)
                 {
-                    Text.Add(string.Format(fmt, group.Id, group.Description));
+                    Text.Add(string.Format(fmt,
+                        group.Id, group.MessageAreas.Count, TextHelper.Truncate(group.Description, 55)));
                     Data.Actions.Add(group.Id,
                         new Parser.BBSCodeResult.Action() { module = "MessageAreas", data = "@MessageAreas;" + group.Id });
                 }

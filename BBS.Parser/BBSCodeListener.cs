@@ -23,6 +23,7 @@ using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
+using Casasoft.TextHelpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -212,7 +213,8 @@ namespace Casasoft.BBS.Parser
                         {
                             foreach (var user in bbs.Users)
                                 Parsed.TextConcat(string.Format("{0,-30} {1:d} {2}\r\n",
-                                    user.Userid, user.Registered.Date, user.City.Trim() + ", " + user.Nation.Trim()));
+                                    user.Userid, user.Registered.Date,
+                                    TextHelper.Truncate( user.City.Trim() + ", " + user.Nation, 32)));
                         }
                         break;
                     case Tags.USER:

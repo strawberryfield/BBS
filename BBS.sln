@@ -90,6 +90,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "local_packages", "local_pac
 		packages\Casasoft.Figgle.0.3.1.nupkg = packages\Casasoft.Figgle.0.3.1.nupkg
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextHelpers", "TextHelpers\TextHelpers.csproj", "{A9007B66-312B-4141-B66F-F8089975DF55}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -124,6 +126,10 @@ Global
 		{5C26818A-7B8F-4AD6-8084-C3DD86735EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C26818A-7B8F-4AD6-8084-C3DD86735EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C26818A-7B8F-4AD6-8084-C3DD86735EA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9007B66-312B-4141-B66F-F8089975DF55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9007B66-312B-4141-B66F-F8089975DF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9007B66-312B-4141-B66F-F8089975DF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9007B66-312B-4141-B66F-F8089975DF55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

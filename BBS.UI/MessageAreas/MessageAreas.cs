@@ -21,6 +21,9 @@
 using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
+using Casasoft.TextHelpers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
@@ -36,24 +39,32 @@ namespace Casasoft.BBS.UI
 
         private void AddList()
         {
-            string fmt = "{0,-20} {1,-58}";
-            Text.Add(string.Format(fmt, "Area", "Description"));
-            Text.Add(new string('-', 79));
+            string fmt = "{0,-20} {1,4} {2,4} {3,4} {4,-43}";
+            Text.Add(string.Format(fmt, new object[] {
+                "Area", "Msg.", "New", "Unr.", "Description" }));
+            Text.Add(TextHelper.HR());
 
             using (bbsContext bbs = new bbsContext())
             {
-                var list = bbs.GetMessageAllowedAreasByGroup(
-                    Params.Length > 1 ? Params[1] : string.Empty, client.username);
+                User user = bbs.GetUserByUsername(client.username);
+                List<MessageArea> list = bbs.GetMessageAllowedAreasByGroup(
+                    Params.Length > 1 ? Params[1] : string.Empty, client.username).ToList();
                 foreach (MessageArea area in list)
                 {
-                    Text.Add(string.Format(fmt, area.Id, area.Description));
+                    Text.Add(string.Format(fmt, new object[] {
+                        area.Id, area.MessagesCount, area.NewMessagesCount(user.LastLoginDate),
+                        area.UnreadMessagesCount(user.Userid), TextHelper.Truncate(area.Description, 43) }));
                     Data.Actions.Add(area.Id,
-                        new Parser.BBSCodeResult.Action() { module = "MessageArea", data = "@MessageArea;" + area.Id });
+                        new Parser.BBSCodeResult.Action()
+                        {
+                            module = "MessageList",
+                            data = string.Format(";{0}", area.Id)
+                        });
                 }
             }
 
             Text.Add(string.Empty);
-            Text.Add("Select group (leave empty to return): ");
+            Text.Add("Select area (leave empty to return): ");
         }
     }
 }

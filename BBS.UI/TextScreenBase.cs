@@ -35,8 +35,14 @@ namespace Casasoft.BBS.UI
         public TextScreenBase(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
         public TextScreenBase(IClient c, IServer s, string txt, IScreen prev) : this(c, s, prev)
         {
-            Params = txt.Split(';');
-            ReadText(Params[0]);
+            Text = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(txt))
+            { 
+                Params = txt.Split(';');
+                if (!string.IsNullOrWhiteSpace(Params[0]))
+                    ReadText(Params[0]);                    
+            }
         }
 
         public void ReadText(string name)
@@ -72,11 +78,12 @@ namespace Casasoft.BBS.UI
                     ShowNext();
             }
 
-            if (Data.Actions.Count > 0) execAction(msg.Trim().ToUpper());
+            if (Data != null && Data.Actions.Count > 0) execAction(msg.Trim().ToUpper());
         }
 
         private void execAction(string act)
         {
+            if (Data == null) return;
             BBSCodeResult.Action a = null;
             Data.Actions.TryGetValue(act, out a);
             if (a != null)
@@ -101,9 +108,9 @@ namespace Casasoft.BBS.UI
             bool isFirst = true;
             for (; ret < start + len && ret < Text.Count; ++ret)
             {
-                if (!isFirst) server.sendMessageToClient(client, "\r\n");
+                if (!isFirst) Writeln();
                 else isFirst = false;
-                server.sendMessageToClient(client, Text[ret]);
+                Write(Text[ret]);
             }
             return ret;
         }
