@@ -24,10 +24,10 @@ sudo apt install mariadb-server
 
 ## Creare il database
 
-Utilizzando il file bbs.sql presente nella cartella db del repository possiamo creare la struttura del database con il comando:
+Utilizzando il file bbs_structure.sql presente nella cartella db del repository possiamo creare la struttura del database con il comando:
 
 ```
-mysql -u root -p <bbs.sql
+mysql -u root -p <bbs_structure.sql
 ```
 
 Vi verrà chiesta la password di "root" specificata durante l'installazione.
@@ -35,10 +35,22 @@ Vi verrà chiesta la password di "root" specificata durante l'installazione.
 Nelle recenti distribuzioni Linux non viene impostata una password esplicita per "root" per cui occorre procedere in questo modo
 
 ```
-sudo mysql <bbs.sql
+sudo mysql <bbs_structure.sql
 ```
 
 Potrebbe esservi richiesta la password per eseguire il su
+
+con le medesime modalità possono essere caricati i dati di esempio:
+
+```
+mysql -u root -p <bbs_sample_data.sql
+```
+
+ovvero in linux
+
+```
+sudo mysql <bbs_sample_data.sql
+```
 
 ## Impostazioni di sicurezza
 
