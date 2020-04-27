@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
 
 namespace Casasoft.TextHelpers
 {
@@ -29,5 +30,31 @@ namespace Casasoft.TextHelpers
         static public string HR(char c, int len) => new string(c, len);
         static public string HR(char c) => HR(c, 79);
         static public string HR() => HR('-');
+
+        static public List<string> WordWrap(string text, int width)
+        {
+            List<string> ret = new List<string>();
+            if (string.IsNullOrWhiteSpace(text)) return ret;
+
+            string[] words = text.Split(new char[] { ' ', '\t', '\r', '\n' },
+                StringSplitOptions.RemoveEmptyEntries);
+
+            string line = string.Empty;
+            foreach (string w in words)
+            {
+                if(line.Length + w.Length +1 > width)
+                {
+                    ret.Add(line);
+                    line = w;
+                }
+                else
+                {
+                    line += " " + w;
+                }
+            }
+            ret.Add(line);
+
+            return ret;
+        }
     }
 }

@@ -36,7 +36,7 @@ namespace Casasoft.BBS.Parser
         public enum Tags
         {
             CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR,
-            FIGGLE, BEEP, HR, CONNECTED, JOINED, USER,
+            FIGGLE, BEEP, HR, CONNECTED, JOINED, USER, P,
             ACTION
         }
         public static Dictionary<string, Tags> TagsTable;
@@ -116,6 +116,9 @@ namespace Casasoft.BBS.Parser
                         ANSI.pushBackColor(context.children[2].GetChild(2).GetText());
                         Parsed.TextConcat(ANSI.WriteMode());
                         break;
+                    case Tags.P:
+                        Parsed.TextPush();
+                        break;
                     case Tags.FIGGLE:
                         Parsed.TextPush();
                         figgleFont = string.Empty;
@@ -168,6 +171,10 @@ namespace Casasoft.BBS.Parser
                     case Tags.BACKCOLOR:
                         ANSI.popBackColor();
                         Parsed.TextConcat(ANSI.WriteMode());
+                        break;
+                    case Tags.P:
+                        Parsed.Parsed = string.Join('\n',TextHelper.WordWrap(Parsed.Parsed, 79).ToArray());
+                        Parsed.TextPop(true);
                         break;
                     case Tags.FIGGLE:
                         if (string.IsNullOrWhiteSpace(figgleFont)) figgleFont = "standard";
