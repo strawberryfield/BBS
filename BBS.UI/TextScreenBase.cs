@@ -66,6 +66,7 @@ namespace Casasoft.BBS.UI
                 {
                     int newStart = currentLine - 48;
                     newStart = newStart < 0 ? 0 : newStart;
+                    Writeln();
                     currentLine = ShowLines(newStart, 24);
                 }
             }
@@ -73,7 +74,10 @@ namespace Casasoft.BBS.UI
             if (string.IsNullOrWhiteSpace(msg))
             {
                 if (Text.Count > 24 && currentLine < Text.Count - 1)
+                {
+                    Writeln();
                     currentLine = ShowLines(currentLine, 24);
+                }
                 else
                     ShowNext();
             }

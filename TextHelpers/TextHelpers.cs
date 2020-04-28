@@ -23,6 +23,8 @@ using System.Collections.Generic;
 
 namespace Casasoft.TextHelpers
 {
+    public enum TextAlign { Left, Right, Center, Both }
+
     public static class TextHelper
     {
         static public string Truncate(string s, int size) => s.Substring(0, Math.Min(size, s.Length));
@@ -31,7 +33,38 @@ namespace Casasoft.TextHelpers
         static public string HR(char c) => HR(c, 79);
         static public string HR() => HR('-');
 
-        static public List<string> WordWrap(string text, int width)
+        static public string LineAlign(string text, int width) => LineAlign(text, width, TextAlign.Left);
+        static public string LineAlign(string text, int width, TextAlign align)
+        {
+            text = text.Trim();
+            if (text.Length >= width) return text;
+            switch (align)
+            {
+                case TextAlign.Left:
+                    return text;
+                case TextAlign.Right:
+                    return text.PadLeft(width);
+                case TextAlign.Center:
+                    int leftPadding = (width - text.Length) / 2;
+                    int rightPadding = width - text.Length - leftPadding;
+                    return new string(' ', leftPadding) + text + new string(' ', rightPadding);
+                case TextAlign.Both:
+                    int missingSpaces = width - text.Length;
+                    string[] words = text.Split(' ');
+                    int breaks = words.Length - 1;
+                    int quotient = missingSpaces / breaks;
+                    int reminder = missingSpaces % breaks;
+                    string ret = string.Empty;
+                    for (int j = 0; j < breaks; j++)
+                        ret += words[j] + new string(' ', 1 + quotient + (j < reminder ? 1 : 0));
+                    return ret + words[breaks];
+                default:
+                    return text;
+            }
+        }
+
+        static public List<string> WordWrap(string text, int width) => WordWrap(text, width, TextAlign.Left);
+        static public List<string> WordWrap(string text, int width, TextAlign align)
         {
             List<string> ret = new List<string>();
             if (string.IsNullOrWhiteSpace(text)) return ret;
@@ -44,7 +77,7 @@ namespace Casasoft.TextHelpers
             {
                 if(line.Length + w.Length +1 > width)
                 {
-                    ret.Add(line);
+                    ret.Add(LineAlign(line, width, align));
                     line = w;
                 }
                 else
@@ -52,7 +85,7 @@ namespace Casasoft.TextHelpers
                     line += " " + w;
                 }
             }
-            ret.Add(line);
+            ret.Add(LineAlign(line, width, align == TextAlign.Both ? TextAlign.Left : align));
 
             return ret;
         }
