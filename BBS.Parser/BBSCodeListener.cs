@@ -25,6 +25,7 @@ using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
 using Casasoft.TextHelpers;
 using System;
+using System.Collections.Generic;
 
 namespace Casasoft.BBS.Parser
 {
@@ -32,6 +33,7 @@ namespace Casasoft.BBS.Parser
     {
         public TagsDict TagsTable;
         public EntitiesDict EntitiesTable;
+        public AttributesDict AttributesTable;
 
         private string FileName;
         private IClient Client;
@@ -53,6 +55,7 @@ namespace Casasoft.BBS.Parser
             Parsed = new BBSCodeResult();
             TagsTable = new TagsDict();
             EntitiesTable = new EntitiesDict(Client);
+            AttributesTable = new AttributesDict();
             ANSI = new ANSICodes();
         }
 
@@ -116,7 +119,10 @@ namespace Casasoft.BBS.Parser
         {
             string tagName = context.children[1].GetText().Trim().ToUpper();
             Tags tag;
-            if (TagsTable.TryGetValue(tagName, out tag)) switch (tag)
+            if (TagsTable.TryGetValue(tagName, out tag))
+            {
+                Attributes attr = AttributesTable.GetAttributes(tag);
+                switch (tag)
                 {
                     case Tags.CLS:
                         Parsed.TextConcat(ANSI.ClearScreen());
@@ -202,15 +208,21 @@ namespace Casasoft.BBS.Parser
                     default:
                         break;
                 }
+            }
         }
 
         public override void EnterBbsCodeAttribute([NotNull] BBSCodeParser.BbsCodeAttributeContext context)
         {
             string tagName = context.Parent.GetChild(1).GetText().Trim().ToUpper();
             string attributeName = context.children[0].GetText().Trim().ToUpper();
-            string attributeValue = context.children[2].GetText().Trim('"').Trim();
+            string attributeValue = string.Empty;
+            if(context.ChildCount > 2) attributeValue = context.children[2].GetText().Trim('"').Trim();
+
             Tags tag;
-            if (TagsTable.TryGetValue(tagName, out tag)) switch (tag)
+            if (TagsTable.TryGetValue(tagName, out tag))
+            {
+                AttributesTable.Add(tag, attributeName, attributeValue);
+                switch (tag)
                 {
                     case Tags.CLS:
                         if (attributeName == "FORECOLOR") ANSI.pushForeColor(attributeValue);
@@ -255,6 +267,7 @@ namespace Casasoft.BBS.Parser
                     default:
                         break;
                 }
+            }
         }
 
         public override void EnterBbsCodeEntity([NotNull] BBSCodeParser.BbsCodeEntityContext context)
