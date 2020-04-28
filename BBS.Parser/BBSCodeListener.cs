@@ -25,29 +25,13 @@ using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
 using Casasoft.TextHelpers;
 using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
 
 namespace Casasoft.BBS.Parser
 {
     public class BBSCodeListener : BBSCodeParserBaseListener
     {
-        public enum Tags
-        {
-            CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR,
-            FIGGLE, BEEP, HR, CONNECTED, JOINED, USER, P,
-            ACTION
-        }
-        public static Dictionary<string, Tags> TagsTable;
-
-        public enum Entities
-        {
-            AMP, LEFTCURLY, RIGHTCURLY,
-            USERNAME, REMOTE, CONNECTIONTIME
-        }
-        public static Dictionary<string, Entities> EntitiesTable;
-        public static Dictionary<string, string> CustomEntitiesTable;
+        public TagsDict TagsTable;
+        public EntitiesDict EntitiesTable;
 
         private string FileName;
         private IClient Client;
@@ -67,19 +51,8 @@ namespace Casasoft.BBS.Parser
             FileName = filename;
 
             Parsed = new BBSCodeResult();
-            TagsTable = new Dictionary<string, Tags>();
-            foreach (Tags t in Enum.GetValues(typeof(Tags)))
-                TagsTable.Add(t.ToString().ToUpper(), t);
-
-            EntitiesTable = new Dictionary<string, Entities>();
-            foreach (Entities t in Enum.GetValues(typeof(Entities)))
-                EntitiesTable.Add(t.ToString().ToUpper(), t);
-
-            CustomEntitiesTable = new Dictionary<string, string>();
-            NameValueCollection config = (NameValueCollection)ConfigurationManager.GetSection("Entities");
-            foreach (string key in config)
-                CustomEntitiesTable.Add(key.Trim().ToUpper(), config[key]);
-
+            TagsTable = new TagsDict();
+            EntitiesTable = new EntitiesDict(Client);
             ANSI = new ANSICodes();
         }
 
@@ -173,7 +146,7 @@ namespace Casasoft.BBS.Parser
                         Parsed.TextConcat(ANSI.WriteMode());
                         break;
                     case Tags.P:
-                        Parsed.Parsed = string.Join('\n',TextHelper.WordWrap(Parsed.Parsed, 79).ToArray());
+                        Parsed.Parsed = string.Join('\n', TextHelper.WordWrap(Parsed.Parsed, 79).ToArray());
                         Parsed.TextPop(true);
                         break;
                     case Tags.FIGGLE:
@@ -183,7 +156,7 @@ namespace Casasoft.BBS.Parser
                             Parsed.Parsed = Figgle.FiggleFonts.Lookup(figgleFont.ToLower()).Render(Parsed.Parsed);
                         }
                         catch (Exception e)
-                        { }                                
+                        { }
                         Parsed.TextPop(true);
                         break;
                     case Tags.ACTION:
@@ -221,7 +194,7 @@ namespace Casasoft.BBS.Parser
                             foreach (var user in bbs.Users)
                                 Parsed.TextConcat(string.Format("{0,-30} {1:d} {2}\r\n",
                                     user.Userid, user.Registered.Date,
-                                    TextHelper.Truncate( user.City.Trim() + ", " + user.Nation, 32)));
+                                    TextHelper.Truncate(user.City.Trim() + ", " + user.Nation, 32)));
                         }
                         break;
                     case Tags.USER:
@@ -288,36 +261,7 @@ namespace Casasoft.BBS.Parser
         {
             string entityName = context.GetText().Trim().ToUpper();
             entityName = entityName.Substring(1, entityName.Length - 2);
-            Entities entity;
-            if (EntitiesTable.TryGetValue(entityName, out entity)) switch (entity)
-                {
-                    case Entities.AMP:
-                        Parsed.Parsed += "&";
-                        break;
-                    case Entities.LEFTCURLY:
-                        Parsed.Parsed += "{";
-                        break;
-                    case Entities.RIGHTCURLY:
-                        Parsed.Parsed += "}";
-                        break;
-                    case Entities.USERNAME:
-                        Parsed.Parsed += string.IsNullOrWhiteSpace(Client.username) ? "GUEST" : Client.username;
-                        break;
-                    case Entities.REMOTE:
-                        Parsed.Parsed += Client.Remote;
-                        break;
-                    case Entities.CONNECTIONTIME:
-                        Parsed.Parsed += Client.connectedAt.ToString("g");
-                        break;
-                    default:
-                        break;
-                }
-            else
-            {
-                string customEntity;
-                if (CustomEntitiesTable.TryGetValue(entityName, out customEntity))
-                    Parsed.Parsed += customEntity;
-            }
+            Parsed.TextConcat(EntitiesTable.GetValue(entityName));
         }
 
         public override void EnterBbsCodeChardata([NotNull] BBSCodeParser.BbsCodeChardataContext context)

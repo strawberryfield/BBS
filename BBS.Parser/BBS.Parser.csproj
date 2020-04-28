@@ -28,8 +28,4 @@
     <ProjectReference Include="..\TextHelpers\TextHelpers.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Tags\" />
-  </ItemGroup>
-
 </Project>
