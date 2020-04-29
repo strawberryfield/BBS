@@ -25,7 +25,6 @@ using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
 using Casasoft.TextHelpers;
 using System;
-using System.Collections.Generic;
 
 namespace Casasoft.BBS.Parser
 {
@@ -43,8 +42,7 @@ namespace Casasoft.BBS.Parser
 
         private ANSICodes ANSI;
         private BBSCodeResult.Action action;
-        private string actionKey;
-        private string figgleFont;
+//        private string actionKey;
 
         public BBSCodeListener(IClient c, IServer s, string filename) : base()
         {
@@ -63,56 +61,10 @@ namespace Casasoft.BBS.Parser
         {
             string tagName = context.children[1].GetText().Trim().ToUpper();
             Tags tag;
-            if (TagsTable.TryGetValue(tagName, out tag)) switch (tag)
-                {
-                    case Tags.CLS:
-                        ANSI.ClearMode();
-                        break;
-                    case Tags.BLINK:
-                        ANSI.SetMode(ANSICodes.Modes.Blink);
-                        Parsed.TextConcat(ANSI.WriteMode());
-                        break;
-                    case Tags.REVERSE:
-                        ANSI.SetMode(ANSICodes.Modes.Reverse);
-                        Parsed.TextConcat(ANSI.WriteMode());
-                        break;
-                    case Tags.BOLD:
-                        ANSI.SetMode(ANSICodes.Modes.Bold);
-                        Parsed.TextConcat(ANSI.WriteMode());
-                        break;
-                    case Tags.UNDERLINE:
-                        ANSI.SetMode(ANSICodes.Modes.Underline);
-                        Parsed.Parsed += ANSI.WriteMode();
-                        break;
-                    case Tags.COLOR:
-                        ANSI.pushForeColor(context.children[2].GetChild(2).GetText());
-                        Parsed.TextConcat(ANSI.WriteMode());
-                        break;
-                    case Tags.BACKCOLOR:
-                        ANSI.pushBackColor(context.children[2].GetChild(2).GetText());
-                        Parsed.TextConcat(ANSI.WriteMode());
-                        break;
-                    case Tags.P:
-                        Parsed.TextPush();
-                        break;
-                    case Tags.FIGGLE:
-                        Parsed.TextPush();
-                        figgleFont = string.Empty;
-                        break;
-                    case Tags.ACTION:
-                        action = new BBSCodeResult.Action();
-                        actionKey = string.Empty;
-                        Parsed.TextPush();
-                        break;
-                    case Tags.BEEP:
-                        Parsed.TextConcat((char)7);
-                        break;
-                    case Tags.HR:
-                        Parsed.TextConcat(new string('-', 79));
-                        break;
-                    default:
-                        break;
-                }
+            if (TagsTable.TryGetValue(tagName, out tag))
+            {
+                Parsed.TextPush();
+            }
         }
 
         public override void ExitBbsCodeElement([NotNull] BBSCodeParser.BbsCodeElementContext context)
@@ -122,50 +74,65 @@ namespace Casasoft.BBS.Parser
             if (TagsTable.TryGetValue(tagName, out tag))
             {
                 Attributes attr = AttributesTable.GetAttributes(tag);
+                string value;
                 switch (tag)
                 {
                     case Tags.CLS:
+                        if (attr.TryGetValue("FORECOLOR", out value)) ANSI.pushForeColor(value);
+                        if (attr.TryGetValue("BACKCOLOR", out value)) ANSI.pushBackColor(value);
                         Parsed.TextConcat(ANSI.ClearScreen());
+                        Parsed.TextPop(true);
                         break;
                     case Tags.BLINK:
-                        ANSI.ResetMode(ANSICodes.Modes.Blink);
-                        Parsed.TextConcat(ANSI.WriteMode());
+                        textModeTag(ANSICodes.Modes.Blink);
                         break;
                     case Tags.REVERSE:
-                        ANSI.ResetMode(ANSICodes.Modes.Reverse);
-                        Parsed.TextConcat(ANSI.WriteMode());
+                        textModeTag(ANSICodes.Modes.Reverse);
                         break;
                     case Tags.BOLD:
-                        ANSI.ResetMode(ANSICodes.Modes.Bold);
-                        Parsed.TextConcat(ANSI.WriteMode());
+                        textModeTag(ANSICodes.Modes.Bold);
                         break;
                     case Tags.UNDERLINE:
-                        ANSI.ResetMode(ANSICodes.Modes.Underline);
-                        Parsed.TextConcat(ANSI.WriteMode());
+                        textModeTag(ANSICodes.Modes.Underline);
                         break;
                     case Tags.COLOR:
-                        ANSI.popForeColor();
-                        Parsed.TextConcat(ANSI.WriteMode());
+                        if(attr.TryGetValue("VALUE", out value))
+                        {
+                            ANSI.pushForeColor(value);
+                            Parsed.Parsed = ANSI.WriteForeColor() + Parsed.Parsed;                            
+                            ANSI.popForeColor();
+                            Parsed.TextConcat(ANSI.WriteForeColor());
+                        }
+                        Parsed.TextPop(true);
                         break;
                     case Tags.BACKCOLOR:
-                        ANSI.popBackColor();
-                        Parsed.TextConcat(ANSI.WriteMode());
+                        if (attr.TryGetValue("VALUE", out value))
+                        {
+                            ANSI.pushBackColor(value);
+                            Parsed.Parsed = ANSI.WriteBackColor() + Parsed.Parsed;
+                            ANSI.popBackColor();
+                            Parsed.TextConcat(ANSI.WriteBackColor());
+                        }
+                        Parsed.TextPop(true);
                         break;
                     case Tags.P:
                         Parsed.Parsed = string.Join('\n', TextHelper.WordWrap(Parsed.Parsed, 79).ToArray());
                         Parsed.TextPop(true);
                         break;
                     case Tags.FIGGLE:
-                        if (string.IsNullOrWhiteSpace(figgleFont)) figgleFont = "standard";
+                        value = "standard";
+                        attr.TryGetValue("FONT", out value);
+                        if (string.IsNullOrWhiteSpace(value)) value = "standard";
                         try
                         {
-                            Parsed.Parsed = Figgle.FiggleFonts.Lookup(figgleFont.ToLower()).Render(Parsed.Parsed);
+                            Parsed.Parsed = Figgle.FiggleFonts.Lookup(value.ToLower()).Render(Parsed.Parsed);
                         }
-                        catch (Exception e)
+                        catch (Exception)
                         { }
                         Parsed.TextPop(true);
                         break;
                     case Tags.ACTION:
+                        action = new BBSCodeResult.Action(attr);
                         if (!string.IsNullOrWhiteSpace(action.requires))
                         {
                             if (string.IsNullOrWhiteSpace(Client.username))
@@ -182,8 +149,8 @@ namespace Casasoft.BBS.Parser
                             }
                         }
                         else Parsed.TextPop(true);
-                        if (!Parsed.Actions.TryAdd(actionKey, action))
-                            EventLogger.Write(string.Format("Error adding action '{0}' in '{1}'", actionKey, FileName), 0);
+                        if (!Parsed.Actions.TryAdd(action.key, action))
+                            EventLogger.Write(string.Format("Error adding action '{0}' in '{1}'", action.key, FileName), 0);
                         break;
                     case Tags.CONNECTED:
                         Parsed.TextConcat(string.Format("{0,-30} {1,-16} {2}\r\n", "Username", "Connected", "From"));
@@ -191,6 +158,7 @@ namespace Casasoft.BBS.Parser
                         foreach (IClient c in Server.clients.Values)
                             Parsed.TextConcat(string.Format("{0,-30} {1:g} {2}\r\n",
                                 string.IsNullOrWhiteSpace(c.username) ? "GUEST" : c.username, c.connectedAt, c.Remote));
+                        Parsed.TextPop(true);
                         break;
                     case Tags.JOINED:
                         Parsed.TextConcat(string.Format("{0,-30} {1,-10} {2}\r\n", "Username", "Since", "From"));
@@ -202,13 +170,29 @@ namespace Casasoft.BBS.Parser
                                     user.Userid, user.Registered.Date,
                                     TextHelper.Truncate(user.City.Trim() + ", " + user.Nation, 32)));
                         }
+                        Parsed.TextPop(true);
                         break;
-                    case Tags.USER:
+                    case Tags.BEEP:
+                        Parsed.TextConcat((char)7);
+                        Parsed.TextPop(true);
+                        break;
+                    case Tags.HR:
+                        Parsed.TextConcat(new string('-', 79));
+                        Parsed.TextPop(true);
                         break;
                     default:
                         break;
                 }
             }
+        }
+
+        private void textModeTag(ANSICodes.Modes mode)
+        {
+            ANSI.SetMode(ANSICodes.Modes.Blink);
+            Parsed.Parsed = ANSI.WriteMode() + Parsed.Parsed;
+            ANSI.ResetMode(ANSICodes.Modes.Blink);
+            Parsed.TextConcat(ANSI.WriteMode());
+            Parsed.TextPop(true);
         }
 
         public override void EnterBbsCodeAttribute([NotNull] BBSCodeParser.BbsCodeAttributeContext context)
@@ -222,51 +206,6 @@ namespace Casasoft.BBS.Parser
             if (TagsTable.TryGetValue(tagName, out tag))
             {
                 AttributesTable.Add(tag, attributeName, attributeValue);
-                switch (tag)
-                {
-                    case Tags.CLS:
-                        if (attributeName == "FORECOLOR") ANSI.pushForeColor(attributeValue);
-                        if (attributeName == "BACKCOLOR") ANSI.pushBackColor(attributeValue);
-                        break;
-
-                    case Tags.BLINK:
-                        break;
-                    case Tags.REVERSE:
-                        break;
-                    case Tags.BOLD:
-                        break;
-                    case Tags.UNDERLINE:
-                        break;
-                    case Tags.COLOR:
-                        break;
-                    case Tags.BACKCOLOR:
-                        break;
-                    case Tags.FIGGLE:
-                        figgleFont = attributeValue;
-                        break;
-                    case Tags.ACTION:
-                        switch (attributeName)
-                        {
-                            case "KEY":
-                                actionKey = attributeValue;
-                                break;
-                            case "MODULE":
-                                action.module = attributeValue;
-                                break;
-                            case "TEXT":
-                                action.data = attributeValue;
-                                break;
-                            case "REQUIRES":
-                                action.requires = attributeValue;
-                                break;
-                            default:
-                                break;
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
             }
         }
 

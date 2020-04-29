@@ -128,5 +128,9 @@ namespace Casasoft.BBS.Parser
         public int peekBackColor() => (int)backColorStack.Peek() + 40;
         public string WriteMode() =>
             string.Format("\u001b[{0}{1};{2}m", ModeFromBits(currentMode),  peekForeColor(), peekBackColor());
+
+        public string WriteForeColor() => string.Format("\u001b[{0}m", peekForeColor());
+        public string WriteBackColor() => string.Format("\u001b[{0}m", peekBackColor());
+
     }
 }

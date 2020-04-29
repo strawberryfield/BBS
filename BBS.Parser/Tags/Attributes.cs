@@ -59,10 +59,10 @@ namespace Casasoft.BBS.Parser
 
         public Attributes GetAttributes(Tags tag)
         {
-            Attributes ret = new Attributes();
+            Attributes ret; 
             if (AttributesTable.TryGetValue(tag, out ret))
                 AttributesTable.Remove(tag);
-            return ret;
+            return ret == null ? new Attributes() : ret;
         }
     }
 }

@@ -33,12 +33,23 @@ namespace Casasoft.BBS.Parser
             public string module;
             public string data;
             public string requires;
+            public string key;
 
             public Action()
             {
                 module = "TextScreen";
                 data = string.Empty;
                 requires = string.Empty;
+                key = string.Empty;
+            }
+
+            public Action(Attributes attr) : this()
+            {
+                string value;
+                if (attr.TryGetValue("MODULE", out value)) module = value;
+                if (attr.TryGetValue("TEXT", out value)) data = value;
+                if (attr.TryGetValue("REQUIRES", out value)) requires = value;
+                if (attr.TryGetValue("KEY", out value)) key = value;
             }
         }
 
