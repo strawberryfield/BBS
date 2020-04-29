@@ -1,77 +1,77 @@
-{CLS forecolor="Blue" backcolor="White"/} The Strawberry Field BBS - System Rules and Disclaimer:          
+{CLS forecolor="Blue" backcolor="White"/} &BBSname; - System Rules and Disclaimer:          
  ======================================================           
 
  Introduction:
  ------------
  
- I, Roberto Ceccarelli,  owner and system operator (henceforth referred to as
+{p} I, &SysopName;,  owner and system operator (henceforth referred to as
  the SysOp)  of   The Strawberry Field  Bulletin  Board  System   (henceforth 
  referred  to as the BBS)  hereby exercise my right  to enforce and apply the 
  rules and regulations  outlined in the paragraphs that follow  as I see fit.
  By continuing  to make use of  this service,  you  (the user)  indicate your
  acceptance of this agreement  and all rules and regulations laid down by the 
  SysOp. You further acknowledge that you have read and understood these rules 
- and agree to be bound by their terms and conditions.
- If you do not agree with these terms you must log off the system immediately.
+ and agree to be bound by their terms and conditions.{/p}
+{p}{bold}If you do not agree with these terms you must log off the system immediately.{/bold}{/p}
  
  Rules of this BBS:
  -----------------
  
- All  equipment  utilised  to offer  this service  has been  supplied by  the 
+{p}All  equipment  utilised  to offer  this service  has been  supplied by  the 
  SysOp's  own financial and technical resources.  It therefore stands to good 
- reason that the rules laid down  are simply  for the SysOp's own protection.
+ reason that the rules laid down  are simply  for the SysOp's own protection.{/p}
  
- No fees are charged  for the use  of this BBS.   Under no circumstances will
+{p}No fees are charged  for the use  of this BBS.   Under no circumstances will
  users  under  the  age  of  18 years be permitted on this BBS.  This BBS has 
  been established  purely for the experiential benefit of  the SysOp  and may
  cease to exist or be modified  in any way  and  at any time  at  the SysOp's  
  discretion  although all reasonable efforts will be made to keep this system
- online for as long as this planet continues to rotate.
+ online for as long as this planet continues to rotate.{/p}
                            
- The Strawberry Field BBS  is an OPEN SYSTEM.  Any users, regardless of race,
+{p}&BBSname;  is an OPEN SYSTEM.  Any users, regardless of race,
  colour,  creed,  religion  or sexual persuasion  ABOVE  the age of  18 years 
  are therefore welcome to use this system when and if they please.  The SysOp 
  does,  however,  reserve the exclusive right to  lock out  or barr  any user  
  whom he deems  unwelcome or undesirable,  based solely on his  understanding 
  and  judgement of  good manners and protocol  that should be applied  to any 
  service  of this kind,  and  on any  blatant ignorance  of  these rules  and 
- regulations by that user.
+ regulations by that user.{/p}
  
- Various  security levels  and  flags have been created in an effort to grade 
+{p}Various  security levels  and  flags have been created in an effort to grade 
  and group  all users  of this BBS.  All new users  (like you)  are initially
  allocated a  Security Level of 1.  Only by following  the instructions  laid
  down  (such as filling in the New User Questionnaire and reading this System
  Rules and Disclaimer  text file)  will any  user's security level  increase,
- thereby gaining access to  otherwise prohibited areas (such as certain file-
+ thereby gaining access to  otherwise prohibited areas (such as certain file
  or  message  areas,  doors,  etc.),  functions  or  services  of  this  BBS.
  The decision on  any user's security level  and its associated privileges is
- made, as unbiased as possible, exclusively by the SysOp.
+ made, as unbiased as possible, exclusively by the SysOp.{/p}
  
  Disclaimer:
  ----------
  
- The SysOp does  not  warrant,   nor can guarantee, that  the   files or data 
- stored in  The Strawberry Field BBS are accurate or suitable for a  specific 
+{p}The SysOp does  not  warrant,   nor can guarantee, that  the   files or data 
+ stored in &BBSname; are accurate or suitable for a  specific 
  purpose or intention.   
  Under no circumstances will the SysOp, or any other persons associated  with
  this BBS,living or dead,be liable to you or any other parties for any damage, 
  physical, psychological or otherwise, lost profits, loss of data or finance,  
  either direct or consequential arising out of the use,  or inability to use, 
  any information or software that has been obtained from the HMVH Corporation 
- BBS through any means.
+ BBS through any means.{/p}
  
                                         
  In Conclusion:                        
  -------------
 
- The aforementioned rules and regulations can, as the need arises and without 
+{p}The aforementioned rules and regulations can, as the need arises and without 
  prior notification, be modified or amended by the SysOp. Notification of any
  modifications shall be made by means of  a bulletin available for reading by
  all users.  Should any user not agree to, or abide by,  these, or any future
  modifications to the rules and regulations clearly stated herein,  the SysOp
- may,  at his sole discretion,  terminate that user's membership of this BBS.
+ may,  at his sole discretion,  terminate that user's membership of this BBS.{/p}
 
- In simple and summarising words: Whatever the SysOp says, is Law.
+{p}{bold}In simple and summarising words: Whatever the SysOp says, is Law.{/bold}{/p}
 
- All products  or  brands mentioned  anywhere  are trademarks  or  registered
- trademarks of their respective owners.
+{p}All products  or  brands mentioned  anywhere  are trademarks  or  registered
+ trademarks of their respective owners.{/p}
