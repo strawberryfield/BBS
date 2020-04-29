@@ -29,7 +29,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using System.Timers;
 
 namespace Casasoft.TCPServer
 {
@@ -92,7 +91,9 @@ namespace Casasoft.TCPServer
         /// </summary>
         public event MessageReceivedEventHandler MessageReceived;
 
-        private Timer keepAliveTimer;
+        public delegate void ControlCharReceivedEventHandler(IClient c, char ch);
+        public event ControlCharReceivedEventHandler ControlCharReceived;
+
         private int inactivityTimeout;
 
         /// <summary>
@@ -115,11 +116,6 @@ namespace Casasoft.TCPServer
             NameValueCollection netconfig = (NameValueCollection)ConfigurationManager.GetSection("Networking");
             this.port = Convert.ToInt32(netconfig["port"]);
             this.inactivityTimeout = Convert.ToInt32(netconfig["InactivityTimeout"]);
-
-            keepAliveTimer = new Timer(5000);
-            keepAliveTimer.Elapsed += clearInactiveSockets;
-            keepAliveTimer.AutoReset = true;
-            keepAliveTimer.Enabled = true;
         }
 
         /// <summary>
@@ -135,37 +131,25 @@ namespace Casasoft.TCPServer
         /// <summary>
         /// Stops the server.
         /// </summary>
-        public void stop()
-        {
-            serverSocket.Close();
-        }
-
+        public void stop() => serverSocket.Close();
+     
         /// <summary>
         /// Returns whether incoming connections
         /// are allowed.
         /// </summary>
         /// <returns>True is connections are allowed;
         /// false otherwise.</returns>
-        public bool incomingConnectionsAllowed()
-        {
-            return acceptIncomingConnections;
-        }
+        public bool incomingConnectionsAllowed() => acceptIncomingConnections;
 
         /// <summary>
         /// Denies the incoming connections.
         /// </summary>
-        public void denyIncomingConnections()
-        {
-            this.acceptIncomingConnections = false;
-        }
+        public void denyIncomingConnections() => acceptIncomingConnections = false;
 
         /// <summary>
         /// Allows the incoming connections.
         /// </summary>
-        public void allowIncomingConnections()
-        {
-            this.acceptIncomingConnections = true;
-        }
+        public void allowIncomingConnections() => acceptIncomingConnections = true;
 
         /// <summary>
         /// Clears the screen for the specified
@@ -173,10 +157,7 @@ namespace Casasoft.TCPServer
         /// </summary>
         /// <param name="c">The client on which
         /// to clear the screen.</param>
-        public void clearClientScreen(IClient c)
-        {
-            sendMessageToClient(c, "\u001B[1J\u001B[H");
-        }
+        public void clearClientScreen(IClient c) => sendMessageToClient(c, "\u001B[1J\u001B[H");
 
         /// <summary>
         /// Sends a text message to the specified
@@ -207,10 +188,8 @@ namespace Casasoft.TCPServer
         /// </summary>
         /// <param name="s">The socket.</param>
         /// <param name="data">The bytes.</param>
-        private void sendBytesToSocket(Socket s, byte[] data)
-        {
+        private void sendBytesToSocket(Socket s, byte[] data) =>
             s.BeginSend(data, 0, data.Length, SocketFlags.None, new AsyncCallback(sendData), s);
-        }
 
         /// <summary>
         /// Sends a message to all connected clients.
@@ -260,14 +239,8 @@ namespace Casasoft.TCPServer
         /// <param name="client">The client instance.</param>
         /// <returns>If the client is found, the socket is
         /// returned; otherwise null is returned.</returns>
-        private Socket getSocketByClient(IClient client)
-        {
-            Socket s;
-
-            s = clients.FirstOrDefault(x => x.Value.id == client.id).Key;
-
-            return s;
-        }
+        private Socket getSocketByClient(IClient client) =>
+            clients.FirstOrDefault(x => x.Value.id == client.id).Key;
 
         /// <summary>
         /// Kicks the specified client from the server.
@@ -408,7 +381,8 @@ namespace Casasoft.TCPServer
                         // 0x7F => delete character
                         else if (data[0] == 0x7F)
                             clientSocket.BeginReceive(data, 0, dataSize, SocketFlags.None, new AsyncCallback(receiveData), clientSocket);
-
+                        else if (data[0] < 0x20)
+                            ControlCharReceived(client, (char)data[0]);
                         else
                         {
                             client.appendReceivedData(Encoding.ASCII.GetString(data, 0, bytesReceived));
@@ -438,7 +412,7 @@ namespace Casasoft.TCPServer
         #region watchdog
         private bool testClientTimeout(IClient c) => (DateTime.Now - c.lastActivity).TotalSeconds > inactivityTimeout;
 
-        private void clearInactiveSockets(Object source, ElapsedEventArgs e)
+        public void clearInactiveSockets()
         {
             foreach (KeyValuePair<Socket, IClient> sc in clients)
             {

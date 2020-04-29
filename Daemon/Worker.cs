@@ -30,13 +30,13 @@ namespace Casasoft.BBS.Daemon
 {
     public class Worker : BackgroundService
     {
-
         public Worker()
         {
             ServerGlobal.Server = new Server(IPAddress.Any);
             ServerGlobal.Server.ClientConnected += clientConnected;
             ServerGlobal.Server.ClientDisconnected += clientDisconnected;
             ServerGlobal.Server.MessageReceived += clientHandleMessage;
+            ServerGlobal.Server.ControlCharReceived += clientHandleControlChar;
         }
 
         private static void clientConnected(IClient c)
@@ -56,11 +56,17 @@ namespace Casasoft.BBS.Daemon
             c.screen.HandleMessage(msg);
         }
 
+        private static void clientHandleControlChar(IClient c, char ch)
+        {
+
+        }
+
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                await Task.Delay(1000, stoppingToken);
+                ServerGlobal.Server.clearInactiveSockets();
+                await Task.Delay(5000, stoppingToken);
             }
         }
 
@@ -77,6 +83,5 @@ namespace Casasoft.BBS.Daemon
             ServerGlobal.Server.stop();
             await base.StopAsync(cancellationToken);
         }
-
     }
 }
