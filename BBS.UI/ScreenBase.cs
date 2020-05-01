@@ -39,6 +39,7 @@ namespace Casasoft.BBS.UI
 
         public virtual void Show() { }
         public virtual void HandleMessage(string msg) { }
+        public virtual void HandleChar(char ch) { }
         public virtual void ShowNext() { }
 
         public void Write(string s) => server.sendMessageToClient(client, s);

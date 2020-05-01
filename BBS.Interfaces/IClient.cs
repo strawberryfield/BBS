@@ -56,5 +56,8 @@ namespace Casasoft.BBS.Interfaces
         public string username { get; set; }
         public IScreen screen { get; set; }
         public string Remote { get; }
+        public int screenWidth { get; set; }
+        public int screenHeight { get; set; }
+
     }
 }

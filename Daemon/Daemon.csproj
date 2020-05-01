@@ -54,4 +54,10 @@
     <ProjectReference Include="..\BBS.UI\BBS.UI.csproj" />
     <ProjectReference Include="..\TCPServer\TCPServer.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="App.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 </Project>

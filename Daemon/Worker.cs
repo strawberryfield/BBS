@@ -58,7 +58,7 @@ namespace Casasoft.BBS.Daemon
 
         private static void clientHandleControlChar(IClient c, char ch)
         {
-
+            c.screen.HandleChar(ch);
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

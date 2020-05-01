@@ -285,15 +285,12 @@ namespace Casasoft.TCPServer
                     Client client = new Client(clientID, (IPEndPoint)newSocket.RemoteEndPoint);
                     clients.Add(newSocket, client);
 
-                    sendBytesToSocket(
-                        newSocket,
-                        new byte[] {
-                            0xff, 0xfd, 0x01,   // Do Echo
-                            0xff, 0xfd, 0x21,   // Do Remote Flow Control
-                            0xff, 0xfb, 0x01,   // Will Echo
-                            0xff, 0xfb, 0x03    // Will Supress Go Ahead
-                        }
-                    );
+                    // Start negotiation
+                    sendBytesToSocket(newSocket, Negotiation.Do(Negotiation.Operations.Echo));
+                    sendBytesToSocket(newSocket, Negotiation.Do(Negotiation.Operations.RemoteFlowControl));
+                    sendBytesToSocket(newSocket, Negotiation.Will(Negotiation.Operations.Echo));
+                    sendBytesToSocket(newSocket, Negotiation.Will(Negotiation.Operations.SuppressGoAhead));
+                    sendBytesToSocket(newSocket, Negotiation.Do(Negotiation.Operations.NegotiateAboutWindowSize));
 
                     client.resetReceivedData();
 
@@ -348,7 +345,12 @@ namespace Casasoft.TCPServer
                     ClientDisconnected(client);
                     serverSocket.BeginAccept(new AsyncCallback(handleIncomingConnection), serverSocket);
                 }
-
+                else if (data[0] == (byte)Negotiation.Tokens.IAC)
+                {
+                    // Negotiation
+                    Negotiation.HandleWindowSize(data, client);
+                    clientSocket.BeginReceive(data, 0, dataSize, SocketFlags.None, new AsyncCallback(receiveData), clientSocket);
+                }
                 else if (data[0] < 0xF0)
                 {
                     string receivedData = client.receivedData;
