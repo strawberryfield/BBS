@@ -55,16 +55,16 @@ namespace Casasoft.BBS.UI
         private int currentLine;
         public override void Show()
         {
-            currentLine = ShowLines(0, 24);
+            currentLine = ShowLines(0, client.screenHeight-2);
         }
 
         public override void HandleMessage(string msg)
         {
             if (!string.IsNullOrWhiteSpace(msg) && msg.Substring(0, 1).ToUpper() == "B")
             {
-                if (Text.Count > 24 && currentLine > 23)
+                if (Text.Count > (client.screenHeight - 1) && currentLine > (client.screenHeight - 2))
                 {
-                    int newStart = currentLine - 48;
+                    int newStart = currentLine - (client.screenHeight - 1) * 2;
                     newStart = newStart < 0 ? 0 : newStart;
                     Writeln();
                     currentLine = ShowLines(newStart, 24);
@@ -73,10 +73,10 @@ namespace Casasoft.BBS.UI
 
             if (string.IsNullOrWhiteSpace(msg))
             {
-                if (Text.Count > 24 && currentLine < Text.Count - 1)
+                if (Text.Count > (client.screenHeight - 1) && currentLine < Text.Count - 1)
                 {
                     Writeln();
-                    currentLine = ShowLines(currentLine, 24);
+                    currentLine = ShowLines(currentLine, (client.screenHeight - 1));
                 }
                 else
                     ShowNext();

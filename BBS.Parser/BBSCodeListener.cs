@@ -42,7 +42,6 @@ namespace Casasoft.BBS.Parser
 
         private ANSICodes ANSI;
         private BBSCodeResult.Action action;
-//        private string actionKey;
 
         public BBSCodeListener(IClient c, IServer s, string filename) : base()
         {
@@ -116,7 +115,7 @@ namespace Casasoft.BBS.Parser
                         Parsed.TextPop(true);
                         break;
                     case Tags.P:
-                        Parsed.Parsed = string.Join('\n', TextHelper.WordWrap(Parsed.Parsed, 79).ToArray());
+                        Parsed.Parsed = string.Join('\n', TextHelper.WordWrap(Parsed.Parsed, Client.screenWidth).ToArray());
                         Parsed.TextPop(true);
                         break;
                     case Tags.FIGGLE:
@@ -177,7 +176,7 @@ namespace Casasoft.BBS.Parser
                         Parsed.TextPop(true);
                         break;
                     case Tags.HR:
-                        Parsed.TextConcat(new string('-', 79));
+                        Parsed.TextConcat(TextHelper.HR('-', Client.screenWidth));
                         Parsed.TextPop(true);
                         break;
                     default:

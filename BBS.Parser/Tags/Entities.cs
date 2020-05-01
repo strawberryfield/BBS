@@ -29,7 +29,9 @@ namespace Casasoft.BBS.Parser
     public enum Entities
     {
         AMP, LEFTCURLY, RIGHTCURLY,
-        USERNAME, REMOTE, CONNECTIONTIME
+        USERNAME, REMOTE, CONNECTIONTIME,
+        AGRAVE, EGRAVE, IGRAVE, OGRAVE, UGRAVE, EACUTE,
+        SCREENWIDTH, SCREENHEIGHT, TERMINALTYPE
     }
 
     public class EntitiesDict
@@ -70,6 +72,24 @@ namespace Casasoft.BBS.Parser
                         return client.Remote;
                     case Entities.CONNECTIONTIME:
                         return client.connectedAt.ToString("g");
+                    case Entities.AGRAVE:
+                        return "a'";
+                    case Entities.EGRAVE:
+                        return "e'";
+                    case Entities.IGRAVE:
+                        return "i'";
+                    case Entities.OGRAVE:
+                        return "o'";
+                    case Entities.UGRAVE:
+                        return "u'";
+                    case Entities.EACUTE:
+                        return "e'";
+                    case Entities.SCREENWIDTH:
+                        return client.screenWidth.ToString();
+                    case Entities.SCREENHEIGHT:
+                        return client.screenHeight.ToString();
+                    case Entities.TERMINALTYPE:
+                        return client.terminalType;
                     default:
                         return string.Empty;
                 }
