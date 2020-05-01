@@ -1,39 +1,39 @@
 {CLS forcolor="Black"/}{BOLD}{color value="Blue"}Breve storia del brand The Strawberry Field.{/color}{/BOLD}
 
- Nel 1989 mi trovai a realizzare un piccolo giornaletto con un programma di 
+{p} Nel 1989 mi trovai a realizzare un piccolo giornaletto con un programma di 
  impaginazione chiamato Ventura Publisher. Al tempo lavori simili si facevano 
- con la macchina da scrivere e qualcuno mi insegnò anche a giustificare il 
- testo a pacchetto (cioè allineato a sinistra e a destra) scrivendo prima su 
+ con la macchina da scrivere e qualcuno mi insegn&ograve; anche a giustificare il 
+ testo a pacchetto (cio&egrave; allineato a sinistra e a destra) scrivendo prima su 
  un foglio a quadretti. Il foglio con tre colonne a carattere proporzionale 
  giustificato a pacchetto e tante altre piccole chicche non sembrava certo 
  uscito da una stampantina ad aghi (la quale lavorava per un tempo 
  interminabile facendo un frastuono assordante). L'aspetto grafico accattivante 
- mi procurò la commissione di vari libretti e volantini ed ebbi anche la 
- possibilità di stampare con una stampante laser. Non che con la laser si 
- facesse prima visto che ci voleva un quarto d'ora perchè uscisse la pagina 
+ mi procur&ograve; la commissione di vari libretti e volantini ed ebbi anche la 
+ possibilit&agrave; di stampare con una stampante laser. Non che con la laser si 
+ facesse prima visto che ci voleva un quarto d'ora perch&egrave; uscisse la pagina 
  (con grande scoramento del proprietario al quale avevano detto che faceva 11 
  pagine al minuto), ma la risoluzione, pur non potendo andare oltre i 150 dpi 
- per problemi di memoria, dava veramente spettacolo. 
+ per problemi di memoria, dava veramente spettacolo.{/p} 
  
- In fondo a queste pubblicazioni appariva il marchio The Strawberry Field o in 
- qualche caso il più autarchico e canzonatorio Antica Stramberia delle 
- Fragole. 
+{p}In fondo a queste pubblicazioni appariva il marchio The Strawberry Field o in 
+ qualche caso il pi&ugrave; autarchico e canzonatorio Antica Stramberia delle 
+ Fragole.{/p} 
  
- Sempre in quell'anno mi comperai un modem con il quale collegarmi ad alcune 
+{p}Sempre in quell'anno mi comperai un modem con il quale collegarmi ad alcune 
  BBS della rete FidoNet. Un sysop (il proprietario della BBS) mi diede 
- l'opportunità di installare un point per il quale usai lo stesso nickname 
- «The Strawberry Field». Per chi non la conoscesse, la rete Fidonet era un 
+ l'opportunit&agrave; di installare un point per il quale usai lo stesso nickname 
+ "The Strawberry Field". Per chi non la conoscesse, la rete Fidonet era un 
  network amatoriale in cui i vari nodi (BBS) si chiamavano tra loro nelle ore 
  notture (per problemi di costi telefonici) con dei modem analogici e si 
  scambiavano i messaggi che gli utenti dei singoli nodi lasciavano sulla BBS; 
  c'erano due tipi di mail: l'echomail assimilabile ad un newsgroup e la matrix 
  in cui i messaggi andavano "privatamente" da un utente all'altro allo stesso 
  modo delle mail di internet. Un point altri non era che una BBS personale in 
- grado di collegarsi al solo nodo che concedeva questa possibilità e 
+ grado di collegarsi al solo nodo che concedeva questa possibilit&agrave; e 
  permetteva di leggere la posta offline, altrimenti bisognava leggerla stando 
- collegati come si fa oggi con i servizi di webmail. 
+ collegati come si fa oggi con i servizi di webmail.{/p} 
  
- Ma il mio maggiore interesse era quello per la fotografia, avevo iniziato 
+{p}Ma il mio maggiore interesse era quello per la fotografia, avevo iniziato 
  seguendo gli insegnamenti di mio padre con la Kodak instamatic che mi aveva 
  regalato quando avevo 8 anni. Le foto che facevo sono sempre piaciute molto e 
  ricordo che la mestra incredula girava tutta la scuola per far vedere le foto 
@@ -44,25 +44,25 @@
  matrimoniali. In effetti ai matrimoni andavo sempre armato di macchina 
  forografica, ma volevo sentirmi libero di riprendere quello che volevo; poi 
  magari qualcuno metteva nella cornice una foto mia e non quella del fotografo 
- ufficiale... 
+ ufficiale...{/p} 
  
- Per alcuni anni le tre cose viaggiarono separatamente: i lavori di grafica, i 
+{p}Per alcuni anni le tre cose viaggiarono separatamente: i lavori di grafica, i 
  collegamenti telematici in solo testo e le fotografie sulle pellicole. Poi 
  arrivarono i lettori CD e facendo scansionare le foto da un service si poteva 
  avere un PhotoCD con le proprie immagini da lavorare con il computer: ecco che 
- le foto si potevano unire alla grafica. Inoltre un bel giorno mi capitò per 
+ le foto si potevano unire alla grafica. Inoltre un bel giorno mi capit&ograve; per 
  le mani un programma che si chiamava Netscape Navigator: grazie a questo 
  sistema si poteva creare una "BBS" con grafica e foto (quello che noi oggi 
  chiamiamo "sito web"). Finalmente avevo trovato l'anello di congiunzíone tra 
  le due anime di «The Strawberry Field»: la parte "artistica" e quella di 
- comunicazione. 
+ comunicazione.{/p} 
  
- Più recentemente mia moglie insistette perchè comprassi una videocamera per 
- riprendere nostro figlio così che potessimo ricordare dei bei momenti. Questa 
- nasceva già digitale e le relative riprese entrarono subito a far parte 
+{p}Pi&ugrave; recentemente mia moglie insistette perch&egrave; comprassi una videocamera per 
+ riprendere nostro figlio cos&igrave; che potessimo ricordare dei bei momenti. Questa 
+ nasceva gi&agrave; digitale e le relative riprese entrarono subito a far parte 
  integrante delle produzioni The Strawberry Field sfruttando le possibili 
- sinergie come è possibile constatare dal tutorial presente nel mio sito 
- (https://strawberryfield.altervista.org). 
+ sinergie come &egrave; possibile constatare dal tutorial presente nel mio sito 
+ (https://strawberryfield.altervista.org). {/p}
  
- Oggi il brand The Strawberry Field raccoglie tutte le produzioni fotografiche, 
- video e grafiche come questa BBS. 
+{p}Oggi il brand The Strawberry Field raccoglie tutte le produzioni fotografiche, 
+ video e grafiche come questa BBS.{/p} 

@@ -3,11 +3,12 @@
 Scegli una opzione:
 {ACTION key="N" module="NewUser"} {COLOR value="White"}{BACKCOLOR value="Blue"}[N]{/BACKCOLOR}{/COLOR} - Crea un nuovo utente{/ACTION}
 {ACTION key="L" module="LoginScreen"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - Login{/ACTION}
+{ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Informazioni sulla connessione (in inglese){/ACTION}
 
 {ACTION key="T" text="about/TSF.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[T]{/BACKCOLOR}{/COLOR} - Informazioni su The Strawberry Field{/ACTION}
 {ACTION key="A" text="about/RC.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - Informazioni sull'autore{/ACTION}
 
-{ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - Regolamento della BBS{/ACTION}
-{ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Disconnessione{/ACTION}
+{ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - Regolamento della BBS (in inglese){/ACTION}
+{ACTION key="Q" module="Logout" text="it/Logout.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Disconnessione{/ACTION}
 
 &scelta; 

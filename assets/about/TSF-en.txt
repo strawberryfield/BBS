@@ -1,6 +1,6 @@
 {CLS forcolor="Black"/}{BOLD}{color value="Blue"}Brief history of the brand The Strawberry Field.{/color}{/BOLD}
 
- In 1989 I found myself making a small newspaper with a program of pagination 
+{p}In 1989 I found myself making a small newspaper with a program of pagination 
  called Ventura Publisher. At the time, similar jobs were being done with the 
  typewriter and someone also taught me to justify the packet text (i.e. aligned 
  left and right) by first writing on a squared sheet. The sheet with three 
@@ -12,13 +12,13 @@
  quarter of an hour before the page to come out (much to the dismay of the 
  owner who was told the printer was capable of 11 pages per minute), but the 
  resolution, although it cannot go beyond 150 dpi for memory problems, it 
- really gave a show. 
+ really gave a show.{/p} 
  
- At the bottom of these publications appeared the trademark The Strawberry 
+{p}At the bottom of these publications appeared the trademark The Strawberry 
  Field or, in some cases, the most autarchic and mocking Antica Stramberia 
- delle Fragole. 
+ delle Fragole.{/p} 
  
- Also in that year I bought a modem with which to connect to some BBS of the 
+{p}Also in that year I bought a modem with which to connect to some BBS of the 
  FidoNet network. A sysop (the owner of the BBS) gave me the opportunity to 
  install a point for which I used the same nickname "The Strawberry Field." For 
  those unfamiliar with it, the Fidonet network was a amateur network in which 
@@ -29,9 +29,9 @@
  one user to another as the internet mail. One "point" was that a personal BBS 
  able to connect only to the node that granted this possibility and it allowed 
  you to read your mail offline, otherwise you would have to read it standing 
- connected as you do today with webmail services. 
+ connected as you do today with webmail services.{/p} 
  
- But my main interest was in photography, I had started following my father's 
+{p}But my main interest was in photography, I had started following my father's 
  teachings with the instamatic Kodak he had given when I was 8 years old. The 
  photos I took have always been very popular I remember that the incredulous 
  teacher spread the whole school to show the photos that I had taken during the 
@@ -41,9 +41,9 @@
  categorically refused to do photo shoots for weddings. In fact, at weddings I 
  always went armed with a photo camera, but I wanted to feel free to photograph 
  what I wanted; then maybe someone put a my photo in the frame and not that of 
- the official photographer. 
+ the official photographer.{/p} 
  
- For a few years the three things traveled separately: the graphic works, the 
+{p}For a few years the three things traveled separately: the graphic works, the 
  telematic links in plain text and photographs on films. Then CD players 
  arrived and by scanning a photo from a service you could have a PhotoCD with 
  your own images to work with the computer where the photos could be combined 
@@ -51,14 +51,14 @@
  Netscape Navigator: thanks to this system you could create a "BBS" with 
  graphics and photos (what we today we call "website"). I had finally found the 
  link between the two souls of The Strawberry Field: the "artistic" part and 
- that of communication. 
+ that of communication.{/p} 
  
- More recently my wife insisted that I buy a video camera for to take back our 
+{p}More recently my wife insisted that I buy a video camera for to take back our 
  son so that we could remember some amusing moments. This it was already 
  digital and the relative filming immediately became part of it an integral 
  part of The Strawberry Field productions exploiting the possible synergies as 
  can be seen from the tutorial on my site 
- (https://strawberryfield.altervista.org). 
+ (https://strawberryfield.altervista.org).{/p} 
  
- Today the brand The Strawberry Field gathers all the productions photographic, 
- video and graphics like this BBS. 
+{p}Today the brand The Strawberry Field gathers all the productions photographic, 
+ video and graphics like this BBS.{/p} 

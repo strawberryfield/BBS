@@ -1,0 +1,12 @@
+{CLS/} &BBSname; 
+{backcolor value="cyan"}{color value="black"}{Figgle font="small"} Connection info {/Figgle}{/color}{/backcolor}{HR/}
+
+Username: &username;
+From ip : &remote;
+Since   : &connectiontime;
+
+Terminal type: &terminalType;
+Screen width : &screenWidth; 
+Screen height: &screenHeight; 
+
+Press [RETURN] to continue

@@ -1,41 +1,41 @@
 {CLS forcolor="Black"/}{BOLD}{color value="Blue"}Know the author of the site.{/color}{/BOLD}
 ﻿
- I am 54 years old, I was born in Rimini (Italy), I live in Cesena with my wife 
- and our two sons. 
+{p}I am 54 years old, I was born in Rimini (Italy), I live in Cesena with my wife 
+ and our two sons.{/p} 
  
- I had my first camera when I was 8 and since then I have never stopped to take 
+{p}I had my first camera when I was 8 and since then I have never stopped to take 
  photographs. I only regret not having time to work a bit in darkroom. (digital 
- printing does not give the same wonderful sensations). 
+ printing does not give the same wonderful sensations).{/p} 
  
- Years ago I was convinced to buy a digital video camera and then I have 
+{p}Years ago I was convinced to buy a digital video camera and then I have 
  started trying to create interactive DVDs inspired by those of Walt Disney 
  watched by my childs. Indeed, since they are the main viewers of my DVDs they 
- must have been exactly the same. 
+ must have been exactly the same.{/p} 
  
- I've been interested in programming since 1981 when they gave me one Texas 
+{p}I've been interested in programming since 1981 when they gave me one Texas 
  TI-58 calculator. Then I moved on to the glorious Commodore 64 and finally I 
  arrived at the PC, first with the dos, then OS / 2, linux (an old slackware 
- attached to a magazine) and, at the end, Windows (first NT then 2000). 
+ attached to a magazine) and, at the end, Windows (first NT then 2000).{/p} 
  
- Today I use Windows 10, Raspbian and Android as well as having fun with 
- microcontrollers such as Arduino and ESP8266. 
+{p}Today I use Windows 10, Raspbian and Android as well as having fun with 
+ microcontrollers such as Arduino and ESP8266.{/p} 
  
- On the way I met the university's VAX-VMS, an IBM-36 and an AS-400. For work I 
+{p}On the way I met the university's VAX-VMS, an IBM-36 and an AS-400. For work I 
  have known SCO, AIX on RS-6000 and the whole range of Windows servers from NT4 
  onwards. I've always wanted a Mac, but the environments in which I have 
  operated were always turned elsewhere: once from a customer I got my hands on 
- the keyboard of an iMac and not knowing how to configure it I wrote "vi"... 
+ the keyboard of an iMac and not knowing how to configure it I wrote "vi"...{/p} 
  
- I work for a software house where I coordinate the software development team. 
+{p}I work for a software house where I coordinate the software development team.{/p} 
  
- In the past (1980s) I collaborated with the italian magazines MCmicrocomputer 
+{p}In the past (1980s) I collaborated with the italian magazines MCmicrocomputer 
  and Nuova Elettronica. Furthermore RadioRAI (the italian public broadcasting 
  service) has broadcast some of my programs for the Commodore64 (yes, they 
  broadcast the audio cassette with the program recorded: in those days they 
- also did these things) 
+ also did these things){/p} 
  
- More recent (early 2008) is the publication of the tutorial on DVDs on the 
- magazine Computer Programming 
+{p}More recent (early 2008) is the publication of the tutorial on DVDs on the 
+ magazine Computer Programming{/p} 
  
- For some years I have been part of the development team of the open source 
- railway simulator OpenRails (http://openrails.org). 
+{p}For some years I have been part of the development team of the open source 
+ railway simulator OpenRails (http://openrails.org).{/p} 

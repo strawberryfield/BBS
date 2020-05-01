@@ -36,7 +36,7 @@
  Commodore64 (si, hanno messo in onda la cassetta con registrato il programma: 
  a quei tempi si facevano anche di queste cose){/P} 
  
-{P} Più recente (inizio 2008) è invece la pubblicazione del tutorial sui DVD da 
+{P} Pi&ugrave; recente (inizio 2008) &egrave; invece la pubblicazione del tutorial sui DVD da 
  parte di Computer Programming{/P} 
  
 {P} Da alcuni anni faccio parte del team di sviluppo del simulatore ferroviario 
