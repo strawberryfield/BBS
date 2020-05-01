@@ -55,6 +55,7 @@ namespace Casasoft.TCPServer
 
         public int screenWidth { get; set; }
         public int screenHeight { get; set; }
+        public string terminalType { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client"/> class.
@@ -72,7 +73,9 @@ namespace Casasoft.TCPServer
             this.lastActivity = DateTime.Now;
             screenWidth = 80;
             screenHeight = 24;
+            terminalType = string.Empty;
         }
+
         /// <summary>
         /// Appends a string to the client's last
         /// received data.

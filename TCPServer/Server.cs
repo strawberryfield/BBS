@@ -205,7 +205,7 @@ namespace Casasoft.TCPServer
 
                     if (c.status == EClientStatus.LoggedIn)
                     {
-                        sendMessageToSocket(s, END_LINE + message + END_LINE + CURSOR);
+                        sendMessageToSocket(s, END_LINE + message + END_LINE);
                         c.resetReceivedData();
                     }
                 }
@@ -291,6 +291,7 @@ namespace Casasoft.TCPServer
                     sendBytesToSocket(newSocket, Negotiation.Will(Negotiation.Operations.Echo));
                     sendBytesToSocket(newSocket, Negotiation.Will(Negotiation.Operations.SuppressGoAhead));
                     sendBytesToSocket(newSocket, Negotiation.Do(Negotiation.Operations.NegotiateAboutWindowSize));
+                    sendBytesToSocket(newSocket, Negotiation.Do(Negotiation.Operations.TerminalType));
 
                     client.resetReceivedData();
 
@@ -349,6 +350,10 @@ namespace Casasoft.TCPServer
                 {
                     // Negotiation
                     Negotiation.HandleWindowSize(data, client);
+                    if (Negotiation.ClientWillTerminalType(data))
+                        sendBytesToSocket(clientSocket, Negotiation.AskForTerminalType());
+                    Negotiation.HandleTerminalType(data, client);
+
                     clientSocket.BeginReceive(data, 0, dataSize, SocketFlags.None, new AsyncCallback(receiveData), clientSocket);
                 }
                 else if (data[0] < 0xF0)

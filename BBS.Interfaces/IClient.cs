@@ -58,6 +58,7 @@ namespace Casasoft.BBS.Interfaces
         public string Remote { get; }
         public int screenWidth { get; set; }
         public int screenHeight { get; set; }
+        public string terminalType { get; set; }
 
     }
 }

@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.Interfaces;
+using System.Text;
 
 namespace Casasoft.TCPServer
 {
@@ -184,5 +185,60 @@ namespace Casasoft.TCPServer
             }
         }
 
+        /// <summary>
+        /// Tests if client support Terminal Type Negotiation RFC884 - RFC1091
+        /// <see cref="https://tools.ietf.org/html/rfc884"/>
+        /// <see cref="https://tools.ietf.org/html/rfc1091"/>
+        /// </summary>
+        /// <param name="data">received bytes</param>
+        /// <returns></returns>
+        public static bool ClientWillTerminalType(byte[] data)
+        {
+            bool ret = false;
+            if (data[1] == (byte)Tokens.WILL && data[2] == (byte)Operations.TerminalType) 
+                ret = true;
+            return ret;
+        }
+
+        /// <summary>
+        /// Sequence to request terminal type to the client RFC884 - RFC1091
+        /// <see cref="https://tools.ietf.org/html/rfc884"/>
+        /// <see cref="https://tools.ietf.org/html/rfc1091"/>
+        /// </summary>
+        /// <returns>IAC SB TERMINAL-TYPE SEND IAC SE</returns>
+        public static byte[] AskForTerminalType() => new byte[]
+        {
+            (byte)Tokens.IAC,
+            (byte)Tokens.Subnegotiation,
+            (byte)Operations.TerminalType,
+            1,
+            (byte)Tokens.IAC,
+            (byte)Tokens.SE
+        };
+
+        /// <summary>
+        /// Receive terminal type from cliente RFC884 - RFC1091
+        /// <see cref="https://tools.ietf.org/html/rfc884"/>
+        /// <see cref="https://tools.ietf.org/html/rfc1091"/>
+        /// </summary>
+        /// <param name="data">received data</param>
+        /// <param name="c">client to update</param>
+        /// <remarks>
+        /// Client sends data in the form
+        /// <code>
+        /// IAC SB TERMINAL-TYPE IS ... IAC SE
+        /// </code>
+        /// The code for IS is 0.
+        /// </remarks>
+        public static void HandleTerminalType(byte[] data, IClient c)
+        {
+            if (data[1] == (byte)Tokens.Subnegotiation && data[2] == (byte)Operations.TerminalType && data[3] == 0)
+            {
+                StringBuilder sb = new StringBuilder();
+                for(int j=4; data[j] != (byte)Tokens.IAC; j++)
+                    sb.Append((char)data[j]);
+                c.terminalType = sb.ToString();
+            }
+        }
     }
 }
