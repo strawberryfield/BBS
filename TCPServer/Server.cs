@@ -92,6 +92,9 @@ namespace Casasoft.TCPServer
         public event MessageReceivedEventHandler MessageReceived;
 
         public delegate void ControlCharReceivedEventHandler(IClient c, char ch);
+        /// <summary>
+        /// Occurs when a control character is received.
+        /// </summary>
         public event ControlCharReceivedEventHandler ControlCharReceived;
 
         private int inactivityTimeout;
@@ -415,6 +418,24 @@ namespace Casasoft.TCPServer
             }
 
             catch { }
+        }
+
+        /// <summary>
+        /// Clears the last input on terminal
+        /// </summary>
+        /// <param name="c"></param>
+        public void ClearLastInput(IClient c)
+        {
+            Socket s = getSocketByClient(c);
+            int nChar = c.receivedData.Length;
+            byte[] seq = new byte[nChar *3 ];
+            for(int j = 0; j < nChar; j++)
+            {
+                seq[j] = 0x08;
+                seq[j + nChar] = 0x20;
+                seq[j + nChar * 2] = 0x08;
+            }
+            sendBytesToSocket(s, seq);
         }
 
         #region watchdog

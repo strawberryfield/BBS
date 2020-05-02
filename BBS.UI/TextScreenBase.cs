@@ -88,13 +88,13 @@ namespace Casasoft.BBS.UI
         private void execAction(string act)
         {
             if (Data == null) return;
-            BBSCodeResult.Action a = null;
-            Data.Actions.TryGetValue(act, out a);
-            if (a != null)
+            BBSCodeResult.Action a;
+            if (Data.Actions.TryGetValue(act, out a))
             {
                 client.screen = ScreenFactory.Create(client, server, a.module, a.data, this);
                 client.screen.Show();
             }
+            else server.ClearLastInput(client);
         }
 
         public override void ShowNext()

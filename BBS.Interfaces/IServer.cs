@@ -25,18 +25,72 @@ namespace Casasoft.BBS.Interfaces
 {
     public interface IServer
     {
+        /// <summary>
+        /// Starts the server.
+        /// </summary>
         public void start();
+
+        /// <summary>
+        /// Stops the server.
+        /// </summary>
         public void stop();
+
+        /// <summary>
+        /// Returns whether incoming connections
+        /// are allowed.
+        /// </summary>
+        /// <returns>True is connections are allowed;
+        /// false otherwise.</returns>
+        public bool incomingConnectionsAllowed();
+
+        /// <summary>
+        /// Denies the incoming connections.
+        /// </summary>
         public void denyIncomingConnections();
+
+        /// <summary>
+        /// Allows the incoming connections.
+        /// </summary>
         public void allowIncomingConnections();
+
+        /// <summary>
+        /// Clears the screen for the specified
+        /// client.
+        /// </summary>
+        /// <param name="c">The client on which
+        /// to clear the screen.</param>
         public void clearClientScreen(IClient c);
+
+        /// <summary>
+        /// Sends a text message to the specified
+        /// client.
+        /// </summary>
+        /// <param name="c">The client.</param>
+        /// <param name="message">The message.</param>
         public void sendMessageToClient(IClient c, string message);
+
+        /// <summary>
+        /// Sends a message to all connected clients.
+        /// </summary>
+        /// <param name="message">The message.</param>
         public void sendMessageToAll(string message);
+
+        /// <summary>
+        /// Kicks the specified client from the server.
+        /// </summary>
+        /// <param name="client">The client.</param>
         public void kickClient(IClient client);
+
         /// <summary>
         /// Contains all connected clients indexed
         /// by their socket.
         /// </summary>
         public Dictionary<Socket, IClient> clients { get; }
+
+        /// <summary>
+        /// Clears the last input on terminal
+        /// </summary>
+        /// <param name="c"></param>
+        public void ClearLastInput(IClient c);
     }
 }
