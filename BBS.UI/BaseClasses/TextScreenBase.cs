@@ -52,7 +52,7 @@ namespace Casasoft.BBS.UI
             Text = Data.GetRows();
         }
 
-        private int currentLine;
+        protected int currentLine;
         public override void Show()
         {
             currentLine = ShowLines(0, client.screenHeight-2);
@@ -67,7 +67,7 @@ namespace Casasoft.BBS.UI
                     int newStart = currentLine - (client.screenHeight - 1) * 2;
                     newStart = newStart < 0 ? 0 : newStart;
                     Writeln();
-                    currentLine = ShowLines(newStart, 24);
+                    currentLine = ShowLines(newStart, client.screenHeight - 1);
                 }
             }
 
@@ -106,17 +106,19 @@ namespace Casasoft.BBS.UI
                 client.screen.Show();
             }
         }
-        protected int ShowLines(int start, int len)
+        protected int ShowLines(List<string> lines, int start, int len)
         {
             int ret = start;
             bool isFirst = true;
-            for (; ret < start + len && ret < Text.Count; ++ret)
+            for (; ret < start + len && ret < lines.Count; ++ret)
             {
                 if (!isFirst) Writeln();
                 else isFirst = false;
-                Write(Text[ret]);
+                Write(lines[ret]);
             }
             return ret;
         }
+
+        protected int ShowLines(int start, int len) => ShowLines(Text, start, len);
     }
 }

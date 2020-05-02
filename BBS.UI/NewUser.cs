@@ -22,7 +22,6 @@ using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
-using System.Configuration;
 
 namespace Casasoft.BBS.UI
 {

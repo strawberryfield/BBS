@@ -107,8 +107,8 @@ namespace Casasoft.BBS.Parser
 
         public string ClearScreen() => WriteMode() + "\u001b[2J" + Home();
 
-        public string Move(byte x, byte y) => string.Format("\u001b[{0};{1}f", x, y);
-
+        public string Move(int x, int y) => string.Format("\u001b[{0};{1}f", y, x);
+        public string Move(string x, string y) => string.Format("\u001b[{0};{1}f", y, x);
         public string Home() => Move(0, 0);
 
         public void ClearMode()

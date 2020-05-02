@@ -1,13 +1,9 @@
 {CLS/} &BBSname;
 {backcolor value="cyan"}{color value="black"}{Figgle font="small"} Main menu {/Figgle}{/color}{/backcolor}{HR/}
 Select an option:
-{ACTION key="C" text="Connected.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[C]{/BACKCOLOR}{/COLOR} - Show connected users{/ACTION}
-{ACTION key="U" text="Joined.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[U]{/BACKCOLOR}{/COLOR} - Show registered users{/ACTION}
-{ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Show connection info{/ACTION}
-
-{ACTION key="T" text="about/TSF-en.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[T]{/BACKCOLOR}{/COLOR} - About The Strawberry Field{/ACTION}
-{ACTION key="A" text="about/RC-en.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - About the author{/ACTION}
-{ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - BBS Rules / Disclaimer{/ACTION}
+{ACTION key="C" text="Connected.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[C]{/BACKCOLOR}{/COLOR} - Show connected users{/ACTION}{move row="9" col="35"/}{ACTION key="T" text="about/TSF-en.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[T]{/BACKCOLOR}{/COLOR} - About The Strawberry Field{/ACTION}
+{ACTION key="U" module="ListUsers"} {COLOR value="White"}{BACKCOLOR value="Blue"}[U]{/BACKCOLOR}{/COLOR} - Show registered users{/ACTION}{move row="10" col="35"/}{ACTION key="A" text="about/RC-en.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - About the author{/ACTION}
+{ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Show connection info{/ACTION}{move row="11" col="35"/}{ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - BBS Rules / Disclaimer{/ACTION}
 
 {ACTION key="M" module="MessageAreaGroups"} {COLOR value="White"}{BACKCOLOR value="Blue"}[M]{/BACKCOLOR}{/COLOR} - Message Areas{/ACTION}
 

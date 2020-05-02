@@ -95,6 +95,7 @@ namespace Casasoft.BBS.Parser
             {
                 Attributes attr = AttributesTable.GetAttributes(tag);
                 string value;
+                string value1;
                 switch (tag)
                 {
                     case Tags.CLS:
@@ -137,10 +138,14 @@ namespace Casasoft.BBS.Parser
                         Parsed.Parsed = string.Join('\n', TextHelper.WordWrap(Parsed.Parsed, Client.screenWidth).ToArray());
                         Parsed.TextPop(true);
                         break;
+                    case Tags.MOVE:
+                        if (!attr.TryGetValue("ROW", out value)) value = "0";
+                        if (!attr.TryGetValue("COL", out value1)) value1 = "0";
+                        Parsed.TextConcat(ANSI.Move(value1, value));
+                        Parsed.TextPop(true);
+                        break;
                     case Tags.FIGGLE:
-                        value = "standard";
-                        attr.TryGetValue("FONT", out value);
-                        if (string.IsNullOrWhiteSpace(value)) value = "standard";
+                        if (!attr.TryGetValue("FONT", out value)) value = "standard";
                         try
                         {
                             Parsed.Parsed = Figgle.FiggleFonts.Lookup(value.ToLower()).Render(Parsed.Parsed);
