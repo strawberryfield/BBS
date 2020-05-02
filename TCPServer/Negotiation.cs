@@ -230,15 +230,20 @@ namespace Casasoft.TCPServer
         /// </code>
         /// The code for IS is 0.
         /// </remarks>
-        public static void HandleTerminalType(byte[] data, IClient c)
+        public static bool HandleTerminalType(byte[] data, IClient c)
         {
             if (data[1] == (byte)Tokens.Subnegotiation && data[2] == (byte)Operations.TerminalType && data[3] == 0)
             {
                 StringBuilder sb = new StringBuilder();
                 for(int j=4; data[j] != (byte)Tokens.IAC; j++)
                     sb.Append((char)data[j]);
-                c.terminalType = sb.ToString();
+
+                if(string.IsNullOrWhiteSpace(c.terminalType))
+                    c.terminalType = sb.ToString();
+
+                return c.TryAddTerminalType(sb.ToString());
             }
+            return false;
         }
     }
 }

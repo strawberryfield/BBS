@@ -22,6 +22,7 @@
 
 using Casasoft.BBS.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Net;
 
 namespace Casasoft.TCPServer
@@ -49,13 +50,40 @@ namespace Casasoft.TCPServer
         /// </summary>
         public string receivedData { get; set; }
 
-        public DateTime lastActivity { get; set; }
+        /// <summary>
+        /// User logged in
+        /// </summary>
         public string username { get; set; }
+
+        /// <summary>
+        /// Active form
+        /// </summary>
         public IScreen screen { get; set; }
 
+        /// <summary>
+        /// last user activity timestamp
+        /// </summary>
+        public DateTime lastActivity { get; set; }
+
+        /// <summary>
+        /// Current screen columns
+        /// </summary>
         public int screenWidth { get; set; }
+
+        /// <summary>
+        /// Current screen rows
+        /// </summary>
         public int screenHeight { get; set; }
+
+        /// <summary>
+        /// Current terminal type
+        /// </summary>
         public string terminalType { get; set; }
+
+        /// <summary>
+        /// List of terminal types avaliable on client
+        /// </summary>
+        public List<string> terminalTypeCapable { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Client"/> class.
@@ -74,6 +102,7 @@ namespace Casasoft.TCPServer
             screenWidth = 80;
             screenHeight = 24;
             terminalType = string.Empty;
+            terminalTypeCapable = new List<string>();
         }
 
         /// <summary>
@@ -103,9 +132,23 @@ namespace Casasoft.TCPServer
             receivedData = string.Empty;
         }
 
+        /// <summary>
+        /// Formatted remote ip and port
+        /// </summary>
         public string Remote { get => string.Format("{0}:{1}", remoteAddr.Address.ToString(), remoteAddr.Port); }
 
         public override string ToString() => string.Format("Client #{0} (From: {1}, Status: {2})", id, Remote, status);
 
+        /// <summary>
+        /// Tries to add unique values to the list
+        /// </summary>
+        /// <param name="tt">string to insert</param>
+        /// <returns>true if insert is successful</returns>
+        public bool TryAddTerminalType(string tt)
+        {
+            if (terminalTypeCapable.Contains(tt)) return false;
+            terminalTypeCapable.Add(tt);
+            return true;
+        }
     }
 }

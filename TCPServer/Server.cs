@@ -352,7 +352,8 @@ namespace Casasoft.TCPServer
                     Negotiation.HandleWindowSize(data, client);
                     if (Negotiation.ClientWillTerminalType(data))
                         sendBytesToSocket(clientSocket, Negotiation.AskForTerminalType());
-                    Negotiation.HandleTerminalType(data, client);
+                    if(Negotiation.HandleTerminalType(data, client))
+                        sendBytesToSocket(clientSocket, Negotiation.AskForTerminalType());
 
                     clientSocket.BeginReceive(data, 0, dataSize, SocketFlags.None, new AsyncCallback(receiveData), clientSocket);
                 }
