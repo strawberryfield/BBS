@@ -63,6 +63,27 @@ namespace Casasoft.BBS.Parser
             if (TagsTable.TryGetValue(tagName, out tag))
             {
                 Parsed.TextPush();
+                switch (tag)
+                {
+                    case Tags.BLINK:
+                        ANSI.SetMode(ANSICodes.Modes.Blink);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        break;
+                    case Tags.REVERSE:
+                        ANSI.SetMode(ANSICodes.Modes.Reverse);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        break;
+                    case Tags.BOLD:
+                        ANSI.SetMode(ANSICodes.Modes.Bold);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        break;
+                    case Tags.UNDERLINE:
+                        ANSI.SetMode(ANSICodes.Modes.Underline);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -83,35 +104,33 @@ namespace Casasoft.BBS.Parser
                         Parsed.TextPop(true);
                         break;
                     case Tags.BLINK:
-                        textModeTag(ANSICodes.Modes.Blink);
+                        ANSI.ResetMode(ANSICodes.Modes.Blink);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        Parsed.TextPop(true);
                         break;
                     case Tags.REVERSE:
-                        textModeTag(ANSICodes.Modes.Reverse);
+                        ANSI.ResetMode(ANSICodes.Modes.Reverse);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        Parsed.TextPop(true);
                         break;
                     case Tags.BOLD:
-                        textModeTag(ANSICodes.Modes.Bold);
+                        ANSI.ResetMode(ANSICodes.Modes.Bold);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        Parsed.TextPop(true);
                         break;
                     case Tags.UNDERLINE:
-                        textModeTag(ANSICodes.Modes.Underline);
+                        ANSI.ResetMode(ANSICodes.Modes.Underline);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        Parsed.TextPop(true);
                         break;
                     case Tags.COLOR:
-                        if(attr.TryGetValue("VALUE", out value))
-                        {
-                            ANSI.pushForeColor(value);
-                            Parsed.Parsed = ANSI.WriteForeColor() + Parsed.Parsed;                            
-                            ANSI.popForeColor();
-                            Parsed.TextConcat(ANSI.WriteForeColor());
-                        }
+                        ANSI.popForeColor();
+                        Parsed.TextConcat(ANSI.WriteMode());
                         Parsed.TextPop(true);
                         break;
                     case Tags.BACKCOLOR:
-                        if (attr.TryGetValue("VALUE", out value))
-                        {
-                            ANSI.pushBackColor(value);
-                            Parsed.Parsed = ANSI.WriteBackColor() + Parsed.Parsed;
-                            ANSI.popBackColor();
-                            Parsed.TextConcat(ANSI.WriteBackColor());
-                        }
+                        ANSI.popBackColor();
+                        Parsed.TextConcat(ANSI.WriteMode());
                         Parsed.TextPop(true);
                         break;
                     case Tags.P:
@@ -185,15 +204,6 @@ namespace Casasoft.BBS.Parser
             }
         }
 
-        private void textModeTag(ANSICodes.Modes mode)
-        {
-            ANSI.SetMode(ANSICodes.Modes.Blink);
-            Parsed.Parsed = ANSI.WriteMode() + Parsed.Parsed;
-            ANSI.ResetMode(ANSICodes.Modes.Blink);
-            Parsed.TextConcat(ANSI.WriteMode());
-            Parsed.TextPop(true);
-        }
-
         public override void EnterBbsCodeAttribute([NotNull] BBSCodeParser.BbsCodeAttributeContext context)
         {
             string tagName = context.Parent.GetChild(1).GetText().Trim().ToUpper();
@@ -204,7 +214,20 @@ namespace Casasoft.BBS.Parser
             Tags tag;
             if (TagsTable.TryGetValue(tagName, out tag))
             {
-                AttributesTable.Add(tag, attributeName, attributeValue);
+                switch (tag)
+                {
+                    case Tags.COLOR:
+                        ANSI.pushForeColor(attributeValue);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        break;
+                    case Tags.BACKCOLOR:
+                        ANSI.pushBackColor(attributeValue);
+                        Parsed.TextConcat(ANSI.WriteMode());
+                        break;
+                    default:
+                        AttributesTable.Add(tag, attributeName, attributeValue);
+                        break;
+                }               
             }
         }
 
