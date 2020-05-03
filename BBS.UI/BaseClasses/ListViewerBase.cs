@@ -51,14 +51,51 @@ namespace Casasoft.BBS.UI
         protected int dataAreaStart;
         protected ANSICodes ANSI;
 
+
         public override void Show()
+        {
+            currentLine = ShowTableLines(0);
+        }
+
+        protected int ShowTableLines(int start)
         {
             Write(ANSI.ClearScreen());
             ShowLines(header, 0, header.Count);
             Write(ANSI.Move(0, dataAreaStart + dataAreaSize));
             ShowLines(footer, 0, footer.Count);
+            Write(ANSI.SaveCursorPosition);
             Write(ANSI.Move(0, dataAreaStart));
-            currentLine = ShowLines(lines, 0, dataAreaSize);
+            int ret = ShowLines(lines, start, dataAreaSize);
+            Write(ANSI.RestoreCursorPosition);
+            return ret;
         }
+
+        public override void HandleMessage(string msg)
+        {
+            if (!string.IsNullOrWhiteSpace(msg) && msg.Substring(0, 1).ToUpper() == "B")
+            {
+                if (lines.Count > dataAreaSize && currentLine > dataAreaSize)
+                {
+                    int newStart = (currentLine - 1) / dataAreaSize - 1;
+                    newStart = newStart < 0 ? 0 : newStart * dataAreaSize;
+                    Writeln();
+                    currentLine = ShowTableLines(newStart);
+                }
+            }
+
+            if (string.IsNullOrWhiteSpace(msg))
+            {
+                if (lines.Count > dataAreaSize && currentLine < lines.Count)
+                {
+                    Writeln();
+                    currentLine = ShowTableLines(currentLine+1);
+                }
+                else
+                    ShowNext();
+            }
+
+            if (Data != null && Data.Actions.Count > 0) execAction(msg.Trim().ToUpper());
+        }
+
     }
 }

@@ -175,26 +175,6 @@ namespace Casasoft.BBS.Parser
                         if (!Parsed.Actions.TryAdd(action.key, action))
                             EventLogger.Write(string.Format("Error adding action '{0}' in '{1}'", action.key, FileName), 0);
                         break;
-                    case Tags.CONNECTED:
-                        Parsed.TextConcat(string.Format("{0,-30} {1,-16} {2}\r\n", "Username", "Connected", "From"));
-                        Parsed.TextConcat(new string('-', 79) + "\r\n");
-                        foreach (IClient c in Server.clients.Values)
-                            Parsed.TextConcat(string.Format("{0,-30} {1:g} {2}\r\n",
-                                string.IsNullOrWhiteSpace(c.username) ? "GUEST" : c.username, c.connectedAt, c.Remote));
-                        Parsed.TextPop(true);
-                        break;
-                    case Tags.JOINED:
-                        Parsed.TextConcat(string.Format("{0,-30} {1,-10} {2}\r\n", "Username", "Since", "From"));
-                        Parsed.TextConcat(new string('-', 79) + "\r\n");
-                        using (bbsContext bbs = new bbsContext())
-                        {
-                            foreach (var user in bbs.Users)
-                                Parsed.TextConcat(string.Format("{0,-30} {1:d} {2}\r\n",
-                                    user.Userid, user.Registered.Date,
-                                    TextHelper.Truncate(user.City.Trim() + ", " + user.Nation, 32)));
-                        }
-                        Parsed.TextPop(true);
-                        break;
                     case Tags.BEEP:
                         Parsed.TextConcat((char)7);
                         Parsed.TextPop(true);

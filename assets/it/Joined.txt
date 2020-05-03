@@ -1,6 +1,0 @@
-{CLS/} &BBSname;  -  Utenti registrati:
-{HR/}
-
-{JOINED/}
-
-Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Invio]{/BACKCOLOR}{/COLOR} per tornare al menu 

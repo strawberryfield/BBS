@@ -1,0 +1,7 @@
+{CLS/} &BBSname;  -  Logins dell'utente &username;:
+
+Data       Ora      Ok Da
+{HR/}
+[TABLEBODY]
+{hr/}
+Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} per continuare 

@@ -111,6 +111,9 @@ namespace Casasoft.BBS.Parser
         public string Move(string x, string y) => string.Format("\u001b[{0};{1}f", y, x);
         public string Home() => Move(0, 0);
 
+        public string SaveCursorPosition { get => "\u001b[s"; }
+        public string RestoreCursorPosition { get => "\u001b[u"; }
+
         public void ClearMode()
         {
             currentMode = 0;

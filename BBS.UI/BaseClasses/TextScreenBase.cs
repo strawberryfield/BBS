@@ -85,7 +85,7 @@ namespace Casasoft.BBS.UI
             if (Data != null && Data.Actions.Count > 0) execAction(msg.Trim().ToUpper());
         }
 
-        private void execAction(string act)
+        protected void execAction(string act)
         {
             if (Data == null) return;
             BBSCodeResult.Action a;

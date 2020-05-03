@@ -1,0 +1,7 @@
+{CLS/} &BBSname;  -  Utenti registrati:
+
+Nome utente                    Dal        Da
+{HR/}
+[TABLEBODY]
+{hr/}
+Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} per continuare 

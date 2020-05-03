@@ -21,24 +21,24 @@
 using Casasoft.BBS.DataTier;
 using Casasoft.BBS.Interfaces;
 using Casasoft.TextHelpers;
+using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class ListUsers : ListViewerBase
+    public class ListLogins : ListViewerBase
     {
         #region constructors
-        private const string defaultText = "@ListUsers";
-        public ListUsers(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public ListUsers(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
-        public ListUsers(IClient c, IServer s) : this(c, s, defaultText) { }
-        public ListUsers(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        private const string defaultText = "@ListLogins";
+        public ListLogins(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public ListLogins(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public ListLogins(IClient c, IServer s) : this(c, s, defaultText) { }
+        public ListLogins(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
-            using(bbsContext bbs = new bbsContext())
+            using (bbsContext bbs = new bbsContext())
             {
-                foreach (var user in bbs.Users)
-                    lines.Add(TextHelper.Truncate(string.Format("{0,-30} {1:d} {2}",
-                        user.Userid, user.Registered.Date,
-                        user.City.Trim() + ", " + user.Nation), client.screenWidth));
+                foreach (var login in bbs.Logins.Where(l => l.UserId == client.username))
+                    lines.Add(TextHelper.Truncate(string.Format("{0,-20:G} {1} {2}",
+                        login.DateTime, login.Success ? "*" : " ", login.From), client.screenWidth));
             }
         }
         #endregion

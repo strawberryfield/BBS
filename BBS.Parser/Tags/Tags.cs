@@ -26,7 +26,7 @@ namespace Casasoft.BBS.Parser
     public enum Tags
     {
         CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR,
-        FIGGLE, BEEP, HR, CONNECTED, JOINED, P, MOVE,
+        FIGGLE, BEEP, HR, P, MOVE,
         ACTION
     }
 

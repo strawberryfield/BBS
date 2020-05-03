@@ -21,25 +21,23 @@
 using Casasoft.BBS.DataTier;
 using Casasoft.BBS.Interfaces;
 using Casasoft.TextHelpers;
+using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class ListUsers : ListViewerBase
+    public class ListConnected : ListViewerBase
     {
         #region constructors
-        private const string defaultText = "@ListUsers";
-        public ListUsers(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public ListUsers(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
-        public ListUsers(IClient c, IServer s) : this(c, s, defaultText) { }
-        public ListUsers(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        private const string defaultText = "@ListConnected";
+        public ListConnected(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public ListConnected(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public ListConnected(IClient c, IServer s) : this(c, s, defaultText) { }
+        public ListConnected(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
-            using(bbsContext bbs = new bbsContext())
-            {
-                foreach (var user in bbs.Users)
-                    lines.Add(TextHelper.Truncate(string.Format("{0,-30} {1:d} {2}",
-                        user.Userid, user.Registered.Date,
-                        user.City.Trim() + ", " + user.Nation), client.screenWidth));
-            }
+            foreach (IClient cl in server.clients.Values)
+                lines.Add(TextHelper.Truncate(string.Format("{0,-30} {1:G} {2}",
+                    string.IsNullOrWhiteSpace(c.username) ? "GUEST" : c.username, c.connectedAt, c.Remote),
+                    client.screenWidth));
         }
         #endregion
     }
