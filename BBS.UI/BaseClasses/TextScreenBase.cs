@@ -106,6 +106,24 @@ namespace Casasoft.BBS.UI
                 client.screen.Show();
             }
         }
+
+        public override void HandleChar(char ch)
+        {
+            if(ch == 0x03)
+            {
+                if (Previous != null)
+                {
+                    client.screen = Previous;
+                    client.screen.Show();
+                }
+                else
+                {
+                    client.screen = ScreenFactory.Create(client, server, "Logout");
+                    client.screen.Show();
+                }
+            }
+        }
+
         protected int ShowLines(List<string> lines, int start, int len)
         {
             int ret = start;
