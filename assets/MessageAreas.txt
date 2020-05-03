@@ -1,1 +1,7 @@
 {CLS/} &BBSname;  -  Message areas:
+
+Area                 Msg. New  Unr. Description
+{HR/}
+[TABLEBODY]
+{hr/}
+Enter {COLOR value="red"}Area{/color} or {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to continue

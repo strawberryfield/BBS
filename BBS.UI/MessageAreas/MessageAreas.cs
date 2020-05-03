@@ -27,22 +27,22 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class MessageAreas : TextScreenBase
+    public class MessageAreas : ListViewerBase
     {
-        public MessageAreas(IClient c, IServer s) : base(c, s, "@MessageAreas") { }
-        public MessageAreas(IClient c, IServer s, IScreen prev) : this(c, s, "@MessageAreas", prev) { }
+        #region constructors
+        private const string defaultText = "@MessageAreaGroups";
+        public MessageAreas(IClient c, IServer s) : base(c, s, defaultText) { }
+        public MessageAreas(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
         public MessageAreas(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
         public MessageAreas(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             AddList();
         }
+        #endregion
 
         private void AddList()
         {
-            string fmt = "{0,-20} {1,4} {2,4} {3,4} {4,-43}";
-            Text.Add(string.Format(fmt, new object[] {
-                "Area", "Msg.", "New", "Unr.", "Description" }));
-            Text.Add(TextHelper.HR());
+            string fmt = "{0,-20} {1,4} {2,4} {3,4} {4}";
 
             using (bbsContext bbs = new bbsContext())
             {
@@ -51,9 +51,9 @@ namespace Casasoft.BBS.UI
                     Params.Length > 1 ? Params[1] : string.Empty, client.username).ToList();
                 foreach (MessageArea area in list)
                 {
-                    Text.Add(string.Format(fmt, new object[] {
+                    lines.Add(TextHelper.Truncate(string.Format(fmt, new object[] {
                         area.Id, area.MessagesCount, area.NewMessagesCount(user.LastLoginDate),
-                        area.UnreadMessagesCount(user.Userid), TextHelper.Truncate(area.Description, 43) }));
+                        area.UnreadMessagesCount(user.Userid), area.Description }), client.screenWidth));
                     Data.Actions.Add(area.Id,
                         new Parser.BBSCodeResult.Action()
                         {
@@ -62,9 +62,6 @@ namespace Casasoft.BBS.UI
                         });
                 }
             }
-
-            Text.Add(string.Empty);
-            Text.Add("Select area (leave empty to return): ");
         }
     }
 }

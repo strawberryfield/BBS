@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 		assets\Logout.txt = assets\Logout.txt
 		assets\MainMenu.txt = assets\MainMenu.txt
 		assets\MessageAreaGroups.txt = assets\MessageAreaGroups.txt
+		assets\MessageAreas.txt = assets\MessageAreas.txt
 		assets\NewUser.txt = assets\NewUser.txt
 	EndProjectSection
 EndProject
@@ -72,9 +73,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "it", "it", "{02CA5356-C685-
 	ProjectSection(SolutionItems) = preProject
 		assets\it\ChangePassword.txt = assets\it\ChangePassword.txt
 		assets\it\ChangePasswordSu.txt = assets\it\ChangePasswordSu.txt
-		assets\it\Connected.txt = assets\it\Connected.txt
 		assets\it\GuestMenu.txt = assets\it\GuestMenu.txt
-		assets\it\Joined.txt = assets\it\Joined.txt
+		assets\it\ListConnected.txt = assets\it\ListConnected.txt
+		assets\it\ListLogins.txt = assets\it\ListLogins.txt
+		assets\it\ListUsers.txt = assets\it\ListUsers.txt
+		assets\it\Logout.txt = assets\it\Logout.txt
 		assets\it\MainMenu.txt = assets\it\MainMenu.txt
 	EndProjectSection
 EndProject

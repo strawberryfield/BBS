@@ -27,36 +27,34 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class MessageAreaGroups : TextScreenBase
+    public class MessageAreaGroups : ListViewerBase
     {
-        public MessageAreaGroups(IClient c, IServer s) : this(c, s, "@MessageAreaGroups", null) { }
-        public MessageAreaGroups(IClient c, IServer s, IScreen prev) : this(c, s, "@MessageAreaGroups", prev) { }
+        #region constructors
+        private const string defaultText = "@MessageAreaGroups";
+        public MessageAreaGroups(IClient c, IServer s) : this(c, s, defaultText, null) { }
+        public MessageAreaGroups(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
         public MessageAreaGroups(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
         public MessageAreaGroups(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             AddList();
         }
+        #endregion
 
         private void AddList()
         {
-            string fmt = "{0,-20} {1,2} {2,-55}";
-            Text.Add(string.Format(fmt, "Group", "N.", "Description"));
-            Text.Add(TextHelper.HR());
+            string fmt = "{0,-20} {1,3} {2}";
 
             using (bbsContext bbs = new bbsContext())
             {
                 List<MessageAreasGroup> list = bbs.GetAllowedMessageAreasGroup(client.username).ToList();
                 foreach (MessageAreasGroup group in list)
                 {
-                    Text.Add(string.Format(fmt,
-                        group.Id, group.MessageAreas.Count, TextHelper.Truncate(group.Description, 55)));
+                    lines.Add(TextHelper.Truncate(string.Format(fmt,
+                        group.Id, group.MessageAreas.Count, group.Description), client.screenWidth));
                     Data.Actions.Add(group.Id,
                         new Parser.BBSCodeResult.Action() { module = "MessageAreas", data = "@MessageAreas;" + group.Id });
                 }
             }
-
-            Text.Add(string.Empty);
-            Text.Add("Select group (leave empty to return): ");
         }
     }
 }
