@@ -30,19 +30,20 @@ namespace Casasoft.BBS.Daemon
 {
     public class Worker : BackgroundService
     {
+        private static Server Server;
         public Worker()
         {
-            ServerGlobal.Server = new Server(IPAddress.Any);
-            ServerGlobal.Server.ClientConnected += clientConnected;
-            ServerGlobal.Server.ClientDisconnected += clientDisconnected;
-            ServerGlobal.Server.MessageReceived += clientHandleMessage;
-            ServerGlobal.Server.ControlCharReceived += clientHandleControlChar;
+            Server = new Server(IPAddress.Any);
+            Server.ClientConnected += clientConnected;
+            Server.ClientDisconnected += clientDisconnected;
+            Server.MessageReceived += clientHandleMessage;
+            Server.ControlCharReceived += clientHandleControlChar;
         }
 
         private static void clientConnected(IClient c)
         {
             EventLogger.Write("CONNECTED: #" + c.id.ToString(), c.Remote);
-            c.screen = ScreenFactory.Create(c, ServerGlobal.Server, "Banner");
+            c.screen = ScreenFactory.Create(c, Server, "Banner");
             c.screen.Show();
         }
 
@@ -65,14 +66,14 @@ namespace Casasoft.BBS.Daemon
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                ServerGlobal.Server.clearInactiveSockets();
+                Server.clearInactiveSockets();
                 await Task.Delay(5000, stoppingToken);
             }
         }
 
         public override async Task StartAsync(CancellationToken cancellationToken)
         {
-            ServerGlobal.Server.start();
+            Server.start();
             EventLogger.Write("SERVER STARTED");
             await base.StartAsync(cancellationToken);
         }
@@ -80,7 +81,7 @@ namespace Casasoft.BBS.Daemon
         public override async Task StopAsync(CancellationToken cancellationToken)
         {
             EventLogger.Write("SERVER STOPPED");
-            ServerGlobal.Server.stop();
+            Server.stop();
             await base.StopAsync(cancellationToken);
         }
     }
