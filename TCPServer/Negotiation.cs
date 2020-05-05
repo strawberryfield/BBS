@@ -174,7 +174,7 @@ namespace Casasoft.TCPServer
         /// Sent by the Telnet client to inform the Telnet server of the
         /// window width and height.
         /// </remarks>
-        public static void HandleWindowSize(byte[] data, IClient c)
+        public static void HandleWindowSize(byte[] data, IBBSClient c)
         {
             if(data[1] == (byte)Tokens.Subnegotiation && data[2] == (byte)Operations.NegotiateAboutWindowSize)
             {
@@ -230,7 +230,7 @@ namespace Casasoft.TCPServer
         /// </code>
         /// The code for IS is 0.
         /// </remarks>
-        public static bool HandleTerminalType(byte[] data, IClient c)
+        public static bool HandleTerminalType(byte[] data, IBBSClient c)
         {
             if (data[1] == (byte)Tokens.Subnegotiation && data[2] == (byte)Operations.TerminalType && data[3] == 0)
             {

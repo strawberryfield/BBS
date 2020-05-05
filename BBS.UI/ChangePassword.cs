@@ -27,15 +27,18 @@ namespace Casasoft.BBS.UI
 {
     public class ChangePassword : TextScreenBase
     {
-        public ChangePassword(IClient c, IServer s) : this(c, s, "@ChangePassword") { }
-        public ChangePassword(IClient c, IServer s, IScreen prev) : this(c, s, "@ChangePassword", prev) { }
-        public ChangePassword(IClient c, IServer s, string text) : this(c, s, text, null) { }
-        public ChangePassword(IClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
+        #region constructors
+        private const string defaultText = "@ChangePassword";
+        public ChangePassword(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+        public ChangePassword(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public ChangePassword(IBBSClient c, IServer s, string text) : this(c, s, text, null) { }
+        public ChangePassword(IBBSClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
             status = states.WaitForOldPassword;
             using (bbsContext bbs = new bbsContext())
                 user = bbs.GetUserByUsername(client.username);
         }
+        #endregion
 
         protected enum states { WaitForUsername, WaitForOldPassword, WaitForNewPassword, WaitForConfirm, WaitForContinue }
         protected states status;

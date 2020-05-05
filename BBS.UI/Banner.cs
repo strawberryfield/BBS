@@ -24,10 +24,13 @@ namespace Casasoft.BBS.UI
 {
     public class Banner : TextScreenBase
     {
-        public Banner(IClient c, IServer s) : base(c, s, "@Banner") { }
-        public Banner(IClient c, IServer s, string txt) : base(c, s, txt) { }
-        public Banner(IClient c, IServer s, IScreen prev) : base(c, s, "@Banner", prev) { }
-        public Banner(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        #region constructors
+        private const string defaultText = "@Banner";
+        public Banner(IBBSClient c, IServer s) : base(c, s, defaultText) { }
+        public Banner(IBBSClient c, IServer s, string txt) : base(c, s, txt) { }
+        public Banner(IBBSClient c, IServer s, IScreen prev) : base(c, s, defaultText, prev) { }
+        public Banner(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        #endregion
 
         public override void ShowNext()
         {

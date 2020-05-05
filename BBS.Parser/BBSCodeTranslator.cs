@@ -29,10 +29,10 @@ namespace Casasoft.BBS.Parser
 {
     public class BBSCodeTranslator
     {
-        private IClient client;
+        private IBBSClient client;
         private IServer server;
 
-        public BBSCodeTranslator(IClient c, IServer s)
+        public BBSCodeTranslator(IBBSClient c, IServer s)
         {
             client = c;
             server = s;

@@ -18,10 +18,8 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.DataTier;
 using Casasoft.BBS.Interfaces;
 using Casasoft.TextHelpers;
-using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
@@ -29,10 +27,10 @@ namespace Casasoft.BBS.UI
     {
         #region constructors
         private const string defaultText = "@ListConnected";
-        public ListConnected(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public ListConnected(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
-        public ListConnected(IClient c, IServer s) : this(c, s, defaultText) { }
-        public ListConnected(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        public ListConnected(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public ListConnected(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public ListConnected(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+        public ListConnected(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             foreach (IClient cl in server.clients.Values)
                 lines.Add(TextHelper.Truncate(string.Format("{0,-30} {1:G} {2}",

@@ -28,10 +28,10 @@ namespace Casasoft.BBS.UI
     {
         #region constructors
         private const string defaultText = "@ListUsers";
-        public ListUsers(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public ListUsers(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
-        public ListUsers(IClient c, IServer s) : this(c, s, defaultText) { }
-        public ListUsers(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        public ListUsers(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public ListUsers(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public ListUsers(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+        public ListUsers(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             using(bbsContext bbs = new bbsContext())
             {

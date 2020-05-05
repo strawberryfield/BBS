@@ -24,10 +24,13 @@ namespace Casasoft.BBS.UI
 {
     public class Logout : TextScreenBase
     {
-        public Logout(IClient c, IServer s) : base(c, s, "@Logout") { }
-        public Logout(IClient c, IServer s, string txt) : base(c, s, txt) { }
-        public Logout(IClient c, IServer s, IScreen prev) : base(c, s, "@Logout", prev) { }
-        public Logout(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        #region constructors
+        private const string defaultText = "@Logout";
+        public Logout(IBBSClient c, IServer s) : base(c, s, defaultText) { }
+        public Logout(IBBSClient c, IServer s, string txt) : base(c, s, txt) { }
+        public Logout(IBBSClient c, IServer s, IScreen prev) : base(c, s, defaultText, prev) { }
+        public Logout(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        #endregion
 
         public override void Show()
         {

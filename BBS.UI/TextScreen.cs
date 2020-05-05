@@ -24,9 +24,9 @@ namespace Casasoft.BBS.UI
 {
     public class TextScreen : TextScreenBase
     {
-        public TextScreen(IClient c, IServer s) : base(c, s) { }
-        public TextScreen(IClient c, IServer s, IScreen prev) : base(c, s, prev) { }
-        public TextScreen(IClient c, IServer s, string txt) : base(c, s, txt) { }
-        public TextScreen(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        public TextScreen(IBBSClient c, IServer s) : base(c, s) { }
+        public TextScreen(IBBSClient c, IServer s, IScreen prev) : base(c, s, prev) { }
+        public TextScreen(IBBSClient c, IServer s, string txt) : base(c, s, txt) { }
+        public TextScreen(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
     }
 }

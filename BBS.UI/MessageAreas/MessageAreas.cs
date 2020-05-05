@@ -31,10 +31,10 @@ namespace Casasoft.BBS.UI
     {
         #region constructors
         private const string defaultText = "@MessageAreaGroups";
-        public MessageAreas(IClient c, IServer s) : base(c, s, defaultText) { }
-        public MessageAreas(IClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
-        public MessageAreas(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public MessageAreas(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        public MessageAreas(IBBSClient c, IServer s) : base(c, s, defaultText) { }
+        public MessageAreas(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public MessageAreas(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public MessageAreas(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             AddList();
         }

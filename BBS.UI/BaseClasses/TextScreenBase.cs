@@ -30,10 +30,10 @@ namespace Casasoft.BBS.UI
         protected BBSCodeResult Data;
         protected string[] Params;
 
-        public TextScreenBase(IClient c, IServer s) : base(c, s) { }
-        public TextScreenBase(IClient c, IServer s, IScreen prev) : base(c, s, prev) { }
-        public TextScreenBase(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public TextScreenBase(IClient c, IServer s, string txt, IScreen prev) : this(c, s, prev)
+        public TextScreenBase(IBBSClient c, IServer s) : base(c, s) { }
+        public TextScreenBase(IBBSClient c, IServer s, IScreen prev) : base(c, s, prev) { }
+        public TextScreenBase(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public TextScreenBase(IBBSClient c, IServer s, string txt, IScreen prev) : this(c, s, prev)
         {
             Text = new List<string>();
 

@@ -39,9 +39,9 @@ namespace Casasoft.BBS.Parser
         public Dictionary<string, Entities> EntitiesTable { get; private set; }
         public Dictionary<string, string> CustomEntitiesTable { get; private set; }
 
-        private IClient client;
+        private IBBSClient client;
 
-        public EntitiesDict(IClient c)
+        public EntitiesDict(IBBSClient c)
         {
             client = c;
 

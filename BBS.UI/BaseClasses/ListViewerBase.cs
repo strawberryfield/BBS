@@ -26,10 +26,10 @@ namespace Casasoft.BBS.UI
 {
     public class ListViewerBase : TextScreenBase
     {
-        public ListViewerBase(IClient c, IServer s) : base(c, s) { }
-        public ListViewerBase(IClient c, IServer s, IScreen prev) : base(c, s, prev) { }
-        public ListViewerBase(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public ListViewerBase(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        public ListViewerBase(IBBSClient c, IServer s) : base(c, s) { }
+        public ListViewerBase(IBBSClient c, IServer s, IScreen prev) : base(c, s, prev) { }
+        public ListViewerBase(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public ListViewerBase(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             lines = new List<string>();
             header = new List<string>();

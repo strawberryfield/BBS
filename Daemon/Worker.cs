@@ -40,7 +40,7 @@ namespace Casasoft.BBS.Daemon
             Server.ControlCharReceived += clientHandleControlChar;
         }
 
-        private static void clientConnected(IClient c)
+        private static void clientConnected(IBBSClient c)
         {
             EventLogger.Write("CONNECTED: #" + c.id.ToString(), c.Remote);
             c.screen = ScreenFactory.Create(c, Server, "Banner");
@@ -52,12 +52,12 @@ namespace Casasoft.BBS.Daemon
             EventLogger.Write("DISCONNECTED: #" + c.id.ToString(), c.Remote);
         }
 
-        private static void clientHandleMessage(IClient c, string msg)
+        private static void clientHandleMessage(IBBSClient c, string msg)
         {
             c.screen.HandleMessage(msg);
         }
 
-        private static void clientHandleControlChar(IClient c, char ch)
+        private static void clientHandleControlChar(IBBSClient c, char ch)
         {
             c.screen.HandleChar(ch);
         }

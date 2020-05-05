@@ -35,7 +35,7 @@ namespace Casasoft.BBS.Parser
         public AttributesDict AttributesTable;
 
         private string FileName;
-        private IClient Client;
+        private IBBSClient Client;
         private IServer Server;
 
         public BBSCodeResult Parsed { get; private set; }
@@ -43,7 +43,7 @@ namespace Casasoft.BBS.Parser
         private ANSICodes ANSI;
         private BBSCodeResult.Action action;
 
-        public BBSCodeListener(IClient c, IServer s, string filename) : base()
+        public BBSCodeListener(IBBSClient c, IServer s, string filename) : base()
         {
             Client = c;
             Server = s;

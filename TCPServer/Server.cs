@@ -71,11 +71,12 @@ namespace Casasoft.TCPServer
         /// </summary>
         public Dictionary<Socket, IClient> clients { get; private set; }
 
-        public delegate void ConnectionEventHandler(IClient c);
+        public delegate void BBSConnectionEventHandler(IBBSClient c);
         /// <summary>
         /// Occurs when a client is connected.
         /// </summary>
-        public event ConnectionEventHandler ClientConnected;
+        public event BBSConnectionEventHandler ClientConnected;
+        public delegate void ConnectionEventHandler(IClient c);
         /// <summary>
         /// Occurs when a client is disconnected.
         /// </summary>
@@ -85,13 +86,13 @@ namespace Casasoft.TCPServer
         /// Occurs when an incoming connection is blocked.
         /// </summary>
         public event ConnectionBlockedEventHandler ConnectionBlocked;
-        public delegate void MessageReceivedEventHandler(IClient c, string message);
+        public delegate void MessageReceivedEventHandler(IBBSClient c, string message);
         /// <summary>
         /// Occurs when a message is received.
         /// </summary>
         public event MessageReceivedEventHandler MessageReceived;
 
-        public delegate void ControlCharReceivedEventHandler(IClient c, char ch);
+        public delegate void ControlCharReceivedEventHandler(IBBSClient c, char ch);
         /// <summary>
         /// Occurs when a control character is received.
         /// </summary>

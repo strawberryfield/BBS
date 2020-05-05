@@ -30,15 +30,18 @@ namespace Casasoft.BBS.UI
 {
     public class LoginScreen : TextScreenBase
     {
-        public LoginScreen(IClient c, IServer s) : this(c, s, "@Login") { }
-        public LoginScreen(IClient c, IServer s, IScreen prev) : this(c, s, "@Login", prev) { }
-        public LoginScreen(IClient c, IServer s, string text) : this(c, s, text, null) { }
-        public LoginScreen(IClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
+        #region constructors
+        private const string defaultText = "@Login";
+        public LoginScreen(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+        public LoginScreen(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public LoginScreen(IBBSClient c, IServer s, string text) : this(c, s, text, null) { }
+        public LoginScreen(IBBSClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
             status = states.WaitForUsername;
             NameValueCollection SecurityOptions = (NameValueCollection)ConfigurationManager.GetSection("Security");
             maxtries = Convert.ToInt16(SecurityOptions["MaxTries"]);
         }
+        #endregion
 
         private enum states { WaitForUsername, WaitForPassword }
         private states status;

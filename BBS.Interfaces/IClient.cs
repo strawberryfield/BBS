@@ -19,7 +19,6 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System;
-using System.Collections.Generic;
 using System.Net;
 
 namespace Casasoft.BBS.Interfaces
@@ -97,40 +96,8 @@ namespace Casasoft.BBS.Interfaces
         public string username { get; set; }
         
         /// <summary>
-        /// Active form
-        /// </summary>
-        public IScreen screen { get; set; }
-        
-        /// <summary>
         /// Formatted remote ip and port
         /// </summary>
-        public string Remote { get; }
-        
-        /// <summary>
-        /// Current screen columns
-        /// </summary>
-        public int screenWidth { get; set; }
-        
-        /// <summary>
-        /// Current screen rows
-        /// </summary>
-        public int screenHeight { get; set; }
-
-        /// <summary>
-        /// Current terminal type
-        /// </summary>
-        public string terminalType { get; set; }
-
-        /// <summary>
-        /// List of terminal types avaliable on client
-        /// </summary>
-        public List<string> terminalTypeCapable { get; set; }
-
-        /// <summary>
-        /// Tries to add unique values to the list
-        /// </summary>
-        /// <param name="tt">string to insert</param>
-        /// <returns>true if insert is successful</returns>
-        public bool TryAddTerminalType(string tt);
+        public string Remote { get; }        
     }
 }

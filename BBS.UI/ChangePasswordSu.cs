@@ -27,13 +27,16 @@ namespace Casasoft.BBS.UI
 {
     public class ChangePasswordSu : ChangePassword
     {
-        public ChangePasswordSu(IClient c, IServer s) : this(c, s, "@ChangePasswordSu") { }
-        public ChangePasswordSu(IClient c, IServer s, IScreen prev) : this(c, s, "@ChangePasswordSu", prev) { }
-        public ChangePasswordSu(IClient c, IServer s, string text) : this(c, s, text, null) { }
-        public ChangePasswordSu(IClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
+        #region constructors
+        private const string defaultText = "@ChangePasswordSu";
+        public ChangePasswordSu(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+        public ChangePasswordSu(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public ChangePasswordSu(IBBSClient c, IServer s, string text) : this(c, s, text, null) { }
+        public ChangePasswordSu(IBBSClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
             status = states.WaitForUsername;
         }
+        #endregion
 
         public override void Show()
         {

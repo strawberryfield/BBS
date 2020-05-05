@@ -24,18 +24,19 @@ namespace Casasoft.BBS.UI
 {
     public class ScreenBase : IScreen
     {
-        protected IClient client;
+        protected IBBSClient client;
         protected IServer server;
         public IScreen Previous { get; set; }
 
-        public ScreenBase(IClient c, IServer s) : this(c,s,null) { }
-
-        public ScreenBase(IClient c, IServer s, IScreen prev)
+        #region constructors
+        public ScreenBase(IBBSClient c, IServer s) : this(c,s,null) { }
+        public ScreenBase(IBBSClient c, IServer s, IScreen prev)
         {
             client = c;
             server = s;
             Previous = prev;
         }
+        #endregion
 
         public virtual void Show() { }
         public virtual void HandleMessage(string msg) { }

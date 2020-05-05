@@ -27,14 +27,17 @@ namespace Casasoft.BBS.UI
 {
     public class NewUser : TextScreenBase
     {
-        public NewUser(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        #region constructors
+        private const string defaultText = "@NewUser";
+        public NewUser(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public NewUser(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public NewUser(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+        public NewUser(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             status = states.WaitForUsername;
             user = new User();
         }
-        public NewUser(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public NewUser(IClient c, IServer s, IScreen prev) : this(c, s, "@NewUser", prev) { }
-        public NewUser(IClient c, IServer s) : this(c, s, "@NewUser") { }
+        #endregion
 
         private enum states
         {

@@ -29,10 +29,10 @@ namespace Casasoft.BBS.UI
 {
     public class MessageList : TextScreenBase
     {
-        public MessageList(IClient c, IServer s) : base(c, s, string.Empty) { }
-        public MessageList(IClient c, IServer s, IScreen prev) : this(c, s, string.Empty, prev) { }
-        public MessageList(IClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public MessageList(IClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        public MessageList(IBBSClient c, IServer s) : base(c, s, string.Empty) { }
+        public MessageList(IBBSClient c, IServer s, IScreen prev) : this(c, s, string.Empty, prev) { }
+        public MessageList(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public MessageList(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             using (bbsContext bbs = new bbsContext())
                 user = bbs.GetUserByUsername(client.username);
