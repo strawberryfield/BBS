@@ -1,6 +1,6 @@
-{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Know the author of the site.{/color}{/BOLD}
+{HEADER}{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Know the author of the site.{/color}{/BOLD}{/HEADER}
 ﻿
-{p}I am 54 years old, I was born in Rimini (Italy), I live in Cesena with my wife 
+{BODY}{p}I am 54 years old, I was born in Rimini (Italy), I live in Cesena with my wife 
  and our two sons.{/p} 
  
 {p}I had my first camera when I was 8 and since then I have never stopped to take 
@@ -38,4 +38,4 @@
  magazine Computer Programming{/p} 
  
 {p}For some years I have been part of the development team of the open source 
- railway simulator OpenRails (http://openrails.org).{/p} 
+ railway simulator OpenRails (http://openrails.org).{/p} {/BODY}

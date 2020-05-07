@@ -1,4 +1,4 @@
-{CLS/} &BBSname; 
+{HEADER}{CLS/} &BBSname; 
 {backcolor value="cyan"}{color value="black"}{Figgle font="small"} Connection info {/Figgle}{/color}{/backcolor}{HR/}
 
 Username: &username;
@@ -8,5 +8,5 @@ Since   : &connectiontime;
 Terminal type: &terminalType;
 Screen width : &screenWidth; 
 Screen height: &screenHeight; 
-
-Press [RETURN] to continue
+{/HEADER}
+{FOOTER}Press [RETURN] to continue {/FOOTER}

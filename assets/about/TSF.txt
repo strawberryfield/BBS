@@ -1,6 +1,6 @@
-{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Breve storia del brand The Strawberry Field.{/color}{/BOLD}
+{HEADER}{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Breve storia del brand The Strawberry Field.{/color}{/BOLD}{/HEADER}
 
-{p} Nel 1989 mi trovai a realizzare un piccolo giornaletto con un programma di 
+{body}{p} Nel 1989 mi trovai a realizzare un piccolo giornaletto con un programma di 
  impaginazione chiamato Ventura Publisher. Al tempo lavori simili si facevano 
  con la macchina da scrivere e qualcuno mi insegn&ograve; anche a giustificare il 
  testo a pacchetto (cio&egrave; allineato a sinistra e a destra) scrivendo prima su 
@@ -65,4 +65,4 @@
  (https://strawberryfield.altervista.org). {/p}
  
 {p}Oggi il brand The Strawberry Field raccoglie tutte le produzioni fotografiche, 
- video e grafiche come questa BBS.{/p} 
+ video e grafiche come questa BBS.{/p} {/body}

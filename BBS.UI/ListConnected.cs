@@ -23,7 +23,7 @@ using Casasoft.TextHelpers;
 
 namespace Casasoft.BBS.UI
 {
-    public class ListConnected : ListViewerBase
+    public class ListConnected : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@ListConnected";
@@ -33,7 +33,7 @@ namespace Casasoft.BBS.UI
         public ListConnected(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             foreach (IClient cl in server.clients.Values)
-                lines.Add(TextHelper.Truncate(string.Format("{0,-30} {1:G} {2}",
+                Text.Add(TextHelper.Truncate(string.Format("{0,-30} {1:G} {2}",
                     string.IsNullOrWhiteSpace(c.username) ? "GUEST" : c.username, c.connectedAt, c.Remote),
                     client.screenWidth));
         }

@@ -81,6 +81,12 @@ namespace Casasoft.BBS.Parser
                         ANSI.SetMode(ANSICodes.Modes.Underline);
                         Parsed.TextConcat(ANSI.WriteMode());
                         break;
+                    case Tags.HEADER:
+                    case Tags.FOOTER:
+                    case Tags.BODY:
+                    case Tags.HIDDEN:
+                        Parsed.TextClear();
+                        break;
                     default:
                         break;
                 }
@@ -182,6 +188,21 @@ namespace Casasoft.BBS.Parser
                     case Tags.HR:
                         Parsed.TextConcat(TextHelper.HR('-', Client.screenWidth));
                         Parsed.TextPop(true);
+                        break;
+                    case Tags.HEADER:
+                        Parsed.Header = Parsed.Parsed;
+                        Parsed.TextClear();
+                        break;
+                    case Tags.FOOTER:
+                        Parsed.Footer = Parsed.Parsed;
+                        Parsed.TextClear();
+                        break;
+                    case Tags.BODY:
+                        Parsed.Body = Parsed.Parsed;
+                        Parsed.TextClear();
+                        break;
+                    case Tags.HIDDEN:
+                        Parsed.TextClear();
                         break;
                     default:
                         break;

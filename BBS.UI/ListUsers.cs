@@ -24,7 +24,7 @@ using Casasoft.TextHelpers;
 
 namespace Casasoft.BBS.UI
 {
-    public class ListUsers : ListViewerBase
+    public class ListUsers : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@ListUsers";
@@ -36,7 +36,7 @@ namespace Casasoft.BBS.UI
             using(bbsContext bbs = new bbsContext())
             {
                 foreach (var user in bbs.Users)
-                    lines.Add(TextHelper.Truncate(string.Format("{0,-30} {1:d} {2}",
+                    Text.Add(TextHelper.Truncate(string.Format("{0,-30} {1:d} {2}",
                         user.Userid, user.Registered.Date,
                         user.City.Trim() + ", " + user.Nation), client.screenWidth));
             }

@@ -27,6 +27,9 @@ namespace Casasoft.BBS.Parser
     public class BBSCodeResult
     {
         public string Parsed;
+        public string Body;
+        public string Header;
+        public string Footer;
 
         public class Action
         {
@@ -59,11 +62,16 @@ namespace Casasoft.BBS.Parser
         public BBSCodeResult()
         {
             Parsed = string.Empty;
+            Body = string.Empty;
+            Header = string.Empty;
+            Footer = string.Empty;
             Actions = new Dictionary<string, Action>();
             tagsTextStack = new Stack<string>();
         }
 
-        public List<string> GetRows() => Regex.Split(Parsed.Replace("\r", ""), "\n").ToList();
+        public List<string> GetRows() => Regex.Split(Body.Replace("\r", ""), "\n").ToList();
+        public List<string> GetHeaderRows() => Regex.Split(Header.Replace("\r", ""), "\n").ToList();
+        public List<string> GetFooterRows() => Regex.Split(Footer.Replace("\r", ""), "\n").ToList();
 
         public void TextClear()
         {

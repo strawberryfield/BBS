@@ -1,7 +1,6 @@
-{CLS/} &BBSname;  -  Connected users:
+{HEADER}{CLS/} &BBSname;  -  Connected users:
 
 Username                       Date       Time     From
-{HR/}
-[TABLEBODY]
-{hr/}
-Press {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to continue 
+{HR/}{/HEADER}
+{FOOTER}{hr/}
+Press {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to continue {/FOOTER}

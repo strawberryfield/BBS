@@ -46,6 +46,7 @@ namespace Casasoft.BBS.UI
         public override void Show()
         {
             base.Show();
+            MoveTo(dataAreaStart, 1);
             LnWrite("Old password: ");
             status = states.WaitForOldPassword;
             client.status = EClientStatus.Authenticating;

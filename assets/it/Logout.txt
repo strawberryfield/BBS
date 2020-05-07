@@ -1,2 +1,3 @@
-{CLS/}Grazie per aver visitato &BBSname;.
+{HEADER}{CLS/}Grazie per aver visitato &BBSname;.
 Arrivederci a presto.
+{/HEADER}

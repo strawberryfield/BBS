@@ -27,6 +27,8 @@ namespace Casasoft.BBS.UI
     public class TextScreenBase : ScreenBase
     {
         protected List<string> Text;
+        protected List<string> Header;
+        protected List<string> Footer;
         protected BBSCodeResult Data;
         protected string[] Params;
 
@@ -36,6 +38,8 @@ namespace Casasoft.BBS.UI
         public TextScreenBase(IBBSClient c, IServer s, string txt, IScreen prev) : this(c, s, prev)
         {
             Text = new List<string>();
+            Header = new List<string>();
+            Footer = new List<string>();
 
             if (!string.IsNullOrWhiteSpace(txt))
             { 
@@ -45,38 +49,58 @@ namespace Casasoft.BBS.UI
             }
         }
 
+        protected int dataAreaSize;
+        protected int dataAreaStart;
+
         public void ReadText(string name)
         {
             BBSCodeTranslator translator = new BBSCodeTranslator(client, server);
             Data = translator.GetProcessed(name);
             Text = Data.GetRows();
+            Header = Data.GetHeaderRows();
+            Footer = Data.GetFooterRows();
+            dataAreaStart = Header.Count + 1;
+            dataAreaSize = client.screenHeight - Header.Count - Footer.Count;
         }
 
         protected int currentLine;
         public override void Show()
         {
-            currentLine = ShowLines(0, client.screenHeight-2);
+            currentLine = ShowScreenLines(0);
+        }
+
+        protected int ShowScreenLines(int start)
+        {
+            Write(ANSI.ClearScreen());
+            ShowLines(Header, 0, Header.Count);
+            Write(ANSI.Move(0, dataAreaStart + dataAreaSize));
+            ShowLines(Footer, 0, Footer.Count);
+            Write(ANSI.SaveCursorPosition);
+            Write(ANSI.Move(0, dataAreaStart));
+            int ret = ShowLines(start, dataAreaSize);
+            Write(ANSI.RestoreCursorPosition);
+            return ret;
         }
 
         public override void HandleMessage(string msg)
         {
             if (!string.IsNullOrWhiteSpace(msg) && msg.Substring(0, 1).ToUpper() == "B")
             {
-                if (Text.Count > (client.screenHeight - 1) && currentLine > (client.screenHeight - 2))
+                if (Text.Count > dataAreaSize && currentLine > dataAreaSize)
                 {
-                    int newStart = currentLine - (client.screenHeight - 1) * 2;
-                    newStart = newStart < 0 ? 0 : newStart;
+                    int newStart = (currentLine - 1) / dataAreaSize - 1;
+                    newStart = newStart < 0 ? 0 : newStart * dataAreaSize;
                     Writeln();
-                    currentLine = ShowLines(newStart, client.screenHeight - 1);
+                    currentLine = ShowScreenLines(newStart);
                 }
             }
 
             if (string.IsNullOrWhiteSpace(msg))
             {
-                if (Text.Count > (client.screenHeight - 1) && currentLine < Text.Count - 1)
+                if (Text.Count > dataAreaSize && currentLine < Text.Count)
                 {
                     Writeln();
-                    currentLine = ShowLines(currentLine, (client.screenHeight - 1));
+                    currentLine = ShowScreenLines(currentLine + 1);
                 }
                 else
                     ShowNext();
@@ -138,5 +162,6 @@ namespace Casasoft.BBS.UI
         }
 
         protected int ShowLines(int start, int len) => ShowLines(Text, start, len);
+
     }
 }

@@ -1,6 +1,6 @@
-{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Conoscere l'autore del sito.{/color}{/BOLD}
+{HEADER}{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Conoscere l'autore del sito.{/color}{/BOLD}{/HEADER}
 ﻿
-{P}Ho 54 anni, sono nato a Rimini, vivo a Cesena con mia moglie e i nostri due 
+{BODY}{P}Ho 54 anni, sono nato a Rimini, vivo a Cesena con mia moglie e i nostri due 
  figli.{/P} 
  
 {P} Ho avuto la prima macchina fotografica a 8 anni e da allora non ho mai smesso 
@@ -40,4 +40,4 @@
  parte di Computer Programming{/P} 
  
 {P} Da alcuni anni faccio parte del team di sviluppo del simulatore ferroviario 
- open source OpenRails (http://openrails.org).{/P} 
+ open source OpenRails (http://openrails.org).{/P} {/BODY}

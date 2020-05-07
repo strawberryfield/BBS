@@ -25,7 +25,7 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class ListLogins : ListViewerBase
+    public class ListLogins : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@ListLogins";
@@ -37,7 +37,7 @@ namespace Casasoft.BBS.UI
             using (bbsContext bbs = new bbsContext())
             {
                 foreach (var login in bbs.Logins.Where(l => l.UserId == client.username))
-                    lines.Add(TextHelper.Truncate(string.Format("{0,-20:G} {1} {2}",
+                    Text.Add(TextHelper.Truncate(string.Format("{0,-20:G} {1} {2}",
                         login.DateTime, login.Success ? "*" : " ", login.From), client.screenWidth));
             }
         }

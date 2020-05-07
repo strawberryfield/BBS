@@ -1,6 +1,6 @@
-{CLS forecolor="Blue" backcolor="White"/} &BBSname; - System Rules and Disclaimer:          
- ======================================================           
-
+{HEADER}{CLS forecolor="Blue" backcolor="White"/} &BBSname; - System Rules and Disclaimer:          
+ ====================================================== {/HEADER}          
+{BODY}
  Introduction:
  ------------
  
@@ -75,3 +75,4 @@
 
 {p}All products  or  brands mentioned  anywhere  are trademarks  or  registered
  trademarks of their respective owners.{/p}
+{/BODY}

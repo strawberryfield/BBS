@@ -50,6 +50,7 @@ namespace Casasoft.BBS.UI
         public override void Show()
         {
             base.Show();
+            MoveTo(dataAreaStart, 1);
             LnWrite("Username: ");
             status = states.WaitForUsername;
         }

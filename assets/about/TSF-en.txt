@@ -1,6 +1,6 @@
-{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Brief history of the brand The Strawberry Field.{/color}{/BOLD}
+{HEADER}{CLS forcolor="Black"/}{BOLD}{color value="Blue"}Brief history of the brand The Strawberry Field.{/color}{/BOLD}{/HEADER}
 
-{p}In 1989 I found myself making a small newspaper with a program of pagination 
+{body}{p}In 1989 I found myself making a small newspaper with a program of pagination 
  called Ventura Publisher. At the time, similar jobs were being done with the 
  typewriter and someone also taught me to justify the packet text (i.e. aligned 
  left and right) by first writing on a squared sheet. The sheet with three 
@@ -61,4 +61,4 @@
  (https://strawberryfield.altervista.org).{/p} 
  
 {p}Today the brand The Strawberry Field gathers all the productions photographic, 
- video and graphics like this BBS.{/p} 
+ video and graphics like this BBS.{/p} {/body}

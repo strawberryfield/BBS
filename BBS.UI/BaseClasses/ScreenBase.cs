@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.Interfaces;
+using Casasoft.BBS.Parser;
 
 namespace Casasoft.BBS.UI
 {
@@ -26,6 +27,7 @@ namespace Casasoft.BBS.UI
     {
         protected IBBSClient client;
         protected IServer server;
+        protected ANSICodes ANSI;
         public IScreen Previous { get; set; }
 
         #region constructors
@@ -35,6 +37,7 @@ namespace Casasoft.BBS.UI
             client = c;
             server = s;
             Previous = prev;
+            ANSI = new ANSICodes();
         }
         #endregion
 
@@ -48,5 +51,6 @@ namespace Casasoft.BBS.UI
         public void Writeln() => Write("\r\n");
         public void LnWrite(string s) => Write("\r\n" + s);
 
+        protected void MoveTo(int row, int col) => Write(ANSI.Move(col, row));
     }
 }

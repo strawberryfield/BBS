@@ -1,7 +1,7 @@
-{CLS/} &BBSname;
+{HEADER}{CLS/} &BBSname;
 {backcolor value="cyan"}{color value="black"}{Figgle font="small"} Public area menu {/Figgle}{/color}{/backcolor}{HR/}
-Select an option:
-{ACTION key="N" module="NewUser"} {COLOR value="White"}{BACKCOLOR value="Blue"}[N]{/BACKCOLOR}{/COLOR} - Create a new user{/ACTION}
+Select an option:{/HEADER}
+{BODY}{ACTION key="N" module="NewUser"} {COLOR value="White"}{BACKCOLOR value="Blue"}[N]{/BACKCOLOR}{/COLOR} - Create a new user{/ACTION}
 {ACTION key="L" module="LoginScreen"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - Login{/ACTION}
 {ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Show connection info{/ACTION}
 
@@ -9,6 +9,5 @@ Select an option:
 {ACTION key="A" text="about/RC-en.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - About the author{/ACTION}
 
 {ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - BBS Rules / Disclaimer{/ACTION}
-{ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Logout{/ACTION}
-
-&choice;
+{ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Logout{/ACTION}{/BODY}
+{FOOTER}&choice;{/FOOTER}

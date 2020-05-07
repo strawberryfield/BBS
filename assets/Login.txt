@@ -1,4 +1,4 @@
-{CLS backcolor="White" forecolor="Blue" /} &BBSname; 
+{HEADER}{CLS backcolor="White" forecolor="Blue" /} &BBSname; 
 {backcolor value="cyan"}{color value="black"}{Figgle} Login {/Figgle}{/color}{/backcolor}{HR/}
 Enter {COLOR value="Red"}New{/COLOR} if you want to register as a new user
 or {COLOR value="Red"}Guest{/COLOR} to continue without registering
@@ -8,3 +8,4 @@ you agree that your action could by recorded for security
 and statistical pourposes.
 Enter {COLOR value="Red"}Logout{/COLOR} to leave this BBS.
 {HR/}
+{/HEADER}

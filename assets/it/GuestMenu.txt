@@ -1,7 +1,7 @@
-{CLS/} &BBSname;
+{HEADER}{CLS/} &BBSname;
 {backcolor value="cyan"}{color value="black"}{Figgle font="small"} Menu area pubblica {/Figgle}{/color}{/backcolor}{HR/}
-Scegli una opzione:
-{ACTION key="N" module="NewUser"} {COLOR value="White"}{BACKCOLOR value="Blue"}[N]{/BACKCOLOR}{/COLOR} - Crea un nuovo utente{/ACTION}
+Scegli una opzione:{/HEADER}
+{BODY}{ACTION key="N" module="NewUser"} {COLOR value="White"}{BACKCOLOR value="Blue"}[N]{/BACKCOLOR}{/COLOR} - Crea un nuovo utente{/ACTION}
 {ACTION key="L" module="LoginScreen"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - Login{/ACTION}
 {ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Informazioni sulla connessione (in inglese){/ACTION}
 
@@ -10,5 +10,5 @@ Scegli una opzione:
 
 {ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - Regolamento della BBS (in inglese){/ACTION}
 {ACTION key="Q" module="Logout" text="it/Logout.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Disconnessione{/ACTION}
-
-&scelta; 
+{/BODY}
+{FOOTER}&scelta; {/FOOTER}

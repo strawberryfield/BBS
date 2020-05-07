@@ -1,7 +1,7 @@
-{CLS/} &BBSname;  -  Select language
-{HR/}
-
+{HEADER}{CLS/} &BBSname;  -  Select language
+{HR/}{/HEADER}
+{BODY}
 {ACTION key="I" text="it/GuestMenu.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Italiano{/ACTION}
 {ACTION key="" text="GuestMenu.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} - English{/ACTION}
-
-&choice;
+{/BODY}
+{FOOTER}&choice; {/FOOTER}

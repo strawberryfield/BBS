@@ -27,7 +27,7 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class MessageAreas : ListViewerBase
+    public class MessageAreas : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@MessageAreaGroups";
@@ -51,7 +51,7 @@ namespace Casasoft.BBS.UI
                     Params.Length > 1 ? Params[1] : string.Empty, client.username).ToList();
                 foreach (MessageArea area in list)
                 {
-                    lines.Add(TextHelper.Truncate(string.Format(fmt, new object[] {
+                    Text.Add(TextHelper.Truncate(string.Format(fmt, new object[] {
                         area.Id, area.MessagesCount, area.NewMessagesCount(user.LastLoginDate),
                         area.UnreadMessagesCount(user.Userid), area.Description }), client.screenWidth));
                     Data.Actions.Add(area.Id,

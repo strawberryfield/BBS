@@ -27,7 +27,7 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class MessageAreaGroups : ListViewerBase
+    public class MessageAreaGroups : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@MessageAreaGroups";
@@ -49,7 +49,7 @@ namespace Casasoft.BBS.UI
                 List<MessageAreasGroup> list = bbs.GetAllowedMessageAreasGroup(client.username).ToList();
                 foreach (MessageAreasGroup group in list)
                 {
-                    lines.Add(TextHelper.Truncate(string.Format(fmt,
+                    Text.Add(TextHelper.Truncate(string.Format(fmt,
                         group.Id, group.MessageAreas.Count, group.Description), client.screenWidth));
                     Data.Actions.Add(group.Id,
                         new Parser.BBSCodeResult.Action() { module = "MessageAreas", data = "@MessageAreas;" + group.Id });

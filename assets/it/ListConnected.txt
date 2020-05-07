@@ -1,7 +1,6 @@
-{CLS/} &BBSname;  -  Utenti connessi:
+{HEADER}{CLS/} &BBSname;  -  Utenti connessi:
 
 Nome utente                    Data       Ora      Da
-{HR/}
-[TABLEBODY]
-{hr/}
-Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} per continuare 
+{HR/}{/HEADER}
+{FOOTER}{hr/}
+Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} per continuare {/FOOTER}
