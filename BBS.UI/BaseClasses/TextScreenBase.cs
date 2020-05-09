@@ -130,20 +130,17 @@ namespace Casasoft.BBS.UI
             }
         }
 
-        public override void HandleChar(char ch)
+        protected override void HandleControlC()
         {
-            if(ch == 0x03)
+            if (Previous != null)
             {
-                if (Previous != null)
-                {
-                    client.screen = Previous;
-                    client.screen.Show();
-                }
-                else
-                {
-                    client.screen = ScreenFactory.Create(client, server, "Logout");
-                    client.screen.Show();
-                }
+                client.screen = Previous;
+                client.screen.Show();
+            }
+            else
+            {
+                client.screen = ScreenFactory.Create(client, server, "Logout");
+                client.screen.Show();
             }
         }
 

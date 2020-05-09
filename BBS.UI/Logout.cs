@@ -26,9 +26,9 @@ namespace Casasoft.BBS.UI
     {
         #region constructors
         private const string defaultText = "@Logout";
-        public Logout(IBBSClient c, IServer s) : base(c, s, defaultText) { }
-        public Logout(IBBSClient c, IServer s, string txt) : base(c, s, txt) { }
-        public Logout(IBBSClient c, IServer s, IScreen prev) : base(c, s, defaultText, prev) { }
+        public Logout(IBBSClient c, IServer s) : this(c, s, defaultText, null) { }
+        public Logout(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public Logout(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
         public Logout(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
         #endregion
 

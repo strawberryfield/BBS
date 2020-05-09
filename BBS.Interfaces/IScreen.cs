@@ -25,7 +25,7 @@ namespace Casasoft.BBS.Interfaces
         public IScreen Previous { get; set; }
         public void Show();
         public void HandleMessage(string msg);
-        public void HandleChar(char ch);
+        public void HandleChar(byte[] data, int bytesReceived);
         public void ShowNext();
     }
 }

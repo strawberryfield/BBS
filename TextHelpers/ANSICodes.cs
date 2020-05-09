@@ -135,5 +135,6 @@ namespace Casasoft.BBS.Parser
         public string WriteForeColor() => string.Format("\u001b[{0}m", peekForeColor());
         public string WriteBackColor() => string.Format("\u001b[{0}m", peekBackColor());
 
+        public string ClearCurrentLine { get => "\u001b[2K"; }
     }
 }

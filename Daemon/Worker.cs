@@ -57,9 +57,9 @@ namespace Casasoft.BBS.Daemon
             c.screen.HandleMessage(msg);
         }
 
-        private static void clientHandleControlChar(IBBSClient c, char ch)
+        private static void clientHandleControlChar(IBBSClient c, byte[] data, int bytesReceived)
         {
-            c.screen.HandleChar(ch);
+            c.screen.HandleChar(data, bytesReceived);
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

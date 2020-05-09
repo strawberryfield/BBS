@@ -92,7 +92,7 @@ namespace Casasoft.TCPServer
         /// </summary>
         public event MessageReceivedEventHandler MessageReceived;
 
-        public delegate void ControlCharReceivedEventHandler(IBBSClient c, char ch);
+        public delegate void ControlCharReceivedEventHandler(IBBSClient c, byte[] data, int bytesReceived);
         /// <summary>
         /// Occurs when a control character is received.
         /// </summary>
@@ -394,7 +394,7 @@ namespace Casasoft.TCPServer
                         else if (data[0] == 0x7F)
                             clientSocket.BeginReceive(data, 0, dataSize, SocketFlags.None, new AsyncCallback(receiveData), clientSocket);
                         else if (data[0] < 0x20)
-                            ControlCharReceived(client, (char)data[0]);
+                            ControlCharReceived(client, data, bytesReceived);
                         else
                         {
                             client.appendReceivedData(Encoding.ASCII.GetString(data, 0, bytesReceived));
