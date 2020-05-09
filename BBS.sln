@@ -14,6 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 		assets\Disclaimer.txt = assets\Disclaimer.txt
 		assets\GuestAccess.txt = assets\GuestAccess.txt
 		assets\GuestMenu.txt = assets\GuestMenu.txt
+		assets\Help.txt = assets\Help.txt
 		assets\ListConnected.txt = assets\ListConnected.txt
 		assets\ListUsers.txt = assets\ListUsers.txt
 		assets\LoggedIn.txt = assets\LoggedIn.txt

@@ -1,0 +1,16 @@
+{HEADER}{CLS backcolor="black" forecolor="green"/} &BBSname; - How to navigate texts
+{HR/}
+{/HEADER}
+{body}To scroll the text you can use the following keys:
+
+  {color value="yellow"}[Home]{/color}                   Go to the first line
+  {color value="yellow"}[End]{/color}                    Go to the last line
+  {color value="yellow"}[PageUp]{/color}   or {color value="yellow"}[Ctrl][B]{/color}  Go one page back
+  {color value="yellow"}[PageDown]{/color} or {color value="yellow"}[Ctrl][F]{/color}  Go one page forward
+  {color value="yellow"}[Ctrl][U]{/color}                Go half page up
+  {color value="yellow"}[Ctrl][D]{/color}                Go half page down
+  
+  {color value="yellow"}[Ctrl][R]{/color}  or {color value="yellow"}[Ctrl][L]{/color}  Refresh the screen
+{/body} 
+{FOOTER}{HR/} 
+ Hit {color value="yellow"}[Return]{/color} to close this screen {/FOOTER}

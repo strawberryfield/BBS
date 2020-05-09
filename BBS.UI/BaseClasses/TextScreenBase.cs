@@ -211,6 +211,7 @@ namespace Casasoft.BBS.UI
         protected override void HandleEnd() => GoEnd();
         protected override void HandlePageUp() => PageUp();
         protected override void HandlePageDown() => PageDown();
+        protected override void HandleF1() => ShowHelp();
 
         protected void execAction(string act)
         {
@@ -222,6 +223,12 @@ namespace Casasoft.BBS.UI
                 client.screen.Show();
             }
             else server.ClearLastInput(client);
+        }
+
+        protected virtual void ShowHelp()
+        {
+            client.screen = ScreenFactory.Create(client, server, "Help", this);
+            client.screen.Show();
         }
         #endregion
 
