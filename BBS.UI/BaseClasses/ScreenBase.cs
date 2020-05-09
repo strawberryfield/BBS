@@ -46,11 +46,17 @@ namespace Casasoft.BBS.UI
         public virtual void HandleChar(char ch) { }
         public virtual void ShowNext() { }
 
-        public void Write(string s) => server.sendMessageToClient(client, s);
-        public void Writeln(string s) => Write(s + "\r\n");
-        public void Writeln() => Write("\r\n");
-        public void LnWrite(string s) => Write("\r\n" + s);
+        protected void Write(string s) => server.sendMessageToClient(client, s);
+        protected void Writeln(string s) => Write(s + "\r\n");
+        protected void Writeln() => Write("\r\n");
+        protected void LnWrite(string s) => Write("\r\n" + s);
 
         protected void MoveTo(int row, int col) => Write(ANSI.Move(col, row));
+
+        protected void ClearLine(int row)
+        {
+            MoveTo(row, 1);
+            Write(new string(' ', client.screenWidth));
+        }
     }
 }

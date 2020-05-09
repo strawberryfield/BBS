@@ -66,17 +66,17 @@ namespace Casasoft.BBS.UI
         protected int currentLine;
         public override void Show()
         {
-            currentLine = ShowScreenLines(0);
+            Write(ANSI.ClearScreen());
+            ShowLines(Header, 0, Header.Count, 1);
+            ShowLines(Footer, 0, Footer.Count, dataAreaStart + dataAreaSize);
+            Write(ANSI.SaveCursorPosition);
+            currentLine = ShowLines(0, dataAreaSize);
+            Write(ANSI.RestoreCursorPosition);
         }
 
         protected int ShowScreenLines(int start)
         {
-            Write(ANSI.ClearScreen());
-            ShowLines(Header, 0, Header.Count);
-            Write(ANSI.Move(0, dataAreaStart + dataAreaSize));
-            ShowLines(Footer, 0, Footer.Count);
-            Write(ANSI.SaveCursorPosition);
-            Write(ANSI.Move(0, dataAreaStart));
+            ClearBody();
             int ret = ShowLines(start, dataAreaSize);
             Write(ANSI.RestoreCursorPosition);
             return ret;
@@ -99,8 +99,7 @@ namespace Casasoft.BBS.UI
             {
                 if (Text.Count > dataAreaSize && currentLine < Text.Count)
                 {
-                    Writeln();
-                    currentLine = ShowScreenLines(currentLine + 1);
+                    currentLine = ShowScreenLines(currentLine);
                 }
                 else
                     ShowNext();
@@ -148,20 +147,22 @@ namespace Casasoft.BBS.UI
             }
         }
 
-        protected int ShowLines(List<string> lines, int start, int len)
+        protected int ShowLines(List<string> lines, int start, int len, int offset)
         {
             int ret = start;
-            bool isFirst = true;
             for (; ret < start + len && ret < lines.Count; ++ret)
             {
-                if (!isFirst) Writeln();
-                else isFirst = false;
+                MoveTo(ret + offset - start, 1);
                 Write(lines[ret]);
             }
             return ret;
         }
 
-        protected int ShowLines(int start, int len) => ShowLines(Text, start, len);
+        protected int ShowLines(int start, int len) => ShowLines(Text, start, len, dataAreaStart);
 
+        protected void ClearBody()
+        {
+            for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++) ClearLine(j);
+        }
     }
 }
