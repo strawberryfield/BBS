@@ -19,6 +19,9 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.Interfaces;
+using System;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace Casasoft.BBS.UI
 {
@@ -36,7 +39,9 @@ namespace Casasoft.BBS.UI
         {
             Write(ANSI.ClearScreen());
             ShowLines(Header, 0, Header.Count, 1);
-            server.kickClient(client);
+            NameValueCollection netconfig = (NameValueCollection)ConfigurationManager.GetSection("Networking");
+            int inactivityTimeout = Convert.ToInt32(netconfig["InactivityTimeout"]);
+            client.lastActivity = DateTime.Now.AddSeconds(-(inactivityTimeout-10));
         }
     }
 }
