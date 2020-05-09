@@ -52,7 +52,7 @@ namespace Casasoft.BBS.UI
         protected int dataAreaSize;
         protected int dataAreaStart;
 
-        public void ReadText(string name)
+        private void ReadText(string name)
         {
             BBSCodeTranslator translator = new BBSCodeTranslator(client, server);
             Data = translator.GetProcessed(name);
@@ -64,49 +64,153 @@ namespace Casasoft.BBS.UI
         }
 
         protected int currentLine;
+        protected int firstDisplayedLine;
         public override void Show()
+        {
+            firstDisplayedLine = 0;
+            currentLine = Redraw();
+        }
+
+        protected virtual int Redraw()
         {
             Write(ANSI.ClearScreen());
             ShowLines(Header, 0, Header.Count, 1);
             ShowLines(Footer, 0, Footer.Count, dataAreaStart + dataAreaSize);
             Write(ANSI.SaveCursorPosition);
-            currentLine = ShowLines(0, dataAreaSize);
+            int ret = ShowLines();
             Write(ANSI.RestoreCursorPosition);
+            return ret;
         }
 
         protected int ShowScreenLines(int start)
         {
             ClearBody();
-            int ret = ShowLines(start, dataAreaSize);
+            int ret = ShowLines(start);
             Write(ANSI.RestoreCursorPosition);
             return ret;
         }
+        protected int ShowScreenLines() => ShowScreenLines(firstDisplayedLine);
 
+        #region text move
+        protected void GoHome()
+        {
+            if (firstDisplayedLine == 0) currentLine = 0;
+            else
+            {
+                firstDisplayedLine = 0;
+                currentLine = ShowScreenLines();
+            }
+        }
+
+        protected void GoEnd()
+        {
+            if (Text.Count > dataAreaSize && firstDisplayedLine+dataAreaSize < Text.Count) 
+            {
+                firstDisplayedLine = Text.Count - dataAreaSize;
+                ShowScreenLines();
+            }
+            currentLine = Text.Count - 1;
+        }
+
+        protected void PageDown()
+        {
+            if (Text.Count > dataAreaSize && firstDisplayedLine + dataAreaSize < Text.Count)
+            {
+                firstDisplayedLine += dataAreaSize - 1;
+                currentLine = ShowScreenLines();
+            }
+            else currentLine = Text.Count - 1;
+        }
+
+        protected void HalfPageDown()
+        {
+            if (Text.Count > dataAreaSize && firstDisplayedLine + dataAreaSize < Text.Count)
+            {
+                firstDisplayedLine += dataAreaSize / 2;
+                currentLine = ShowScreenLines();
+            }
+            else currentLine = Text.Count - 1;
+        }
+
+        protected void PageUp()
+        {
+            if (Text.Count > dataAreaSize && firstDisplayedLine > 0)
+            {
+                firstDisplayedLine -= (dataAreaSize - 1);
+                firstDisplayedLine = firstDisplayedLine < 0 ? 0 : firstDisplayedLine;
+                ShowScreenLines();
+                currentLine = firstDisplayedLine;
+            }
+            else currentLine = 0;
+        }
+
+        protected void HalfPageUp()
+        {
+            if (Text.Count > dataAreaSize && firstDisplayedLine > 0)
+            {
+                firstDisplayedLine -= (dataAreaSize / 2);
+                firstDisplayedLine = firstDisplayedLine < 0 ? 0 : firstDisplayedLine;
+                ShowScreenLines();
+                currentLine = firstDisplayedLine;
+            }
+            else currentLine = 0;
+        }
+        #endregion
+
+        #region messages and control chars handling
         public override void HandleMessage(string msg)
         {
-            if (!string.IsNullOrWhiteSpace(msg) && msg.Substring(0, 1).ToUpper() == "B")
-            {
-                if (Text.Count > dataAreaSize && currentLine > dataAreaSize)
-                {
-                    int newStart = (currentLine - 1) / dataAreaSize - 1;
-                    newStart = newStart < 0 ? 0 : newStart * dataAreaSize;
-                    Writeln();
-                    currentLine = ShowScreenLines(newStart);
-                }
-            }
-
             if (string.IsNullOrWhiteSpace(msg))
             {
                 if (Text.Count > dataAreaSize && currentLine < Text.Count)
-                {
-                    currentLine = ShowScreenLines(currentLine);
-                }
+                    PageDown();
                 else
                     ShowNext();
             }
 
             if (Data != null && Data.Actions.Count > 0) execAction(msg.Trim().ToUpper());
         }
+
+        public override void HandleChar(byte[] data, int bytesReceived)
+        {
+            base.HandleChar(data, bytesReceived);
+            switch (data[0])
+            {
+                case 'N' - 64:   // Ctrl-N
+                    HandleCursorDown();
+                    break;
+                case 'P' - 64:   // Ctrl-P
+                    HandleCursorUp();
+                    break;
+                case 'F' - 64:   // Ctrl-F
+                    HandlePageDown();
+                    break;
+                case 'B' - 64:   // Ctrl-B
+                    HandlePageUp();
+                    break;
+                case 'D' - 64:   // Ctrl-D
+                    HandleHalfPageDown();
+                    break;
+                case 'U' - 64:   // Ctrl-U
+                    HandleHalfPageUp();
+                    break;
+                case 'R' - 64:   // Ctrl-R
+                case 'L' - 64:   // Ctrl-L
+                    HandleRedraw();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        protected virtual void HandleHalfPageDown() => HalfPageDown();
+        protected virtual void HandleHalfPageUp() => HalfPageUp();
+        protected virtual void HandleRedraw() => Redraw();
+
+        protected override void HandleHome() => GoHome();
+        protected override void HandleEnd() => GoEnd();
+        protected override void HandlePageUp() => PageUp();
+        protected override void HandlePageDown() => PageDown();
 
         protected void execAction(string act)
         {
@@ -119,6 +223,7 @@ namespace Casasoft.BBS.UI
             }
             else server.ClearLastInput(client);
         }
+        #endregion
 
         public override void ShowNext()
         {
@@ -130,6 +235,7 @@ namespace Casasoft.BBS.UI
             }
         }
 
+        #region special chars handling
         protected override void HandleControlC()
         {
             if (Previous != null)
@@ -143,7 +249,9 @@ namespace Casasoft.BBS.UI
                 client.screen.Show();
             }
         }
+        #endregion
 
+        #region show lines
         protected int ShowLines(List<string> lines, int start, int len, int offset)
         {
             int ret = start;
@@ -156,10 +264,13 @@ namespace Casasoft.BBS.UI
         }
 
         protected int ShowLines(int start, int len) => ShowLines(Text, start, len, dataAreaStart);
+        protected int ShowLines(int start) => ShowLines(start, dataAreaSize);
+        protected int ShowLines() => ShowLines(firstDisplayedLine, dataAreaSize);
 
         protected void ClearBody()
         {
             for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++) ClearLine(j);
         }
+        #endregion
     }
 }

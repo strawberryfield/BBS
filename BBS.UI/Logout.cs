@@ -34,7 +34,8 @@ namespace Casasoft.BBS.UI
 
         public override void Show()
         {
-            base.Show();
+            Write(ANSI.ClearScreen());
+            ShowLines(Header, 0, Header.Count, 1);
             server.kickClient(client);
         }
     }
