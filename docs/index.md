@@ -21,3 +21,22 @@ Docs in english are available [here](en/index.md)
 ## Come funziona
 
 - Prossimamente..
+
+## Documentazione del codice (in inglese)
+
+- [Interfacce](code/BBS.Interfaces.md)
+
+- [Log](code/BBS.Logger.md)
+
+- [Parser](code/BBS.Parser.md)
+
+- [Interfaccia utente](code/BBS.UI.md)
+
+- [Accesso al database](code/BBS.DataTier.md)
+
+- [Server Telnet](code/Casasoft.TCPServer.md)
+
+- [Funzioni per testo](code/Casasoft.Texthelpers.md)
+
+
+

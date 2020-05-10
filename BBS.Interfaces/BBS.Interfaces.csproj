@@ -18,5 +18,15 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\projects\BBS\BBS.Interfaces\BBS.Interfaces.xml</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <DocumentationMarkdown>$(MSBuildProjectDirectory)\\..\\docs\\code\\$(AssemblyName).md</DocumentationMarkdown>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Vsxmd" Version="1.4.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
 </Project>

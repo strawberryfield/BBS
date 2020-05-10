@@ -24,6 +24,9 @@ using System;
 
 namespace Casasoft.BBS.Logger
 {
+    /// <summary>
+    /// Methods to write messages to error output and log table in database
+    /// </summary>
     public static class EventLogger
     {
         /// <summary>

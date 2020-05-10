@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BBS.Parser</name>
+    </assembly>
+    <members>
+        <member name="T:Casasoft.BBS.Parser.BBSCodeParserBaseListener">
+            <summary>
+            This class provides an empty implementation of <see cref="T:Casasoft.BBS.Parser.IBBSCodeParserListener"/>,
+            which can be extended to create a listener which only needs to handle a subset
+            of the available methods.
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterBbsCodeEntity(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeEntityContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeEntity"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitBbsCodeEntity(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeEntityContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeEntity"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterBbsCodeElement(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeElementContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeElement"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitBbsCodeElement(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeElementContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeElement"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterBbsCodeContent(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeContentContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeContent"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitBbsCodeContent(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeContentContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeContent"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterBbsCodeAttribute(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttribute"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitBbsCodeAttribute(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttribute"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterBbsCodeAttributeName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeNameContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttributeName"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitBbsCodeAttributeName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeNameContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttributeName"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterBbsCodeAttributeValue(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttributeValue"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitBbsCodeAttributeValue(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttributeValue"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterBbsCodeTagName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeTagNameContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeTagName"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitBbsCodeTagName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeTagNameContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeTagName"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterBbsCodeChardata(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeChardataContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeChardata"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitBbsCodeChardata(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeChardataContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeChardata"/>.
+            <para>The default implementation does nothing.</para>
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.EnterEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeParserBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)">
+            <inheritdoc/>
+            <remarks>The default implementation does nothing.</remarks>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.IBBSCodeParserListener">
+            <summary>
+            This interface defines a complete listener for a parse tree produced by
+            <see cref="T:Casasoft.BBS.Parser.BBSCodeParser"/>.
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeEntity(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeEntityContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeEntity"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeEntity(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeEntityContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeEntity"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeElement(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeElementContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeElement"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeElement(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeElementContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeElement"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeContent(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeContentContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeContent"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeContent(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeContentContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeContent"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeAttribute(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttribute"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeAttribute(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttribute"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeAttributeName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeNameContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttributeName"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeAttributeName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeNameContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttributeName"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeAttributeValue(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeValueContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttributeValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeAttributeValue(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeValueContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttributeValue"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeTagName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeTagNameContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeTagName"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeTagName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeTagNameContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeTagName"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeChardata(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeChardataContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeChardata"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeChardata(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeChardataContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeChardata"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+    </members>
+</doc>

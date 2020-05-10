@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BBS.DataTier</name>
+    </assembly>
+    <members>
+        <member name="M:Casasoft.BBS.DataTier.bbsContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)">
+            <summary>
+            Gets connection string from app.config
+            </summary>
+            <param name="optionsBuilder"></param>
+        </member>
+    </members>
+</doc>

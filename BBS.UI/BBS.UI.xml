@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BBS.UI</name>
+    </assembly>
+    <members>
+        <member name="M:Casasoft.BBS.UI.Help.ShowHelp">
+            <summary>
+            Prevents recursive launch of the help
+            </summary>
+        </member>
+    </members>
+</doc>

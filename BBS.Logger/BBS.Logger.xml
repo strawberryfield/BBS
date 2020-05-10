@@ -4,6 +4,11 @@
         <name>BBS.Logger</name>
     </assembly>
     <members>
+        <member name="T:Casasoft.BBS.Logger.EventLogger">
+            <summary>
+            Methods to write messages to error output and log table in database
+            </summary>
+        </member>
         <member name="M:Casasoft.BBS.Logger.EventLogger.Write(System.String,System.SByte,System.String)">
             <summary>
             Writes message to error output and log table in database
