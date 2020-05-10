@@ -25,6 +25,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -353,12 +354,20 @@ namespace Casasoft.TCPServer
                 else if (data[0] == (byte)Negotiation.Tokens.IAC)
                 {
                     // Negotiation
-                    Negotiation.HandleWindowSize(data, client);
-                    if (Negotiation.ClientWillTerminalType(data))
-                        sendBytesToSocket(clientSocket, Negotiation.AskForTerminalType());
-                    if(Negotiation.HandleTerminalType(data, client))
-                        sendBytesToSocket(clientSocket, Negotiation.AskForTerminalType());
-
+                    int offset = 0;
+                    while (offset < bytesReceived)
+                    {
+                        Negotiation.HandleWindowSize(data, offset, client);
+                        if (Negotiation.ClientWillTerminalType(data, offset))
+                            sendBytesToSocket(clientSocket, Negotiation.AskForTerminalType());
+                        if (Negotiation.HandleTerminalType(data, offset, client))
+                            sendBytesToSocket(clientSocket, Negotiation.AskForTerminalType());
+                        while(++offset < bytesReceived)
+                        {
+                            if (data[offset] == (byte)Negotiation.Tokens.IAC) break;
+                        }
+                        
+                    }
                     clientSocket.BeginReceive(data, 0, dataSize, SocketFlags.None, new AsyncCallback(receiveData), clientSocket);
                 }
                 else if (data[0] < 0xF0)

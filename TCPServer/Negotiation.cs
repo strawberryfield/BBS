@@ -174,16 +174,18 @@ namespace Casasoft.TCPServer
         /// Sent by the Telnet client to inform the Telnet server of the
         /// window width and height.
         /// </remarks>
-        public static void HandleWindowSize(byte[] data, IBBSClient c)
+        public static void HandleWindowSize(byte[] data, int offset, IBBSClient c)
         {
-            if(data[1] == (byte)Tokens.Subnegotiation && data[2] == (byte)Operations.NegotiateAboutWindowSize)
+            if (data[offset + 1] == (byte)Tokens.Subnegotiation
+                && data[offset + 2] == (byte)Operations.NegotiateAboutWindowSize)
             {
-                int w = data[3] * 256 + data[4];
-                int h = data[5] * 256 + data[6];
+                int w = data[offset + 3] * 256 + data[offset + 4];
+                int h = data[offset + 5] * 256 + data[offset + 6];
                 if (w != 0) c.screenWidth = w;
                 if (h != 0) c.screenHeight = h;
             }
         }
+   
 
         /// <summary>
         /// Tests if client support Terminal Type Negotiation RFC884 - RFC1091
@@ -192,10 +194,11 @@ namespace Casasoft.TCPServer
         /// </summary>
         /// <param name="data">received bytes</param>
         /// <returns></returns>
-        public static bool ClientWillTerminalType(byte[] data)
+        public static bool ClientWillTerminalType(byte[] data, int offset)
         {
             bool ret = false;
-            if (data[1] == (byte)Tokens.WILL && data[2] == (byte)Operations.TerminalType) 
+            if (data[offset + 1] == (byte)Tokens.WILL
+                && data[offset + 2] == (byte)Operations.TerminalType)
                 ret = true;
             return ret;
         }
@@ -230,15 +233,17 @@ namespace Casasoft.TCPServer
         /// </code>
         /// The code for IS is 0.
         /// </remarks>
-        public static bool HandleTerminalType(byte[] data, IBBSClient c)
+        public static bool HandleTerminalType(byte[] data, int offset, IBBSClient c)
         {
-            if (data[1] == (byte)Tokens.Subnegotiation && data[2] == (byte)Operations.TerminalType && data[3] == 0)
+            if (data[offset + 1] == (byte)Tokens.Subnegotiation
+                && data[offset + 2] == (byte)Operations.TerminalType
+                && data[offset + 3] == 0)
             {
                 StringBuilder sb = new StringBuilder();
-                for(int j=4; data[j] != (byte)Tokens.IAC; j++)
+                for (int j = offset + 4; data[j] != (byte)Tokens.IAC; j++)
                     sb.Append((char)data[j]);
 
-                if(string.IsNullOrWhiteSpace(c.terminalType))
+                if (string.IsNullOrWhiteSpace(c.terminalType))
                     c.terminalType = sb.ToString();
 
                 return c.TryAddTerminalType(sb.ToString());

@@ -41,7 +41,7 @@ namespace Casasoft.BBS.UI
             ShowLines(Header, 0, Header.Count, 1);
             NameValueCollection netconfig = (NameValueCollection)ConfigurationManager.GetSection("Networking");
             int inactivityTimeout = Convert.ToInt32(netconfig["InactivityTimeout"]);
-            client.lastActivity = DateTime.Now.AddSeconds(-(inactivityTimeout-10));
+            client.lastActivity = DateTime.Now.AddSeconds(-(inactivityTimeout - 10));
         }
     }
 }
