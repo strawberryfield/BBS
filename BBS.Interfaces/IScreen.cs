@@ -22,10 +22,32 @@ namespace Casasoft.BBS.Interfaces
 {
     public interface IScreen
     {
+        /// <summary>
+        /// Pointer to the caller screen for backtracing
+        /// </summary>
         public IScreen Previous { get; set; }
+ 
+        /// <summary>
+        /// Show screen content
+        /// </summary>
         public void Show();
+
+        /// <summary>
+        /// Handles the messages received from the client
+        /// </summary>
+        /// <param name="msg"></param>
         public void HandleMessage(string msg);
+
+        /// <summary>
+        /// Handles special chars sequences received from the client
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="bytesReceived"></param>
         public void HandleChar(byte[] data, int bytesReceived);
+
+        /// <summary>
+        /// Pass the control to another screen
+        /// </summary>
         public void ShowNext();
     }
 }

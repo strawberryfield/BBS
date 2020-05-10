@@ -25,7 +25,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
-using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -449,8 +448,16 @@ namespace Casasoft.TCPServer
         }
 
         #region watchdog
+        /// <summary>
+        /// Checks if is inactive for a time greater then configured
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
         private bool testClientTimeout(IClient c) => (DateTime.Now - c.lastActivity).TotalSeconds > inactivityTimeout;
 
+        /// <summary>
+        /// Scans all clients and kills inactive ones
+        /// </summary>
         public void clearInactiveSockets()
         {
             foreach (KeyValuePair<Socket, IClient> sc in clients)

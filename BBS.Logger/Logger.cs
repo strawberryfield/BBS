@@ -26,6 +26,12 @@ namespace Casasoft.BBS.Logger
 {
     public static class EventLogger
     {
+        /// <summary>
+        /// Writes message to error output and log table in database
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="level">severity level</param>
+        /// <param name="remote">client remote address</param>
         public static void Write(string message, sbyte level, string remote)
         {
             using (bbsContext db = new bbsContext())
@@ -37,19 +43,26 @@ namespace Casasoft.BBS.Logger
                 new object[] { DateTime.Now, level, remote, message });
         }
 
-        public static void Write(string message, sbyte level)
-        {
-            Write(message, level, string.Empty);
-        }
+        /// <summary>
+        /// Writes message to error output and log table in database
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="level">severity level</param>
+        public static void Write(string message, sbyte level) => Write(message, level, string.Empty);
 
-        public static void Write(string message, string remote)
-        {
-            Write(message, 1, remote);
-        }
+        /// <summary>
+        /// Writes message to error output and log table in database
+        /// severity =1
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="remote">client remote address</param>
+        public static void Write(string message, string remote) => Write(message, 1, remote);
 
-        public static void Write(string message)
-        {
-            Write(message, 1);
-        }
+        /// <summary>
+        /// Writes message to error output and log table in database
+        /// severity =1
+        /// </summary>
+        /// <param name="message"></param>
+        public static void Write(string message) => Write(message, 1);
     }
 }

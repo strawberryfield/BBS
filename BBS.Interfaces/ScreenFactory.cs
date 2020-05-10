@@ -24,8 +24,20 @@ using System.Reflection;
 
 namespace Casasoft.BBS.Interfaces
 {
+    /// <summary>
+    /// Screens factory
+    /// </summary>
     public static class ScreenFactory
     {
+        /// <summary>
+        /// Screen factory
+        /// </summary>
+        /// <param name="c">Client object pointer</param>
+        /// <param name="s">Server object pointer</param>
+        /// <param name="module">Module to create</param>
+        /// <param name="param">parameters for the module</param>
+        /// <param name="prev">Pointer to caller screen</param>
+        /// <returns>Istance of the module</returns>
         public static IScreen Create(IClient c, IServer s, string module, string param, IScreen prev)
         {
             module = "Casasoft.BBS.UI." + module.Trim();
@@ -44,13 +56,35 @@ namespace Casasoft.BBS.Interfaces
             }
         }
 
+        /// <summary>
+        /// Screen factory
+        /// </summary>
+        /// <param name="c">Client object pointer</param>
+        /// <param name="s">Server object pointer</param>
+        /// <param name="module">Module to create</param>
+        /// <returns>Istance of the module</returns>
         public static IScreen Create(IClient c, IServer s, string module) => Create(c, s, module, string.Empty);
 
+        /// <summary>
+        /// Screen factory
+        /// </summary>
+        /// <param name="c">Client object pointer</param>
+        /// <param name="s">Server object pointer</param>
+        /// <param name="module">Module to create</param>
+        /// <param name="param">parameters for the module</param>
+        /// <returns>Istance of the module</returns>
         public static IScreen Create(IClient c, IServer s, string module, string param) =>
             Create(c, s, module, param, null);
 
+        /// <summary>
+        /// Screen factory
+        /// </summary>
+        /// <param name="c">Client object pointer</param>
+        /// <param name="s">Server object pointer</param>
+        /// <param name="module">Module to create</param>
+        /// <param name="prev">Pointer to caller screen</param>
+        /// <returns>Istance of the module</returns>
         public static IScreen Create(IClient c, IServer s, string module, IScreen prev) =>
             Create(c, s, module, string.Empty, prev);
-
     }
 }

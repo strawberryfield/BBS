@@ -13,6 +13,12 @@
     <PackageIcon>package.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
+    <AssemblyName>Casasoft.TCPServer</AssemblyName>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\projects\BBS\TCPServer\Casasoft.TCPServer.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

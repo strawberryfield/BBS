@@ -1,0 +1,397 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Casasoft.TCPServer</name>
+    </assembly>
+    <members>
+        <member name="T:Casasoft.TCPServer.Client">
+            <summary>
+            Client parameters storage
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.id">
+            <summary>
+            The client's identifier.
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.remoteAddr">
+            <summary>
+            The client's remote address.
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.connectedAt">
+            <summary>
+            The connection datetime.
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.status">
+            <summary>
+            The client's current status.
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.receivedData">
+            <summary>
+            The last received data from the client.
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.username">
+            <summary>
+            User logged in
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.screen">
+            <summary>
+            Active form
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.lastActivity">
+            <summary>
+            last user activity timestamp
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.screenWidth">
+            <summary>
+            Current screen columns
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.screenHeight">
+            <summary>
+            Current screen rows
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.terminalType">
+            <summary>
+            Current terminal type
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.terminalTypeCapable">
+            <summary>
+            List of terminal types avaliable on client
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Client.#ctor(System.UInt32,System.Net.IPEndPoint)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Casasoft.TCPServer.Client"/> class.
+            </summary>
+            <param name="clientId">The client's identifier.</param>
+            <param name="remoteAddress">The remote address.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Client.appendReceivedData(System.String)">
+            <summary>
+            Appends a string to the client's last
+            received data.
+            </summary>
+            <param name="dataToAppend">The data to append.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Client.removeLastCharacterReceived">
+            <summary>
+            Removes the last character from the
+            client's last received data.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Client.resetReceivedData">
+            <summary>
+            Resets the last received data.
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Client.Remote">
+            <summary>
+            Formatted remote ip and port
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Client.TryAddTerminalType(System.String)">
+            <summary>
+            Tries to add unique values to the list
+            </summary>
+            <param name="tt">string to insert</param>
+            <returns>true if insert is successful</returns>
+        </member>
+        <member name="T:Casasoft.TCPServer.Negotiation">
+            <summary>
+            Handles Telnet negotiation
+            </summary>
+        </member>
+        <member name="T:Casasoft.TCPServer.Negotiation.Tokens">
+            <summary>
+            Negotiation codes as described in RFC 854
+            </summary>
+            <see cref="!:http://www.faqs.org/rfcs/rfc854.html"/>
+        </member>
+        <member name="T:Casasoft.TCPServer.Negotiation.Operations">
+            <summary>
+            Negotiable options from IANA
+            </summary>
+            <see cref="!:https://www.iana.org/assignments/telnet-options/telnet-options.xhtml"/>
+        </member>
+        <member name="M:Casasoft.TCPServer.Negotiation.Do(Casasoft.TCPServer.Negotiation.Operations)">
+            <summary>
+            Sends Do command
+            </summary>
+            <param name="op">Operation code</param>
+            <returns>Negotiation sequence</returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Negotiation.Dont(Casasoft.TCPServer.Negotiation.Operations)">
+            <summary>
+            Sends Don't command
+            </summary>
+            <param name="op">Operation code</param>
+            <returns>Negotiation sequence</returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Negotiation.Will(Casasoft.TCPServer.Negotiation.Operations)">
+            <summary>
+            Sends Will command
+            </summary>
+            <param name="op">Operation code</param>
+            <returns>Negotiation sequence</returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Negotiation.Wont(Casasoft.TCPServer.Negotiation.Operations)">
+            <summary>
+            Sends Won't command
+            </summary>
+            <param name="op">Operation code</param>
+            <returns>Negotiation sequence</returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Casasoft.TCPServer.Negotiation.HandleWindowSize(System.Byte[],System.Int32,Casasoft.BBS.Interfaces.IBBSClient)" -->
+        <member name="M:Casasoft.TCPServer.Negotiation.ClientWillTerminalType(System.Byte[],System.Int32)">
+            <summary>
+            Tests if client support Terminal Type Negotiation RFC884 - RFC1091
+            <see cref="!:https://tools.ietf.org/html/rfc884"/>
+            <see cref="!:https://tools.ietf.org/html/rfc1091"/>
+            </summary>
+            <param name="data">received bytes</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Negotiation.AskForTerminalType">
+            <summary>
+            Sequence to request terminal type to the client RFC884 - RFC1091
+            <see cref="!:https://tools.ietf.org/html/rfc884"/>
+            <see cref="!:https://tools.ietf.org/html/rfc1091"/>
+            </summary>
+            <returns>IAC SB TERMINAL-TYPE SEND IAC SE</returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Negotiation.HandleTerminalType(System.Byte[],System.Int32,Casasoft.BBS.Interfaces.IBBSClient)">
+            <summary>
+            Receive terminal type from cliente RFC884 - RFC1091
+            <see cref="!:https://tools.ietf.org/html/rfc884"/>
+            <see cref="!:https://tools.ietf.org/html/rfc1091"/>
+            </summary>
+            <param name="data">received data</param>
+            <param name="c">client to update</param>
+            <remarks>
+            Client sends data in the form
+            <code>
+            IAC SB TERMINAL-TYPE IS ... IAC SE
+            </code>
+            The code for IS is 0.
+            </remarks>
+        </member>
+        <member name="F:Casasoft.TCPServer.Server.port">
+            <summary>
+            Telnet's default port.
+            </summary>
+        </member>
+        <member name="F:Casasoft.TCPServer.Server.END_LINE">
+            <summary>
+            End of line constant.
+            </summary>
+        </member>
+        <member name="F:Casasoft.TCPServer.Server.serverSocket">
+            <summary>
+            Server's main socket.
+            </summary>
+        </member>
+        <member name="F:Casasoft.TCPServer.Server.ip">
+            <summary>
+            The IP on which to listen.
+            </summary>
+        </member>
+        <member name="F:Casasoft.TCPServer.Server.dataSize">
+            <summary>
+            The default data size for received data.
+            </summary>
+        </member>
+        <member name="F:Casasoft.TCPServer.Server.data">
+            <summary>
+            Contains the received data.
+            </summary>
+        </member>
+        <member name="F:Casasoft.TCPServer.Server.acceptIncomingConnections">
+            <summary>
+            True for allowing incoming connections;
+            false otherwise.
+            </summary>
+        </member>
+        <member name="P:Casasoft.TCPServer.Server.clients">
+            <summary>
+            Contains all connected clients indexed
+            by their socket.
+            </summary>
+        </member>
+        <member name="E:Casasoft.TCPServer.Server.ClientConnected">
+            <summary>
+            Occurs when a client is connected.
+            </summary>
+        </member>
+        <member name="E:Casasoft.TCPServer.Server.ClientDisconnected">
+            <summary>
+            Occurs when a client is disconnected.
+            </summary>
+        </member>
+        <member name="E:Casasoft.TCPServer.Server.ConnectionBlocked">
+            <summary>
+            Occurs when an incoming connection is blocked.
+            </summary>
+        </member>
+        <member name="E:Casasoft.TCPServer.Server.MessageReceived">
+            <summary>
+            Occurs when a message is received.
+            </summary>
+        </member>
+        <member name="E:Casasoft.TCPServer.Server.ControlCharReceived">
+            <summary>
+            Occurs when a control character is received.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.#ctor(System.Net.IPAddress,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Casasoft.TCPServer.Server"/> class.
+            </summary>
+            <param name="ip">The IP on which to listen to.</param>
+            <param name="dataSize">Data size for received data.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.start">
+            <summary>
+            Starts the server.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.stop">
+            <summary>
+            Stops the server.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.incomingConnectionsAllowed">
+            <summary>
+            Returns whether incoming connections
+            are allowed.
+            </summary>
+            <returns>True is connections are allowed;
+            false otherwise.</returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.denyIncomingConnections">
+            <summary>
+            Denies the incoming connections.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.allowIncomingConnections">
+            <summary>
+            Allows the incoming connections.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.clearClientScreen(Casasoft.BBS.Interfaces.IClient)">
+            <summary>
+            Clears the screen for the specified
+            client.
+            </summary>
+            <param name="c">The client on which
+            to clear the screen.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.sendMessageToClient(Casasoft.BBS.Interfaces.IClient,System.String)">
+            <summary>
+            Sends a text message to the specified
+            client.
+            </summary>
+            <param name="c">The client.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.sendMessageToSocket(System.Net.Sockets.Socket,System.String)">
+            <summary>
+            Sends a text message to the specified
+            socket.
+            </summary>
+            <param name="s">The socket.</param>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.sendBytesToSocket(System.Net.Sockets.Socket,System.Byte[])">
+            <summary>
+            Sends bytes to the specified socket.
+            </summary>
+            <param name="s">The socket.</param>
+            <param name="data">The bytes.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.sendMessageToAll(System.String)">
+            <summary>
+            Sends a message to all connected clients.
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.getClientBySocket(System.Net.Sockets.Socket)">
+            <summary>
+            Gets the client by socket.
+            </summary>
+            <param name="clientSocket">The client's socket.</param>
+            <returns>If the socket is found, the client instance
+            is returned; otherwise null is returned.</returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.getSocketByClient(Casasoft.BBS.Interfaces.IClient)">
+            <summary>
+            Gets the socket by client.
+            </summary>
+            <param name="client">The client instance.</param>
+            <returns>If the client is found, the socket is
+            returned; otherwise null is returned.</returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.kickClient(Casasoft.BBS.Interfaces.IClient)">
+            <summary>
+            Kicks the specified client from the server.
+            </summary>
+            <param name="client">The client.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.closeSocket(System.Net.Sockets.Socket)">
+            <summary>
+            Closes the socket and removes the client from
+            the clients list.
+            </summary>
+            <param name="clientSocket">The client socket.</param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.handleIncomingConnection(System.IAsyncResult)">
+            <summary>
+            Handles an incoming connection.
+            If incoming connections are allowed,
+            the client is added to the clients list
+            and triggers the client connected event.
+            Else, the connection blocked event is
+            triggered.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.sendData(System.IAsyncResult)">
+            <summary>
+            Sends data to a socket.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.receiveData(System.IAsyncResult)">
+            <summary>
+            Receives and processes data from a socket.
+            It triggers the message received event in
+            case the client pressed the return key.
+            </summary>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.ClearLastInput(Casasoft.BBS.Interfaces.IClient)">
+            <summary>
+            Clears the last input on terminal
+            </summary>
+            <param name="c"></param>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.testClientTimeout(Casasoft.BBS.Interfaces.IClient)">
+            <summary>
+            Checks if is inactive for a time greater then configured
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TCPServer.Server.clearInactiveSockets">
+            <summary>
+            Scans all clients and kills inactive ones
+            </summary>
+        </member>
+    </members>
+</doc>

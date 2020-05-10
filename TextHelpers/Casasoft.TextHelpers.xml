@@ -1,0 +1,250 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Casasoft.TextHelpers</name>
+    </assembly>
+    <members>
+        <member name="T:Casasoft.BBS.Parser.ANSICodes">
+            <summary>
+            ANSI Sequences helper
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.ANSICodes.Colors">
+            <summary>
+            basic coloror
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.ANSICodes.defaultForeColor">
+            <summary>
+            Default text color
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.ANSICodes.defaultBackColor">
+            <summary>
+            Default background color
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.GetColorByName(System.String,System.Boolean)">
+            <summary>
+            Gets enum value from case insensitive string
+            </summary>
+            <param name="name"></param>
+            <param name="isBack">(optional) set if color is requested for background</param>
+            <returns></returns>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.ANSICodes.ColorTable">
+            <summary>
+            Contains the string to enum table
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.ANSICodes.Modes">
+            <summary>
+            Text modes
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.resetColorStack">
+            <summary>
+            Resets the internal colors stacks
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.pushForeColor(Casasoft.BBS.Parser.ANSICodes.Colors)">
+            <summary>
+            Push the color in the text color stack
+            </summary>
+            <param name="c">color by enum value</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.pushForeColor(System.String)">
+            <summary>
+            Pushes the color in the text color stack
+            </summary>
+            <param name="name">color by name</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.pushBackColor(Casasoft.BBS.Parser.ANSICodes.Colors)">
+            <summary>
+            Pushes the color in the background color stack
+            </summary>
+            <param name="c">color by enum value</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.pushBackColor(System.String)">
+            <summary>
+            Pushes the color in the background color stack
+            </summary>
+            <param name="name">color by name</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.popForeColor">
+            <summary>
+            Pops the color from the text color stack
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.popBackColor">
+            <summary>
+            Pops the color from the background color stack
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.ClearScreen">
+            <summary>
+            Returns the sequente to clear the screen
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.Move(System.Int32,System.Int32)">
+            <summary>
+            Sequence to move cursor to col /row
+            </summary>
+            <param name="col"></param>
+            <param name="row"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.Move(System.String,System.String)">
+            <summary>
+            Sequence to move cursor to col /row
+            </summary>
+            <param name="col"></param>
+            <param name="row"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.Home">
+            <summary>
+            Sequence to move cursor to home (0,0)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.ANSICodes.SaveCursorPosition">
+            <summary>
+            Sequence to save cursor position on terminal
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.ANSICodes.RestoreCursorPosition">
+            <summary>
+            Sequence to restore cursor position on terminal
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.ClearMode">
+            <summary>
+            Resets text modes stack
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.SetMode">
+            <summary>
+            Clears all text modes
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.SetMode(Casasoft.BBS.Parser.ANSICodes.Modes)">
+            <summary>
+            Enables the text mode
+            </summary>
+            <param name="m">Text modes enum</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.ResetMode(Casasoft.BBS.Parser.ANSICodes.Modes)">
+            <summary>
+            Disables the text mode
+            </summary>
+            <param name="m">Text modes enum</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteMode">
+            <summary>
+            Returns sequence for current modes and colors
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteForeColor">
+            <summary>
+            Returns sequence for current text color
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteBackColor">
+            <summary>
+            Returns sequence for current backgroud color
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.ANSICodes.ClearCurrentLine">
+            <summary>
+            Sequence to clear current line
+            </summary>
+        </member>
+        <member name="T:Casasoft.TextHelpers.TextAlign">
+            <summary>
+            Paragraphs text alignment
+            </summary>
+        </member>
+        <member name="T:Casasoft.TextHelpers.TextHelper">
+            <summary>
+            Functions for text management
+            </summary>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.Truncate(System.String,System.Int32)">
+            <summary>
+            Returns the left part of a string without exception
+            if the string is shorter then requested size
+            </summary>
+            <param name="s"></param>
+            <param name="size"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.HR(System.Char,System.Int32)">
+            <summary>
+            returns a string composed of c repeated len times
+            </summary>
+            <param name="c"></param>
+            <param name="len"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.HR(System.Char)">
+            <summary>
+            returns a string composed of c repeated 80 times
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.HR">
+            <summary>
+            returns a string composed of '-' repeated 80 times
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.LineAlign(System.String,System.Int32)">
+            <summary>
+            Left aligns the text in width columns 
+            </summary>
+            <param name="text"></param>
+            <param name="width"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.LineAlign(System.String,System.Int32,Casasoft.TextHelpers.TextAlign)">
+            <summary>
+            Aligns the text in width columns
+            </summary>
+            <param name="text"></param>
+            <param name="width"></param>
+            <param name="align">alignment type</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.WordWrap(System.String,System.Int32)">
+            <summary>
+            Word wraps text in width columns 
+            text is left aligned
+            </summary>
+            <param name="text"></param>
+            <param name="width"></param>
+            <returns>List of strings</returns>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.WordWrap(System.String,System.Int32,Casasoft.TextHelpers.TextAlign)">
+            <summary>
+            Word wraps text in width columns
+            </summary>
+            <param name="text"></param>
+            <param name="width"></param>
+            <param name="align">alignment mode</param>
+            <returns>List of strings</returns>
+        </member>
+    </members>
+</doc>

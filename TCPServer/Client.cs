@@ -27,6 +27,9 @@ using System.Net;
 
 namespace Casasoft.TCPServer
 {
+    /// <summary>
+    /// Client parameters storage
+    /// </summary>
     public class Client : IBBSClient
     {
         /// <summary>

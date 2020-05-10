@@ -15,4 +15,8 @@
     <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\projects\BBS\BBS.Interfaces\BBS.Interfaces.xml</DocumentationFile>
+  </PropertyGroup>
+
 </Project>

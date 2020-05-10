@@ -23,17 +23,58 @@ using System.Collections.Generic;
 
 namespace Casasoft.TextHelpers
 {
+    /// <summary>
+    /// Paragraphs text alignment
+    /// </summary>
     public enum TextAlign { Left, Right, Center, Both }
 
+    /// <summary>
+    /// Functions for text management
+    /// </summary>
     public static class TextHelper
     {
+        /// <summary>
+        /// Returns the left part of a string without exception
+        /// if the string is shorter then requested size
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
         static public string Truncate(string s, int size) => s.Substring(0, Math.Min(size, s.Length));
 
+        /// <summary>
+        /// returns a string composed of c repeated len times
+        /// </summary>
+        /// <param name="c"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
         static public string HR(char c, int len) => new string(c, len);
-        static public string HR(char c) => HR(c, 79);
+        /// <summary>
+        /// returns a string composed of c repeated 80 times
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        static public string HR(char c) => HR(c, 80);
+        /// <summary>
+        /// returns a string composed of '-' repeated 80 times
+        /// </summary>
+        /// <returns></returns>
         static public string HR() => HR('-');
 
+        /// <summary>
+        /// Left aligns the text in width columns 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="width"></param>
+        /// <returns></returns>
         static public string LineAlign(string text, int width) => LineAlign(text, width, TextAlign.Left);
+        /// <summary>
+        /// Aligns the text in width columns
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="width"></param>
+        /// <param name="align">alignment type</param>
+        /// <returns></returns>
         static public string LineAlign(string text, int width, TextAlign align)
         {
             text = text.Trim();
@@ -63,7 +104,21 @@ namespace Casasoft.TextHelpers
             }
         }
 
+        /// <summary>
+        /// Word wraps text in width columns 
+        /// text is left aligned
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="width"></param>
+        /// <returns>List of strings</returns>
         static public List<string> WordWrap(string text, int width) => WordWrap(text, width, TextAlign.Left);
+        /// <summary>
+        /// Word wraps text in width columns
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="width"></param>
+        /// <param name="align">alignment mode</param>
+        /// <returns>List of strings</returns>
         static public List<string> WordWrap(string text, int width, TextAlign align)
         {
             List<string> ret = new List<string>();

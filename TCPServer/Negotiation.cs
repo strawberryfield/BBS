@@ -23,6 +23,9 @@ using System.Text;
 
 namespace Casasoft.TCPServer
 {
+    /// <summary>
+    /// Handles Telnet negotiation
+    /// </summary>
     public static class Negotiation
     {
         /// <summary>

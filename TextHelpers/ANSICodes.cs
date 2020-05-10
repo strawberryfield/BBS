@@ -25,31 +25,64 @@ using System.Configuration;
 
 namespace Casasoft.BBS.Parser
 {
+    /// <summary>
+    /// ANSI Sequences helper
+    /// </summary>
     public class ANSICodes
     {
+        #region colors
+        /// <summary>
+        /// basic coloror
+        /// </summary>
         public enum Colors { Black, Red, Green, Yellow, Blue, Magenta, Cyan, White }
 
+        /// <summary>
+        /// Default text color
+        /// </summary>
         private Colors defaultForeColor = Colors.White;
+        /// <summary>
+        /// Default background color
+        /// </summary>
         private Colors defaultBackColor = Colors.Black;
 
         private Stack<Colors> foreColorStack;
         private Stack<Colors> backColorStack;
+        private int peekForeColor() => (int)foreColorStack.Peek() + 30;
+        private int peekBackColor() => (int)backColorStack.Peek() + 40;
 
+        /// <summary>
+        /// Gets enum value from case insensitive string
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="isBack">(optional) set if color is requested for background</param>
+        /// <returns></returns>
         public Colors GetColorByName(string name, bool isBack = false)
         {
-            Colors color = isBack ? defaultBackColor : defaultForeColor;
-            ColorTable.TryGetValue(name.Trim('"').Trim().ToUpper(), out color);
-            return color;
+            Colors color;
+            if(ColorTable.TryGetValue(name.Trim('"').Trim().ToUpper(), out color))
+                return color;
+            else
+                return isBack ? defaultBackColor : defaultForeColor;
         }
 
-        public enum Modes { Normal, Bold, Underline = 4, Blink, Reverse = 7 }
-        public const byte ModeNormal = 0b00000000;
-        public const byte ModeBold = 0b00000010;
-        public const byte ModeUnderline = 0b00000100;
-        public const byte ModeBlink = 0b00001000;
-        public const byte ModeReverse = 0b00010000;
+        /// <summary>
+        /// Contains the string to enum table
+        /// </summary>
+        public Dictionary<string, Colors> ColorTable;
+        #endregion
 
-        public string ModeFromBits(byte status)
+        #region text modes
+        /// <summary>
+        /// Text modes
+        /// </summary>
+        public enum Modes { Normal, Bold, Underline = 4, Blink, Reverse = 7 }
+        private const byte ModeNormal = 0b00000000;
+        private const byte ModeBold = 0b00000010;
+        private const byte ModeUnderline = 0b00000100;
+        private const byte ModeBlink = 0b00001000;
+        private const byte ModeReverse = 0b00010000;
+
+        private string ModeFromBits(byte status)
         {
             string ret = "0;";
             if ((status & ModeBold) != 0) ret += string.Format("{0};",(int)Modes.Bold);
@@ -59,7 +92,7 @@ namespace Casasoft.BBS.Parser
             return ret;
         }
 
-        public byte BitsFromMode(Modes m)
+        private byte BitsFromMode(Modes m)
         {
             if (m == Modes.Bold) return ModeBold;
             if (m == Modes.Underline) return ModeUnderline;
@@ -68,11 +101,14 @@ namespace Casasoft.BBS.Parser
             return ModeNormal;
         }
 
-        public byte BitsFromMode(int m) => BitsFromMode((Modes)m);
+        private byte BitsFromMode(int m) => BitsFromMode((Modes)m);
 
-        public Dictionary<string, Colors> ColorTable;
         private byte currentMode;
+        #endregion
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ANSICodes()
         {
             ColorTable = new Dictionary<string, Colors>();
@@ -89,6 +125,9 @@ namespace Casasoft.BBS.Parser
             resetColorStack();
         }
 
+        /// <summary>
+        /// Resets the internal colors stacks
+        /// </summary>
         public void resetColorStack()
         {
             foreColorStack.Clear();
@@ -97,44 +136,119 @@ namespace Casasoft.BBS.Parser
             backColorStack.Push(defaultBackColor);
         }
 
+        /// <summary>
+        /// Push the color in the text color stack
+        /// </summary>
+        /// <param name="c">color by enum value</param>
         public void pushForeColor(Colors c) => foreColorStack.Push(c);
+        /// <summary>
+        /// Pushes the color in the text color stack
+        /// </summary>
+        /// <param name="name">color by name</param>
         public void pushForeColor(string name) => pushForeColor(GetColorByName(name));
+        /// <summary>
+        /// Pushes the color in the background color stack
+        /// </summary>
+        /// <param name="c">color by enum value</param>
         public void pushBackColor(Colors c) => backColorStack.Push(c);
+        /// <summary>
+        /// Pushes the color in the background color stack
+        /// </summary>
+        /// <param name="name">color by name</param>
         public void pushBackColor(string name) => pushBackColor(GetColorByName(name, true));
 
+        /// <summary>
+        /// Pops the color from the text color stack
+        /// </summary>
+        /// <returns></returns>
         public Colors popForeColor() => foreColorStack.Pop();
+        /// <summary>
+        /// Pops the color from the background color stack
+        /// </summary>
+        /// <returns></returns>
         public Colors popBackColor() => backColorStack.Pop();
 
+        /// <summary>
+        /// Returns the sequente to clear the screen
+        /// </summary>
+        /// <returns></returns>
         public string ClearScreen() => WriteMode() + "\u001b[2J" + Home();
 
-        public string Move(int x, int y) => string.Format("\u001b[{0};{1}f", y, x);
-        public string Move(string x, string y) => string.Format("\u001b[{0};{1}f", y, x);
+        /// <summary>
+        /// Sequence to move cursor to col /row
+        /// </summary>
+        /// <param name="col"></param>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        public string Move(int col, int row) => string.Format("\u001b[{0};{1}f", row, col);
+        /// <summary>
+        /// Sequence to move cursor to col /row
+        /// </summary>
+        /// <param name="col"></param>
+        /// <param name="row"></param>
+        /// <returns></returns>
+        public string Move(string col, string row) => string.Format("\u001b[{0};{1}f", row, col);
+        /// <summary>
+        /// Sequence to move cursor to home (0,0)
+        /// </summary>
+        /// <returns></returns>
         public string Home() => Move(0, 0);
 
+        /// <summary>
+        /// Sequence to save cursor position on terminal
+        /// </summary>
         public string SaveCursorPosition { get => "\u001b[s"; }
+        /// <summary>
+        /// Sequence to restore cursor position on terminal
+        /// </summary>
         public string RestoreCursorPosition { get => "\u001b[u"; }
 
+        /// <summary>
+        /// Resets text modes stack
+        /// </summary>
         public void ClearMode()
         {
             currentMode = 0;
             resetColorStack();
         }
 
-        public void SetMode(int m) => currentMode |= BitsFromMode(m);
+        private void SetMode(int m) => currentMode |= BitsFromMode(m);
+        /// <summary>
+        /// Clears all text modes
+        /// </summary>
         public void SetMode() => SetMode((int)0);
+        /// <summary>
+        /// Enables the text mode
+        /// </summary>
+        /// <param name="m">Text modes enum</param>
         public void SetMode(Modes m) => SetMode((int)m);
-
+        /// <summary>
+        /// Disables the text mode
+        /// </summary>
+        /// <param name="m">Text modes enum</param>
         public void ResetMode(Modes m) => currentMode &= (byte)~BitsFromMode(m);
 
-
-        public int peekForeColor() => (int)foreColorStack.Peek() + 30;
-        public int peekBackColor() => (int)backColorStack.Peek() + 40;
+        /// <summary>
+        /// Returns sequence for current modes and colors
+        /// </summary>
+        /// <returns></returns>
         public string WriteMode() =>
             string.Format("\u001b[{0}{1};{2}m", ModeFromBits(currentMode),  peekForeColor(), peekBackColor());
 
+        /// <summary>
+        /// Returns sequence for current text color
+        /// </summary>
+        /// <returns></returns>
         public string WriteForeColor() => string.Format("\u001b[{0}m", peekForeColor());
+        /// <summary>
+        /// Returns sequence for current backgroud color
+        /// </summary>
+        /// <returns></returns>
         public string WriteBackColor() => string.Format("\u001b[{0}m", peekBackColor());
 
+        /// <summary>
+        /// Sequence to clear current line
+        /// </summary>
         public string ClearCurrentLine { get => "\u001b[2K"; }
     }
 }
