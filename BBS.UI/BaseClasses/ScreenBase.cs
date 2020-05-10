@@ -23,15 +23,45 @@ using Casasoft.BBS.Parser;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Implements an empty base screen
+    /// </summary>
     public class ScreenBase : IScreen
     {
+        /// <summary>
+        /// Reference to Telnet client
+        /// </summary>
         protected IBBSClient client;
+
+        /// <summary>
+        /// Reference to Telnet server
+        /// </summary>
         protected IServer server;
+
+        /// <summary>
+        /// Instance of ANSI utilities
+        /// </summary>
         protected ANSICodes ANSI;
+        
+        /// <summary>
+        /// Pointer to caller screen (if any)
+        /// </summary>
         public IScreen Previous { get; set; }
 
         #region constructors
+        /// <summary>
+        /// Constructor without link to caller
+        /// </summary>
+        /// <param name="c">Reference to client</param>
+        /// <param name="s">Reference to server</param>
         public ScreenBase(IBBSClient c, IServer s) : this(c, s, null) { }
+        
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Reference to client</param>
+        /// <param name="s">Reference to server</param>
+        /// <param name="prev">Link to caller screen</param>
         public ScreenBase(IBBSClient c, IServer s, IScreen prev)
         {
             client = c;
@@ -41,8 +71,19 @@ namespace Casasoft.BBS.UI
         }
         #endregion
 
+        /// <summary>
+        /// Empty implementation to ovverride in derived classes
+        /// </summary>
         public virtual void Show() { }
+
+        /// <summary>
+        /// Empty implementation to ovverride in derived classes
+        /// </summary>
         public virtual void HandleMessage(string msg) { }
+
+        /// <summary>
+        /// Launch of empty implementations of keys received handles
+        /// </summary>
         public virtual void HandleChar(byte[] data, int bytesReceived)
         {
             switch (data[0])
@@ -120,32 +161,121 @@ namespace Casasoft.BBS.UI
                     break;
             }
         }
+
+        /// <summary>
+        /// Empty implementation to ovverride in derived classes
+        /// </summary>
         public virtual void ShowNext() { }
 
-
+        /// <summary>
+        /// Empty implementation of Ctrl-C handler
+        /// </summary>
         protected virtual void HandleControlC() { }
+
+        /// <summary>
+        /// Empty implementation of Tab handler
+        /// </summary>
         protected virtual void HandleTab() { }
+
+        /// <summary>
+        /// Empty implementation of ESC handler
+        /// </summary>
         protected virtual void HandleESC() { }
+
+        /// <summary>
+        /// Empty implementation of Cursor-Up handler
+        /// </summary>
         protected virtual void HandleCursorUp() { }
+
+        /// <summary>
+        /// Empty implementation of Cursor-Down handler
+        /// </summary>
         protected virtual void HandleCursorDown() { }
+
+        /// <summary>
+        /// Empty implementation of Cursor-Left handler
+        /// </summary>
         protected virtual void HandleCursorLeft() { }
+
+        /// <summary>
+        /// Empty implementation of Cursor-Right handler
+        /// </summary>
         protected virtual void HandleCursorRight() { }
+
+        /// <summary>
+        /// Empty implementation of Page-Up handler
+        /// </summary>
         protected virtual void HandlePageUp() { }
+
+        /// <summary>
+        /// Empty implementation of Cursor-Down handler
+        /// </summary>
         protected virtual void HandlePageDown() { }
+
+        /// <summary>
+        /// Empty implementation of Home handler
+        /// </summary>
         protected virtual void HandleHome() { }
+
+        /// <summary>
+        /// Empty implementation of End handler
+        /// </summary>
         protected virtual void HandleEnd() { }
+
+        /// <summary>
+        /// Empty implementation of F1 handler
+        /// </summary>
         protected virtual void HandleF1() { }
+
+        /// <summary>
+        /// Empty implementation of F2 handler
+        /// </summary>
         protected virtual void HandleF2() { }
+
+        /// <summary>
+        /// Empty implementation of F3 handler
+        /// </summary>
         protected virtual void HandleF3() { }
+
+        /// <summary>
+        /// Empty implementation of F4 handler
+        /// </summary>
         protected virtual void HandleF4() { }
 
+        /// <summary>
+        /// Writes a string to the terminal
+        /// </summary>
+        /// <param name="s"></param>
         protected void Write(string s) => server.sendMessageToClient(client, s);
+
+        /// <summary>
+        /// Writes a string to the terminal follewed by a newline
+        /// </summary>
+        /// <param name="s"></param>
         protected void Writeln(string s) => Write(s + "\r\n");
+
+        /// <summary>
+        /// Writes a newline to the terminal
+        /// </summary>
         protected void Writeln() => Write("\r\n");
+
+        /// <summary>
+        /// Writes a string to the terminal with a preceding newline
+        /// </summary>
+        /// <param name="s"></param>
         protected void LnWrite(string s) => Write("\r\n" + s);
 
+        /// <summary>
+        /// Moves the cursor in the terminal
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
         protected void MoveTo(int row, int col) => Write(ANSI.Move(col, row));
 
+        /// <summary>
+        /// Clears a row in the terminal
+        /// </summary>
+        /// <param name="row"></param>
         protected void ClearLine(int row) => Write(ANSI.Move(1, row) + ANSI.ClearCurrentLine);
     }
 }

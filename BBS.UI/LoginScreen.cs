@@ -28,13 +28,44 @@ using System.Configuration;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Handles user login
+    /// </summary>
     public class LoginScreen : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@Login";
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public LoginScreen(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public LoginScreen(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="text">Text to parse and optional parameters separated by semicolon</param>
         public LoginScreen(IBBSClient c, IServer s, string text) : this(c, s, text, null) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="text">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public LoginScreen(IBBSClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
             status = states.WaitForUsername;
@@ -48,6 +79,9 @@ namespace Casasoft.BBS.UI
         private int tries = 0;
         private int maxtries;
 
+        /// <summary>
+        /// Starts the login form
+        /// </summary>
         public override void Show()
         {
             base.Show();
@@ -58,6 +92,11 @@ namespace Casasoft.BBS.UI
         }
 
         private string username = string.Empty;
+
+        /// <summary>
+        /// Dialog events loop
+        /// </summary>
+        /// <param name="msg"></param>
         public override void HandleMessage(string msg)
         {
             switch (status)
@@ -114,7 +153,7 @@ namespace Casasoft.BBS.UI
                                     Console.WriteLine(e.Message);
                                     Console.WriteLine(e.InnerException.Message);
                                 }
-                                
+
                                 EventLogger.Write(string.Format("Successful login for user '{0}'", username),
                                     client.Remote);
                                 client.status = EClientStatus.LoggedIn;

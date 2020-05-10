@@ -25,13 +25,44 @@ using Casasoft.BBS.Logger;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Form to register as a new user
+    /// </summary>
     public class NewUser : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@NewUser";
-        public NewUser(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public NewUser(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public NewUser(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
+        public NewUser(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        public NewUser(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public NewUser(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             status = states.WaitForUsername;
@@ -47,6 +78,9 @@ namespace Casasoft.BBS.UI
         private states status;
         private User user;
 
+        /// <summary>
+        /// Starts new user dialog
+        /// </summary>
         public override void Show()
         {
             base.Show();
@@ -56,6 +90,11 @@ namespace Casasoft.BBS.UI
         }
 
         private string password;
+
+        /// <summary>
+        /// Dialog events loop
+        /// </summary>
+        /// <param name="msg"></param>
         public override void HandleMessage(string msg)
         {
             msg = msg.Trim();

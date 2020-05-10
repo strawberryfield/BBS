@@ -22,16 +22,50 @@ using Casasoft.BBS.Interfaces;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Implements the screen shown at cliente connection
+    /// </summary>
     public class Banner : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@Banner";
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public Banner(IBBSClient c, IServer s) : base(c, s, defaultText) { }
-        public Banner(IBBSClient c, IServer s, string txt) : base(c, s, txt) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public Banner(IBBSClient c, IServer s, IScreen prev) : base(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        public Banner(IBBSClient c, IServer s, string txt) : base(c, s, txt) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public Banner(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
         #endregion
 
+        /// <summary>
+        /// Sets default action to <see cref="LoginScreen"/>
+        /// </summary>
         public override void ShowNext()
         {
             client.screen = ScreenFactory.Create(client, server, "LoginScreen");

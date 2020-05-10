@@ -25,13 +25,44 @@ using Casasoft.BBS.Logger;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Change password dialog
+    /// </summary>
     public class ChangePassword : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@ChangePassword";
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public ChangePassword(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public ChangePassword(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="text">Text to parse and optional parameters separated by semicolon</param>
         public ChangePassword(IBBSClient c, IServer s, string text) : this(c, s, text, null) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="text">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public ChangePassword(IBBSClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
             status = states.WaitForOldPassword;
@@ -40,9 +71,18 @@ namespace Casasoft.BBS.UI
         }
         #endregion
 
+        /// <summary>
+        /// list of states
+        /// </summary>
         protected enum states { WaitForUsername, WaitForOldPassword, WaitForNewPassword, WaitForConfirm, WaitForContinue }
+        /// <summary>
+        /// current loop status
+        /// </summary>
         protected states status;
 
+        /// <summary>
+        /// Starts dialog
+        /// </summary>
         public override void Show()
         {
             base.Show();
@@ -52,13 +92,27 @@ namespace Casasoft.BBS.UI
             client.status = EClientStatus.Authenticating;
         }
 
+        /// <summary>
+        /// Starts dialog
+        /// </summary>
+        /// <param name="CalledFromChild">dummy parameter to create an override</param>
         public virtual void Show(bool CalledFromChild)
         {
             base.Show();
         }
 
+        /// <summary>
+        /// user temporary storage
+        /// </summary>
         protected User user;
+        /// <summary>
+        /// password temporary storage
+        /// </summary>
         protected string password;
+        /// <summary>
+        /// Dialog event loop
+        /// </summary>
+        /// <param name="msg"></param>
         public override void HandleMessage(string msg)
         {
             msg = msg.Trim();
@@ -91,6 +145,10 @@ namespace Casasoft.BBS.UI
             }
         }
 
+        /// <summary>
+        /// checks if password meets security criteria
+        /// </summary>
+        /// <param name="msg">candidate password</param>
         protected void handleWaitForNewPassword(string msg)
         {
             password = msg;
@@ -107,6 +165,10 @@ namespace Casasoft.BBS.UI
             }
         }
 
+        /// <summary>
+        /// check if retyped password match the first inserted  
+        /// </summary>
+        /// <param name="msg"></param>
         protected void handleWaitForConfirm(string msg)
         {
             if (password == msg)

@@ -22,11 +22,41 @@ using Casasoft.BBS.Interfaces;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Generic Text Screen module
+    /// </summary>
     public class TextScreen : TextScreenBase
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public TextScreen(IBBSClient c, IServer s) : base(c, s) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public TextScreen(IBBSClient c, IServer s, IScreen prev) : base(c, s, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         public TextScreen(IBBSClient c, IServer s, string txt) : base(c, s, txt) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public TextScreen(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
     }
 }

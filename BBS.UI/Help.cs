@@ -22,13 +22,43 @@ using Casasoft.BBS.Interfaces;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Help screen
+    /// </summary>
     public class Help : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@Help";
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public Help(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public Help(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="text">Text to parse and optional parameters separated by semicolon</param>
         public Help(IBBSClient c, IServer s, string text) : this(c, s, text, null) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="text">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public Help(IBBSClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev) { }
         #endregion
 

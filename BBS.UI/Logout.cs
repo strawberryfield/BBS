@@ -25,16 +25,50 @@ using System.Configuration;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Message before disconnection
+    /// </summary>
     public class Logout : TextScreenBase
     {
         #region constructors
         private const string defaultText = "@Logout";
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public Logout(IBBSClient c, IServer s) : this(c, s, defaultText, null) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         public Logout(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public Logout(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public Logout(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
         #endregion
 
+        /// <summary>
+        /// Shows the message and force disconnection
+        /// </summary>
         public override void Show()
         {
             Write(ANSI.ClearScreen());

@@ -19,25 +19,57 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.DataTier;
-using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
-using Casasoft.BBS.Logger;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Change password in superuser mode
+    /// </summary>
     public class ChangePasswordSu : ChangePassword
     {
         #region constructors
         private const string defaultText = "@ChangePasswordSu";
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public ChangePasswordSu(IBBSClient c, IServer s) : this(c, s, defaultText) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public ChangePasswordSu(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="text">Text to parse and optional parameters separated by semicolon</param>
         public ChangePasswordSu(IBBSClient c, IServer s, string text) : this(c, s, text, null) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="text">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public ChangePasswordSu(IBBSClient c, IServer s, string text, IScreen prev) : base(c, s, text, prev)
         {
             status = states.WaitForUsername;
         }
         #endregion
 
+        /// <summary>
+        /// Starts dialog
+        /// </summary>
         public override void Show()
         {
             base.Show(true);
@@ -46,6 +78,10 @@ namespace Casasoft.BBS.UI
             status = states.WaitForUsername;
         }
 
+        /// <summary>
+        /// Dialog event loop
+        /// </summary>
+        /// <param name="msg"></param>
         public override void HandleMessage(string msg)
         {
             msg = msg.Trim();

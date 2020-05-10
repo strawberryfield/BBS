@@ -24,17 +24,67 @@ using System.Collections.Generic;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Implements a text based screen
+    /// </summary>
     public class TextScreenBase : ScreenBase
     {
+        /// <summary>
+        /// Lines of text body
+        /// </summary>
         protected List<string> Text;
+
+        /// <summary>
+        /// Lines of text header
+        /// </summary>
         protected List<string> Header;
+
+        /// <summary>
+        /// Lines of text Footer
+        /// </summary>
         protected List<string> Footer;
+
+        /// <summary>
+        /// Result of text parsing
+        /// </summary>
         protected BBSCodeResult Data;
+
+        /// <summary>
+        /// List of supplied arguments
+        /// </summary>
         protected string[] Params;
 
+        #region constructors
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public TextScreenBase(IBBSClient c, IServer s) : base(c, s) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public TextScreenBase(IBBSClient c, IServer s, IScreen prev) : base(c, s, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         public TextScreenBase(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
         public TextScreenBase(IBBSClient c, IServer s, string txt, IScreen prev) : this(c, s, prev)
         {
             Text = new List<string>();
@@ -48,8 +98,17 @@ namespace Casasoft.BBS.UI
                     ReadText(Params[0]);                    
             }
         }
+        #endregion
 
+        #region show
+        /// <summary>
+        /// Rows available for text body
+        /// </summary>
         protected int dataAreaSize;
+
+        /// <summary>
+        /// First row for text body
+        /// </summary>
         protected int dataAreaStart;
 
         private void ReadText(string name)
@@ -63,14 +122,29 @@ namespace Casasoft.BBS.UI
             dataAreaSize = client.screenHeight - Header.Count - Footer.Count;
         }
 
+        /// <summary>
+        /// Current line of text body
+        /// </summary>
         protected int currentLine;
+
+        /// <summary>
+        /// First line of text body shown
+        /// </summary>
         protected int firstDisplayedLine;
+
+        /// <summary>
+        /// Displays the text
+        /// </summary>
         public override void Show()
         {
             firstDisplayedLine = 0;
             currentLine = Redraw();
         }
 
+        /// <summary>
+        /// Redraws the screen
+        /// </summary>
+        /// <returns></returns>
         protected virtual int Redraw()
         {
             Write(ANSI.ClearScreen());
@@ -82,17 +156,18 @@ namespace Casasoft.BBS.UI
             return ret;
         }
 
-        protected int ShowScreenLines(int start)
+        private int ShowScreenLines(int start)
         {
             ClearBody();
             int ret = ShowLines(start);
             Write(ANSI.RestoreCursorPosition);
             return ret;
         }
-        protected int ShowScreenLines() => ShowScreenLines(firstDisplayedLine);
+        private int ShowScreenLines() => ShowScreenLines(firstDisplayedLine);
+        #endregion
 
         #region text move
-        protected void GoHome()
+        private void GoHome()
         {
             if (firstDisplayedLine == 0) currentLine = 0;
             else
@@ -102,7 +177,7 @@ namespace Casasoft.BBS.UI
             }
         }
 
-        protected void GoEnd()
+        private void GoEnd()
         {
             if (Text.Count > dataAreaSize && firstDisplayedLine+dataAreaSize < Text.Count) 
             {
@@ -112,7 +187,7 @@ namespace Casasoft.BBS.UI
             currentLine = Text.Count - 1;
         }
 
-        protected void PageDown()
+        private void PageDown()
         {
             if (Text.Count > dataAreaSize && firstDisplayedLine + dataAreaSize < Text.Count)
             {
@@ -122,7 +197,7 @@ namespace Casasoft.BBS.UI
             else currentLine = Text.Count - 1;
         }
 
-        protected void HalfPageDown()
+        private void HalfPageDown()
         {
             if (Text.Count > dataAreaSize && firstDisplayedLine + dataAreaSize < Text.Count)
             {
@@ -132,7 +207,7 @@ namespace Casasoft.BBS.UI
             else currentLine = Text.Count - 1;
         }
 
-        protected void PageUp()
+        private void PageUp()
         {
             if (Text.Count > dataAreaSize && firstDisplayedLine > 0)
             {
@@ -144,7 +219,7 @@ namespace Casasoft.BBS.UI
             else currentLine = 0;
         }
 
-        protected void HalfPageUp()
+        private void HalfPageUp()
         {
             if (Text.Count > dataAreaSize && firstDisplayedLine > 0)
             {
@@ -158,6 +233,10 @@ namespace Casasoft.BBS.UI
         #endregion
 
         #region messages and control chars handling
+        /// <summary>
+        /// Processes message received from the client
+        /// </summary>
+        /// <param name="msg"></param>
         public override void HandleMessage(string msg)
         {
             if (string.IsNullOrWhiteSpace(msg))
@@ -171,6 +250,11 @@ namespace Casasoft.BBS.UI
             if (Data != null && Data.Actions.Count > 0) execAction(msg.Trim().ToUpper());
         }
 
+        /// <summary>
+        /// Processes special chars sequences received from the terminal
+        /// </summary>
+        /// <param name="data">Buffer with data received</param>
+        /// <param name="bytesReceived">Number of bytes in the buffer</param>
         public override void HandleChar(byte[] data, int bytesReceived)
         {
             base.HandleChar(data, bytesReceived);
@@ -203,16 +287,53 @@ namespace Casasoft.BBS.UI
             }
         }
 
+        /// <summary>
+        /// Implements Half-Page-Down Handler
+        /// </summary>
         protected virtual void HandleHalfPageDown() => HalfPageDown();
+
+        /// <summary>
+        /// Implements Half-Page-Up Handler
+        /// </summary>
         protected virtual void HandleHalfPageUp() => HalfPageUp();
+
+        /// <summary>
+        /// Implements Screen Redraw Handler
+        /// </summary>
         protected virtual void HandleRedraw() => Redraw();
 
+        /// <summary>
+        /// Implements Home Handler
+        /// </summary>
         protected override void HandleHome() => GoHome();
+
+        /// <summary>
+        /// Implements End Handler
+        /// </summary>
         protected override void HandleEnd() => GoEnd();
+
+        /// <summary>
+        /// Implements Page-Up Handler
+        /// </summary>
         protected override void HandlePageUp() => PageUp();
+
+        /// <summary>
+        /// Implements Page-Down Handler
+        /// </summary>
         protected override void HandlePageDown() => PageDown();
+
+        /// <summary>
+        /// Implements F1 Handler
+        /// </summary>
+        /// <remarks>
+        /// Shows help screen
+        /// </remarks>
         protected override void HandleF1() => ShowHelp();
 
+        /// <summary>
+        /// Exec action by name
+        /// </summary>
+        /// <param name="act">Text entered to trigger the action</param>
         protected void execAction(string act)
         {
             if (Data == null) return;
@@ -225,6 +346,9 @@ namespace Casasoft.BBS.UI
             else server.ClearLastInput(client);
         }
 
+        /// <summary>
+        /// Shows help screen
+        /// </summary>
         protected virtual void ShowHelp()
         {
             client.screen = ScreenFactory.Create(client, server, "Help", this);
@@ -232,6 +356,9 @@ namespace Casasoft.BBS.UI
         }
         #endregion
 
+        /// <summary>
+        /// Launches default action
+        /// </summary>
         public override void ShowNext()
         {
             execAction(string.Empty);
@@ -243,6 +370,12 @@ namespace Casasoft.BBS.UI
         }
 
         #region special chars handling
+        /// <summary>
+        /// Implements Ctrl-C handler
+        /// </summary>
+        /// <remarks>
+        /// Return to previous screen if exists or logout 
+        /// </remarks>
         protected override void HandleControlC()
         {
             if (Previous != null)
@@ -259,6 +392,14 @@ namespace Casasoft.BBS.UI
         #endregion
 
         #region show lines
+        /// <summary>
+        /// Draws lines of text
+        /// </summary>
+        /// <param name="lines">Section to draw</param>
+        /// <param name="start">first line of text to draw</param>
+        /// <param name="len">number of text lines to draw</param>
+        /// <param name="offset">first line of screen to use</param>
+        /// <returns>last line of text written</returns>
         protected int ShowLines(List<string> lines, int start, int len, int offset)
         {
             int ret = start;
@@ -270,10 +411,42 @@ namespace Casasoft.BBS.UI
             return ret;
         }
 
+        /// <summary>
+        /// Draws lines of the text body
+        /// </summary>
+        /// <param name="start">first line of text to draw</param>
+        /// <param name="len">number of text lines to draw</param>
+        /// <returns>last line of text written</returns>
+        /// <remarks>
+        /// first screen line used is <see cref="dataAreaStart"/>
+        /// </remarks>
         protected int ShowLines(int start, int len) => ShowLines(Text, start, len, dataAreaStart);
+
+        /// <summary>
+        /// Draws lines of the text body
+        /// </summary>
+        /// <param name="start">first line of text to draw</param>
+        /// <returns>last line of text written</returns>
+        /// <remarks>
+        /// first screen line used is <see cref="dataAreaStart"/>
+        /// maximum number of lines written is <see cref="dataAreaSize"/>
+        /// </remarks>
         protected int ShowLines(int start) => ShowLines(start, dataAreaSize);
+
+        /// <summary>
+        /// Draws lines of the text body
+        /// </summary>
+        /// <returns>last line of text written</returns>
+        /// <remarks>
+        /// first drawed line is stored in <see cref="firstDisplayedLine"/>
+        /// first screen line used is <see cref="dataAreaStart"/>
+        /// maximum number of lines written is <see cref="dataAreaSize"/>
+        /// </remarks>
         protected int ShowLines() => ShowLines(firstDisplayedLine, dataAreaSize);
 
+        /// <summary>
+        /// Clears all lines of the text body
+        /// </summary>
         protected void ClearBody()
         {
             for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++) ClearLine(j);
