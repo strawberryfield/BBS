@@ -88,5 +88,5 @@ Come sopra, se necessario, sostituite "localhost" con l'indirizzo del server del
 
 ---
 
-|[Indietro](intro.md)|[Indice](index.md)|[Avanti](windows.md)|
-|---|---|---|
+| [Indietro](intro.md) | [Indice](index.md) | [Avanti](windows.md) |
+| --- | --- | --- |
