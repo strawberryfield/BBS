@@ -55,6 +55,12 @@
   - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-NewUser-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.NewUser.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
   - [HandleMessage(msg)](#M-Casasoft-BBS-UI-NewUser-HandleMessage-System-String- 'Casasoft.BBS.UI.NewUser.HandleMessage(System.String)')
   - [Show()](#M-Casasoft-BBS-UI-NewUser-Show 'Casasoft.BBS.UI.NewUser.Show')
+- [RawTextScreen](#T-Casasoft-BBS-UI-RawTextScreen 'Casasoft.BBS.UI.RawTextScreen')
+  - [#ctor(c,s)](#M-Casasoft-BBS-UI-RawTextScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.RawTextScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
+  - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-RawTextScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.RawTextScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
+  - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-RawTextScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.RawTextScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
+  - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-RawTextScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.RawTextScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [ReadText(name)](#M-Casasoft-BBS-UI-RawTextScreen-ReadText-System-String- 'Casasoft.BBS.UI.RawTextScreen.ReadText(System.String)')
 - [ScreenBase](#T-Casasoft-BBS-UI-ScreenBase 'Casasoft.BBS.UI.ScreenBase')
   - [#ctor(c,s)](#M-Casasoft-BBS-UI-ScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.ScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
   - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-ScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
@@ -118,6 +124,7 @@
   - [HandlePageDown()](#M-Casasoft-BBS-UI-TextScreenBase-HandlePageDown 'Casasoft.BBS.UI.TextScreenBase.HandlePageDown')
   - [HandlePageUp()](#M-Casasoft-BBS-UI-TextScreenBase-HandlePageUp 'Casasoft.BBS.UI.TextScreenBase.HandlePageUp')
   - [HandleRedraw()](#M-Casasoft-BBS-UI-TextScreenBase-HandleRedraw 'Casasoft.BBS.UI.TextScreenBase.HandleRedraw')
+  - [ReadText(name)](#M-Casasoft-BBS-UI-TextScreenBase-ReadText-System-String- 'Casasoft.BBS.UI.TextScreenBase.ReadText(System.String)')
   - [Redraw()](#M-Casasoft-BBS-UI-TextScreenBase-Redraw 'Casasoft.BBS.UI.TextScreenBase.Redraw')
   - [Show()](#M-Casasoft-BBS-UI-TextScreenBase-Show 'Casasoft.BBS.UI.TextScreenBase.Show')
   - [ShowHelp()](#M-Casasoft-BBS-UI-TextScreenBase-ShowHelp 'Casasoft.BBS.UI.TextScreenBase.ShowHelp')
@@ -814,6 +821,90 @@ Starts new user dialog
 ##### Parameters
 
 This method has no parameters.
+
+<a name='T-Casasoft-BBS-UI-RawTextScreen'></a>
+## RawTextScreen `type`
+
+##### Namespace
+
+Casasoft.BBS.UI
+
+##### Summary
+
+Shows a raw text file
+
+<a name='M-Casasoft-BBS-UI-RawTextScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer-'></a>
+### #ctor(c,s) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+
+<a name='M-Casasoft-BBS-UI-RawTextScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,prev) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-RawTextScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String-'></a>
+### #ctor(c,s,txt) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+
+<a name='M-Casasoft-BBS-UI-RawTextScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,txt,prev) `constructor`
+
+##### Summary
+
+Complete constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-RawTextScreen-ReadText-System-String-'></a>
+### ReadText(name) `method`
+
+##### Summary
+
+Reads the text and stores it in lists of lines
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | File to load |
 
 <a name='T-Casasoft-BBS-UI-ScreenBase'></a>
 ## ScreenBase `type`
@@ -1518,6 +1609,19 @@ Implements Screen Redraw Handler
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-Casasoft-BBS-UI-TextScreenBase-ReadText-System-String-'></a>
+### ReadText(name) `method`
+
+##### Summary
+
+Reads the text and stores it in lists of lines
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | File to load |
 
 <a name='M-Casasoft-BBS-UI-TextScreenBase-Redraw'></a>
 ### Redraw() `method`

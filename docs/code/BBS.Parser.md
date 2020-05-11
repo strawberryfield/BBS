@@ -24,6 +24,8 @@
   - [ExitEveryRule()](#M-Casasoft-BBS-Parser-BBSCodeParserBaseListener-ExitEveryRule-Antlr4-Runtime-ParserRuleContext- 'Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)')
   - [VisitErrorNode()](#M-Casasoft-BBS-Parser-BBSCodeParserBaseListener-VisitErrorNode-Antlr4-Runtime-Tree-IErrorNode- 'Casasoft.BBS.Parser.BBSCodeParserBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)')
   - [VisitTerminal()](#M-Casasoft-BBS-Parser-BBSCodeParserBaseListener-VisitTerminal-Antlr4-Runtime-Tree-ITerminalNode- 'Casasoft.BBS.Parser.BBSCodeParserBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)')
+- [BBSCodeTranslator](#T-Casasoft-BBS-Parser-BBSCodeTranslator 'Casasoft.BBS.Parser.BBSCodeTranslator')
+  - [GetFile(data)](#M-Casasoft-BBS-Parser-BBSCodeTranslator-GetFile-System-String- 'Casasoft.BBS.Parser.BBSCodeTranslator.GetFile(System.String)')
 - [IBBSCodeParserListener](#T-Casasoft-BBS-Parser-IBBSCodeParserListener 'Casasoft.BBS.Parser.IBBSCodeParserListener')
   - [EnterBbsCodeAttribute(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-EnterBbsCodeAttribute-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeAttributeContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeAttribute(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeContext)')
   - [EnterBbsCodeAttributeName(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-EnterBbsCodeAttributeName-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeAttributeNameContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeAttributeName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeNameContext)')
@@ -354,6 +356,30 @@ This method has no parameters.
 ##### Remarks
 
 The default implementation does nothing.
+
+<a name='T-Casasoft-BBS-Parser-BBSCodeTranslator'></a>
+## BBSCodeTranslator `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeTranslator-GetFile-System-String-'></a>
+### GetFile(data) `method`
+
+##### Summary
+
+Returns complete pathname of the file
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| data | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='T-Casasoft-BBS-Parser-IBBSCodeParserListener'></a>
 ## IBBSCodeParserListener `type`

@@ -241,5 +241,12 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeTranslator.GetFile(System.String)">
+            <summary>
+            Returns complete pathname of the file
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

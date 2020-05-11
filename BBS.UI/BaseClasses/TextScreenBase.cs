@@ -111,7 +111,11 @@ namespace Casasoft.BBS.UI
         /// </summary>
         protected int dataAreaStart;
 
-        private void ReadText(string name)
+        /// <summary>
+        /// Reads the text and stores it in lists of lines
+        /// </summary>
+        /// <param name="name">File to load</param>
+        protected virtual void ReadText(string name)
         {
             BBSCodeTranslator translator = new BBSCodeTranslator(client, server);
             Data = translator.GetProcessed(name);

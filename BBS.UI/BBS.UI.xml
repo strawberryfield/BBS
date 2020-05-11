@@ -289,6 +289,12 @@
             First row for text body
             </summary>
         </member>
+        <member name="M:Casasoft.BBS.UI.TextScreenBase.ReadText(System.String)">
+            <summary>
+            Reads the text and stores it in lists of lines
+            </summary>
+            <param name="name">File to load</param>
+        </member>
         <member name="F:Casasoft.BBS.UI.TextScreenBase.currentLine">
             <summary>
             Current line of text body
@@ -751,6 +757,49 @@
             Dialog events loop
             </summary>
             <param name="msg"></param>
+        </member>
+        <member name="T:Casasoft.BBS.UI.RawTextScreen">
+            <summary>
+            Shows a raw text file
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.RawTextScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.RawTextScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.RawTextScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.RawTextScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.RawTextScreen.ReadText(System.String)">
+            <summary>
+            Reads the text and stores it in lists of lines
+            </summary>
+            <param name="name">File to load</param>
         </member>
         <member name="T:Casasoft.BBS.UI.TextScreen">
             <summary>

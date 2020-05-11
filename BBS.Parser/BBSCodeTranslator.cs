@@ -24,6 +24,7 @@ using Casasoft.BBS.Interfaces;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Casasoft.BBS.Parser
 {
@@ -58,7 +59,12 @@ namespace Casasoft.BBS.Parser
             return ret;
         }
 
-        private string GetFile(string data)
+        /// <summary>
+        /// Returns complete pathname of the file
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public string GetFile(string data)
         {
             if (data.Length < 2) return string.Empty;
             string assets = ConfigurationManager.AppSettings.Get("assets");
