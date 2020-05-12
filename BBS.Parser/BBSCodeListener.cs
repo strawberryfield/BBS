@@ -28,21 +28,33 @@ using System;
 
 namespace Casasoft.BBS.Parser
 {
+    /// <summary>
+    /// This class provides the implementation of <see cref="IBBSCodeParserListener"/>,
+    /// </summary>
     public class BBSCodeListener : BBSCodeParserBaseListener
     {
-        public TagsDict TagsTable;
-        public EntitiesDict EntitiesTable;
-        public AttributesDict AttributesTable;
+        private TagsDict TagsTable;
+        private EntitiesDict EntitiesTable;
+        private AttributesDict AttributesTable;
 
         private string FileName;
         private IBBSClient Client;
         private IServer Server;
 
+        /// <summary>
+        /// The processed data
+        /// </summary>
         public BBSCodeResult Parsed { get; private set; }
 
         private ANSICodes ANSI;
         private BBSCodeResult.Action action;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Reference to the client</param>
+        /// <param name="s">Reference to the server</param>
+        /// <param name="filename">Name of the parsed file</param>
         public BBSCodeListener(IBBSClient c, IServer s, string filename) : base()
         {
             Client = c;
@@ -56,6 +68,10 @@ namespace Casasoft.BBS.Parser
             ANSI = new ANSICodes();
         }
 
+        /// <summary>
+        /// Enter a parse tree produced by <see cref="BBSCodeParser.bbsCodeElement"/>.
+        /// </summary>
+        /// <param name="context">The parse tree.</param>
         public override void EnterBbsCodeElement([NotNull] BBSCodeParser.BbsCodeElementContext context)
         {
             string tagName = context.children[1].GetText().Trim().ToUpper();
@@ -93,6 +109,10 @@ namespace Casasoft.BBS.Parser
             }
         }
 
+        /// <summary>
+        /// Exit a parse tree produced by <see cref="BBSCodeParser.bbsCodeElement"/>.
+        /// </summary>
+        /// <param name="context">The parse tree.</param>
         public override void ExitBbsCodeElement([NotNull] BBSCodeParser.BbsCodeElementContext context)
         {
             string tagName = context.children[1].GetText().Trim().ToUpper();
@@ -210,6 +230,10 @@ namespace Casasoft.BBS.Parser
             }
         }
 
+        /// <summary>
+        /// Enter a parse tree produced by <see cref="BBSCodeParser.bbsCodeAttribute"/>.
+        /// </summary>
+        /// <param name="context">The parse tree.</param>
         public override void EnterBbsCodeAttribute([NotNull] BBSCodeParser.BbsCodeAttributeContext context)
         {
             string tagName = context.Parent.GetChild(1).GetText().Trim().ToUpper();
@@ -237,6 +261,10 @@ namespace Casasoft.BBS.Parser
             }
         }
 
+        /// <summary>
+        /// Enter a parse tree produced by <see cref="BBSCodeParser.bbsCodeEntity"/>.
+        /// </summary>
+        /// <param name="context">The parse tree.</param>
         public override void EnterBbsCodeEntity([NotNull] BBSCodeParser.BbsCodeEntityContext context)
         {
             string entityName = context.GetText().Trim().ToUpper();
@@ -244,6 +272,10 @@ namespace Casasoft.BBS.Parser
             Parsed.TextConcat(EntitiesTable.GetValue(entityName));
         }
 
+        /// <summary>
+        /// Enter a parse tree produced by <see cref="BBSCodeParser.bbsCodeChardata"/>.
+        /// </summary>
+        /// <param name="context">The parse tree.</param>
         public override void EnterBbsCodeChardata([NotNull] BBSCodeParser.BbsCodeChardataContext context)
         {
             Parsed.Parsed += context.GetText();

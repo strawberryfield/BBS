@@ -33,7 +33,7 @@ namespace Casasoft.BBS.Parser
 
     public class TagsDict
     {
-        public static Dictionary<string, Tags> TagsTable { get; private set; }
+        private static Dictionary<string, Tags> TagsTable; 
 
         public TagsDict()
         {
