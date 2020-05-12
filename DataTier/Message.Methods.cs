@@ -23,10 +23,23 @@ using System.Linq;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
+    /// <summary>
+    /// mail message entity
+    /// </summary>
     public partial class Message
     {
+        /// <summary>
+        /// Test if a message is posted after the datetime
+        /// </summary>
+        /// <param name="since">reference timestamp</param>
+        /// <returns></returns>
         public bool IsNew(DateTime since) => DateTime >= since;
 
+        /// <summary>
+        /// Test if the user has already read the message
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public bool IsRead(string username) => MessageReads.Select(u => u.UserId).Contains(username);
     }
 }

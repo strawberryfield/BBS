@@ -25,12 +25,22 @@ using System.Linq;
 
 namespace Casasoft.BBS.DataTier
 {
+    /// <summary>
+    /// Database abstraction class
+    /// </summary>
     public class bbsContext : DBContext.bbsContext
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public bbsContext()
         {
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="options"></param>
         public bbsContext(DbContextOptions<DBContext.bbsContext> options)
             : base(options)
         {
@@ -51,14 +61,30 @@ namespace Casasoft.BBS.DataTier
         }
 
         #region custom methods
+        /// <summary>
+        /// Gets an <see cref="User"/> instance from the username string
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public User GetUserByUsername(string username) => Users.Where(u => u.Userid == username).FirstOrDefault();
 
+        /// <summary>
+        /// Gets a list of accessible message areas for an user
+        /// </summary>
+        /// <param name="group"></param>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public IQueryable<MessageArea> GetMessageAllowedAreasByGroup(string group, string username) =>
             string.IsNullOrWhiteSpace(group) ? MessageAreas :
             MessageAreas.Where(a => a.Areagroup == group.ToUpper()).Where(
                 g => g.AllowedGroupRead == null
                 || UsersGroupsLinks.Where(u => u.Userid == username).Select(ug => ug.Groupid).Contains(g.AllowedGroupRead));
 
+        /// <summary>
+        /// Gets a list of accessible message areas groups for an user
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public IQueryable<MessageAreasGroup> GetAllowedMessageAreasGroup(string username) =>
             MessageAreasGroups.Where(
                 g => g.AllowedGroupId == null

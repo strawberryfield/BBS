@@ -172,7 +172,7 @@ namespace Casasoft.TCPServer
         /// <remarks>
         /// Manages sequences like
         /// <code>
-        /// IAC SB NAWS <16-bit value> <16-bit value> IAC SE
+        /// IAC SB NAWS "16-bit value" "16-bit valu"> IAC SE
         /// </code>
         /// Sent by the Telnet client to inform the Telnet server of the
         /// window width and height.

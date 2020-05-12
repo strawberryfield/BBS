@@ -23,18 +23,91 @@ using System.Collections.Generic;
 
 namespace Casasoft.BBS.Parser
 {
+    /// <summary>
+    /// Available tags
+    /// </summary>
     public enum Tags
     {
-        HEADER, FOOTER, BODY, HIDDEN,
-        CLS, BLINK, REVERSE, BOLD, UNDERLINE, COLOR, BACKCOLOR,
-        FIGGLE, BEEP, HR, P, MOVE,
+        /// <summary>
+        /// Defines the header section
+        /// </summary>
+        HEADER,
+        /// <summary>
+        /// Defines the footer section
+        /// </summary>
+        FOOTER,
+        /// <summary>
+        /// Defines the body section
+        /// </summary>
+        BODY,
+        /// <summary>
+        /// Defines an hidden section
+        /// </summary>
+        HIDDEN,
+        /// <summary>
+        /// Clears the screen
+        /// </summary>
+        CLS, 
+        /// <summary>
+        /// Sets blink mode for the text
+        /// </summary>
+        BLINK,
+        /// <summary>
+        /// Sets reverse mode for the text
+        /// </summary>
+        REVERSE,
+        /// <summary>
+        /// Sets bold mode for the text
+        /// </summary>
+        BOLD,
+        /// <summary>
+        /// Sets underline mode for the text
+        /// </summary>
+        UNDERLINE,
+        /// <summary>
+        /// Sets the color for the text
+        /// </summary>
+        COLOR,
+        /// <summary>
+        /// Sets the color for the background
+        /// </summary>
+        BACKCOLOR,
+        /// <summary>
+        /// Writes text with giant characters
+        /// </summary>
+        FIGGLE, 
+        /// <summary>
+        /// Sounds on the terminal
+        /// </summary>
+        BEEP, 
+        /// <summary>
+        /// Draws a row
+        /// </summary>
+        HR, 
+        /// <summary>
+        /// Defines a paragraph
+        /// </summary>
+        P, 
+        /// <summary>
+        /// Move cursor on terminal
+        /// </summary>
+        MOVE,
+        /// <summary>
+        /// Defines a <see cref="BBSCodeResult.Action"/>
+        /// </summary>
         ACTION
     }
 
+    /// <summary>
+    /// Dictionary of the tags
+    /// </summary>
     public class TagsDict
     {
         private static Dictionary<string, Tags> TagsTable; 
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public TagsDict()
         {
             TagsTable = new Dictionary<string, Tags>();
@@ -42,6 +115,12 @@ namespace Casasoft.BBS.Parser
                 TagsTable.Add(t.ToString().ToUpper(), t);
         }
 
+        /// <summary>
+        /// Tries to get a tag by its name
+        /// </summary>
+        /// <param name="tagname"></param>
+        /// <param name="tag"></param>
+        /// <returns>True if tag is found</returns>
         public bool TryGetValue(string tagname, out Tags tag) =>
             TagsTable.TryGetValue(tagname, out tag);
     }
