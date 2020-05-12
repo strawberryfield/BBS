@@ -20,6 +20,7 @@
 
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Parser;
+using Casasoft.TextHelpers;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
@@ -475,7 +476,7 @@ namespace Casasoft.BBS.UI
                 data = texts[data.Substring(1)];
             }
 
-            if (data.StartsWith("http://") || data.StartsWith("https://"))
+            if (TextHelper.IsUrl(data))
                 return data;
             else
                 return Path.Combine(assets, data);

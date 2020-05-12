@@ -71,7 +71,7 @@ namespace Casasoft.BBS.UI
         /// <param name="name">File to load</param>
         protected override void ReadText(string name)
         {
-            if (name.StartsWith("http://") || name.StartsWith("https://"))
+            if (TextHelper.IsUrl(name))
             {
                 WebClient client = new WebClient();
                 Text = TextHelper.SplitString(client.DownloadString(name));

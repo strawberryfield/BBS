@@ -22,6 +22,7 @@ using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Casasoft.BBS.Interfaces;
 using System.IO;
+using System.Net;
 
 namespace Casasoft.BBS.Parser
 {
@@ -52,8 +53,19 @@ namespace Casasoft.BBS.Parser
         public BBSCodeResult GetProcessed(string FileName)
         {
             BBSCodeResult ret = new BBSCodeResult();
+            Stream stream;
 
-            using (StreamReader fileStream = new StreamReader(FileName))
+            if (TextHelpers.TextHelper.IsUrl(FileName))
+            {
+                WebClient webClient = new WebClient();
+                stream = webClient.OpenRead(FileName);
+            }
+            else
+            {
+                stream = File.OpenRead(FileName);
+            }
+
+            using (StreamReader fileStream = new StreamReader(stream))
             {
                 AntlrInputStream inputStream = new AntlrInputStream(fileStream);
                 BBSCodeLexer lexer = new BBSCodeLexer(inputStream);

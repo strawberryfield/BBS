@@ -37,6 +37,7 @@
   - [HR(c,len)](#M-Casasoft-TextHelpers-TextHelper-HR-System-Char,System-Int32- 'Casasoft.TextHelpers.TextHelper.HR(System.Char,System.Int32)')
   - [HR(c)](#M-Casasoft-TextHelpers-TextHelper-HR-System-Char- 'Casasoft.TextHelpers.TextHelper.HR(System.Char)')
   - [HR()](#M-Casasoft-TextHelpers-TextHelper-HR 'Casasoft.TextHelpers.TextHelper.HR')
+  - [IsUrl(s)](#M-Casasoft-TextHelpers-TextHelper-IsUrl-System-String- 'Casasoft.TextHelpers.TextHelper.IsUrl(System.String)')
   - [LineAlign(text,width)](#M-Casasoft-TextHelpers-TextHelper-LineAlign-System-String,System-Int32- 'Casasoft.TextHelpers.TextHelper.LineAlign(System.String,System.Int32)')
   - [LineAlign(text,width,align)](#M-Casasoft-TextHelpers-TextHelper-LineAlign-System-String,System-Int32,Casasoft-TextHelpers-TextAlign- 'Casasoft.TextHelpers.TextHelper.LineAlign(System.String,System.Int32,Casasoft.TextHelpers.TextAlign)')
   - [SplitString(s)](#M-Casasoft-TextHelpers-TextHelper-SplitString-System-String- 'Casasoft.TextHelpers.TextHelper.SplitString(System.String)')
@@ -471,6 +472,23 @@ returns a string composed of '-' repeated 80 times
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-Casasoft-TextHelpers-TextHelper-IsUrl-System-String-'></a>
+### IsUrl(s) `method`
+
+##### Summary
+
+Tests if the string contains an url
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| s | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-Casasoft-TextHelpers-TextHelper-LineAlign-System-String,System-Int32-'></a>
 ### LineAlign(text,width) `method`
