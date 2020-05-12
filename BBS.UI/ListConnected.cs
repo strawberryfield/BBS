@@ -23,20 +23,58 @@ using Casasoft.TextHelpers;
 
 namespace Casasoft.BBS.UI
 {
-    public class ListConnected : TextScreenBase
+    /// <summary>
+    /// Implements list of connected users
+    /// </summary>
+    public class ListConnected : ListScreenBase
     {
         #region constructors
         private const string defaultText = "@ListConnected";
-        public ListConnected(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        public ListConnected(IBBSClient c, IServer s) : this(c, s, defaultText, null) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public ListConnected(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
-        public ListConnected(IBBSClient c, IServer s) : this(c, s, defaultText) { }
-        public ListConnected(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        public ListConnected(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
+        public ListConnected(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        #endregion
+
+        /// <summary>
+        /// Fills the connected users list
+        /// </summary>
+        protected override void AddList()
         {
             foreach (IClient cl in server.clients.Values)
                 Text.Add(TextHelper.Truncate(string.Format("{0,-30} {1:G} {2}",
-                    string.IsNullOrWhiteSpace(c.username) ? "GUEST" : c.username, c.connectedAt, c.Remote),
+                    string.IsNullOrWhiteSpace(client.username) ? "GUEST" : client.username, 
+                    client.connectedAt, client.Remote),
                     client.screenWidth));
         }
-        #endregion
+
     }
 }

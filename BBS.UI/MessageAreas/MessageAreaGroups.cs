@@ -27,20 +27,51 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class MessageAreaGroups : TextScreenBase
+    /// <summary>
+    /// Implements the list of message areas groups
+    /// </summary>
+    public class MessageAreaGroups : ListScreenBase
     {
         #region constructors
         private const string defaultText = "@MessageAreaGroups";
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public MessageAreaGroups(IBBSClient c, IServer s) : this(c, s, defaultText, null) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public MessageAreaGroups(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         public MessageAreaGroups(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public MessageAreaGroups(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
-        {
-            AddList();
-        }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
+        public MessageAreaGroups(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
         #endregion
 
-        private void AddList()
+        /// <summary>
+        /// Fills area groups list
+        /// </summary>
+        protected override void AddList()
         {
             string fmt = "{0,-20} {1,3} {2}";
 

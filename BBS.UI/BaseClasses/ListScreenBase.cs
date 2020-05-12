@@ -18,26 +18,19 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.DataTier;
 using Casasoft.BBS.Interfaces;
-using Casasoft.TextHelpers;
 
 namespace Casasoft.BBS.UI
 {
-    /// <summary>
-    /// Implements the registered users list
-    /// </summary>
-    public class ListUsers : ListScreenBase
+    public class ListScreenBase : TextScreenBase
     {
-        #region constructors
-        private const string defaultText = "@ListUsers";
-
+        #region constructor
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
-        public ListUsers(IBBSClient c, IServer s) : this(c, s, defaultText, null) { }
+        public ListScreenBase(IBBSClient c, IServer s) : this(c, s, string.Empty, null) { }
 
         /// <summary>
         /// Constructor
@@ -45,7 +38,7 @@ namespace Casasoft.BBS.UI
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
         /// <param name="prev">Link to caller screen</param>
-        public ListUsers(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public ListScreenBase(IBBSClient c, IServer s, IScreen prev) : this(c, s, string.Empty, prev) { }
 
         /// <summary>
         /// Constructor
@@ -53,7 +46,7 @@ namespace Casasoft.BBS.UI
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
         /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
-        public ListUsers(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public ListScreenBase(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
 
         /// <summary>
         /// Complete constructor
@@ -62,21 +55,16 @@ namespace Casasoft.BBS.UI
         /// <param name="s">Server reference</param>
         /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         /// <param name="prev">Link to caller screen</param>
-        public ListUsers(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        public ListScreenBase(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        {
+            Text.Clear();
+            AddList();
+        }
         #endregion
 
         /// <summary>
-        /// Fills the registered users list
+        /// Empty virtual function where data lines will be added
         /// </summary>
-        protected override void AddList()
-        {
-            using (bbsContext bbs = new bbsContext())
-            {
-                foreach (var user in bbs.Users)
-                    Text.Add(TextHelper.Truncate(string.Format("{0,-30} {1:d} {2}",
-                        user.Userid, user.Registered.Date,
-                        user.City.Trim() + ", " + user.Nation), client.screenWidth));
-            }
-        }
+        protected virtual void AddList() { }
     }
 }

@@ -27,20 +27,51 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class MessageAreas : TextScreenBase
+    /// <summary>
+    /// Implements the list of message areas
+    /// </summary>
+    public class MessageAreas : ListScreenBase
     {
         #region constructors
         private const string defaultText = "@MessageAreaGroups";
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
         public MessageAreas(IBBSClient c, IServer s) : base(c, s, defaultText) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public MessageAreas(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         public MessageAreas(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        public MessageAreas(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
-        {
-            AddList();
-        }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
+        public MessageAreas(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
         #endregion
 
-        private void AddList()
+        /// <summary>
+        /// Fills the messages area list
+        /// </summary>
+        protected override void AddList()
         {
             string fmt = "{0,-20} {1,4} {2,4} {3,4} {4}";
 

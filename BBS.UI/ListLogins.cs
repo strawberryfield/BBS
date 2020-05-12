@@ -25,14 +25,51 @@ using System.Linq;
 
 namespace Casasoft.BBS.UI
 {
-    public class ListLogins : TextScreenBase
+    /// <summary>
+    /// Implements list of user's logins
+    /// </summary>
+    public class ListLogins : ListScreenBase
     {
         #region constructors
         private const string defaultText = "@ListLogins";
-        public ListLogins(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        public ListLogins(IBBSClient c, IServer s) : this(c, s, defaultText, null) { }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="prev">Link to caller screen</param>
         public ListLogins(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
-        public ListLogins(IBBSClient c, IServer s) : this(c, s, defaultText) { }
-        public ListLogins(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        public ListLogins(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+
+        /// <summary>
+        /// Complete constructor
+        /// </summary>
+        /// <param name="c">Client reference</param>
+        /// <param name="s">Server reference</param>
+        /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        /// <param name="prev">Link to caller screen</param>
+        public ListLogins(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        #endregion
+
+        /// <summary>
+        /// Fills the user's logins list
+        /// </summary>
+        protected override void AddList()
         {
             using (bbsContext bbs = new bbsContext())
             {
@@ -41,6 +78,6 @@ namespace Casasoft.BBS.UI
                         login.DateTime, login.Success ? "*" : " ", login.From), client.screenWidth));
             }
         }
-        #endregion
+
     }
 }

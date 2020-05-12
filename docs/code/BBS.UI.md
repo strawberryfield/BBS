@@ -35,6 +35,30 @@
   - [#ctor(c,s,text)](#M-Casasoft-BBS-UI-Help-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.Help.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
   - [#ctor(c,s,text,prev)](#M-Casasoft-BBS-UI-Help-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.Help.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
   - [ShowHelp()](#M-Casasoft-BBS-UI-Help-ShowHelp 'Casasoft.BBS.UI.Help.ShowHelp')
+- [ListConnected](#T-Casasoft-BBS-UI-ListConnected 'Casasoft.BBS.UI.ListConnected')
+  - [#ctor(c,s)](#M-Casasoft-BBS-UI-ListConnected-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.ListConnected.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
+  - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-ListConnected-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ListConnected.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
+  - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-ListConnected-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.ListConnected.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
+  - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-ListConnected-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ListConnected.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [AddList()](#M-Casasoft-BBS-UI-ListConnected-AddList 'Casasoft.BBS.UI.ListConnected.AddList')
+- [ListLogins](#T-Casasoft-BBS-UI-ListLogins 'Casasoft.BBS.UI.ListLogins')
+  - [#ctor(c,s)](#M-Casasoft-BBS-UI-ListLogins-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.ListLogins.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
+  - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-ListLogins-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ListLogins.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
+  - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-ListLogins-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.ListLogins.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
+  - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-ListLogins-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ListLogins.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [AddList()](#M-Casasoft-BBS-UI-ListLogins-AddList 'Casasoft.BBS.UI.ListLogins.AddList')
+- [ListScreenBase](#T-Casasoft-BBS-UI-ListScreenBase 'Casasoft.BBS.UI.ListScreenBase')
+  - [#ctor(c,s)](#M-Casasoft-BBS-UI-ListScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
+  - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-ListScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
+  - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-ListScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
+  - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-ListScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [AddList()](#M-Casasoft-BBS-UI-ListScreenBase-AddList 'Casasoft.BBS.UI.ListScreenBase.AddList')
+- [ListUsers](#T-Casasoft-BBS-UI-ListUsers 'Casasoft.BBS.UI.ListUsers')
+  - [#ctor(c,s)](#M-Casasoft-BBS-UI-ListUsers-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.ListUsers.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
+  - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-ListUsers-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ListUsers.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
+  - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-ListUsers-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.ListUsers.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
+  - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-ListUsers-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.ListUsers.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [AddList()](#M-Casasoft-BBS-UI-ListUsers-AddList 'Casasoft.BBS.UI.ListUsers.AddList')
 - [LoginScreen](#T-Casasoft-BBS-UI-LoginScreen 'Casasoft.BBS.UI.LoginScreen')
   - [#ctor(c,s)](#M-Casasoft-BBS-UI-LoginScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.LoginScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
   - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-LoginScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.LoginScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
@@ -48,6 +72,18 @@
   - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-Logout-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.Logout.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
   - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-Logout-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.Logout.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
   - [Show()](#M-Casasoft-BBS-UI-Logout-Show 'Casasoft.BBS.UI.Logout.Show')
+- [MessageAreaGroups](#T-Casasoft-BBS-UI-MessageAreaGroups 'Casasoft.BBS.UI.MessageAreaGroups')
+  - [#ctor(c,s)](#M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
+  - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
+  - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
+  - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [AddList()](#M-Casasoft-BBS-UI-MessageAreaGroups-AddList 'Casasoft.BBS.UI.MessageAreaGroups.AddList')
+- [MessageAreas](#T-Casasoft-BBS-UI-MessageAreas 'Casasoft.BBS.UI.MessageAreas')
+  - [#ctor(c,s)](#M-Casasoft-BBS-UI-MessageAreas-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.MessageAreas.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
+  - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-MessageAreas-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MessageAreas.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
+  - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-MessageAreas-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.MessageAreas.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
+  - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-MessageAreas-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MessageAreas.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [AddList()](#M-Casasoft-BBS-UI-MessageAreas-AddList 'Casasoft.BBS.UI.MessageAreas.AddList')
 - [NewUser](#T-Casasoft-BBS-UI-NewUser 'Casasoft.BBS.UI.NewUser')
   - [#ctor(c,s)](#M-Casasoft-BBS-UI-NewUser-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.NewUser.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
   - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-NewUser-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.NewUser.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
@@ -551,6 +587,330 @@ Prevents recursive launch of the help
 
 This method has no parameters.
 
+<a name='T-Casasoft-BBS-UI-ListConnected'></a>
+## ListConnected `type`
+
+##### Namespace
+
+Casasoft.BBS.UI
+
+##### Summary
+
+Implements list of connected users
+
+<a name='M-Casasoft-BBS-UI-ListConnected-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer-'></a>
+### #ctor(c,s) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+
+<a name='M-Casasoft-BBS-UI-ListConnected-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,prev) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-ListConnected-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String-'></a>
+### #ctor(c,s,txt) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+
+<a name='M-Casasoft-BBS-UI-ListConnected-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,txt,prev) `constructor`
+
+##### Summary
+
+Complete constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-ListConnected-AddList'></a>
+### AddList() `method`
+
+##### Summary
+
+Fills the connected users list
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-Casasoft-BBS-UI-ListLogins'></a>
+## ListLogins `type`
+
+##### Namespace
+
+Casasoft.BBS.UI
+
+##### Summary
+
+Implements list of user's logins
+
+<a name='M-Casasoft-BBS-UI-ListLogins-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer-'></a>
+### #ctor(c,s) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+
+<a name='M-Casasoft-BBS-UI-ListLogins-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,prev) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-ListLogins-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String-'></a>
+### #ctor(c,s,txt) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+
+<a name='M-Casasoft-BBS-UI-ListLogins-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,txt,prev) `constructor`
+
+##### Summary
+
+Complete constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-ListLogins-AddList'></a>
+### AddList() `method`
+
+##### Summary
+
+Fills the user's logins list
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-Casasoft-BBS-UI-ListScreenBase'></a>
+## ListScreenBase `type`
+
+##### Namespace
+
+Casasoft.BBS.UI
+
+<a name='M-Casasoft-BBS-UI-ListScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer-'></a>
+### #ctor(c,s) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+
+<a name='M-Casasoft-BBS-UI-ListScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,prev) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-ListScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String-'></a>
+### #ctor(c,s,txt) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+
+<a name='M-Casasoft-BBS-UI-ListScreenBase-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,txt,prev) `constructor`
+
+##### Summary
+
+Complete constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-ListScreenBase-AddList'></a>
+### AddList() `method`
+
+##### Summary
+
+Empty virtual function where data lines will be added
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-Casasoft-BBS-UI-ListUsers'></a>
+## ListUsers `type`
+
+##### Namespace
+
+Casasoft.BBS.UI
+
+##### Summary
+
+Implements the registered users list
+
+<a name='M-Casasoft-BBS-UI-ListUsers-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer-'></a>
+### #ctor(c,s) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+
+<a name='M-Casasoft-BBS-UI-ListUsers-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,prev) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-ListUsers-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String-'></a>
+### #ctor(c,s,txt) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+
+<a name='M-Casasoft-BBS-UI-ListUsers-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,txt,prev) `constructor`
+
+##### Summary
+
+Complete constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-ListUsers-AddList'></a>
+### AddList() `method`
+
+##### Summary
+
+Fills the registered users list
+
+##### Parameters
+
+This method has no parameters.
+
 <a name='T-Casasoft-BBS-UI-LoginScreen'></a>
 ## LoginScreen `type`
 
@@ -723,6 +1083,170 @@ Complete constructor
 ##### Summary
 
 Shows the message and force disconnection
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-Casasoft-BBS-UI-MessageAreaGroups'></a>
+## MessageAreaGroups `type`
+
+##### Namespace
+
+Casasoft.BBS.UI
+
+##### Summary
+
+Implements the list of message areas groups
+
+<a name='M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer-'></a>
+### #ctor(c,s) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+
+<a name='M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,prev) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String-'></a>
+### #ctor(c,s,txt) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+
+<a name='M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,txt,prev) `constructor`
+
+##### Summary
+
+Complete constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-MessageAreaGroups-AddList'></a>
+### AddList() `method`
+
+##### Summary
+
+Fills area groups list
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='T-Casasoft-BBS-UI-MessageAreas'></a>
+## MessageAreas `type`
+
+##### Namespace
+
+Casasoft.BBS.UI
+
+##### Summary
+
+Implements the list of message areas
+
+<a name='M-Casasoft-BBS-UI-MessageAreas-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer-'></a>
+### #ctor(c,s) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+
+<a name='M-Casasoft-BBS-UI-MessageAreas-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,prev) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-MessageAreas-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String-'></a>
+### #ctor(c,s,txt) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+
+<a name='M-Casasoft-BBS-UI-MessageAreas-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen-'></a>
+### #ctor(c,s,txt,prev) `constructor`
+
+##### Summary
+
+Complete constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Client reference |
+| s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
+| txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
+| prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-MessageAreas-AddList'></a>
+### AddList() `method`
+
+##### Summary
+
+Fills the messages area list
 
 ##### Parameters
 
