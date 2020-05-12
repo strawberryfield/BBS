@@ -21,29 +21,39 @@
 using Antlr4.Runtime;
 using Antlr4.Runtime.Tree;
 using Casasoft.BBS.Interfaces;
-using System.Collections.Specialized;
-using System.Configuration;
 using System.IO;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Casasoft.BBS.Parser
 {
+    /// <summary>
+    /// Handles parsing of BBScode
+    /// </summary>
     public class BBSCodeTranslator
     {
         private IBBSClient client;
         private IServer server;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Reference to the client</param>
+        /// <param name="s">Reference to the server</param>
         public BBSCodeTranslator(IBBSClient c, IServer s)
         {
             client = c;
             server = s;
         }
 
+        /// <summary>
+        /// Process the file
+        /// </summary>
+        /// <param name="FileName">File to parse</param>
+        /// <returns><see cref="BBSCodeResult"/> with processed data</returns>
         public BBSCodeResult GetProcessed(string FileName)
         {
             BBSCodeResult ret = new BBSCodeResult();
 
-            using (StreamReader fileStream = new StreamReader(GetFile(FileName)))
+            using (StreamReader fileStream = new StreamReader(FileName))
             {
                 AntlrInputStream inputStream = new AntlrInputStream(fileStream);
                 BBSCodeLexer lexer = new BBSCodeLexer(inputStream);
@@ -58,26 +68,5 @@ namespace Casasoft.BBS.Parser
             }
             return ret;
         }
-
-        /// <summary>
-        /// Returns complete pathname of the file
-        /// </summary>
-        /// <param name="data"></param>
-        /// <returns></returns>
-        public string GetFile(string data)
-        {
-            if (data.Length < 2) return string.Empty;
-            string assets = ConfigurationManager.AppSettings.Get("assets");
-            if (data[0] == '@')
-            {
-                NameValueCollection texts = (NameValueCollection)ConfigurationManager.GetSection("Texts");
-                return Path.Combine(assets, texts[data.Substring(1)]);
-            }
-            else
-            {
-                return Path.Combine(assets, data);
-            }
-        }
-
     }
 }

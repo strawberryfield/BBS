@@ -113,6 +113,7 @@
   - [dataAreaStart](#F-Casasoft-BBS-UI-TextScreenBase-dataAreaStart 'Casasoft.BBS.UI.TextScreenBase.dataAreaStart')
   - [firstDisplayedLine](#F-Casasoft-BBS-UI-TextScreenBase-firstDisplayedLine 'Casasoft.BBS.UI.TextScreenBase.firstDisplayedLine')
   - [ClearBody()](#M-Casasoft-BBS-UI-TextScreenBase-ClearBody 'Casasoft.BBS.UI.TextScreenBase.ClearBody')
+  - [GetFile(data)](#M-Casasoft-BBS-UI-TextScreenBase-GetFile-System-String- 'Casasoft.BBS.UI.TextScreenBase.GetFile(System.String)')
   - [HandleChar(data,bytesReceived)](#M-Casasoft-BBS-UI-TextScreenBase-HandleChar-System-Byte[],System-Int32- 'Casasoft.BBS.UI.TextScreenBase.HandleChar(System.Byte[],System.Int32)')
   - [HandleControlC()](#M-Casasoft-BBS-UI-TextScreenBase-HandleControlC 'Casasoft.BBS.UI.TextScreenBase.HandleControlC')
   - [HandleEnd()](#M-Casasoft-BBS-UI-TextScreenBase-HandleEnd 'Casasoft.BBS.UI.TextScreenBase.HandleEnd')
@@ -1475,6 +1476,23 @@ Clears all lines of the text body
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-Casasoft-BBS-UI-TextScreenBase-GetFile-System-String-'></a>
+### GetFile(data) `method`
+
+##### Summary
+
+Returns complete pathname of the file
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| data | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-Casasoft-BBS-UI-TextScreenBase-HandleChar-System-Byte[],System-Int32-'></a>
 ### HandleChar(data,bytesReceived) `method`

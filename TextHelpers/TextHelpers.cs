@@ -20,6 +20,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Casasoft.TextHelpers
 {
@@ -144,5 +146,13 @@ namespace Casasoft.TextHelpers
 
             return ret;
         }
+
+        /// <summary>
+        /// Splits a string to a list of string at newline (both Windows and Unix types)
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        static public List<string> SplitString(string s) =>
+            Regex.Split(s.Replace("\r", ""), "\n").ToList();
     }
 }

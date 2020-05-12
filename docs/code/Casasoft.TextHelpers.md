@@ -39,6 +39,7 @@
   - [HR()](#M-Casasoft-TextHelpers-TextHelper-HR 'Casasoft.TextHelpers.TextHelper.HR')
   - [LineAlign(text,width)](#M-Casasoft-TextHelpers-TextHelper-LineAlign-System-String,System-Int32- 'Casasoft.TextHelpers.TextHelper.LineAlign(System.String,System.Int32)')
   - [LineAlign(text,width,align)](#M-Casasoft-TextHelpers-TextHelper-LineAlign-System-String,System-Int32,Casasoft-TextHelpers-TextAlign- 'Casasoft.TextHelpers.TextHelper.LineAlign(System.String,System.Int32,Casasoft.TextHelpers.TextAlign)')
+  - [SplitString(s)](#M-Casasoft-TextHelpers-TextHelper-SplitString-System-String- 'Casasoft.TextHelpers.TextHelper.SplitString(System.String)')
   - [Truncate(s,size)](#M-Casasoft-TextHelpers-TextHelper-Truncate-System-String,System-Int32- 'Casasoft.TextHelpers.TextHelper.Truncate(System.String,System.Int32)')
   - [WordWrap(text,width)](#M-Casasoft-TextHelpers-TextHelper-WordWrap-System-String,System-Int32- 'Casasoft.TextHelpers.TextHelper.WordWrap(System.String,System.Int32)')
   - [WordWrap(text,width,align)](#M-Casasoft-TextHelpers-TextHelper-WordWrap-System-String,System-Int32,Casasoft-TextHelpers-TextAlign- 'Casasoft.TextHelpers.TextHelper.WordWrap(System.String,System.Int32,Casasoft.TextHelpers.TextAlign)')
@@ -507,6 +508,23 @@ Aligns the text in width columns
 | text | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 | width | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
 | align | [Casasoft.TextHelpers.TextAlign](#T-Casasoft-TextHelpers-TextAlign 'Casasoft.TextHelpers.TextAlign') | alignment type |
+
+<a name='M-Casasoft-TextHelpers-TextHelper-SplitString-System-String-'></a>
+### SplitString(s) `method`
+
+##### Summary
+
+Splits a string to a list of string at newline (both Windows and Unix types)
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| s | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-Casasoft-TextHelpers-TextHelper-Truncate-System-String,System-Int32-'></a>
 ### Truncate(s,size) `method`

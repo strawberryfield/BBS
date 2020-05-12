@@ -7,7 +7,7 @@ Select an option:{/HEADER}
 
 {ACTION key="T" text="about/TSF-en.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[T]{/BACKCOLOR}{/COLOR} - About The Strawberry Field{/ACTION}
 {ACTION key="A" text="about/RC-en.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - About the author{/ACTION}
-{ACTION key="B" module="RawTextScreen" text="../README.md"} {COLOR value="White"}{BACKCOLOR value="Blue"}[B]{/BACKCOLOR}{/COLOR} - About the BBS software{/ACTION}
+{ACTION key="B" module="RawTextScreen" text="https://raw.githubusercontent.com/strawberryfield/BBS/master/README.md"} {COLOR value="White"}{BACKCOLOR value="Blue"}[B]{/BACKCOLOR}{/COLOR} - About the BBS software{/ACTION}
 
 {ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - BBS Rules / Disclaimer{/ACTION}
 {ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Logout{/ACTION}{/BODY}

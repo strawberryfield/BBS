@@ -18,9 +18,8 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.TextHelpers;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Casasoft.BBS.Parser
 {
@@ -69,9 +68,9 @@ namespace Casasoft.BBS.Parser
             tagsTextStack = new Stack<string>();
         }
 
-        public List<string> GetRows() => Regex.Split(Body.Replace("\r", ""), "\n").ToList();
-        public List<string> GetHeaderRows() => Regex.Split(Header.Replace("\r", ""), "\n").ToList();
-        public List<string> GetFooterRows() => Regex.Split(Footer.Replace("\r", ""), "\n").ToList();
+        public List<string> GetRows() => TextHelper.SplitString(Body);
+        public List<string> GetHeaderRows() => TextHelper.SplitString(Header);
+        public List<string> GetFooterRows() => TextHelper.SplitString(Footer);
 
         public void TextClear()
         {

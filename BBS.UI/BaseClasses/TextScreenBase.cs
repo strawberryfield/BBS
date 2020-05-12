@@ -21,6 +21,9 @@
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Parser;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
+using System.IO;
 
 namespace Casasoft.BBS.UI
 {
@@ -95,7 +98,10 @@ namespace Casasoft.BBS.UI
             { 
                 Params = txt.Split(';');
                 if (!string.IsNullOrWhiteSpace(Params[0]))
-                    ReadText(Params[0]);                    
+                    ReadText(Params[0]);
+
+                dataAreaStart = Header.Count + 1;
+                dataAreaSize = client.screenHeight - Header.Count - Footer.Count;
             }
         }
         #endregion
@@ -118,12 +124,10 @@ namespace Casasoft.BBS.UI
         protected virtual void ReadText(string name)
         {
             BBSCodeTranslator translator = new BBSCodeTranslator(client, server);
-            Data = translator.GetProcessed(name);
+            Data = translator.GetProcessed(GetFile(name));
             Text = Data.GetRows();
             Header = Data.GetHeaderRows();
             Footer = Data.GetFooterRows();
-            dataAreaStart = Header.Count + 1;
-            dataAreaSize = client.screenHeight - Header.Count - Footer.Count;
         }
 
         /// <summary>
@@ -456,5 +460,26 @@ namespace Casasoft.BBS.UI
             for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++) ClearLine(j);
         }
         #endregion
+
+        /// <summary>
+        /// Returns complete pathname of the file
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public string GetFile(string data)
+        {
+            string assets = ConfigurationManager.AppSettings.Get("assets");
+            if (data.StartsWith('@'))
+            {
+                NameValueCollection texts = (NameValueCollection)ConfigurationManager.GetSection("Texts");
+                data = texts[data.Substring(1)];
+            }
+
+            if (data.StartsWith("http://") || data.StartsWith("https://"))
+                return data;
+            else
+                return Path.Combine(assets, data);
+        }
+
     }
 }

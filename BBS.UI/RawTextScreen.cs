@@ -19,9 +19,10 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.Interfaces;
-using Casasoft.BBS.Parser;
+using Casasoft.TextHelpers;
 using System.IO;
 using System.Linq;
+using System.Net;
 
 namespace Casasoft.BBS.UI
 {
@@ -70,12 +71,14 @@ namespace Casasoft.BBS.UI
         /// <param name="name">File to load</param>
         protected override void ReadText(string name)
         {
-            BBSCodeTranslator translator = new BBSCodeTranslator(client, server);
-            string filename = translator.GetFile(name);
-            Text = File.ReadAllLines(filename).ToList();
+            if (name.StartsWith("http://") || name.StartsWith("https://"))
+            {
+                WebClient client = new WebClient();
+                Text = TextHelper.SplitString(client.DownloadString(name));
+            }
+            else
+                Text = File.ReadAllLines(GetFile(name)).ToList();
             Footer.Add(string.Empty);
-            dataAreaStart = Header.Count + 1;
-            dataAreaSize = client.screenHeight - Header.Count - Footer.Count;
         }
 
     }
