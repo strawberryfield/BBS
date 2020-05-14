@@ -22,31 +22,61 @@ using System.Collections.Generic;
 
 namespace Casasoft.BBS.Parser
 {
+    /// <summary>
+    /// List of attributes of a tag
+    /// </summary>
     public class Attributes
     {
-        public Dictionary<string, string> Dict;
+        private Dictionary<string, string> Dict;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public Attributes()
         {
             Dict = new Dictionary<string, string>();
         }
 
+        /// <summary>
+        /// Tries to get a value from the dictionary
+        /// </summary>
+        /// <param name="attrName">attribute name</param>
+        /// <param name="attrValue">returned value</param>
+        /// <returns>true if get is successful</returns>
         public bool TryGetValue(string attrName, out string attrValue) =>
             Dict.TryGetValue(attrName, out attrValue);
 
+        /// <summary>
+        /// Tries to add a value to the dictionary
+        /// </summary>
+        /// <param name="attrName">attribute name</param>
+        /// <param name="attrValue">attribute value</param>
+        /// <returns>true if add is successful</returns>
         public bool TryAdd(string attrName, string attrValue) =>
             Dict.TryAdd(attrName, attrValue);
     }
 
+    /// <summary>
+    /// Attributes lists for every tag
+    /// </summary>
     public class AttributesDict
     {
-        public Dictionary<Tags, Attributes> AttributesTable { get; private set; }
+        private Dictionary<Tags, Attributes> AttributesTable;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AttributesDict()
         {
             AttributesTable = new Dictionary<Tags, Attributes>();
         }
 
+        /// <summary>
+        /// Adds an attribute for a tag
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <param name="attrName">attribute name</param>
+        /// <param name="attrValue">attribute value</param>
         public void Add(Tags tag, string attrName, string attrValue)
         {
             if (!AttributesTable.ContainsKey(tag))
@@ -57,6 +87,12 @@ namespace Casasoft.BBS.Parser
             currAttrlist.TryAdd(attrName, attrValue);
         }
 
+        /// <summary>
+        /// Gets the attributes list for a tag
+        /// </summary>
+        /// <param name="tag"></param>
+        /// <returns></returns>
+        /// <remarks>The returned list is removed from the dictionary</remarks>
         public Attributes GetAttributes(Tags tag)
         {
             Attributes ret; 

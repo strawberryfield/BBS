@@ -46,6 +46,43 @@
             Sets default action to <see cref="T:Casasoft.BBS.UI.LoginScreen"/>
             </summary>
         </member>
+        <member name="M:Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListScreenBase.AddList">
+            <summary>
+            Empty virtual function where data lines will be added
+            </summary>
+        </member>
         <member name="T:Casasoft.BBS.UI.ScreenBase">
             <summary>
             Implements an empty base screen
@@ -444,6 +481,13 @@
             Clears all lines of the text body
             </summary>
         </member>
+        <member name="M:Casasoft.BBS.UI.TextScreenBase.GetFile(System.String)">
+            <summary>
+            Returns complete pathname of the file
+            </summary>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
         <member name="T:Casasoft.BBS.UI.ChangePassword">
             <summary>
             Change password dialog
@@ -620,6 +664,132 @@
             Prevents recursive launch of the help
             </summary>
         </member>
+        <member name="T:Casasoft.BBS.UI.ListConnected">
+            <summary>
+            Implements list of connected users
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListConnected.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListConnected.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListConnected.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListConnected.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListConnected.AddList">
+            <summary>
+            Fills the connected users list
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.UI.ListLogins">
+            <summary>
+            Implements list of user's logins
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListLogins.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListLogins.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListLogins.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListLogins.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListLogins.AddList">
+            <summary>
+            Fills the user's logins list
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.UI.ListUsers">
+            <summary>
+            Implements the registered users list
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListUsers.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListUsers.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListUsers.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListUsers.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.ListUsers.AddList">
+            <summary>
+            Fills the registered users list
+            </summary>
+        </member>
         <member name="T:Casasoft.BBS.UI.LoginScreen">
             <summary>
             Handles user login
@@ -708,6 +878,90 @@
         <member name="M:Casasoft.BBS.UI.Logout.Show">
             <summary>
             Shows the message and force disconnection
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.UI.MessageAreaGroups">
+            <summary>
+            Implements the list of message areas groups
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreaGroups.AddList">
+            <summary>
+            Fills area groups list
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.UI.MessageAreas">
+            <summary>
+            Implements the list of message areas
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreas.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreas.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreas.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreas.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageAreas.AddList">
+            <summary>
+            Fills the messages area list
             </summary>
         </member>
         <member name="T:Casasoft.BBS.UI.NewUser">

@@ -26,21 +26,87 @@ using System.Configuration;
 
 namespace Casasoft.BBS.Parser
 {
+    /// <summary>
+    /// Available tags
+    /// </summary>
     public enum Entities
     {
-        AMP, LEFTCURLY, RIGHTCURLY,
-        USERNAME, REMOTE, CONNECTIONTIME,
-        AGRAVE, EGRAVE, IGRAVE, OGRAVE, UGRAVE, EACUTE,
-        SCREENWIDTH, SCREENHEIGHT, TERMINALTYPE
+        /// <summary>
+        /// Ampersand
+        /// </summary>
+        AMP,
+        /// <summary>
+        /// Left curly bracket
+        /// </summary>
+        LEFTCURLY,
+        /// <summary>
+        /// Right curly bracket
+        /// </summary>
+        RIGHTCURLY,
+        /// <summary>
+        /// Username
+        /// </summary>
+        USERNAME, 
+        /// <summary>
+        /// Remote ip address
+        /// </summary>
+        REMOTE, 
+        /// <summary>
+        /// date and time of client connection
+        /// </summary>
+        CONNECTIONTIME,
+        /// <summary>
+        /// a with grave accent
+        /// </summary>
+        AGRAVE,
+        /// <summary>
+        /// e with grave accent
+        /// </summary>
+        EGRAVE,
+        /// <summary>
+        /// i with grave accent
+        /// </summary>
+        IGRAVE,
+        /// <summary>
+        /// o with grave accent
+        /// </summary>
+        OGRAVE,
+        /// <summary>
+        /// u with grave accent
+        /// </summary>
+        UGRAVE,
+        /// <summary>
+        /// e with acute accent
+        /// </summary>
+        EACUTE,
+        /// <summary>
+        /// Columns in the terminal
+        /// </summary>
+        SCREENWIDTH, 
+        /// <summary>
+        /// Rows in the terminal
+        /// </summary>
+        SCREENHEIGHT, 
+        /// <summary>
+        /// Terminal type id
+        /// </summary>
+        TERMINALTYPE
     }
 
+    /// <summary>
+    /// List of available entities
+    /// </summary>
     public class EntitiesDict
     {
-        public Dictionary<string, Entities> EntitiesTable { get; private set; }
-        public Dictionary<string, string> CustomEntitiesTable { get; private set; }
+        private Dictionary<string, Entities> EntitiesTable;
+        private Dictionary<string, string> CustomEntitiesTable;
 
         private IBBSClient client;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="c">Reference to the client</param>
         public EntitiesDict(IBBSClient c)
         {
             client = c;
@@ -55,6 +121,11 @@ namespace Casasoft.BBS.Parser
                 CustomEntitiesTable.Add(key.Trim().ToUpper(), config[key]);
         }
 
+        /// <summary>
+        /// Gets entity value by name
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>string.Empty if the name is not found</returns>
         public string GetValue(string name)
         {
             Entities entity;

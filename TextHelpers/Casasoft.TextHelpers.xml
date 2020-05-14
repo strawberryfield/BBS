@@ -246,5 +246,19 @@
             <param name="align">alignment mode</param>
             <returns>List of strings</returns>
         </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.SplitString(System.String)">
+            <summary>
+            Splits a string to a list of string at newline (both Windows and Unix types)
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.TextHelpers.TextHelper.IsUrl(System.String)">
+            <summary>
+            Tests if the string contains an url
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
     </members>
 </doc>

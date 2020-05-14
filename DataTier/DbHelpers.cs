@@ -22,8 +22,16 @@ using System.Text;
 
 namespace Casasoft.BBS.DataTier
 {
+    /// <summary>
+    /// Collection of database utilities
+    /// </summary>
     public static class DbHelpers
     {
+        /// <summary>
+        /// Computes MD5 hash of a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns>hex hash</returns>
         public static string CreateMD5(string input)
         {
             // Use input string to calculate MD5 hash

@@ -3,6 +3,8 @@
 
 ## Contents
 
+- [Attributes](#T-Casasoft-BBS-Parser-Attributes 'Casasoft.BBS.Parser.Attributes')
+  - [#ctor()](#M-Casasoft-BBS-Parser-Attributes-#ctor 'Casasoft.BBS.Parser.Attributes.#ctor')
 - [BBSCodeListener](#T-Casasoft-BBS-Parser-BBSCodeListener 'Casasoft.BBS.Parser.BBSCodeListener')
   - [#ctor(c,s,filename)](#M-Casasoft-BBS-Parser-BBSCodeListener-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.Parser.BBSCodeListener.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
   - [Parsed](#P-Casasoft-BBS-Parser-BBSCodeListener-Parsed 'Casasoft.BBS.Parser.BBSCodeListener.Parsed')
@@ -52,6 +54,24 @@
   - [ExitBbsCodeElement(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-ExitBbsCodeElement-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeElementContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeElement(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeElementContext)')
   - [ExitBbsCodeEntity(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-ExitBbsCodeEntity-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeEntityContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeEntity(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeEntityContext)')
   - [ExitBbsCodeTagName(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-ExitBbsCodeTagName-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeTagNameContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeTagName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeTagNameContext)')
+
+<a name='T-Casasoft-BBS-Parser-Attributes'></a>
+## Attributes `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser
+
+<a name='M-Casasoft-BBS-Parser-Attributes-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+This constructor has no parameters.
 
 <a name='T-Casasoft-BBS-Parser-BBSCodeListener'></a>
 ## BBSCodeListener `type`

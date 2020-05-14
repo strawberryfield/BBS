@@ -24,19 +24,57 @@ using System.Linq;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
+    /// <summary>
+    /// Message area entity
+    /// </summary>
     public partial class MessageArea
     {
+        /// <summary>
+        /// Total number of messages in the area
+        /// </summary>
         public int MessagesCount { get => Messages.Count; }
 
+        /// <summary>
+        /// Tests if the user can read this message area
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public bool Readable(User user) => user.HasRights(AllowedGroupRead);
+
+        /// <summary>
+        /// Tests if the user can write into this message area
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public bool Writable(User user) => user.HasRights(AllowedGroupWrite);
 
+        /// <summary>
+        /// Number of messages posted after the timestamp
+        /// </summary>
+        /// <param name="since">reference timestamp</param>
+        /// <returns></returns>
         public int NewMessagesCount(DateTime since) => Messages.Where(d => d.DateTime >= since).Count();
+        
+        /// <summary>
+        /// Number of message not already read by the user
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public int UnreadMessagesCount(string username) =>
             Messages.Where(m => !m.MessageReads.Select(u => u.UserId).Contains(username)).Count();
 
+        /// <summary>
+        /// List of messages posted after the timestamp
+        /// </summary>
+        /// <param name="since">reference timestamp</param>
+        /// <returns></returns>
         public IEnumerable<Message> NewMessages(DateTime since) => Messages.Where(m => m.DateTime >= since);
 
+        /// <summary>
+        /// List of messages not already read by the user
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         public IEnumerable<Message> UnreadMessages(string username) =>
             Messages.Where(m => !m.MessageReads.Select(u => u.UserId).Contains(username));
     }

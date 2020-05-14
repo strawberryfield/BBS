@@ -25,10 +25,22 @@ using System.Linq;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
+    /// <summary>
+    /// User entity
+    /// </summary>
     public partial class User
     {
+        /// <summary>
+        /// Checks a password against its saved hash
+        /// </summary>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
         public bool CheckPassword(string pwd) => Password == DbHelpers.CreateMD5(Userid + pwd);
 
+        /// <summary>
+        /// Saves the hash of a password
+        /// </summary>
+        /// <param name="pwd"></param>
         public void SetPassword(string pwd)
         {
             Password = DbHelpers.CreateMD5(Userid + pwd);
@@ -37,6 +49,11 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         private NameValueCollection GetSecurityOptions() => (NameValueCollection)ConfigurationManager.GetSection("Security");
 
+        /// <summary>
+        /// Checks if the username meets bbs rules
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public bool AcceptableUsername(string name)
         {
             bool ret = true;
@@ -53,6 +70,11 @@ namespace Casasoft.BBS.DataTier.DataModel
             return ret;
         }
 
+        /// <summary>
+        /// Checks if a paasword meets security rules
+        /// </summary>
+        /// <param name="pwd"></param>
+        /// <returns></returns>
         public bool AcceptablePassword(string pwd)
         {
             NameValueCollection opt = GetSecurityOptions();
@@ -73,6 +95,10 @@ namespace Casasoft.BBS.DataTier.DataModel
             return true;
         }
 
+        /// <summary>
+        /// Checks if a password is expired
+        /// </summary>
+        /// <returns></returns>
         public bool ExpiredPassword()
         {
             int days = Convert.ToInt16(GetSecurityOptions()["PasswordExpires"]);
@@ -81,6 +107,11 @@ namespace Casasoft.BBS.DataTier.DataModel
             return false;
         }
 
+        /// <summary>
+        /// Checks if user meets access restrictions
+        /// </summary>
+        /// <param name="required"></param>
+        /// <returns></returns>
         public bool HasRights(string required)
         {
             if (string.IsNullOrWhiteSpace(required)) return true;

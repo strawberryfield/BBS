@@ -241,12 +241,77 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
-        <member name="M:Casasoft.BBS.Parser.BBSCodeTranslator.GetFile(System.String)">
+        <member name="T:Casasoft.BBS.Parser.BBSCodeListener">
             <summary>
-            Returns complete pathname of the file
+            This class provides the implementation of <see cref="T:Casasoft.BBS.Parser.IBBSCodeParserListener"/>,
             </summary>
-            <param name="data"></param>
-            <returns></returns>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeListener.Parsed">
+            <summary>
+            The processed data
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeListener.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Reference to the client</param>
+            <param name="s">Reference to the server</param>
+            <param name="filename">Name of the parsed file</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeListener.EnterBbsCodeElement(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeElementContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeElement"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeListener.ExitBbsCodeElement(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeElementContext)">
+            <summary>
+            Exit a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeElement"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeListener.EnterBbsCodeAttribute(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeAttribute"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeListener.EnterBbsCodeEntity(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeEntityContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeEntity"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeListener.EnterBbsCodeChardata(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeChardataContext)">
+            <summary>
+            Enter a parse tree produced by <see cref="M:Casasoft.BBS.Parser.BBSCodeParser.bbsCodeChardata"/>.
+            </summary>
+            <param name="context">The parse tree.</param>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.BBSCodeTranslator">
+            <summary>
+            Handles parsing of BBScode
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeTranslator.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Reference to the client</param>
+            <param name="s">Reference to the server</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeTranslator.GetProcessed(System.String)">
+            <summary>
+            Process the file
+            </summary>
+            <param name="FileName">File to parse</param>
+            <returns><see cref="T:Casasoft.BBS.Parser.BBSCodeResult"/> with processed data</returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.Attributes.#ctor">
+            <summary>
+            Constructor
+            </summary>
         </member>
     </members>
 </doc>
