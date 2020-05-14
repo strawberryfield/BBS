@@ -22,7 +22,7 @@ namespace Casasoft.BBS.DataTier.DBContext
         public virtual DbSet<MessageArea> MessageAreas { get; set; }
         public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
         public virtual DbSet<MessageRead> MessageReads { get; set; }
-        public virtual DbSet<MessageSeenBy> MessagesSeenBy { get; set; }
+        public virtual DbSet<MessageSeenBy> MessageSeenBy { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersGroup> UsersGroups { get; set; }
         public virtual DbSet<UsersGroupsLink> UsersGroupsLinks { get; set; }
