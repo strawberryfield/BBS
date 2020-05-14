@@ -28,6 +28,7 @@
   - [Do(op)](#M-Casasoft-TCPServer-Negotiation-Do-Casasoft-TCPServer-Negotiation-Operations- 'Casasoft.TCPServer.Negotiation.Do(Casasoft.TCPServer.Negotiation.Operations)')
   - [Dont(op)](#M-Casasoft-TCPServer-Negotiation-Dont-Casasoft-TCPServer-Negotiation-Operations- 'Casasoft.TCPServer.Negotiation.Dont(Casasoft.TCPServer.Negotiation.Operations)')
   - [HandleTerminalType(data,c)](#M-Casasoft-TCPServer-Negotiation-HandleTerminalType-System-Byte[],System-Int32,Casasoft-BBS-Interfaces-IBBSClient- 'Casasoft.TCPServer.Negotiation.HandleTerminalType(System.Byte[],System.Int32,Casasoft.BBS.Interfaces.IBBSClient)')
+  - [HandleWindowSize(data,c)](#M-Casasoft-TCPServer-Negotiation-HandleWindowSize-System-Byte[],System-Int32,Casasoft-BBS-Interfaces-IBBSClient- 'Casasoft.TCPServer.Negotiation.HandleWindowSize(System.Byte[],System.Int32,Casasoft.BBS.Interfaces.IBBSClient)')
   - [Will(op)](#M-Casasoft-TCPServer-Negotiation-Will-Casasoft-TCPServer-Negotiation-Operations- 'Casasoft.TCPServer.Negotiation.Will(Casasoft.TCPServer.Negotiation.Operations)')
   - [Wont(op)](#M-Casasoft-TCPServer-Negotiation-Wont-Casasoft-TCPServer-Negotiation-Operations- 'Casasoft.TCPServer.Negotiation.Wont(Casasoft.TCPServer.Negotiation.Operations)')
 - [Operations](#T-Casasoft-TCPServer-Negotiation-Operations 'Casasoft.TCPServer.Negotiation.Operations')
@@ -336,6 +337,32 @@ IAC SB TERMINAL-TYPE IS ... IAC SE
 ```
 
 The code for IS is 0.
+
+<a name='M-Casasoft-TCPServer-Negotiation-HandleWindowSize-System-Byte[],System-Int32,Casasoft-BBS-Interfaces-IBBSClient-'></a>
+### HandleWindowSize(data,c) `method`
+
+##### Summary
+
+Handles window size negotiation as described in RFC1073
+[](#!-https-//tools-ietf-org/html/rfc1073 'https://tools.ietf.org/html/rfc1073')
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| data | [System.Byte[]](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Byte[] 'System.Byte[]') | received data |
+| c | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | client to update |
+
+##### Remarks
+
+Manages sequences like
+
+```
+IAC SB NAWS "16-bit value" "16-bit valu"&gt; IAC SE
+```
+
+Sent by the Telnet client to inform the Telnet server of the
+window width and height.
 
 <a name='M-Casasoft-TCPServer-Negotiation-Will-Casasoft-TCPServer-Negotiation-Operations-'></a>
 ### Will(op) `method`

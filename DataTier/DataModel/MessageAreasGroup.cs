@@ -1,20 +1,66 @@
-﻿using System;
+﻿// copyright (c) 2020 Roberto Ceccarelli - CasaSoft
+// http://strawberryfield.altervista.org 
+// 
+// This file is part of CasaSoft BBS
+// 
+// CasaSoft BBS is free software: 
+// you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// CasaSoft BBS is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+// See the GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with CasaSoft BBS.  
+// If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using System.Collections.Generic;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
-    public partial class MessageAreasGroup
+    /// <summary>
+	/// Elements of the table 'MessageAreasGroups'.
+	/// </summary>
+	public partial class MessageAreasGroup
     {
         public MessageAreasGroup()
         {
             MessageAreas = new HashSet<MessageArea>();
         }
 
-        public string Id { get; set; }
-        public string Description { get; set; }
-        public string AllowedGroupId { get; set; }
+        
+		/// <summary>
+		/// Column 'ID'
+		/// </summary>
+		/// <remarks>Original field type: varchar(20)</remarks>
+		public string Id { get; set; }
+        
+		/// <summary>
+		/// Column 'Description'
+		/// </summary>
+		/// <remarks>Original field type: varchar(200)</remarks>
+		public string Description { get; set; }
+        
+		/// <summary>
+		/// Column 'AllowedGroupId'
+		/// </summary>
+		/// <remarks>Original field type: varchar(30)</remarks>
+		public string AllowedGroupId { get; set; }
 
-        public virtual UsersGroup AllowedGroup { get; set; }
-        public virtual ICollection<MessageArea> MessageAreas { get; set; }
+        
+		/// <summary>
+		/// ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup
+		/// </summary>
+		public virtual UsersGroup AllowedGroup { get; set; }
+        
+		/// <summary>
+		/// ForeignKey: MessageArea {'Areagroup'} -> MessageAreasGroup {'Id'} ToDependent: MessageAreas ToPrincipal: AreagroupNavigation
+		/// </summary>
+		public virtual ICollection<MessageArea> MessageAreas { get; set; }
     }
 }

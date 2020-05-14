@@ -48,9 +48,210 @@
             <param name="username"></param>
             <returns></returns>
         </member>
+        <member name="T:Casasoft.BBS.DataTier.DataModel.Log">
+            <summary>
+            Elements of the table 'Log'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Log.Id">
+            <summary>
+            Column 'id'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Log.DateTime">
+            <summary>
+            Column 'DateTime'
+            </summary>
+            <remarks>Original field type: datetime</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Log.Remote">
+            <summary>
+            Column 'Remote'
+            </summary>
+            <remarks>Original field type: varchar(24)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Log.Level">
+            <summary>
+            Column 'Level'
+            </summary>
+            <remarks>Original field type: tinyint(4)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Log.Description">
+            <summary>
+            Column 'Description'
+            </summary>
+            <remarks>Original field type: varchar(250)</remarks>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.DataModel.Login">
+            <summary>
+            Elements of the table 'Logins'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Login.Id">
+            <summary>
+            Column 'ID'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Login.UserId">
+            <summary>
+            Column 'UserId'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Login.DateTime">
+            <summary>
+            Column 'DateTime'
+            </summary>
+            <remarks>Original field type: datetime</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Login.From">
+            <summary>
+            Column 'From'
+            </summary>
+            <remarks>Original field type: varchar(24)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Login.Success">
+            <summary>
+            Column 'Success'
+            </summary>
+            <remarks>Original field type: </remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Login.User">
+            <summary>
+            ForeignKey: Login {'UserId'} -> User {'Userid'} ToDependent: Logins ToPrincipal: User
+            </summary>
+        </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.Message">
             <summary>
+            Elements of the table 'Messages'.
+            </summary>
+            <summary>
             mail message entity
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.Id">
+            <summary>
+            Column 'ID'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.Area">
+            <summary>
+            Column 'Area'
+            </summary>
+            <remarks>Original field type: varchar(20)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.MessageFrom">
+            <summary>
+            Column 'MessageFrom'
+            </summary>
+            <remarks>Original field type: varchar(100)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.MessageTo">
+            <summary>
+            Column 'MessageTo'
+            </summary>
+            <remarks>Original field type: varchar(100)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.Subject">
+            <summary>
+            Column 'Subject'
+            </summary>
+            <remarks>Original field type: varchar(72)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.DateTime">
+            <summary>
+            Column 'DateTime'
+            </summary>
+            <remarks>Original field type: datetime</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.FidoId">
+            <summary>
+            Column 'FidoID'
+            </summary>
+            <remarks>Original field type: varchar(50)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.FidoReplyTo">
+            <summary>
+            Column 'FidoReplyTo'
+            </summary>
+            <remarks>Original field type: varchar(50)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.TimesRead">
+            <summary>
+            Column 'TimesRead'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.OrigZone">
+            <summary>
+            Column 'OrigZone'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.OrigNet">
+            <summary>
+            Column 'OrigNet'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.OrigNode">
+            <summary>
+            Column 'OrigNode'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.OrigPoint">
+            <summary>
+            Column 'OrigPoint'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.DestZone">
+            <summary>
+            Column 'DestZone'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.DestNet">
+            <summary>
+            Column 'DestNet'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.DestNode">
+            <summary>
+            Column 'DestNode'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.DestPoint">
+            <summary>
+            Column 'DestPoint'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.Body">
+            <summary>
+            Column 'Body'
+            </summary>
+            <remarks>Original field type: text</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.AreaNavigation">
+            <summary>
+            ForeignKey: Message {'Area'} -> MessageArea {'Id'} ToDependent: Messages ToPrincipal: AreaNavigation
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.MessageReads">
+            <summary>
+            ForeignKey: MessageRead {'MessgeId'} -> Message {'Id'} ToDependent: MessageReads ToPrincipal: Messge
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.MessageSeenBies">
+            <summary>
+            ForeignKey: MessageSeenBy {'MessageId'} -> Message {'Id'} ToDependent: MessageSeenBies ToPrincipal: Message
             </summary>
         </member>
         <member name="M:Casasoft.BBS.DataTier.DataModel.Message.IsNew(System.DateTime)">
@@ -69,7 +270,66 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.MessageArea">
             <summary>
+            Elements of the table 'MessageAreas'.
+            </summary>
+            <summary>
             Message area entity
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Id">
+            <summary>
+            Column 'ID'
+            </summary>
+            <remarks>Original field type: varchar(20)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Description">
+            <summary>
+            Column 'Description'
+            </summary>
+            <remarks>Original field type: varchar(200)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Fidoid">
+            <summary>
+            Column 'FIDOID'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Areagroup">
+            <summary>
+            Column 'AREAGROUP'
+            </summary>
+            <remarks>Original field type: varchar(20)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupRead">
+            <summary>
+            Column 'AllowedGroupRead'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupWrite">
+            <summary>
+            Column 'AllowedGroupWrite'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupReadNavigation">
+            <summary>
+            ForeignKey: MessageArea {'AllowedGroupRead'} -> UsersGroup {'Groupid'} ToDependent: MessageAreaAllowedGroupReadNavigations ToPrincipal: AllowedGroupReadNavigation
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupWriteNavigation">
+            <summary>
+            ForeignKey: MessageArea {'AllowedGroupWrite'} -> UsersGroup {'Groupid'} ToDependent: MessageAreaAllowedGroupWriteNavigations ToPrincipal: AllowedGroupWriteNavigation
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.AreagroupNavigation">
+            <summary>
+            ForeignKey: MessageArea {'Areagroup'} -> MessageAreasGroup {'Id'} ToDependent: MessageAreas ToPrincipal: AreagroupNavigation
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Messages">
+            <summary>
+            ForeignKey: Message {'Area'} -> MessageArea {'Id'} ToDependent: Messages ToPrincipal: AreaNavigation
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.MessagesCount">
@@ -119,9 +379,200 @@
             <param name="username"></param>
             <returns></returns>
         </member>
+        <member name="T:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup">
+            <summary>
+            Elements of the table 'MessageAreasGroups'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.Id">
+            <summary>
+            Column 'ID'
+            </summary>
+            <remarks>Original field type: varchar(20)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.Description">
+            <summary>
+            Column 'Description'
+            </summary>
+            <remarks>Original field type: varchar(200)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.AllowedGroupId">
+            <summary>
+            Column 'AllowedGroupId'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.AllowedGroup">
+            <summary>
+            ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.MessageAreas">
+            <summary>
+            ForeignKey: MessageArea {'Areagroup'} -> MessageAreasGroup {'Id'} ToDependent: MessageAreas ToPrincipal: AreagroupNavigation
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.DataModel.MessageRead">
+            <summary>
+            Elements of the table 'MessageRead'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageRead.Id">
+            <summary>
+            Column 'ID'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageRead.MessgeId">
+            <summary>
+            Column 'MessgeId'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageRead.UserId">
+            <summary>
+            Column 'UserId'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageRead.Messge">
+            <summary>
+            ForeignKey: MessageRead {'MessgeId'} -> Message {'Id'} ToDependent: MessageReads ToPrincipal: Messge
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageRead.User">
+            <summary>
+            ForeignKey: MessageRead {'UserId'} -> User {'Userid'} ToDependent: MessageReads ToPrincipal: User
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.DataModel.MessageSeenBy">
+            <summary>
+            Elements of the table 'MessageSeenBy'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageSeenBy.Id">
+            <summary>
+            Column 'ID'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageSeenBy.MessageId">
+            <summary>
+            Column 'MessageId'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageSeenBy.SeenBy">
+            <summary>
+            Column 'SeenBy'
+            </summary>
+            <remarks>Original field type: varchar(50)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageSeenBy.Message">
+            <summary>
+            ForeignKey: MessageSeenBy {'MessageId'} -> Message {'Id'} ToDependent: MessageSeenBies ToPrincipal: Message
+            </summary>
+        </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.User">
             <summary>
+            Elements of the table 'Users'.
+            </summary>
+            <summary>
             User entity
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Userid">
+            <summary>
+            Column 'userid'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Realname">
+            <summary>
+            Column 'realname'
+            </summary>
+            <remarks>Original field type: varchar(50)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.City">
+            <summary>
+            Column 'city'
+            </summary>
+            <remarks>Original field type: varchar(50)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Nation">
+            <summary>
+            Column 'nation'
+            </summary>
+            <remarks>Original field type: varchar(50)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Password">
+            <summary>
+            Column 'password'
+            MD5 Hash of the password
+            </summary>
+            <remarks>Original field type: varchar(32)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Status">
+            <summary>
+            Column 'status'
+            </summary>
+            <remarks>Original field type: varchar(1)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Signature">
+            <summary>
+            Column 'signature'
+            </summary>
+            <remarks>Original field type: text</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.LastLoginFrom">
+            <summary>
+            Column 'LastLoginFrom'
+            </summary>
+            <remarks>Original field type: varchar(24)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.LastLoginDate">
+            <summary>
+            Column 'LastLoginDate'
+            </summary>
+            <remarks>Original field type: datetime</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Registered">
+            <summary>
+            Column 'Registered'
+            </summary>
+            <remarks>Original field type: datetime</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.LastPasswordModify">
+            <summary>
+            Column 'LastPasswordModify'
+            </summary>
+            <remarks>Original field type: datetime</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Email">
+            <summary>
+            Column 'email'
+            </summary>
+            <remarks>Original field type: varchar(100)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Locked">
+            <summary>
+            Column 'Locked'
+            </summary>
+            <remarks>Original field type: </remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.Logins">
+            <summary>
+            ForeignKey: Login {'UserId'} -> User {'Userid'} ToDependent: Logins ToPrincipal: User
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.MessageReads">
+            <summary>
+            ForeignKey: MessageRead {'UserId'} -> User {'Userid'} ToDependent: MessageReads ToPrincipal: User
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.User.UsersGroupsLinks">
+            <summary>
+            ForeignKey: UsersGroupsLink {'Userid'} -> User {'Userid'} ToDependent: UsersGroupsLinks ToPrincipal: User
             </summary>
         </member>
         <member name="M:Casasoft.BBS.DataTier.DataModel.User.CheckPassword(System.String)">
@@ -164,6 +615,81 @@
             <param name="required"></param>
             <returns></returns>
         </member>
+        <member name="T:Casasoft.BBS.DataTier.DataModel.UsersGroup">
+            <summary>
+            Elements of the table 'UsersGroups'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroup.Groupid">
+            <summary>
+            Column 'Groupid'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroup.Description">
+            <summary>
+            Column 'Description'
+            </summary>
+            <remarks>Original field type: varchar(200)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroup.MessageAreaAllowedGroupReadNavigations">
+            <summary>
+            ForeignKey: MessageArea {'AllowedGroupRead'} -> UsersGroup {'Groupid'} ToDependent: MessageAreaAllowedGroupReadNavigations ToPrincipal: AllowedGroupReadNavigation
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroup.MessageAreaAllowedGroupWriteNavigations">
+            <summary>
+            ForeignKey: MessageArea {'AllowedGroupWrite'} -> UsersGroup {'Groupid'} ToDependent: MessageAreaAllowedGroupWriteNavigations ToPrincipal: AllowedGroupWriteNavigation
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroup.MessageAreasGroups">
+            <summary>
+            ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroup.UsersGroupsLinks">
+            <summary>
+            ForeignKey: UsersGroupsLink {'Groupid'} -> UsersGroup {'Groupid'} ToDependent: UsersGroupsLinks ToPrincipal: Group
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.DataModel.UsersGroupsLink">
+            <summary>
+            Elements of the table 'UsersGroupsLinks'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroupsLink.Id">
+            <summary>
+            Column 'id'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroupsLink.Userid">
+            <summary>
+            Column 'userid'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroupsLink.Groupid">
+            <summary>
+            Column 'groupid'
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroupsLink.Group">
+            <summary>
+            ForeignKey: UsersGroupsLink {'Groupid'} -> UsersGroup {'Groupid'} ToDependent: UsersGroupsLinks ToPrincipal: Group
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroupsLink.User">
+            <summary>
+            ForeignKey: UsersGroupsLink {'Userid'} -> User {'Userid'} ToDependent: UsersGroupsLinks ToPrincipal: User
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.DBContext.bbsContext">
+            <summary>
+            Model for the database 'bbs'.
+            </summary>
+        </member>
         <member name="T:Casasoft.BBS.DataTier.DbHelpers">
             <summary>
             Collection of database utilities
@@ -175,6 +701,85 @@
             </summary>
             <param name="input"></param>
             <returns>hex hash</returns>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.CustomContextWriter">
+            <summary>
+            Inherits and extends DbContext generator
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.CustomContextWriter.#ctor(Microsoft.EntityFrameworkCore.Scaffolding.IProviderConfigurationCodeGenerator,Microsoft.EntityFrameworkCore.Design.IAnnotationCodeGenerator,Microsoft.EntityFrameworkCore.Design.ICSharpHelper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="providerConfigurationCodeGenerator"></param>
+            <param name="annotationCodeGenerator"></param>
+            <param name="cSharpHelper"></param>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.CustomContextWriter.WriteCode(Microsoft.EntityFrameworkCore.Metadata.IModel,System.String,System.String,System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Code writer
+            </summary>
+            <param name="model"></param>
+            <param name="contextName"></param>
+            <param name="connectionString"></param>
+            <param name="contextNamespace"></param>
+            <param name="modelNamespace"></param>
+            <param name="useDataAnnotations"></param>
+            <param name="suppressConnectionStringWarning"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.CustomEntityWriter">
+            <summary>
+            Inherits and extends Entity classes generator
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.CustomEntityWriter.#ctor(Microsoft.EntityFrameworkCore.Design.ICSharpHelper)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="cSharpHelper"></param>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.CustomEntityWriter.WriteCode(Microsoft.EntityFrameworkCore.Metadata.IEntityType,System.String,System.Boolean)">
+            <summary>
+            Code writer
+            </summary>
+            <param name="type"></param>
+            <param name="namespace"></param>
+            <param name="useDataAnnotations"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.CustomHelpers">
+            <summary>
+            Common strings for db scaffolding customization
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.DataTier.CustomHelpers.copyrightNotice">
+            <summary>
+            copyright notice to add at the top of the file
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.DataTier.CustomHelpers.ppc">
+            <summary>
+            class declaration
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.DataTier.CustomHelpers.classSummary">
+            <summary>
+            Class summary comment
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.CustomHelpers.commentedClass(System.String,System.String)">
+            <summary>
+            Adds comment to class declaration
+            </summary>
+            <param name="code">uncommented code</param>
+            <param name="comment">comment to the class</param>
+            <returns></returns>
+        </member>
+        <member name="F:Casasoft.BBS.DataTier.CustomHelpers.propertySummary">
+            <summary>
+            Property summary comment
+            </summary>
         </member>
     </members>
 </doc>

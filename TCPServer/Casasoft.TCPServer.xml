@@ -151,7 +151,22 @@
             <param name="op">Operation code</param>
             <returns>Negotiation sequence</returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Casasoft.TCPServer.Negotiation.HandleWindowSize(System.Byte[],System.Int32,Casasoft.BBS.Interfaces.IBBSClient)" -->
+        <member name="M:Casasoft.TCPServer.Negotiation.HandleWindowSize(System.Byte[],System.Int32,Casasoft.BBS.Interfaces.IBBSClient)">
+            <summary>
+            Handles window size negotiation as described in RFC1073
+            <see cref="!:https://tools.ietf.org/html/rfc1073"/>
+            </summary>
+            <param name="data">received data</param>
+            <param name="c">client to update</param>
+            <remarks>
+            Manages sequences like
+            <code>
+            IAC SB NAWS "16-bit value" "16-bit valu"> IAC SE
+            </code>
+            Sent by the Telnet client to inform the Telnet server of the
+            window width and height.
+            </remarks>
+        </member>
         <member name="M:Casasoft.TCPServer.Negotiation.ClientWillTerminalType(System.Byte[],System.Int32)">
             <summary>
             Tests if client support Terminal Type Negotiation RFC884 - RFC1091

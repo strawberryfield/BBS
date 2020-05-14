@@ -1,9 +1,32 @@
-﻿using System;
+﻿// copyright (c) 2020 Roberto Ceccarelli - CasaSoft
+// http://strawberryfield.altervista.org 
+// 
+// This file is part of CasaSoft BBS
+// 
+// CasaSoft BBS is free software: 
+// you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+// 
+// CasaSoft BBS is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  
+// See the GNU General Public License for more details.
+// 
+// You should have received a copy of the GNU General Public License
+// along with CasaSoft BBS.  
+// If not, see <http://www.gnu.org/licenses/>.
+
+using System;
 using System.Collections.Generic;
 
 namespace Casasoft.BBS.DataTier.DataModel
 {
-    public partial class User
+    /// <summary>
+	/// Elements of the table 'Users'.
+	/// </summary>
+	public partial class User
     {
         public User()
         {
@@ -12,22 +35,100 @@ namespace Casasoft.BBS.DataTier.DataModel
             UsersGroupsLinks = new HashSet<UsersGroupsLink>();
         }
 
-        public string Userid { get; set; }
-        public string Realname { get; set; }
-        public string City { get; set; }
-        public string Nation { get; set; }
-        public string Password { get; set; }
-        public string Status { get; set; }
-        public string Signature { get; set; }
-        public string LastLoginFrom { get; set; }
-        public DateTime LastLoginDate { get; set; }
-        public DateTime Registered { get; set; }
-        public DateTime LastPasswordModify { get; set; }
-        public string Email { get; set; }
-        public bool Locked { get; set; }
+        
+		/// <summary>
+		/// Column 'userid'
+		/// </summary>
+		/// <remarks>Original field type: varchar(30)</remarks>
+		public string Userid { get; set; }
+        
+		/// <summary>
+		/// Column 'realname'
+		/// </summary>
+		/// <remarks>Original field type: varchar(50)</remarks>
+		public string Realname { get; set; }
+        
+		/// <summary>
+		/// Column 'city'
+		/// </summary>
+		/// <remarks>Original field type: varchar(50)</remarks>
+		public string City { get; set; }
+        
+		/// <summary>
+		/// Column 'nation'
+		/// </summary>
+		/// <remarks>Original field type: varchar(50)</remarks>
+		public string Nation { get; set; }
+        
+		/// <summary>
+		/// Column 'password'
+		/// MD5 Hash of the password
+		/// </summary>
+		/// <remarks>Original field type: varchar(32)</remarks>
+		public string Password { get; set; }
+        
+		/// <summary>
+		/// Column 'status'
+		/// </summary>
+		/// <remarks>Original field type: varchar(1)</remarks>
+		public string Status { get; set; }
+        
+		/// <summary>
+		/// Column 'signature'
+		/// </summary>
+		/// <remarks>Original field type: text</remarks>
+		public string Signature { get; set; }
+        
+		/// <summary>
+		/// Column 'LastLoginFrom'
+		/// </summary>
+		/// <remarks>Original field type: varchar(24)</remarks>
+		public string LastLoginFrom { get; set; }
+        
+		/// <summary>
+		/// Column 'LastLoginDate'
+		/// </summary>
+		/// <remarks>Original field type: datetime</remarks>
+		public DateTime LastLoginDate { get; set; }
+        
+		/// <summary>
+		/// Column 'Registered'
+		/// </summary>
+		/// <remarks>Original field type: datetime</remarks>
+		public DateTime Registered { get; set; }
+        
+		/// <summary>
+		/// Column 'LastPasswordModify'
+		/// </summary>
+		/// <remarks>Original field type: datetime</remarks>
+		public DateTime LastPasswordModify { get; set; }
+        
+		/// <summary>
+		/// Column 'email'
+		/// </summary>
+		/// <remarks>Original field type: varchar(100)</remarks>
+		public string Email { get; set; }
+        
+		/// <summary>
+		/// Column 'Locked'
+		/// </summary>
+		/// <remarks>Original field type: </remarks>
+		public bool Locked { get; set; }
 
-        public virtual ICollection<Login> Logins { get; set; }
-        public virtual ICollection<MessageRead> MessageReads { get; set; }
-        public virtual ICollection<UsersGroupsLink> UsersGroupsLinks { get; set; }
+        
+		/// <summary>
+		/// ForeignKey: Login {'UserId'} -> User {'Userid'} ToDependent: Logins ToPrincipal: User
+		/// </summary>
+		public virtual ICollection<Login> Logins { get; set; }
+        
+		/// <summary>
+		/// ForeignKey: MessageRead {'UserId'} -> User {'Userid'} ToDependent: MessageReads ToPrincipal: User
+		/// </summary>
+		public virtual ICollection<MessageRead> MessageReads { get; set; }
+        
+		/// <summary>
+		/// ForeignKey: UsersGroupsLink {'Userid'} -> User {'Userid'} ToDependent: UsersGroupsLinks ToPrincipal: User
+		/// </summary>
+		public virtual ICollection<UsersGroupsLink> UsersGroupsLinks { get; set; }
     }
 }

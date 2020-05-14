@@ -5,6 +5,12 @@
 
 - [Attributes](#T-Casasoft-BBS-Parser-Attributes 'Casasoft.BBS.Parser.Attributes')
   - [#ctor()](#M-Casasoft-BBS-Parser-Attributes-#ctor 'Casasoft.BBS.Parser.Attributes.#ctor')
+  - [TryAdd(attrName,attrValue)](#M-Casasoft-BBS-Parser-Attributes-TryAdd-System-String,System-String- 'Casasoft.BBS.Parser.Attributes.TryAdd(System.String,System.String)')
+  - [TryGetValue(attrName,attrValue)](#M-Casasoft-BBS-Parser-Attributes-TryGetValue-System-String,System-String@- 'Casasoft.BBS.Parser.Attributes.TryGetValue(System.String,System.String@)')
+- [AttributesDict](#T-Casasoft-BBS-Parser-AttributesDict 'Casasoft.BBS.Parser.AttributesDict')
+  - [#ctor()](#M-Casasoft-BBS-Parser-AttributesDict-#ctor 'Casasoft.BBS.Parser.AttributesDict.#ctor')
+  - [Add(tag,attrName,attrValue)](#M-Casasoft-BBS-Parser-AttributesDict-Add-Casasoft-BBS-Parser-Tags,System-String,System-String- 'Casasoft.BBS.Parser.AttributesDict.Add(Casasoft.BBS.Parser.Tags,System.String,System.String)')
+  - [GetAttributes(tag)](#M-Casasoft-BBS-Parser-AttributesDict-GetAttributes-Casasoft-BBS-Parser-Tags- 'Casasoft.BBS.Parser.AttributesDict.GetAttributes(Casasoft.BBS.Parser.Tags)')
 - [BBSCodeListener](#T-Casasoft-BBS-Parser-BBSCodeListener 'Casasoft.BBS.Parser.BBSCodeListener')
   - [#ctor(c,s,filename)](#M-Casasoft-BBS-Parser-BBSCodeListener-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.Parser.BBSCodeListener.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
   - [Parsed](#P-Casasoft-BBS-Parser-BBSCodeListener-Parsed 'Casasoft.BBS.Parser.BBSCodeListener.Parsed')
@@ -37,6 +43,25 @@
 - [BBSCodeTranslator](#T-Casasoft-BBS-Parser-BBSCodeTranslator 'Casasoft.BBS.Parser.BBSCodeTranslator')
   - [#ctor(c,s)](#M-Casasoft-BBS-Parser-BBSCodeTranslator-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.Parser.BBSCodeTranslator.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
   - [GetProcessed(FileName)](#M-Casasoft-BBS-Parser-BBSCodeTranslator-GetProcessed-System-String- 'Casasoft.BBS.Parser.BBSCodeTranslator.GetProcessed(System.String)')
+- [Entities](#T-Casasoft-BBS-Parser-Entities 'Casasoft.BBS.Parser.Entities')
+  - [AGRAVE](#F-Casasoft-BBS-Parser-Entities-AGRAVE 'Casasoft.BBS.Parser.Entities.AGRAVE')
+  - [AMP](#F-Casasoft-BBS-Parser-Entities-AMP 'Casasoft.BBS.Parser.Entities.AMP')
+  - [CONNECTIONTIME](#F-Casasoft-BBS-Parser-Entities-CONNECTIONTIME 'Casasoft.BBS.Parser.Entities.CONNECTIONTIME')
+  - [EACUTE](#F-Casasoft-BBS-Parser-Entities-EACUTE 'Casasoft.BBS.Parser.Entities.EACUTE')
+  - [EGRAVE](#F-Casasoft-BBS-Parser-Entities-EGRAVE 'Casasoft.BBS.Parser.Entities.EGRAVE')
+  - [IGRAVE](#F-Casasoft-BBS-Parser-Entities-IGRAVE 'Casasoft.BBS.Parser.Entities.IGRAVE')
+  - [LEFTCURLY](#F-Casasoft-BBS-Parser-Entities-LEFTCURLY 'Casasoft.BBS.Parser.Entities.LEFTCURLY')
+  - [OGRAVE](#F-Casasoft-BBS-Parser-Entities-OGRAVE 'Casasoft.BBS.Parser.Entities.OGRAVE')
+  - [REMOTE](#F-Casasoft-BBS-Parser-Entities-REMOTE 'Casasoft.BBS.Parser.Entities.REMOTE')
+  - [RIGHTCURLY](#F-Casasoft-BBS-Parser-Entities-RIGHTCURLY 'Casasoft.BBS.Parser.Entities.RIGHTCURLY')
+  - [SCREENHEIGHT](#F-Casasoft-BBS-Parser-Entities-SCREENHEIGHT 'Casasoft.BBS.Parser.Entities.SCREENHEIGHT')
+  - [SCREENWIDTH](#F-Casasoft-BBS-Parser-Entities-SCREENWIDTH 'Casasoft.BBS.Parser.Entities.SCREENWIDTH')
+  - [TERMINALTYPE](#F-Casasoft-BBS-Parser-Entities-TERMINALTYPE 'Casasoft.BBS.Parser.Entities.TERMINALTYPE')
+  - [UGRAVE](#F-Casasoft-BBS-Parser-Entities-UGRAVE 'Casasoft.BBS.Parser.Entities.UGRAVE')
+  - [USERNAME](#F-Casasoft-BBS-Parser-Entities-USERNAME 'Casasoft.BBS.Parser.Entities.USERNAME')
+- [EntitiesDict](#T-Casasoft-BBS-Parser-EntitiesDict 'Casasoft.BBS.Parser.EntitiesDict')
+  - [#ctor(c)](#M-Casasoft-BBS-Parser-EntitiesDict-#ctor-Casasoft-BBS-Interfaces-IBBSClient- 'Casasoft.BBS.Parser.EntitiesDict.#ctor(Casasoft.BBS.Interfaces.IBBSClient)')
+  - [GetValue(name)](#M-Casasoft-BBS-Parser-EntitiesDict-GetValue-System-String- 'Casasoft.BBS.Parser.EntitiesDict.GetValue(System.String)')
 - [IBBSCodeParserListener](#T-Casasoft-BBS-Parser-IBBSCodeParserListener 'Casasoft.BBS.Parser.IBBSCodeParserListener')
   - [EnterBbsCodeAttribute(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-EnterBbsCodeAttribute-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeAttributeContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeAttribute(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeContext)')
   - [EnterBbsCodeAttributeName(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-EnterBbsCodeAttributeName-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeAttributeNameContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.EnterBbsCodeAttributeName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeAttributeNameContext)')
@@ -54,6 +79,27 @@
   - [ExitBbsCodeElement(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-ExitBbsCodeElement-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeElementContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeElement(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeElementContext)')
   - [ExitBbsCodeEntity(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-ExitBbsCodeEntity-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeEntityContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeEntity(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeEntityContext)')
   - [ExitBbsCodeTagName(context)](#M-Casasoft-BBS-Parser-IBBSCodeParserListener-ExitBbsCodeTagName-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeTagNameContext- 'Casasoft.BBS.Parser.IBBSCodeParserListener.ExitBbsCodeTagName(Casasoft.BBS.Parser.BBSCodeParser.BbsCodeTagNameContext)')
+- [Tags](#T-Casasoft-BBS-Parser-Tags 'Casasoft.BBS.Parser.Tags')
+  - [ACTION](#F-Casasoft-BBS-Parser-Tags-ACTION 'Casasoft.BBS.Parser.Tags.ACTION')
+  - [BACKCOLOR](#F-Casasoft-BBS-Parser-Tags-BACKCOLOR 'Casasoft.BBS.Parser.Tags.BACKCOLOR')
+  - [BEEP](#F-Casasoft-BBS-Parser-Tags-BEEP 'Casasoft.BBS.Parser.Tags.BEEP')
+  - [BLINK](#F-Casasoft-BBS-Parser-Tags-BLINK 'Casasoft.BBS.Parser.Tags.BLINK')
+  - [BODY](#F-Casasoft-BBS-Parser-Tags-BODY 'Casasoft.BBS.Parser.Tags.BODY')
+  - [BOLD](#F-Casasoft-BBS-Parser-Tags-BOLD 'Casasoft.BBS.Parser.Tags.BOLD')
+  - [CLS](#F-Casasoft-BBS-Parser-Tags-CLS 'Casasoft.BBS.Parser.Tags.CLS')
+  - [COLOR](#F-Casasoft-BBS-Parser-Tags-COLOR 'Casasoft.BBS.Parser.Tags.COLOR')
+  - [FIGGLE](#F-Casasoft-BBS-Parser-Tags-FIGGLE 'Casasoft.BBS.Parser.Tags.FIGGLE')
+  - [FOOTER](#F-Casasoft-BBS-Parser-Tags-FOOTER 'Casasoft.BBS.Parser.Tags.FOOTER')
+  - [HEADER](#F-Casasoft-BBS-Parser-Tags-HEADER 'Casasoft.BBS.Parser.Tags.HEADER')
+  - [HIDDEN](#F-Casasoft-BBS-Parser-Tags-HIDDEN 'Casasoft.BBS.Parser.Tags.HIDDEN')
+  - [HR](#F-Casasoft-BBS-Parser-Tags-HR 'Casasoft.BBS.Parser.Tags.HR')
+  - [MOVE](#F-Casasoft-BBS-Parser-Tags-MOVE 'Casasoft.BBS.Parser.Tags.MOVE')
+  - [P](#F-Casasoft-BBS-Parser-Tags-P 'Casasoft.BBS.Parser.Tags.P')
+  - [REVERSE](#F-Casasoft-BBS-Parser-Tags-REVERSE 'Casasoft.BBS.Parser.Tags.REVERSE')
+  - [UNDERLINE](#F-Casasoft-BBS-Parser-Tags-UNDERLINE 'Casasoft.BBS.Parser.Tags.UNDERLINE')
+- [TagsDict](#T-Casasoft-BBS-Parser-TagsDict 'Casasoft.BBS.Parser.TagsDict')
+  - [#ctor()](#M-Casasoft-BBS-Parser-TagsDict-#ctor 'Casasoft.BBS.Parser.TagsDict.#ctor')
+  - [TryGetValue(tagname,tag)](#M-Casasoft-BBS-Parser-TagsDict-TryGetValue-System-String,Casasoft-BBS-Parser-Tags@- 'Casasoft.BBS.Parser.TagsDict.TryGetValue(System.String,Casasoft.BBS.Parser.Tags@)')
 
 <a name='T-Casasoft-BBS-Parser-Attributes'></a>
 ## Attributes `type`
@@ -61,6 +107,10 @@
 ##### Namespace
 
 Casasoft.BBS.Parser
+
+##### Summary
+
+List of attributes of a tag
 
 <a name='M-Casasoft-BBS-Parser-Attributes-#ctor'></a>
 ### #ctor() `constructor`
@@ -72,6 +122,100 @@ Constructor
 ##### Parameters
 
 This constructor has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-Attributes-TryAdd-System-String,System-String-'></a>
+### TryAdd(attrName,attrValue) `method`
+
+##### Summary
+
+Tries to add a value to the dictionary
+
+##### Returns
+
+true if add is successful
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| attrName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | attribute name |
+| attrValue | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | attribute value |
+
+<a name='M-Casasoft-BBS-Parser-Attributes-TryGetValue-System-String,System-String@-'></a>
+### TryGetValue(attrName,attrValue) `method`
+
+##### Summary
+
+Tries to get a value from the dictionary
+
+##### Returns
+
+true if get is successful
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| attrName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | attribute name |
+| attrValue | [System.String@](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String@ 'System.String@') | returned value |
+
+<a name='T-Casasoft-BBS-Parser-AttributesDict'></a>
+## AttributesDict `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser
+
+##### Summary
+
+Attributes lists for every tag
+
+<a name='M-Casasoft-BBS-Parser-AttributesDict-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-AttributesDict-Add-Casasoft-BBS-Parser-Tags,System-String,System-String-'></a>
+### Add(tag,attrName,attrValue) `method`
+
+##### Summary
+
+Adds an attribute for a tag
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tag | [Casasoft.BBS.Parser.Tags](#T-Casasoft-BBS-Parser-Tags 'Casasoft.BBS.Parser.Tags') |  |
+| attrName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | attribute name |
+| attrValue | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | attribute value |
+
+<a name='M-Casasoft-BBS-Parser-AttributesDict-GetAttributes-Casasoft-BBS-Parser-Tags-'></a>
+### GetAttributes(tag) `method`
+
+##### Summary
+
+Gets the attributes list for a tag
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tag | [Casasoft.BBS.Parser.Tags](#T-Casasoft-BBS-Parser-Tags 'Casasoft.BBS.Parser.Tags') |  |
+
+##### Remarks
+
+The returned list is removed from the dictionary
 
 <a name='T-Casasoft-BBS-Parser-BBSCodeListener'></a>
 ## BBSCodeListener `type`
@@ -526,6 +670,163 @@ Process the file
 | ---- | ---- | ----------- |
 | FileName | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | File to parse |
 
+<a name='T-Casasoft-BBS-Parser-Entities'></a>
+## Entities `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser
+
+##### Summary
+
+Available tags
+
+<a name='F-Casasoft-BBS-Parser-Entities-AGRAVE'></a>
+### AGRAVE `constants`
+
+##### Summary
+
+a with grave accent
+
+<a name='F-Casasoft-BBS-Parser-Entities-AMP'></a>
+### AMP `constants`
+
+##### Summary
+
+Ampersand
+
+<a name='F-Casasoft-BBS-Parser-Entities-CONNECTIONTIME'></a>
+### CONNECTIONTIME `constants`
+
+##### Summary
+
+date and time of client connection
+
+<a name='F-Casasoft-BBS-Parser-Entities-EACUTE'></a>
+### EACUTE `constants`
+
+##### Summary
+
+e with acute accent
+
+<a name='F-Casasoft-BBS-Parser-Entities-EGRAVE'></a>
+### EGRAVE `constants`
+
+##### Summary
+
+e with grave accent
+
+<a name='F-Casasoft-BBS-Parser-Entities-IGRAVE'></a>
+### IGRAVE `constants`
+
+##### Summary
+
+i with grave accent
+
+<a name='F-Casasoft-BBS-Parser-Entities-LEFTCURLY'></a>
+### LEFTCURLY `constants`
+
+##### Summary
+
+Left curly bracket
+
+<a name='F-Casasoft-BBS-Parser-Entities-OGRAVE'></a>
+### OGRAVE `constants`
+
+##### Summary
+
+o with grave accent
+
+<a name='F-Casasoft-BBS-Parser-Entities-REMOTE'></a>
+### REMOTE `constants`
+
+##### Summary
+
+Remote ip address
+
+<a name='F-Casasoft-BBS-Parser-Entities-RIGHTCURLY'></a>
+### RIGHTCURLY `constants`
+
+##### Summary
+
+Right curly bracket
+
+<a name='F-Casasoft-BBS-Parser-Entities-SCREENHEIGHT'></a>
+### SCREENHEIGHT `constants`
+
+##### Summary
+
+Rows in the terminal
+
+<a name='F-Casasoft-BBS-Parser-Entities-SCREENWIDTH'></a>
+### SCREENWIDTH `constants`
+
+##### Summary
+
+Columns in the terminal
+
+<a name='F-Casasoft-BBS-Parser-Entities-TERMINALTYPE'></a>
+### TERMINALTYPE `constants`
+
+##### Summary
+
+Terminal type id
+
+<a name='F-Casasoft-BBS-Parser-Entities-UGRAVE'></a>
+### UGRAVE `constants`
+
+##### Summary
+
+u with grave accent
+
+<a name='F-Casasoft-BBS-Parser-Entities-USERNAME'></a>
+### USERNAME `constants`
+
+##### Summary
+
+Username
+
+<a name='T-Casasoft-BBS-Parser-EntitiesDict'></a>
+## EntitiesDict `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser
+
+##### Summary
+
+List of available entities
+
+<a name='M-Casasoft-BBS-Parser-EntitiesDict-#ctor-Casasoft-BBS-Interfaces-IBBSClient-'></a>
+### #ctor(c) `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| c | [Casasoft.BBS.Interfaces.IBBSClient](#T-Casasoft-BBS-Interfaces-IBBSClient 'Casasoft.BBS.Interfaces.IBBSClient') | Reference to the client |
+
+<a name='M-Casasoft-BBS-Parser-EntitiesDict-GetValue-System-String-'></a>
+### GetValue(name) `method`
+
+##### Summary
+
+Gets entity value by name
+
+##### Returns
+
+string.Empty if the name is not found
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
 <a name='T-Casasoft-BBS-Parser-IBBSCodeParserListener'></a>
 ## IBBSCodeParserListener `type`
 
@@ -745,3 +1046,173 @@ Exit a parse tree produced by [bbsCodeTagName](#M-Casasoft-BBS-Parser-BBSCodePar
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | context | [Casasoft.BBS.Parser.BBSCodeParser.BbsCodeTagNameContext](#T-Casasoft-BBS-Parser-BBSCodeParser-BbsCodeTagNameContext 'Casasoft.BBS.Parser.BBSCodeParser.BbsCodeTagNameContext') | The parse tree. |
+
+<a name='T-Casasoft-BBS-Parser-Tags'></a>
+## Tags `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser
+
+##### Summary
+
+Available tags
+
+<a name='F-Casasoft-BBS-Parser-Tags-ACTION'></a>
+### ACTION `constants`
+
+##### Summary
+
+Defines a [Action](#T-Casasoft-BBS-Parser-BBSCodeResult-Action 'Casasoft.BBS.Parser.BBSCodeResult.Action')
+
+<a name='F-Casasoft-BBS-Parser-Tags-BACKCOLOR'></a>
+### BACKCOLOR `constants`
+
+##### Summary
+
+Sets the color for the background
+
+<a name='F-Casasoft-BBS-Parser-Tags-BEEP'></a>
+### BEEP `constants`
+
+##### Summary
+
+Sounds on the terminal
+
+<a name='F-Casasoft-BBS-Parser-Tags-BLINK'></a>
+### BLINK `constants`
+
+##### Summary
+
+Sets blink mode for the text
+
+<a name='F-Casasoft-BBS-Parser-Tags-BODY'></a>
+### BODY `constants`
+
+##### Summary
+
+Defines the body section
+
+<a name='F-Casasoft-BBS-Parser-Tags-BOLD'></a>
+### BOLD `constants`
+
+##### Summary
+
+Sets bold mode for the text
+
+<a name='F-Casasoft-BBS-Parser-Tags-CLS'></a>
+### CLS `constants`
+
+##### Summary
+
+Clears the screen
+
+<a name='F-Casasoft-BBS-Parser-Tags-COLOR'></a>
+### COLOR `constants`
+
+##### Summary
+
+Sets the color for the text
+
+<a name='F-Casasoft-BBS-Parser-Tags-FIGGLE'></a>
+### FIGGLE `constants`
+
+##### Summary
+
+Writes text with giant characters
+
+<a name='F-Casasoft-BBS-Parser-Tags-FOOTER'></a>
+### FOOTER `constants`
+
+##### Summary
+
+Defines the footer section
+
+<a name='F-Casasoft-BBS-Parser-Tags-HEADER'></a>
+### HEADER `constants`
+
+##### Summary
+
+Defines the header section
+
+<a name='F-Casasoft-BBS-Parser-Tags-HIDDEN'></a>
+### HIDDEN `constants`
+
+##### Summary
+
+Defines an hidden section
+
+<a name='F-Casasoft-BBS-Parser-Tags-HR'></a>
+### HR `constants`
+
+##### Summary
+
+Draws a row
+
+<a name='F-Casasoft-BBS-Parser-Tags-MOVE'></a>
+### MOVE `constants`
+
+##### Summary
+
+Move cursor on terminal
+
+<a name='F-Casasoft-BBS-Parser-Tags-P'></a>
+### P `constants`
+
+##### Summary
+
+Defines a paragraph
+
+<a name='F-Casasoft-BBS-Parser-Tags-REVERSE'></a>
+### REVERSE `constants`
+
+##### Summary
+
+Sets reverse mode for the text
+
+<a name='F-Casasoft-BBS-Parser-Tags-UNDERLINE'></a>
+### UNDERLINE `constants`
+
+##### Summary
+
+Sets underline mode for the text
+
+<a name='T-Casasoft-BBS-Parser-TagsDict'></a>
+## TagsDict `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser
+
+##### Summary
+
+Dictionary of the tags
+
+<a name='M-Casasoft-BBS-Parser-TagsDict-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-TagsDict-TryGetValue-System-String,Casasoft-BBS-Parser-Tags@-'></a>
+### TryGetValue(tagname,tag) `method`
+
+##### Summary
+
+Tries to get a tag by its name
+
+##### Returns
+
+True if tag is found
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tagname | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| tag | [Casasoft.BBS.Parser.Tags@](#T-Casasoft-BBS-Parser-Tags@ 'Casasoft.BBS.Parser.Tags@') |  |

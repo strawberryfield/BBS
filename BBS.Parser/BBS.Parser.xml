@@ -308,10 +308,263 @@
             <param name="FileName">File to parse</param>
             <returns><see cref="T:Casasoft.BBS.Parser.BBSCodeResult"/> with processed data</returns>
         </member>
+        <member name="T:Casasoft.BBS.Parser.Attributes">
+            <summary>
+            List of attributes of a tag
+            </summary>
+        </member>
         <member name="M:Casasoft.BBS.Parser.Attributes.#ctor">
             <summary>
             Constructor
             </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.Attributes.TryGetValue(System.String,System.String@)">
+            <summary>
+            Tries to get a value from the dictionary
+            </summary>
+            <param name="attrName">attribute name</param>
+            <param name="attrValue">returned value</param>
+            <returns>true if get is successful</returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.Attributes.TryAdd(System.String,System.String)">
+            <summary>
+            Tries to add a value to the dictionary
+            </summary>
+            <param name="attrName">attribute name</param>
+            <param name="attrValue">attribute value</param>
+            <returns>true if add is successful</returns>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.AttributesDict">
+            <summary>
+            Attributes lists for every tag
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.AttributesDict.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.AttributesDict.Add(Casasoft.BBS.Parser.Tags,System.String,System.String)">
+            <summary>
+            Adds an attribute for a tag
+            </summary>
+            <param name="tag"></param>
+            <param name="attrName">attribute name</param>
+            <param name="attrValue">attribute value</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.AttributesDict.GetAttributes(Casasoft.BBS.Parser.Tags)">
+            <summary>
+            Gets the attributes list for a tag
+            </summary>
+            <param name="tag"></param>
+            <returns></returns>
+            <remarks>The returned list is removed from the dictionary</remarks>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.Entities">
+            <summary>
+            Available tags
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.AMP">
+            <summary>
+            Ampersand
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.LEFTCURLY">
+            <summary>
+            Left curly bracket
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.RIGHTCURLY">
+            <summary>
+            Right curly bracket
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.USERNAME">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.REMOTE">
+            <summary>
+            Remote ip address
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.CONNECTIONTIME">
+            <summary>
+            date and time of client connection
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.AGRAVE">
+            <summary>
+            a with grave accent
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.EGRAVE">
+            <summary>
+            e with grave accent
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.IGRAVE">
+            <summary>
+            i with grave accent
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.OGRAVE">
+            <summary>
+            o with grave accent
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.UGRAVE">
+            <summary>
+            u with grave accent
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.EACUTE">
+            <summary>
+            e with acute accent
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.SCREENWIDTH">
+            <summary>
+            Columns in the terminal
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.SCREENHEIGHT">
+            <summary>
+            Rows in the terminal
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Entities.TERMINALTYPE">
+            <summary>
+            Terminal type id
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.EntitiesDict">
+            <summary>
+            List of available entities
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.EntitiesDict.#ctor(Casasoft.BBS.Interfaces.IBBSClient)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Reference to the client</param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.EntitiesDict.GetValue(System.String)">
+            <summary>
+            Gets entity value by name
+            </summary>
+            <param name="name"></param>
+            <returns>string.Empty if the name is not found</returns>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.Tags">
+            <summary>
+            Available tags
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.HEADER">
+            <summary>
+            Defines the header section
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.FOOTER">
+            <summary>
+            Defines the footer section
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.BODY">
+            <summary>
+            Defines the body section
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.HIDDEN">
+            <summary>
+            Defines an hidden section
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.CLS">
+            <summary>
+            Clears the screen
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.BLINK">
+            <summary>
+            Sets blink mode for the text
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.REVERSE">
+            <summary>
+            Sets reverse mode for the text
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.BOLD">
+            <summary>
+            Sets bold mode for the text
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.UNDERLINE">
+            <summary>
+            Sets underline mode for the text
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.COLOR">
+            <summary>
+            Sets the color for the text
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.BACKCOLOR">
+            <summary>
+            Sets the color for the background
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.FIGGLE">
+            <summary>
+            Writes text with giant characters
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.BEEP">
+            <summary>
+            Sounds on the terminal
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.HR">
+            <summary>
+            Draws a row
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.P">
+            <summary>
+            Defines a paragraph
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.MOVE">
+            <summary>
+            Move cursor on terminal
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.ACTION">
+            <summary>
+            Defines a <see cref="T:Casasoft.BBS.Parser.BBSCodeResult.Action"/>
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.TagsDict">
+            <summary>
+            Dictionary of the tags
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.TagsDict.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.TagsDict.TryGetValue(System.String,Casasoft.BBS.Parser.Tags@)">
+            <summary>
+            Tries to get a tag by its name
+            </summary>
+            <param name="tagname"></param>
+            <param name="tag"></param>
+            <returns>True if tag is found</returns>
         </member>
     </members>
 </doc>
