@@ -763,6 +763,11 @@
             class declaration
             </summary>
         </member>
+        <member name="F:Casasoft.BBS.DataTier.CustomHelpers.generatedCodeAttribute">
+            <summary>
+            Generated code attribute
+            </summary>
+        </member>
         <member name="F:Casasoft.BBS.DataTier.CustomHelpers.classSummary">
             <summary>
             Class summary comment
@@ -775,11 +780,6 @@
             <param name="code">uncommented code</param>
             <param name="comment">comment to the class</param>
             <returns></returns>
-        </member>
-        <member name="F:Casasoft.BBS.DataTier.CustomHelpers.propertySummary">
-            <summary>
-            Property summary comment
-            </summary>
         </member>
     </members>
 </doc>

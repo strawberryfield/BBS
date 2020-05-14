@@ -26,6 +26,7 @@ namespace Casasoft.BBS.DataTier.DataModel
     /// <summary>
 	/// Elements of the table 'UsersGroups'.
 	/// </summary>
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("EntityFrameworkCore", "3.1.4")]
 	public partial class UsersGroup
     {
         public UsersGroup()

@@ -12,8 +12,8 @@
 - [CustomHelpers](#T-Casasoft-BBS-DataTier-CustomHelpers 'Casasoft.BBS.DataTier.CustomHelpers')
   - [classSummary](#F-Casasoft-BBS-DataTier-CustomHelpers-classSummary 'Casasoft.BBS.DataTier.CustomHelpers.classSummary')
   - [copyrightNotice](#F-Casasoft-BBS-DataTier-CustomHelpers-copyrightNotice 'Casasoft.BBS.DataTier.CustomHelpers.copyrightNotice')
+  - [generatedCodeAttribute](#F-Casasoft-BBS-DataTier-CustomHelpers-generatedCodeAttribute 'Casasoft.BBS.DataTier.CustomHelpers.generatedCodeAttribute')
   - [ppc](#F-Casasoft-BBS-DataTier-CustomHelpers-ppc 'Casasoft.BBS.DataTier.CustomHelpers.ppc')
-  - [propertySummary](#F-Casasoft-BBS-DataTier-CustomHelpers-propertySummary 'Casasoft.BBS.DataTier.CustomHelpers.propertySummary')
   - [commentedClass(code,comment)](#M-Casasoft-BBS-DataTier-CustomHelpers-commentedClass-System-String,System-String- 'Casasoft.BBS.DataTier.CustomHelpers.commentedClass(System.String,System.String)')
 - [DbHelpers](#T-Casasoft-BBS-DataTier-DbHelpers 'Casasoft.BBS.DataTier.DbHelpers')
   - [CreateMD5(input)](#M-Casasoft-BBS-DataTier-DbHelpers-CreateMD5-System-String- 'Casasoft.BBS.DataTier.DbHelpers.CreateMD5(System.String)')
@@ -251,19 +251,19 @@ Class summary comment
 
 copyright notice to add at the top of the file
 
+<a name='F-Casasoft-BBS-DataTier-CustomHelpers-generatedCodeAttribute'></a>
+### generatedCodeAttribute `constants`
+
+##### Summary
+
+Generated code attribute
+
 <a name='F-Casasoft-BBS-DataTier-CustomHelpers-ppc'></a>
 ### ppc `constants`
 
 ##### Summary
 
 class declaration
-
-<a name='F-Casasoft-BBS-DataTier-CustomHelpers-propertySummary'></a>
-### propertySummary `constants`
-
-##### Summary
-
-Property summary comment
 
 <a name='M-Casasoft-BBS-DataTier-CustomHelpers-commentedClass-System-String,System-String-'></a>
 ### commentedClass(code,comment) `method`

@@ -56,9 +56,16 @@ namespace Casasoft.BBS.DataTier
         public static string ppc = "public partial class";
 
         /// <summary>
+        /// Generated code attribute
+        /// </summary>
+        public static string generatedCodeAttribute =
+            "[System.CodeDom.Compiler.GeneratedCodeAttribute(\"EntityFrameworkCore\", \"3.1.4\")]";
+
+        /// <summary>
         /// Class summary comment
         /// </summary>
-        public static string classSummary = "/// <summary>\r\n\t/// {0}\r\n\t/// </summary>\r\n\t" + ppc;
+        public static string classSummary = "/// <summary>\r\n\t/// {0}\r\n\t/// </summary>\r\n\t" +
+            generatedCodeAttribute + "\r\n\t" + ppc;
 
         /// <summary>
         /// Adds comment to class declaration
@@ -68,10 +75,5 @@ namespace Casasoft.BBS.DataTier
         /// <returns></returns>
         public static string commentedClass(string code, string comment) =>
             code.Replace(ppc, string.Format(classSummary, comment));
-
-        /// <summary>
-        /// Property summary comment
-        /// </summary>
-        public static string propertySummary = "/// <summary>\r\n\t\t/// {0}\r\n\t\t/// </summary>";
     }
 }

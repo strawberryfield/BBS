@@ -42,4 +42,4 @@ namespace Casasoft.BBS.DataTier.DataModel
         /// <returns></returns>
         public bool IsRead(string username) => MessageReads.Select(u => u.UserId).Contains(username);
     }
-}
+} 

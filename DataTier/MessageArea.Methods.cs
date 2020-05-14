@@ -78,4 +78,4 @@ namespace Casasoft.BBS.DataTier.DataModel
         public IEnumerable<Message> UnreadMessages(string username) =>
             Messages.Where(m => !m.MessageReads.Select(u => u.UserId).Contains(username));
     }
-}
+} 

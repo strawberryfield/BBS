@@ -19,12 +19,13 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.DataTier.DataModel;
+using Casasoft.BBS.DataTier.DBContext;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using System.Linq;
 
 namespace Casasoft.BBS.DataTier
-{
+{ 
     /// <summary>
     /// Database abstraction class
     /// </summary>
@@ -90,5 +91,5 @@ namespace Casasoft.BBS.DataTier
                 g => g.AllowedGroupId == null
                 || UsersGroupsLinks.Where(u => u.Userid == username).Select(ug => ug.Groupid).Contains(g.AllowedGroupId));
         #endregion
-    }
+    } 
 }
