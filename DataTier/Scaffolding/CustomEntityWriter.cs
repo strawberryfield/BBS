@@ -54,16 +54,20 @@ namespace Casasoft.BBS.DataTier
         public override string WriteCode(IEntityType type, string @namespace, bool useDataAnnotations)
         {
             string code = base.WriteCode(type, @namespace, useDataAnnotations);
-            code = CustomHelpers.commentedClass(code, 
-                string.Format("Elements of the table '{0}'.", type.GetTableName()));
+            code = CustomHelpers.commentedClass(code,
+                string.Format("Elements of the table '{0}'", type.GetTableName()), type.GetComment());
 
-            foreach(var p in type.GetProperties())
+            string constr = string.Format("public {0}()", type.Name);
+            code = code.Replace(constr,
+                "/// <summary>\r\n\t\t/// Entity constructor\r\n\t\t/// </summary>\r\n\t\t" + constr);
+
+            foreach (var p in type.GetProperties())
             {
                 string decl = "public " + _code.Reference(p.ClrType) + " " + p.Name;
                 StringBuilder comment = new StringBuilder();
                 comment.Append("\r\n\t\t/// <summary>");
                 comment.Append("\r\n\t\t/// Column '" + p.GetColumnName() + "'");
-                if(!string.IsNullOrWhiteSpace(p.GetComment())) comment.Append("\r\n\t\t/// " + p.GetComment());
+                if(!string.IsNullOrWhiteSpace(p.GetComment())) comment.Append(":\r\n\t\t/// " + p.GetComment());
                 comment.Append("\r\n\t\t/// </summary>");
                 comment.Append("\r\n\t\t/// <remarks>Original field type: " + p.GetColumnType()+ "</remarks>");
                 comment.Append("\r\n\t\t" + decl);

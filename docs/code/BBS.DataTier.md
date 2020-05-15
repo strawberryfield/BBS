@@ -14,7 +14,7 @@
   - [copyrightNotice](#F-Casasoft-BBS-DataTier-CustomHelpers-copyrightNotice 'Casasoft.BBS.DataTier.CustomHelpers.copyrightNotice')
   - [generatedCodeAttribute](#F-Casasoft-BBS-DataTier-CustomHelpers-generatedCodeAttribute 'Casasoft.BBS.DataTier.CustomHelpers.generatedCodeAttribute')
   - [ppc](#F-Casasoft-BBS-DataTier-CustomHelpers-ppc 'Casasoft.BBS.DataTier.CustomHelpers.ppc')
-  - [commentedClass(code,comment)](#M-Casasoft-BBS-DataTier-CustomHelpers-commentedClass-System-String,System-String- 'Casasoft.BBS.DataTier.CustomHelpers.commentedClass(System.String,System.String)')
+  - [commentedClass(code,comment,note)](#M-Casasoft-BBS-DataTier-CustomHelpers-commentedClass-System-String,System-String,System-String- 'Casasoft.BBS.DataTier.CustomHelpers.commentedClass(System.String,System.String,System.String)')
 - [DbHelpers](#T-Casasoft-BBS-DataTier-DbHelpers 'Casasoft.BBS.DataTier.DbHelpers')
   - [CreateMD5(input)](#M-Casasoft-BBS-DataTier-DbHelpers-CreateMD5-System-String- 'Casasoft.BBS.DataTier.DbHelpers.CreateMD5(System.String)')
 - [Log](#T-Casasoft-BBS-DataTier-DataModel-Log 'Casasoft.BBS.DataTier.DataModel.Log')
@@ -265,8 +265,8 @@ Generated code attribute
 
 class declaration
 
-<a name='M-Casasoft-BBS-DataTier-CustomHelpers-commentedClass-System-String,System-String-'></a>
-### commentedClass(code,comment) `method`
+<a name='M-Casasoft-BBS-DataTier-CustomHelpers-commentedClass-System-String,System-String,System-String-'></a>
+### commentedClass(code,comment,note) `method`
 
 ##### Summary
 
@@ -282,6 +282,7 @@ Adds comment to class declaration
 | ---- | ---- | ----------- |
 | code | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | uncommented code |
 | comment | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | comment to the class |
+| note | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | additional comment |
 
 <a name='T-Casasoft-BBS-DataTier-DbHelpers'></a>
 ## DbHelpers `type`

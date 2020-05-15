@@ -24,12 +24,15 @@ using System.Collections.Generic;
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
-	/// Elements of the table 'MessageAreasGroups'.
+	/// Elements of the table 'MessageAreasGroups'
 	/// </summary>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("EntityFrameworkCore", "3.1.4")]
 	public partial class MessageAreasGroup
     {
-        public MessageAreasGroup()
+        /// <summary>
+		/// Entity constructor
+		/// </summary>
+		public MessageAreasGroup()
         {
             MessageAreas = new HashSet<MessageArea>();
         }

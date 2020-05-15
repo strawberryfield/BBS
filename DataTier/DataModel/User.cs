@@ -24,12 +24,16 @@ using System.Collections.Generic;
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
-	/// Elements of the table 'Users'.
+	/// Elements of the table 'Users':
+	/// BBS users
 	/// </summary>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("EntityFrameworkCore", "3.1.4")]
 	public partial class User
     {
-        public User()
+        /// <summary>
+		/// Entity constructor
+		/// </summary>
+		public User()
         {
             Logins = new HashSet<Login>();
             MessageReads = new HashSet<MessageRead>();
@@ -62,7 +66,7 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public string Nation { get; set; }
         
 		/// <summary>
-		/// Column 'password'
+		/// Column 'password':
 		/// MD5 Hash of the password
 		/// </summary>
 		/// <remarks>Original field type: varchar(32)</remarks>

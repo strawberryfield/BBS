@@ -18,12 +18,14 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Scaffolding;
 using Microsoft.EntityFrameworkCore.Scaffolding.Internal;
 using System.Diagnostics.CodeAnalysis;
+using System.Text;
 
 namespace Casasoft.BBS.DataTier
 {
@@ -62,7 +64,20 @@ namespace Casasoft.BBS.DataTier
                 connectionString, contextNamespace, modelNamespace, 
                 useDataAnnotations, suppressConnectionStringWarning);
             code = CustomHelpers.commentedClass(code,
-                 string.Format("Model for the database '{0}'.", model.GetDatabaseName()));
+                 string.Format("Model for the database '{0}'.", model.GetDatabaseName()), "");
+
+            foreach (var e in model.GetEntityTypes())
+            {
+                string decl = string.Format("public virtual DbSet<{0}>", e.Name);
+                StringBuilder comment = new StringBuilder();
+                comment.Append("\r\n\t\t/// <summary>");
+                comment.Append("\r\n\t\t/// Table '" + e.GetTableName() + "'");
+                if (!string.IsNullOrWhiteSpace(e.GetComment())) comment.Append(":\r\n\t\t/// " + e.GetComment());
+                comment.Append("\r\n\t\t/// </summary>");
+                comment.Append("\r\n\t\t" + decl);
+                code = code.Replace(decl, comment.ToString());
+
+            }
             return CustomHelpers.copyrightNotice + code;
         }  
     }

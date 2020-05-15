@@ -40,16 +40,65 @@ namespace Casasoft.BBS.DataTier.DBContext
         {
         }
 
-        public virtual DbSet<Log> Logs { get; set; }
-        public virtual DbSet<Login> Logins { get; set; }
-        public virtual DbSet<Message> Messages { get; set; }
-        public virtual DbSet<MessageArea> MessageAreas { get; set; }
-        public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
-        public virtual DbSet<MessageRead> MessageReads { get; set; }
-        public virtual DbSet<MessageSeenBy> MessageSeenBies { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UsersGroup> UsersGroups { get; set; }
-        public virtual DbSet<UsersGroupsLink> UsersGroupsLinks { get; set; }
+        
+		/// <summary>
+		/// Table 'Log':
+		/// Events log
+		/// </summary>
+		public virtual DbSet<Log> Logs { get; set; }
+        
+		/// <summary>
+		/// Table 'Logins':
+		/// Users logins
+		/// </summary>
+		public virtual DbSet<Login> Logins { get; set; }
+        
+		/// <summary>
+		/// Table 'Messages':
+		/// Messages
+		/// </summary>
+		public virtual DbSet<Message> Messages { get; set; }
+        
+		/// <summary>
+		/// Table 'MessageAreas':
+		/// Message Areas List
+		/// </summary>
+		public virtual DbSet<MessageArea> MessageAreas { get; set; }
+        
+		/// <summary>
+		/// Table 'MessageAreasGroups'
+		/// </summary>
+		public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
+        
+		/// <summary>
+		/// Table 'MessageRead':
+		/// Flags for messages read
+		/// </summary>
+		public virtual DbSet<MessageRead> MessageReads { get; set; }
+        
+		/// <summary>
+		/// Table 'MessageSeenBy':
+		/// System that already received the message
+		/// </summary>
+		public virtual DbSet<MessageSeenBy> MessagesSeenBy { get; set; }
+        
+		/// <summary>
+		/// Table 'Users':
+		/// BBS users
+		/// </summary>
+		public virtual DbSet<User> Users { get; set; }
+        
+		/// <summary>
+		/// Table 'UsersGroups':
+		/// Users groups definition
+		/// </summary>
+		public virtual DbSet<UsersGroup> UsersGroups { get; set; }
+        
+		/// <summary>
+		/// Table 'UsersGroupsLinks':
+		/// Users groups
+		/// </summary>
+		public virtual DbSet<UsersGroupsLink> UsersGroupsLinks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -72,8 +72,10 @@ namespace Casasoft.BBS.DataTier
         /// </summary>
         /// <param name="code">uncommented code</param>
         /// <param name="comment">comment to the class</param>
+        /// <param name="note">additional comment</param>
         /// <returns></returns>
-        public static string commentedClass(string code, string comment) =>
-            code.Replace(ppc, string.Format(classSummary, comment));
+        public static string commentedClass(string code, string comment, string note) =>
+           code.Replace(ppc, string.Format(classSummary,
+               comment + (string.IsNullOrWhiteSpace(note) ? string.Empty : ":\r\n\t/// " + note)));
     }
 }

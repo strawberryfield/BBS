@@ -24,12 +24,16 @@ using System.Collections.Generic;
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
-	/// Elements of the table 'UsersGroups'.
+	/// Elements of the table 'UsersGroups':
+	/// Users groups definition
 	/// </summary>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("EntityFrameworkCore", "3.1.4")]
 	public partial class UsersGroup
     {
-        public UsersGroup()
+        /// <summary>
+		/// Entity constructor
+		/// </summary>
+		public UsersGroup()
         {
             MessageAreaAllowedGroupReadNavigations = new HashSet<MessageArea>();
             MessageAreaAllowedGroupWriteNavigations = new HashSet<MessageArea>();

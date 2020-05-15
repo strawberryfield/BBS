@@ -24,12 +24,16 @@ using System.Collections.Generic;
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
-	/// Elements of the table 'Messages'.
+	/// Elements of the table 'Messages':
+	/// Messages
 	/// </summary>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("EntityFrameworkCore", "3.1.4")]
 	public partial class Message
     {
-        public Message()
+        /// <summary>
+		/// Entity constructor
+		/// </summary>
+		public Message()
         {
             MessageReads = new HashSet<MessageRead>();
             MessageSeenBies = new HashSet<MessageSeenBy>();

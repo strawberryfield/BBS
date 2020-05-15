@@ -773,12 +773,13 @@
             Class summary comment
             </summary>
         </member>
-        <member name="M:Casasoft.BBS.DataTier.CustomHelpers.commentedClass(System.String,System.String)">
+        <member name="M:Casasoft.BBS.DataTier.CustomHelpers.commentedClass(System.String,System.String,System.String)">
             <summary>
             Adds comment to class declaration
             </summary>
             <param name="code">uncommented code</param>
             <param name="comment">comment to the class</param>
+            <param name="note">additional comment</param>
             <returns></returns>
         </member>
     </members>

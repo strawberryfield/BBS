@@ -24,7 +24,8 @@ using System.Collections.Generic;
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
-	/// Elements of the table 'UsersGroupsLinks'.
+	/// Elements of the table 'UsersGroupsLinks':
+	/// Users groups
 	/// </summary>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("EntityFrameworkCore", "3.1.4")]
 	public partial class UsersGroupsLink
