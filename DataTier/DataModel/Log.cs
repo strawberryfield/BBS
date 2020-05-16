@@ -38,19 +38,22 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public int Id { get; set; }
         
 		/// <summary>
-		/// Column 'DateTime'
+		/// Column 'DateTime':
+		/// Timestamp of the event, set to current timestamp by default
 		/// </summary>
 		/// <remarks>Original field type: datetime</remarks>
 		public DateTime DateTime { get; set; }
         
 		/// <summary>
-		/// Column 'Remote'
+		/// Column 'Remote':
+		/// Remote ip address and port of the client (if applicable)
 		/// </summary>
 		/// <remarks>Original field type: varchar(24)</remarks>
 		public string Remote { get; set; }
         
 		/// <summary>
-		/// Column 'Level'
+		/// Column 'Level':
+		/// Severity level
 		/// </summary>
 		/// <remarks>Original field type: tinyint(4)</remarks>
 		public sbyte Level { get; set; }

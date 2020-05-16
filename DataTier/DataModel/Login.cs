@@ -38,25 +38,29 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public int Id { get; set; }
         
 		/// <summary>
-		/// Column 'UserId'
+		/// Column 'UserId':
+		/// username supplied for the login
 		/// </summary>
 		/// <remarks>Original field type: varchar(30)</remarks>
 		public string UserId { get; set; }
         
 		/// <summary>
-		/// Column 'DateTime'
+		/// Column 'DateTime':
+		/// timestamp set to current timestamp by default
 		/// </summary>
 		/// <remarks>Original field type: datetime</remarks>
 		public DateTime DateTime { get; set; }
         
 		/// <summary>
-		/// Column 'From'
+		/// Column 'From':
+		/// remote ip address and port of the client
 		/// </summary>
 		/// <remarks>Original field type: varchar(24)</remarks>
 		public string From { get; set; }
         
 		/// <summary>
-		/// Column 'Success'
+		/// Column 'Success':
+		/// true if login was successful
 		/// </summary>
 		/// <remarks>Original field type: </remarks>
 		public bool Success { get; set; }

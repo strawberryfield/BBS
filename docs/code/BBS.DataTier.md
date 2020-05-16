@@ -17,6 +17,15 @@
   - [commentedClass(code,comment,note)](#M-Casasoft-BBS-DataTier-CustomHelpers-commentedClass-System-String,System-String,System-String- 'Casasoft.BBS.DataTier.CustomHelpers.commentedClass(System.String,System.String,System.String)')
 - [DbHelpers](#T-Casasoft-BBS-DataTier-DbHelpers 'Casasoft.BBS.DataTier.DbHelpers')
   - [CreateMD5(input)](#M-Casasoft-BBS-DataTier-DbHelpers-CreateMD5-System-String- 'Casasoft.BBS.DataTier.DbHelpers.CreateMD5(System.String)')
+- [FidoNetwork](#T-Casasoft-BBS-DataTier-DataModel-FidoNetwork 'Casasoft.BBS.DataTier.DataModel.FidoNetwork')
+  - [#ctor()](#M-Casasoft-BBS-DataTier-DataModel-FidoNetwork-#ctor 'Casasoft.BBS.DataTier.DataModel.FidoNetwork.#ctor')
+  - [Description](#P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Description 'Casasoft.BBS.DataTier.DataModel.FidoNetwork.Description')
+  - [Host](#P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Host 'Casasoft.BBS.DataTier.DataModel.FidoNetwork.Host')
+  - [Id](#P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Id 'Casasoft.BBS.DataTier.DataModel.FidoNetwork.Id')
+  - [MessageAreasGroups](#P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-MessageAreasGroups 'Casasoft.BBS.DataTier.DataModel.FidoNetwork.MessageAreasGroups')
+  - [Net](#P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Net 'Casasoft.BBS.DataTier.DataModel.FidoNetwork.Net')
+  - [Point](#P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Point 'Casasoft.BBS.DataTier.DataModel.FidoNetwork.Point')
+  - [Zone](#P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Zone 'Casasoft.BBS.DataTier.DataModel.FidoNetwork.Zone')
 - [Log](#T-Casasoft-BBS-DataTier-DataModel-Log 'Casasoft.BBS.DataTier.DataModel.Log')
   - [DateTime](#P-Casasoft-BBS-DataTier-DataModel-Log-DateTime 'Casasoft.BBS.DataTier.DataModel.Log.DateTime')
   - [Description](#P-Casasoft-BBS-DataTier-DataModel-Log-Description 'Casasoft.BBS.DataTier.DataModel.Log.Description')
@@ -45,7 +54,6 @@
   - [Id](#P-Casasoft-BBS-DataTier-DataModel-Message-Id 'Casasoft.BBS.DataTier.DataModel.Message.Id')
   - [MessageFrom](#P-Casasoft-BBS-DataTier-DataModel-Message-MessageFrom 'Casasoft.BBS.DataTier.DataModel.Message.MessageFrom')
   - [MessageReads](#P-Casasoft-BBS-DataTier-DataModel-Message-MessageReads 'Casasoft.BBS.DataTier.DataModel.Message.MessageReads')
-  - [MessageSeenBies](#P-Casasoft-BBS-DataTier-DataModel-Message-MessageSeenBies 'Casasoft.BBS.DataTier.DataModel.Message.MessageSeenBies')
   - [MessageTo](#P-Casasoft-BBS-DataTier-DataModel-Message-MessageTo 'Casasoft.BBS.DataTier.DataModel.Message.MessageTo')
   - [OrigNet](#P-Casasoft-BBS-DataTier-DataModel-Message-OrigNet 'Casasoft.BBS.DataTier.DataModel.Message.OrigNet')
   - [OrigNode](#P-Casasoft-BBS-DataTier-DataModel-Message-OrigNode 'Casasoft.BBS.DataTier.DataModel.Message.OrigNode')
@@ -79,6 +87,8 @@
   - [AllowedGroup](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-AllowedGroup 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.AllowedGroup')
   - [AllowedGroupId](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-AllowedGroupId 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.AllowedGroupId')
   - [Description](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-Description 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.Description')
+  - [FidoNetwork](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-FidoNetwork 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.FidoNetwork')
+  - [FidoNetworkNavigation](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-FidoNetworkNavigation 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.FidoNetworkNavigation')
   - [Id](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-Id 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.Id')
   - [MessageAreas](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-MessageAreas 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.MessageAreas')
 - [MessageRead](#T-Casasoft-BBS-DataTier-DataModel-MessageRead 'Casasoft.BBS.DataTier.DataModel.MessageRead')
@@ -134,6 +144,7 @@
 - [bbsContext](#T-Casasoft-BBS-DataTier-bbsContext 'Casasoft.BBS.DataTier.bbsContext')
   - [#ctor()](#M-Casasoft-BBS-DataTier-bbsContext-#ctor 'Casasoft.BBS.DataTier.bbsContext.#ctor')
   - [#ctor(options)](#M-Casasoft-BBS-DataTier-bbsContext-#ctor-Microsoft-EntityFrameworkCore-DbContextOptions{Casasoft-BBS-DataTier-DBContext-bbsContext}- 'Casasoft.BBS.DataTier.bbsContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Casasoft.BBS.DataTier.DBContext.bbsContext})')
+  - [FidoNetworks](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-FidoNetworks 'Casasoft.BBS.DataTier.DBContext.bbsContext.FidoNetworks')
   - [Logins](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-Logins 'Casasoft.BBS.DataTier.DBContext.bbsContext.Logins')
   - [Logs](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-Logs 'Casasoft.BBS.DataTier.DBContext.bbsContext.Logs')
   - [MessageAreas](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessageAreas 'Casasoft.BBS.DataTier.DBContext.bbsContext.MessageAreas')
@@ -147,8 +158,11 @@
   - [GetAllMessagesInArea(area)](#M-Casasoft-BBS-DataTier-bbsContext-GetAllMessagesInArea-System-String- 'Casasoft.BBS.DataTier.bbsContext.GetAllMessagesInArea(System.String)')
   - [GetAllowedMessageAreasGroup(username)](#M-Casasoft-BBS-DataTier-bbsContext-GetAllowedMessageAreasGroup-System-String- 'Casasoft.BBS.DataTier.bbsContext.GetAllowedMessageAreasGroup(System.String)')
   - [GetMessageAllowedAreasByGroup(group,username)](#M-Casasoft-BBS-DataTier-bbsContext-GetMessageAllowedAreasByGroup-System-String,System-String- 'Casasoft.BBS.DataTier.bbsContext.GetMessageAllowedAreasByGroup(System.String,System.String)')
+  - [GetMessageById(messageId)](#M-Casasoft-BBS-DataTier-bbsContext-GetMessageById-System-Int32- 'Casasoft.BBS.DataTier.bbsContext.GetMessageById(System.Int32)')
+  - [GetMessageById(messageId)](#M-Casasoft-BBS-DataTier-bbsContext-GetMessageById-System-String- 'Casasoft.BBS.DataTier.bbsContext.GetMessageById(System.String)')
   - [GetUserByUsername(username)](#M-Casasoft-BBS-DataTier-bbsContext-GetUserByUsername-System-String- 'Casasoft.BBS.DataTier.bbsContext.GetUserByUsername(System.String)')
   - [OnConfiguring(optionsBuilder)](#M-Casasoft-BBS-DataTier-bbsContext-OnConfiguring-Microsoft-EntityFrameworkCore-DbContextOptionsBuilder- 'Casasoft.BBS.DataTier.bbsContext.OnConfiguring(Microsoft.EntityFrameworkCore.DbContextOptionsBuilder)')
+  - [SetMessageRead(msgId,username)](#M-Casasoft-BBS-DataTier-bbsContext-SetMessageRead-System-Int32,System-String- 'Casasoft.BBS.DataTier.bbsContext.SetMessageRead(System.Int32,System.String)')
 
 <a name='T-Casasoft-BBS-DataTier-CustomContextWriter'></a>
 ## CustomContextWriter `type`
@@ -328,6 +342,104 @@ hex hash
 | ---- | ---- | ----------- |
 | input | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
+<a name='T-Casasoft-BBS-DataTier-DataModel-FidoNetwork'></a>
+## FidoNetwork `type`
+
+##### Namespace
+
+Casasoft.BBS.DataTier.DataModel
+
+##### Summary
+
+Elements of the table 'FidoNetworks':
+List of fdo-style networks
+
+<a name='M-Casasoft-BBS-DataTier-DataModel-FidoNetwork-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Entity constructor
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Description'></a>
+### Description `property`
+
+##### Summary
+
+Column 'description':
+Network description
+
+##### Remarks
+
+Original field type: varchar(80)
+
+<a name='P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Host'></a>
+### Host `property`
+
+##### Summary
+
+Column 'host'
+
+##### Remarks
+
+Original field type: int(11)
+
+<a name='P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Id'></a>
+### Id `property`
+
+##### Summary
+
+Column 'ID':
+Fido style network identifier
+
+##### Remarks
+
+Original field type: varchar(30)
+
+<a name='P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-MessageAreasGroups'></a>
+### MessageAreasGroups `property`
+
+##### Summary
+
+ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation
+
+<a name='P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Net'></a>
+### Net `property`
+
+##### Summary
+
+Column 'net'
+
+##### Remarks
+
+Original field type: int(11)
+
+<a name='P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Point'></a>
+### Point `property`
+
+##### Summary
+
+Column 'point'
+
+##### Remarks
+
+Original field type: int(11)
+
+<a name='P-Casasoft-BBS-DataTier-DataModel-FidoNetwork-Zone'></a>
+### Zone `property`
+
+##### Summary
+
+Column 'zone'
+
+##### Remarks
+
+Original field type: int(11)
+
 <a name='T-Casasoft-BBS-DataTier-DataModel-Log'></a>
 ## Log `type`
 
@@ -345,7 +457,8 @@ Events log
 
 ##### Summary
 
-Column 'DateTime'
+Column 'DateTime':
+Timestamp of the event, set to current timestamp by default
 
 ##### Remarks
 
@@ -378,7 +491,8 @@ Original field type: int(11)
 
 ##### Summary
 
-Column 'Level'
+Column 'Level':
+Severity level
 
 ##### Remarks
 
@@ -389,7 +503,8 @@ Original field type: tinyint(4)
 
 ##### Summary
 
-Column 'Remote'
+Column 'Remote':
+Remote ip address and port of the client (if applicable)
 
 ##### Remarks
 
@@ -412,7 +527,8 @@ Users logins
 
 ##### Summary
 
-Column 'DateTime'
+Column 'DateTime':
+timestamp set to current timestamp by default
 
 ##### Remarks
 
@@ -423,7 +539,8 @@ Original field type: datetime
 
 ##### Summary
 
-Column 'From'
+Column 'From':
+remote ip address and port of the client
 
 ##### Remarks
 
@@ -445,7 +562,8 @@ Original field type: int(11)
 
 ##### Summary
 
-Column 'Success'
+Column 'Success':
+true if login was successful
 
 ##### Remarks
 
@@ -463,7 +581,8 @@ ForeignKey: Login {'UserId'} -> User {'Userid'} ToDependent: Logins ToPrincipal:
 
 ##### Summary
 
-Column 'UserId'
+Column 'UserId':
+username supplied for the login
 
 ##### Remarks
 
@@ -627,13 +746,6 @@ Original field type: varchar(100)
 
 ForeignKey: MessageRead {'MessgeId'} -> Message {'Id'} ToDependent: MessageReads ToPrincipal: Messge
 
-<a name='P-Casasoft-BBS-DataTier-DataModel-Message-MessageSeenBies'></a>
-### MessageSeenBies `property`
-
-##### Summary
-
-ForeignKey: MessageSeenBy {'MessageId'} -> Message {'Id'} ToDependent: MessageSeenBies ToPrincipal: Message
-
 <a name='P-Casasoft-BBS-DataTier-DataModel-Message-MessageTo'></a>
 ### MessageTo `property`
 
@@ -773,7 +885,8 @@ This constructor has no parameters.
 
 ##### Summary
 
-Column 'AllowedGroupRead'
+Column 'AllowedGroupRead':
+User group needed to access this area
 
 ##### Remarks
 
@@ -791,7 +904,8 @@ ForeignKey: MessageArea {'AllowedGroupRead'} -> UsersGroup {'Groupid'} ToDepende
 
 ##### Summary
 
-Column 'AllowedGroupWrite'
+Column 'AllowedGroupWrite':
+User group needed to write in this area
 
 ##### Remarks
 
@@ -809,7 +923,8 @@ ForeignKey: MessageArea {'AllowedGroupWrite'} -> UsersGroup {'Groupid'} ToDepend
 
 ##### Summary
 
-Column 'AREAGROUP'
+Column 'AREAGROUP':
+Gruop that area belongs to
 
 ##### Remarks
 
@@ -838,7 +953,8 @@ Original field type: varchar(200)
 
 ##### Summary
 
-Column 'FIDOID'
+Column 'FIDOID':
+Message area identifier for fido network
 
 ##### Remarks
 
@@ -849,7 +965,8 @@ Original field type: varchar(30)
 
 ##### Summary
 
-Column 'ID'
+Column 'ID':
+Message area identifier
 
 ##### Remarks
 
@@ -1005,7 +1122,8 @@ ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDep
 
 ##### Summary
 
-Column 'AllowedGroupId'
+Column 'AllowedGroupId':
+User group needed for access this group
 
 ##### Remarks
 
@@ -1022,12 +1140,32 @@ Column 'Description'
 
 Original field type: varchar(200)
 
+<a name='P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-FidoNetwork'></a>
+### FidoNetwork `property`
+
+##### Summary
+
+Column 'FidoNetwork':
+Fido style network for exchange
+
+##### Remarks
+
+Original field type: varchar(30)
+
+<a name='P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-FidoNetworkNavigation'></a>
+### FidoNetworkNavigation `property`
+
+##### Summary
+
+ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation
+
 <a name='P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-Id'></a>
 ### Id `property`
 
 ##### Summary
 
-Column 'ID'
+Column 'ID':
+Areas group id
 
 ##### Remarks
 
@@ -1613,6 +1751,14 @@ Constructor
 | ---- | ---- | ----------- |
 | options | [Microsoft.EntityFrameworkCore.DbContextOptions{Casasoft.BBS.DataTier.DBContext.bbsContext}](#T-Microsoft-EntityFrameworkCore-DbContextOptions{Casasoft-BBS-DataTier-DBContext-bbsContext} 'Microsoft.EntityFrameworkCore.DbContextOptions{Casasoft.BBS.DataTier.DBContext.bbsContext}') |  |
 
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-FidoNetworks'></a>
+### FidoNetworks `property`
+
+##### Summary
+
+Table 'FidoNetworks':
+List of fdo-style networks
+
 <a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-Logins'></a>
 ### Logins `property`
 
@@ -1744,6 +1890,40 @@ Gets a list of accessible message areas for an user
 | group | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 | username | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
+<a name='M-Casasoft-BBS-DataTier-bbsContext-GetMessageById-System-Int32-'></a>
+### GetMessageById(messageId) `method`
+
+##### Summary
+
+Gets a message by its Id
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| messageId | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | Id of message to retrieve |
+
+<a name='M-Casasoft-BBS-DataTier-bbsContext-GetMessageById-System-String-'></a>
+### GetMessageById(messageId) `method`
+
+##### Summary
+
+Gets a message by its Id
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| messageId | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Id of message to retrieve |
+
 <a name='M-Casasoft-BBS-DataTier-bbsContext-GetUserByUsername-System-String-'></a>
 ### GetUserByUsername(username) `method`
 
@@ -1773,3 +1953,17 @@ Gets connection string from app.config
 | Name | Type | Description |
 | ---- | ---- | ----------- |
 | optionsBuilder | [Microsoft.EntityFrameworkCore.DbContextOptionsBuilder](#T-Microsoft-EntityFrameworkCore-DbContextOptionsBuilder 'Microsoft.EntityFrameworkCore.DbContextOptionsBuilder') |  |
+
+<a name='M-Casasoft-BBS-DataTier-bbsContext-SetMessageRead-System-Int32,System-String-'></a>
+### SetMessageRead(msgId,username) `method`
+
+##### Summary
+
+Mark the message as read by the user
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| msgId | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
+| username | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |

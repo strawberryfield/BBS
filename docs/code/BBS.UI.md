@@ -89,6 +89,7 @@
   - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-MessageScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MessageScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
   - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-MessageScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.MessageScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
   - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-MessageScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MessageScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [ReadText(name)](#M-Casasoft-BBS-UI-MessageScreen-ReadText-System-String- 'Casasoft.BBS.UI.MessageScreen.ReadText(System.String)')
 - [MessagesList](#T-Casasoft-BBS-UI-MessagesList 'Casasoft.BBS.UI.MessagesList')
   - [#ctor(c,s)](#M-Casasoft-BBS-UI-MessagesList-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.MessagesList.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
   - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-MessagesList-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MessagesList.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
@@ -1333,6 +1334,19 @@ Complete constructor
 | s | [Casasoft.BBS.Interfaces.IServer](#T-Casasoft-BBS-Interfaces-IServer 'Casasoft.BBS.Interfaces.IServer') | Server reference |
 | txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
 | prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
+
+<a name='M-Casasoft-BBS-UI-MessageScreen-ReadText-System-String-'></a>
+### ReadText(name) `method`
+
+##### Summary
+
+Reads the message and the page template
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | template name |
 
 <a name='T-Casasoft-BBS-UI-MessagesList'></a>
 ## MessagesList `type`

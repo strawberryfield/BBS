@@ -36,7 +36,7 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public Message()
         {
             MessageReads = new HashSet<MessageRead>();
-            MessageSeenBies = new HashSet<MessageSeenBy>();
+            MessagesSeenBy = new HashSet<MessageSeenBy>();
         }
 
         
@@ -158,10 +158,6 @@ namespace Casasoft.BBS.DataTier.DataModel
 		/// ForeignKey: MessageRead {'MessgeId'} -> Message {'Id'} ToDependent: MessageReads ToPrincipal: Messge
 		/// </summary>
 		public virtual ICollection<MessageRead> MessageReads { get; set; }
-        
-		/// <summary>
-		/// ForeignKey: MessageSeenBy {'MessageId'} -> Message {'Id'} ToDependent: MessageSeenBies ToPrincipal: Message
-		/// </summary>
-		public virtual ICollection<MessageSeenBy> MessageSeenBies { get; set; }
+        public virtual ICollection<MessageSeenBy> MessagesSeenBy { get; set; }
     }
 }

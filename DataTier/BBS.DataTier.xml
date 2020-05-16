@@ -55,6 +55,81 @@
             <param name="area">area to query</param>
             <returns></returns>
         </member>
+        <member name="M:Casasoft.BBS.DataTier.bbsContext.GetMessageById(System.Int32)">
+            <summary>
+            Gets a message by its Id
+            </summary>
+            <param name="messageId">Id of message to retrieve</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.bbsContext.GetMessageById(System.String)">
+            <summary>
+            Gets a message by its Id
+            </summary>
+            <param name="messageId">Id of message to retrieve</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.bbsContext.SetMessageRead(System.Int32,System.String)">
+            <summary>
+            Mark the message as read by the user
+            </summary>
+            <param name="msgId"></param>
+            <param name="username"></param>
+        </member>
+        <member name="T:Casasoft.BBS.DataTier.DataModel.FidoNetwork">
+            <summary>
+            Elements of the table 'FidoNetworks':
+            List of fdo-style networks
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.DataModel.FidoNetwork.#ctor">
+            <summary>
+            Entity constructor
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.FidoNetwork.Id">
+            <summary>
+            Column 'ID':
+            Fido style network identifier
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.FidoNetwork.Zone">
+            <summary>
+            Column 'zone'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.FidoNetwork.Net">
+            <summary>
+            Column 'net'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.FidoNetwork.Host">
+            <summary>
+            Column 'host'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.FidoNetwork.Point">
+            <summary>
+            Column 'point'
+            </summary>
+            <remarks>Original field type: int(11)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.FidoNetwork.Description">
+            <summary>
+            Column 'description':
+            Network description
+            </summary>
+            <remarks>Original field type: varchar(80)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.FidoNetwork.MessageAreasGroups">
+            <summary>
+            ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation
+            </summary>
+        </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.Log">
             <summary>
             Elements of the table 'Log':
@@ -69,19 +144,22 @@
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Log.DateTime">
             <summary>
-            Column 'DateTime'
+            Column 'DateTime':
+            Timestamp of the event, set to current timestamp by default
             </summary>
             <remarks>Original field type: datetime</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Log.Remote">
             <summary>
-            Column 'Remote'
+            Column 'Remote':
+            Remote ip address and port of the client (if applicable)
             </summary>
             <remarks>Original field type: varchar(24)</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Log.Level">
             <summary>
-            Column 'Level'
+            Column 'Level':
+            Severity level
             </summary>
             <remarks>Original field type: tinyint(4)</remarks>
         </member>
@@ -105,25 +183,29 @@
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Login.UserId">
             <summary>
-            Column 'UserId'
+            Column 'UserId':
+            username supplied for the login
             </summary>
             <remarks>Original field type: varchar(30)</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Login.DateTime">
             <summary>
-            Column 'DateTime'
+            Column 'DateTime':
+            timestamp set to current timestamp by default
             </summary>
             <remarks>Original field type: datetime</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Login.From">
             <summary>
-            Column 'From'
+            Column 'From':
+            remote ip address and port of the client
             </summary>
             <remarks>Original field type: varchar(24)</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Login.Success">
             <summary>
-            Column 'Success'
+            Column 'Success':
+            true if login was successful
             </summary>
             <remarks>Original field type: </remarks>
         </member>
@@ -264,11 +346,6 @@
             ForeignKey: MessageRead {'MessgeId'} -> Message {'Id'} ToDependent: MessageReads ToPrincipal: Messge
             </summary>
         </member>
-        <member name="P:Casasoft.BBS.DataTier.DataModel.Message.MessageSeenBies">
-            <summary>
-            ForeignKey: MessageSeenBy {'MessageId'} -> Message {'Id'} ToDependent: MessageSeenBies ToPrincipal: Message
-            </summary>
-        </member>
         <member name="M:Casasoft.BBS.DataTier.DataModel.Message.IsNew(System.DateTime)">
             <summary>
             Test if a message is posted after the datetime
@@ -299,7 +376,8 @@
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Id">
             <summary>
-            Column 'ID'
+            Column 'ID':
+            Message area identifier
             </summary>
             <remarks>Original field type: varchar(20)</remarks>
         </member>
@@ -311,25 +389,29 @@
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Fidoid">
             <summary>
-            Column 'FIDOID'
+            Column 'FIDOID':
+            Message area identifier for fido network
             </summary>
             <remarks>Original field type: varchar(30)</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Areagroup">
             <summary>
-            Column 'AREAGROUP'
+            Column 'AREAGROUP':
+            Gruop that area belongs to
             </summary>
             <remarks>Original field type: varchar(20)</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupRead">
             <summary>
-            Column 'AllowedGroupRead'
+            Column 'AllowedGroupRead':
+            User group needed to access this area
             </summary>
             <remarks>Original field type: varchar(30)</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupWrite">
             <summary>
-            Column 'AllowedGroupWrite'
+            Column 'AllowedGroupWrite':
+            User group needed to write in this area
             </summary>
             <remarks>Original field type: varchar(30)</remarks>
         </member>
@@ -412,7 +494,8 @@
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.Id">
             <summary>
-            Column 'ID'
+            Column 'ID':
+            Areas group id
             </summary>
             <remarks>Original field type: varchar(20)</remarks>
         </member>
@@ -424,13 +507,26 @@
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.AllowedGroupId">
             <summary>
-            Column 'AllowedGroupId'
+            Column 'AllowedGroupId':
+            User group needed for access this group
+            </summary>
+            <remarks>Original field type: varchar(30)</remarks>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.FidoNetwork">
+            <summary>
+            Column 'FidoNetwork':
+            Fido style network for exchange
             </summary>
             <remarks>Original field type: varchar(30)</remarks>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.AllowedGroup">
             <summary>
             ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.FidoNetworkNavigation">
+            <summary>
+            ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.MessageAreas">
@@ -729,6 +825,12 @@
         <member name="T:Casasoft.BBS.DataTier.DBContext.bbsContext">
             <summary>
             Model for the database 'bbs'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.FidoNetworks">
+            <summary>
+            Table 'FidoNetworks':
+            List of fdo-style networks
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.Logs">

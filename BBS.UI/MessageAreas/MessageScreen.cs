@@ -18,7 +18,10 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.DataTier;
+using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
+using Casasoft.TextHelpers;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -66,5 +69,30 @@ namespace Casasoft.BBS.UI
         public MessageScreen(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
         #endregion
 
+        /// <summary>
+        /// Reads the message and the page template
+        /// </summary>
+        /// <param name="name">template name</param>
+        protected override void ReadText(string name)
+        {            
+            Message msg;
+            using (bbsContext bbs = new bbsContext())
+            {
+                msg = bbs.GetMessageById(Params[1]);
+                if (bbs.SetMessageRead(msg.Id, client.username))
+                {
+                    msg.TimesRead++;
+                    bbs.SaveChanges();
+                }
+            }
+
+            base.ReadText(name);
+            Data.Header = Data.Header.Replace("$msgid$", Params[1])
+                .Replace("$msgdatetime$", msg.DateTime.ToString("G"))
+                .Replace("$msgfrom$", msg.MessageFrom)
+                .Replace("$msgsubj$", msg.Subject);
+            Header = Data.GetHeaderRows();
+            Text = TextHelper.SplitString(msg.Body);
+        }
     }
 }

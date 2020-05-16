@@ -66,6 +66,9 @@ namespace Casasoft.BBS.DataTier
             code = CustomHelpers.commentedClass(code,
                  string.Format("Model for the database '{0}'.", model.GetDatabaseName()), "");
 
+            // Pluralizer issue
+            code = code.Replace("MessageSeenBies", "MessagesSeenBy");
+
             foreach (var e in model.GetEntityTypes())
             {
                 string decl = string.Format("public virtual DbSet<{0}>", e.Name);

@@ -40,7 +40,8 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// Column 'ID'
+		/// Column 'ID':
+		/// Message area identifier
 		/// </summary>
 		/// <remarks>Original field type: varchar(20)</remarks>
 		public string Id { get; set; }
@@ -52,25 +53,29 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public string Description { get; set; }
         
 		/// <summary>
-		/// Column 'FIDOID'
+		/// Column 'FIDOID':
+		/// Message area identifier for fido network
 		/// </summary>
 		/// <remarks>Original field type: varchar(30)</remarks>
 		public string Fidoid { get; set; }
         
 		/// <summary>
-		/// Column 'AREAGROUP'
+		/// Column 'AREAGROUP':
+		/// Gruop that area belongs to
 		/// </summary>
 		/// <remarks>Original field type: varchar(20)</remarks>
 		public string Areagroup { get; set; }
         
 		/// <summary>
-		/// Column 'AllowedGroupRead'
+		/// Column 'AllowedGroupRead':
+		/// User group needed to access this area
 		/// </summary>
 		/// <remarks>Original field type: varchar(30)</remarks>
 		public string AllowedGroupRead { get; set; }
         
 		/// <summary>
-		/// Column 'AllowedGroupWrite'
+		/// Column 'AllowedGroupWrite':
+		/// User group needed to write in this area
 		/// </summary>
 		/// <remarks>Original field type: varchar(30)</remarks>
 		public string AllowedGroupWrite { get; set; }

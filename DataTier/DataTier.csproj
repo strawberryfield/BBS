@@ -44,7 +44,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DataModel\" />
     <Folder Include="DBContext\" />
   </ItemGroup>
 

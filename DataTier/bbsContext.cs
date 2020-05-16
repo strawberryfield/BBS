@@ -19,13 +19,13 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.DataTier.DataModel;
-using Casasoft.BBS.DataTier.DBContext;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Configuration;
 using System.Linq;
 
 namespace Casasoft.BBS.DataTier
-{ 
+{
     /// <summary>
     /// Database abstraction class
     /// </summary>
@@ -67,7 +67,8 @@ namespace Casasoft.BBS.DataTier
         /// </summary>
         /// <param name="username"></param>
         /// <returns></returns>
-        public User GetUserByUsername(string username) => Users.Where(u => u.Userid == username).FirstOrDefault();
+        public User GetUserByUsername(string username) => 
+            Users.Where(u => u.Userid == username).FirstOrDefault();
 
         /// <summary>
         /// Gets a list of accessible message areas for an user
@@ -98,6 +99,36 @@ namespace Casasoft.BBS.DataTier
         /// <returns></returns>
         public IQueryable<Message> GetAllMessagesInArea(string area) =>
             Messages.Where(m => m.Area == area).OrderByDescending(m => m.DateTime);
+
+        /// <summary>
+        /// Gets a message by its Id
+        /// </summary>
+        /// <param name="messageId">Id of message to retrieve</param>
+        /// <returns></returns>
+        public Message GetMessageById(int messageId) =>
+            Messages.Where(m => m.Id == messageId).FirstOrDefault();
+
+        /// <summary>
+        /// Gets a message by its Id
+        /// </summary>
+        /// <param name="messageId">Id of message to retrieve</param>
+        /// <returns></returns>
+        public Message GetMessageById(string messageId) =>
+            GetMessageById(Convert.ToInt32(messageId));
+
+        /// <summary>
+        /// Mark the message as read by the user
+        /// </summary>
+        /// <param name="msgId"></param>
+        /// <param name="username"></param>
+        public bool SetMessageRead(int msgId, string username)
+        {
+            MessageRead isSet = MessageReads
+                .Where(mr => mr.MessgeId == msgId && mr.UserId == username).FirstOrDefault();
+            if (isSet == null) 
+                MessageReads.Add(new MessageRead() { MessgeId = msgId, UserId = username });
+            return isSet == null;
+        }
         #endregion
     } 
 }

@@ -57,6 +57,9 @@ namespace Casasoft.BBS.DataTier
             code = CustomHelpers.commentedClass(code,
                 string.Format("Elements of the table '{0}'", type.GetTableName()), type.GetComment());
 
+            // Pluralizer issue
+            code = code.Replace("MessageSeenBies", "MessagesSeenBy");
+
             string constr = string.Format("public {0}()", type.Name);
             code = code.Replace(constr,
                 "/// <summary>\r\n\t\t/// Entity constructor\r\n\t\t/// </summary>\r\n\t\t" + constr);

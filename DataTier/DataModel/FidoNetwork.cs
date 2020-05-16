@@ -24,61 +24,63 @@ using System.Collections.Generic;
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
-	/// Elements of the table 'MessageAreasGroups'
+	/// Elements of the table 'FidoNetworks':
+	/// List of fdo-style networks
 	/// </summary>
 	[System.CodeDom.Compiler.GeneratedCodeAttribute("EntityFrameworkCore", "3.1.4")]
-	public partial class MessageAreasGroup
+	public partial class FidoNetwork
     {
         /// <summary>
 		/// Entity constructor
 		/// </summary>
-		public MessageAreasGroup()
+		public FidoNetwork()
         {
-            MessageAreas = new HashSet<MessageArea>();
+            MessageAreasGroups = new HashSet<MessageAreasGroup>();
         }
 
         
 		/// <summary>
 		/// Column 'ID':
-		/// Areas group id
+		/// Fido style network identifier
 		/// </summary>
-		/// <remarks>Original field type: varchar(20)</remarks>
+		/// <remarks>Original field type: varchar(30)</remarks>
 		public string Id { get; set; }
         
 		/// <summary>
-		/// Column 'Description'
+		/// Column 'zone'
 		/// </summary>
-		/// <remarks>Original field type: varchar(200)</remarks>
+		/// <remarks>Original field type: int(11)</remarks>
+		public int Zone { get; set; }
+        
+		/// <summary>
+		/// Column 'net'
+		/// </summary>
+		/// <remarks>Original field type: int(11)</remarks>
+		public int Net { get; set; }
+        
+		/// <summary>
+		/// Column 'host'
+		/// </summary>
+		/// <remarks>Original field type: int(11)</remarks>
+		public int Host { get; set; }
+        
+		/// <summary>
+		/// Column 'point'
+		/// </summary>
+		/// <remarks>Original field type: int(11)</remarks>
+		public int Point { get; set; }
+        
+		/// <summary>
+		/// Column 'description':
+		/// Network description
+		/// </summary>
+		/// <remarks>Original field type: varchar(80)</remarks>
 		public string Description { get; set; }
-        
-		/// <summary>
-		/// Column 'AllowedGroupId':
-		/// User group needed for access this group
-		/// </summary>
-		/// <remarks>Original field type: varchar(30)</remarks>
-		public string AllowedGroupId { get; set; }
-        
-		/// <summary>
-		/// Column 'FidoNetwork':
-		/// Fido style network for exchange
-		/// </summary>
-		/// <remarks>Original field type: varchar(30)</remarks>
-		public string FidoNetwork { get; set; }
 
-        
-		/// <summary>
-		/// ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup
-		/// </summary>
-		public virtual UsersGroup AllowedGroup { get; set; }
         
 		/// <summary>
 		/// ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation
 		/// </summary>
-		public virtual FidoNetwork FidoNetworkNavigation { get; set; }
-        
-		/// <summary>
-		/// ForeignKey: MessageArea {'Areagroup'} -> MessageAreasGroup {'Id'} ToDependent: MessageAreas ToPrincipal: AreagroupNavigation
-		/// </summary>
-		public virtual ICollection<MessageArea> MessageAreas { get; set; }
+		public virtual ICollection<MessageAreasGroup> MessageAreasGroups { get; set; }
     }
 }

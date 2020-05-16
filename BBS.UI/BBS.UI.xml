@@ -1001,6 +1001,12 @@
             <param name="txt">Text to parse and optional parameters separated by semicolon</param>
             <param name="prev">Link to caller screen</param>
         </member>
+        <member name="M:Casasoft.BBS.UI.MessageScreen.ReadText(System.String)">
+            <summary>
+            Reads the message and the page template
+            </summary>
+            <param name="name">template name</param>
+        </member>
         <member name="T:Casasoft.BBS.UI.MessagesList">
             <summary>
             List of messages in echomail area
