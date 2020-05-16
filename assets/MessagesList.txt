@@ -1,0 +1,6 @@
+{HEADER}{CLS/} &BBSname;  -  Messages in this area:
+
+MsgId N U From                 Subject
+{HR/}{/HEADER}
+{FOOTER}{hr/}
+Enter {COLOR value="red"}MsgId{/color} or {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to continue {/FOOTER}

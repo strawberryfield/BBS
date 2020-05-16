@@ -18,29 +18,27 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-using Casasoft.BBS.DataTier;
-using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
-using Casasoft.TextHelpers;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Text;
 
 namespace Casasoft.BBS.UI
 {
     /// <summary>
-    /// Implements the list of message areas
+    /// Shows a message
     /// </summary>
-    public class MessageAreas : ListScreenBase
+    public class MessageScreen : TextScreenBase
     {
         #region constructors
-        private const string defaultText = "@MessageAreas";
+        private const string defaultText = "@MessageScreen";
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
-        public MessageAreas(IBBSClient c, IServer s) : base(c, s, defaultText) { }
+        public MessageScreen(IBBSClient c, IServer s) : base(c, s, defaultText) { }
 
         /// <summary>
         /// Constructor
@@ -48,7 +46,7 @@ namespace Casasoft.BBS.UI
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
         /// <param name="prev">Link to caller screen</param>
-        public MessageAreas(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public MessageScreen(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
 
         /// <summary>
         /// Constructor
@@ -56,7 +54,7 @@ namespace Casasoft.BBS.UI
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
         /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
-        public MessageAreas(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public MessageScreen(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
 
         /// <summary>
         /// Complete constructor
@@ -65,34 +63,8 @@ namespace Casasoft.BBS.UI
         /// <param name="s">Server reference</param>
         /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         /// <param name="prev">Link to caller screen</param>
-        public MessageAreas(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        public MessageScreen(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
         #endregion
 
-        /// <summary>
-        /// Fills the messages area list
-        /// </summary>
-        protected override void AddList()
-        {
-            string fmt = "{0,-20} {1,4} {2,4} {3,4} {4}";
-
-            using (bbsContext bbs = new bbsContext())
-            {
-                User user = bbs.GetUserByUsername(client.username);
-                List<MessageArea> list = bbs.GetMessageAllowedAreasByGroup(
-                    Params.Length > 1 ? Params[1] : string.Empty, client.username).ToList();
-                foreach (MessageArea area in list)
-                {
-                    Text.Add(TextHelper.Truncate(string.Format(fmt, new object[] {
-                        area.Id, area.MessagesCount, area.NewMessagesCount(user.LastLoginDate),
-                        area.UnreadMessagesCount(user.Userid), area.Description }), client.screenWidth));
-                    Data.Actions.Add(area.Id,
-                        new Parser.BBSCodeResult.Action()
-                        {
-                            module = "MessagesList",
-                            data = string.Format("@MessagesList;{0}", area.Id)
-                        });
-                }
-            }
-        }
     }
 }

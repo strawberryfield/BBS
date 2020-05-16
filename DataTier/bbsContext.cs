@@ -84,12 +84,20 @@ namespace Casasoft.BBS.DataTier
         /// <summary>
         /// Gets a list of accessible message areas groups for an user
         /// </summary>
-        /// <param name="username"></param>
+        /// <param name="username">user to check</param>
         /// <returns></returns>
         public IQueryable<MessageAreasGroup> GetAllowedMessageAreasGroup(string username) =>
             MessageAreasGroups.Where(
                 g => g.AllowedGroupId == null
                 || UsersGroupsLinks.Where(u => u.Userid == username).Select(ug => ug.Groupid).Contains(g.AllowedGroupId));
+
+        /// <summary>
+        /// Gets the complete list of messages in an echomail area
+        /// </summary>
+        /// <param name="area">area to query</param>
+        /// <returns></returns>
+        public IQueryable<Message> GetAllMessagesInArea(string area) =>
+            Messages.Where(m => m.Area == area).OrderByDescending(m => m.DateTime);
         #endregion
     } 
 }

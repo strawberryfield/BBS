@@ -964,6 +964,85 @@
             Fills the messages area list
             </summary>
         </member>
+        <member name="T:Casasoft.BBS.UI.MessageScreen">
+            <summary>
+            Shows a message
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessageScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="T:Casasoft.BBS.UI.MessagesList">
+            <summary>
+            List of messages in echomail area
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessagesList.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessagesList.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessagesList.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessagesList.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MessagesList.AddList">
+            <summary>
+            Fills the messages area list
+            </summary>
+        </member>
         <member name="T:Casasoft.BBS.UI.NewUser">
             <summary>
             Form to register as a new user

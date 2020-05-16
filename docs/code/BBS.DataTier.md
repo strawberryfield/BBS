@@ -31,6 +31,7 @@
   - [User](#P-Casasoft-BBS-DataTier-DataModel-Login-User 'Casasoft.BBS.DataTier.DataModel.Login.User')
   - [UserId](#P-Casasoft-BBS-DataTier-DataModel-Login-UserId 'Casasoft.BBS.DataTier.DataModel.Login.UserId')
 - [Message](#T-Casasoft-BBS-DataTier-DataModel-Message 'Casasoft.BBS.DataTier.DataModel.Message')
+  - [#ctor()](#M-Casasoft-BBS-DataTier-DataModel-Message-#ctor 'Casasoft.BBS.DataTier.DataModel.Message.#ctor')
   - [Area](#P-Casasoft-BBS-DataTier-DataModel-Message-Area 'Casasoft.BBS.DataTier.DataModel.Message.Area')
   - [AreaNavigation](#P-Casasoft-BBS-DataTier-DataModel-Message-AreaNavigation 'Casasoft.BBS.DataTier.DataModel.Message.AreaNavigation')
   - [Body](#P-Casasoft-BBS-DataTier-DataModel-Message-Body 'Casasoft.BBS.DataTier.DataModel.Message.Body')
@@ -55,6 +56,7 @@
   - [IsNew(since)](#M-Casasoft-BBS-DataTier-DataModel-Message-IsNew-System-DateTime- 'Casasoft.BBS.DataTier.DataModel.Message.IsNew(System.DateTime)')
   - [IsRead(username)](#M-Casasoft-BBS-DataTier-DataModel-Message-IsRead-System-String- 'Casasoft.BBS.DataTier.DataModel.Message.IsRead(System.String)')
 - [MessageArea](#T-Casasoft-BBS-DataTier-DataModel-MessageArea 'Casasoft.BBS.DataTier.DataModel.MessageArea')
+  - [#ctor()](#M-Casasoft-BBS-DataTier-DataModel-MessageArea-#ctor 'Casasoft.BBS.DataTier.DataModel.MessageArea.#ctor')
   - [AllowedGroupRead](#P-Casasoft-BBS-DataTier-DataModel-MessageArea-AllowedGroupRead 'Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupRead')
   - [AllowedGroupReadNavigation](#P-Casasoft-BBS-DataTier-DataModel-MessageArea-AllowedGroupReadNavigation 'Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupReadNavigation')
   - [AllowedGroupWrite](#P-Casasoft-BBS-DataTier-DataModel-MessageArea-AllowedGroupWrite 'Casasoft.BBS.DataTier.DataModel.MessageArea.AllowedGroupWrite')
@@ -73,6 +75,7 @@
   - [UnreadMessagesCount(username)](#M-Casasoft-BBS-DataTier-DataModel-MessageArea-UnreadMessagesCount-System-String- 'Casasoft.BBS.DataTier.DataModel.MessageArea.UnreadMessagesCount(System.String)')
   - [Writable(user)](#M-Casasoft-BBS-DataTier-DataModel-MessageArea-Writable-Casasoft-BBS-DataTier-DataModel-User- 'Casasoft.BBS.DataTier.DataModel.MessageArea.Writable(Casasoft.BBS.DataTier.DataModel.User)')
 - [MessageAreasGroup](#T-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup')
+  - [#ctor()](#M-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-#ctor 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.#ctor')
   - [AllowedGroup](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-AllowedGroup 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.AllowedGroup')
   - [AllowedGroupId](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-AllowedGroupId 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.AllowedGroupId')
   - [Description](#P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-Description 'Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.Description')
@@ -90,6 +93,7 @@
   - [MessageId](#P-Casasoft-BBS-DataTier-DataModel-MessageSeenBy-MessageId 'Casasoft.BBS.DataTier.DataModel.MessageSeenBy.MessageId')
   - [SeenBy](#P-Casasoft-BBS-DataTier-DataModel-MessageSeenBy-SeenBy 'Casasoft.BBS.DataTier.DataModel.MessageSeenBy.SeenBy')
 - [User](#T-Casasoft-BBS-DataTier-DataModel-User 'Casasoft.BBS.DataTier.DataModel.User')
+  - [#ctor()](#M-Casasoft-BBS-DataTier-DataModel-User-#ctor 'Casasoft.BBS.DataTier.DataModel.User.#ctor')
   - [City](#P-Casasoft-BBS-DataTier-DataModel-User-City 'Casasoft.BBS.DataTier.DataModel.User.City')
   - [Email](#P-Casasoft-BBS-DataTier-DataModel-User-Email 'Casasoft.BBS.DataTier.DataModel.User.Email')
   - [LastLoginDate](#P-Casasoft-BBS-DataTier-DataModel-User-LastLoginDate 'Casasoft.BBS.DataTier.DataModel.User.LastLoginDate')
@@ -113,6 +117,7 @@
   - [HasRights(required)](#M-Casasoft-BBS-DataTier-DataModel-User-HasRights-System-String- 'Casasoft.BBS.DataTier.DataModel.User.HasRights(System.String)')
   - [SetPassword(pwd)](#M-Casasoft-BBS-DataTier-DataModel-User-SetPassword-System-String- 'Casasoft.BBS.DataTier.DataModel.User.SetPassword(System.String)')
 - [UsersGroup](#T-Casasoft-BBS-DataTier-DataModel-UsersGroup 'Casasoft.BBS.DataTier.DataModel.UsersGroup')
+  - [#ctor()](#M-Casasoft-BBS-DataTier-DataModel-UsersGroup-#ctor 'Casasoft.BBS.DataTier.DataModel.UsersGroup.#ctor')
   - [Description](#P-Casasoft-BBS-DataTier-DataModel-UsersGroup-Description 'Casasoft.BBS.DataTier.DataModel.UsersGroup.Description')
   - [Groupid](#P-Casasoft-BBS-DataTier-DataModel-UsersGroup-Groupid 'Casasoft.BBS.DataTier.DataModel.UsersGroup.Groupid')
   - [MessageAreaAllowedGroupReadNavigations](#P-Casasoft-BBS-DataTier-DataModel-UsersGroup-MessageAreaAllowedGroupReadNavigations 'Casasoft.BBS.DataTier.DataModel.UsersGroup.MessageAreaAllowedGroupReadNavigations')
@@ -129,6 +134,17 @@
 - [bbsContext](#T-Casasoft-BBS-DataTier-bbsContext 'Casasoft.BBS.DataTier.bbsContext')
   - [#ctor()](#M-Casasoft-BBS-DataTier-bbsContext-#ctor 'Casasoft.BBS.DataTier.bbsContext.#ctor')
   - [#ctor(options)](#M-Casasoft-BBS-DataTier-bbsContext-#ctor-Microsoft-EntityFrameworkCore-DbContextOptions{Casasoft-BBS-DataTier-DBContext-bbsContext}- 'Casasoft.BBS.DataTier.bbsContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{Casasoft.BBS.DataTier.DBContext.bbsContext})')
+  - [Logins](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-Logins 'Casasoft.BBS.DataTier.DBContext.bbsContext.Logins')
+  - [Logs](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-Logs 'Casasoft.BBS.DataTier.DBContext.bbsContext.Logs')
+  - [MessageAreas](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessageAreas 'Casasoft.BBS.DataTier.DBContext.bbsContext.MessageAreas')
+  - [MessageAreasGroups](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessageAreasGroups 'Casasoft.BBS.DataTier.DBContext.bbsContext.MessageAreasGroups')
+  - [MessageReads](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessageReads 'Casasoft.BBS.DataTier.DBContext.bbsContext.MessageReads')
+  - [Messages](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-Messages 'Casasoft.BBS.DataTier.DBContext.bbsContext.Messages')
+  - [MessagesSeenBy](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessagesSeenBy 'Casasoft.BBS.DataTier.DBContext.bbsContext.MessagesSeenBy')
+  - [Users](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-Users 'Casasoft.BBS.DataTier.DBContext.bbsContext.Users')
+  - [UsersGroups](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-UsersGroups 'Casasoft.BBS.DataTier.DBContext.bbsContext.UsersGroups')
+  - [UsersGroupsLinks](#P-Casasoft-BBS-DataTier-DBContext-bbsContext-UsersGroupsLinks 'Casasoft.BBS.DataTier.DBContext.bbsContext.UsersGroupsLinks')
+  - [GetAllMessagesInArea(area)](#M-Casasoft-BBS-DataTier-bbsContext-GetAllMessagesInArea-System-String- 'Casasoft.BBS.DataTier.bbsContext.GetAllMessagesInArea(System.String)')
   - [GetAllowedMessageAreasGroup(username)](#M-Casasoft-BBS-DataTier-bbsContext-GetAllowedMessageAreasGroup-System-String- 'Casasoft.BBS.DataTier.bbsContext.GetAllowedMessageAreasGroup(System.String)')
   - [GetMessageAllowedAreasByGroup(group,username)](#M-Casasoft-BBS-DataTier-bbsContext-GetMessageAllowedAreasByGroup-System-String,System-String- 'Casasoft.BBS.DataTier.bbsContext.GetMessageAllowedAreasByGroup(System.String,System.String)')
   - [GetUserByUsername(username)](#M-Casasoft-BBS-DataTier-bbsContext-GetUserByUsername-System-String- 'Casasoft.BBS.DataTier.bbsContext.GetUserByUsername(System.String)')
@@ -321,7 +337,8 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'Log'.
+Elements of the table 'Log':
+Events log
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-Log-DateTime'></a>
 ### DateTime `property`
@@ -387,7 +404,8 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'Logins'.
+Elements of the table 'Logins':
+Users logins
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-Login-DateTime'></a>
 ### DateTime `property`
@@ -460,7 +478,19 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'Messages'.
+Elements of the table 'Messages':
+Messages
+
+<a name='M-Casasoft-BBS-DataTier-DataModel-Message-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Entity constructor
+
+##### Parameters
+
+This constructor has no parameters.
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-Message-Area'></a>
 ### Area `property`
@@ -724,7 +754,19 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'MessageAreas'.
+Elements of the table 'MessageAreas':
+Message Areas List
+
+<a name='M-Casasoft-BBS-DataTier-DataModel-MessageArea-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Entity constructor
+
+##### Parameters
+
+This constructor has no parameters.
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-MessageArea-AllowedGroupRead'></a>
 ### AllowedGroupRead `property`
@@ -938,7 +980,18 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'MessageAreasGroups'.
+Elements of the table 'MessageAreasGroups'
+
+<a name='M-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Entity constructor
+
+##### Parameters
+
+This constructor has no parameters.
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-MessageAreasGroup-AllowedGroup'></a>
 ### AllowedGroup `property`
@@ -996,7 +1049,8 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'MessageRead'.
+Elements of the table 'MessageRead':
+Flags for messages read
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-MessageRead-Id'></a>
 ### Id `property`
@@ -1054,7 +1108,8 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'MessageSeenBy'.
+Elements of the table 'MessageSeenBy':
+System that already received the message
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-MessageSeenBy-Id'></a>
 ### Id `property`
@@ -1105,7 +1160,19 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'Users'.
+Elements of the table 'Users':
+BBS users
+
+<a name='M-Casasoft-BBS-DataTier-DataModel-User-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Entity constructor
+
+##### Parameters
+
+This constructor has no parameters.
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-User-City'></a>
 ### City `property`
@@ -1203,7 +1270,7 @@ Original field type: varchar(50)
 
 ##### Summary
 
-Column 'password'
+Column 'password':
 MD5 Hash of the password
 
 ##### Remarks
@@ -1377,7 +1444,19 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'UsersGroups'.
+Elements of the table 'UsersGroups':
+Users groups definition
+
+<a name='M-Casasoft-BBS-DataTier-DataModel-UsersGroup-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Entity constructor
+
+##### Parameters
+
+This constructor has no parameters.
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-UsersGroup-Description'></a>
 ### Description `property`
@@ -1438,7 +1517,8 @@ Casasoft.BBS.DataTier.DataModel
 
 ##### Summary
 
-Elements of the table 'UsersGroupsLinks'.
+Elements of the table 'UsersGroupsLinks':
+Users groups
 
 <a name='P-Casasoft-BBS-DataTier-DataModel-UsersGroupsLink-Group'></a>
 ### Group `property`
@@ -1533,6 +1613,102 @@ Constructor
 | ---- | ---- | ----------- |
 | options | [Microsoft.EntityFrameworkCore.DbContextOptions{Casasoft.BBS.DataTier.DBContext.bbsContext}](#T-Microsoft-EntityFrameworkCore-DbContextOptions{Casasoft-BBS-DataTier-DBContext-bbsContext} 'Microsoft.EntityFrameworkCore.DbContextOptions{Casasoft.BBS.DataTier.DBContext.bbsContext}') |  |
 
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-Logins'></a>
+### Logins `property`
+
+##### Summary
+
+Table 'Logins':
+Users logins
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-Logs'></a>
+### Logs `property`
+
+##### Summary
+
+Table 'Log':
+Events log
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessageAreas'></a>
+### MessageAreas `property`
+
+##### Summary
+
+Table 'MessageAreas':
+Message Areas List
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessageAreasGroups'></a>
+### MessageAreasGroups `property`
+
+##### Summary
+
+Table 'MessageAreasGroups'
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessageReads'></a>
+### MessageReads `property`
+
+##### Summary
+
+Table 'MessageRead':
+Flags for messages read
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-Messages'></a>
+### Messages `property`
+
+##### Summary
+
+Table 'Messages':
+Messages
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-MessagesSeenBy'></a>
+### MessagesSeenBy `property`
+
+##### Summary
+
+Table 'MessageSeenBy':
+System that already received the message
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-Users'></a>
+### Users `property`
+
+##### Summary
+
+Table 'Users':
+BBS users
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-UsersGroups'></a>
+### UsersGroups `property`
+
+##### Summary
+
+Table 'UsersGroups':
+Users groups definition
+
+<a name='P-Casasoft-BBS-DataTier-DBContext-bbsContext-UsersGroupsLinks'></a>
+### UsersGroupsLinks `property`
+
+##### Summary
+
+Table 'UsersGroupsLinks':
+Users groups
+
+<a name='M-Casasoft-BBS-DataTier-bbsContext-GetAllMessagesInArea-System-String-'></a>
+### GetAllMessagesInArea(area) `method`
+
+##### Summary
+
+Gets the complete list of messages in an echomail area
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| area | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | area to query |
+
 <a name='M-Casasoft-BBS-DataTier-bbsContext-GetAllowedMessageAreasGroup-System-String-'></a>
 ### GetAllowedMessageAreasGroup(username) `method`
 
@@ -1548,7 +1724,7 @@ Gets a list of accessible message areas groups for an user
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| username | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+| username | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | user to check |
 
 <a name='M-Casasoft-BBS-DataTier-bbsContext-GetMessageAllowedAreasByGroup-System-String,System-String-'></a>
 ### GetMessageAllowedAreasByGroup(group,username) `method`

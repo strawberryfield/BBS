@@ -28,19 +28,19 @@ using System.Linq;
 namespace Casasoft.BBS.UI
 {
     /// <summary>
-    /// Implements the list of message areas
+    /// List of messages in echomail area
     /// </summary>
-    public class MessageAreas : ListScreenBase
+    public class MessagesList : ListScreenBase
     {
         #region constructors
-        private const string defaultText = "@MessageAreas";
+        private const string defaultText = "@MessagesList";
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
-        public MessageAreas(IBBSClient c, IServer s) : base(c, s, defaultText) { }
+        public MessagesList(IBBSClient c, IServer s) : base(c, s, defaultText) { }
 
         /// <summary>
         /// Constructor
@@ -48,7 +48,7 @@ namespace Casasoft.BBS.UI
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
         /// <param name="prev">Link to caller screen</param>
-        public MessageAreas(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
+        public MessagesList(IBBSClient c, IServer s, IScreen prev) : this(c, s, defaultText, prev) { }
 
         /// <summary>
         /// Constructor
@@ -56,7 +56,7 @@ namespace Casasoft.BBS.UI
         /// <param name="c">Client reference</param>
         /// <param name="s">Server reference</param>
         /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
-        public MessageAreas(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
+        public MessagesList(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
 
         /// <summary>
         /// Complete constructor
@@ -65,7 +65,7 @@ namespace Casasoft.BBS.UI
         /// <param name="s">Server reference</param>
         /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         /// <param name="prev">Link to caller screen</param>
-        public MessageAreas(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        public MessagesList(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
         #endregion
 
         /// <summary>
@@ -73,24 +73,28 @@ namespace Casasoft.BBS.UI
         /// </summary>
         protected override void AddList()
         {
-            string fmt = "{0,-20} {1,4} {2,4} {3,4} {4}";
+            if (Params.Length < 2) return;  // There is no area filter
+            string area = Params[1].Trim().ToUpper();
+            string filter = Params.Length > 2 ? Params[2].Trim().ToUpper() : string.Empty;
+            string fmt = "{0,5} {1,1} {2,1} {3,-30} {4}";
 
             using (bbsContext bbs = new bbsContext())
             {
                 User user = bbs.GetUserByUsername(client.username);
-                List<MessageArea> list = bbs.GetMessageAllowedAreasByGroup(
-                    Params.Length > 1 ? Params[1] : string.Empty, client.username).ToList();
-                foreach (MessageArea area in list)
+                List<Message> list = bbs.GetAllMessagesInArea(area).ToList();
+                foreach (Message m in list)
                 {
-                    Text.Add(TextHelper.Truncate(string.Format(fmt, new object[] {
-                        area.Id, area.MessagesCount, area.NewMessagesCount(user.LastLoginDate),
-                        area.UnreadMessagesCount(user.Userid), area.Description }), client.screenWidth));
-                    Data.Actions.Add(area.Id,
-                        new Parser.BBSCodeResult.Action()
-                        {
-                            module = "MessagesList",
-                            data = string.Format("@MessagesList;{0}", area.Id)
-                        });
+                    Text.Add(TextHelper.Truncate(string.Format(fmt, new object[]
+                    {
+                    m.Id, m.IsNew(user.LastLoginDate) ? "N" : "", m.IsRead(client.username) ? "" : "U",
+                    TextHelper.Truncate(m.MessageFrom, 30), m.Subject
+                    }), client.screenWidth));
+
+                    Data.Actions.Add(m.Id.ToString(), new Parser.BBSCodeResult.Action()
+                    {
+                        module = "MessageScreen",
+                        data = string.Format("@MessageScreen;{0}", m.Id)
+                    });
                 }
             }
         }

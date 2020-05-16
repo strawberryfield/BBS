@@ -45,12 +45,20 @@
             <summary>
             Gets a list of accessible message areas groups for an user
             </summary>
-            <param name="username"></param>
+            <param name="username">user to check</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.bbsContext.GetAllMessagesInArea(System.String)">
+            <summary>
+            Gets the complete list of messages in an echomail area
+            </summary>
+            <param name="area">area to query</param>
             <returns></returns>
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.Log">
             <summary>
-            Elements of the table 'Log'.
+            Elements of the table 'Log':
+            Events log
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Log.Id">
@@ -85,7 +93,8 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.Login">
             <summary>
-            Elements of the table 'Logins'.
+            Elements of the table 'Logins':
+            Users logins
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Login.Id">
@@ -125,10 +134,16 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.Message">
             <summary>
-            Elements of the table 'Messages'.
+            Elements of the table 'Messages':
+            Messages
             </summary>
             <summary>
             mail message entity
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.DataModel.Message.#ctor">
+            <summary>
+            Entity constructor
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.Message.Id">
@@ -270,10 +285,16 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.MessageArea">
             <summary>
-            Elements of the table 'MessageAreas'.
+            Elements of the table 'MessageAreas':
+            Message Areas List
             </summary>
             <summary>
             Message area entity
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.DataModel.MessageArea.#ctor">
+            <summary>
+            Entity constructor
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageArea.Id">
@@ -381,7 +402,12 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup">
             <summary>
-            Elements of the table 'MessageAreasGroups'.
+            Elements of the table 'MessageAreasGroups'
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.#ctor">
+            <summary>
+            Entity constructor
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageAreasGroup.Id">
@@ -414,7 +440,8 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.MessageRead">
             <summary>
-            Elements of the table 'MessageRead'.
+            Elements of the table 'MessageRead':
+            Flags for messages read
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageRead.Id">
@@ -447,7 +474,8 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.MessageSeenBy">
             <summary>
-            Elements of the table 'MessageSeenBy'.
+            Elements of the table 'MessageSeenBy':
+            System that already received the message
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.MessageSeenBy.Id">
@@ -475,10 +503,16 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.User">
             <summary>
-            Elements of the table 'Users'.
+            Elements of the table 'Users':
+            BBS users
             </summary>
             <summary>
             User entity
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.DataModel.User.#ctor">
+            <summary>
+            Entity constructor
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.User.Userid">
@@ -507,7 +541,7 @@
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.User.Password">
             <summary>
-            Column 'password'
+            Column 'password':
             MD5 Hash of the password
             </summary>
             <remarks>Original field type: varchar(32)</remarks>
@@ -617,7 +651,13 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.UsersGroup">
             <summary>
-            Elements of the table 'UsersGroups'.
+            Elements of the table 'UsersGroups':
+            Users groups definition
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.DataTier.DataModel.UsersGroup.#ctor">
+            <summary>
+            Entity constructor
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroup.Groupid">
@@ -654,7 +694,8 @@
         </member>
         <member name="T:Casasoft.BBS.DataTier.DataModel.UsersGroupsLink">
             <summary>
-            Elements of the table 'UsersGroupsLinks'.
+            Elements of the table 'UsersGroupsLinks':
+            Users groups
             </summary>
         </member>
         <member name="P:Casasoft.BBS.DataTier.DataModel.UsersGroupsLink.Id">
@@ -688,6 +729,65 @@
         <member name="T:Casasoft.BBS.DataTier.DBContext.bbsContext">
             <summary>
             Model for the database 'bbs'.
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.Logs">
+            <summary>
+            Table 'Log':
+            Events log
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.Logins">
+            <summary>
+            Table 'Logins':
+            Users logins
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.Messages">
+            <summary>
+            Table 'Messages':
+            Messages
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.MessageAreas">
+            <summary>
+            Table 'MessageAreas':
+            Message Areas List
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.MessageAreasGroups">
+            <summary>
+            Table 'MessageAreasGroups'
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.MessageReads">
+            <summary>
+            Table 'MessageRead':
+            Flags for messages read
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.MessagesSeenBy">
+            <summary>
+            Table 'MessageSeenBy':
+            System that already received the message
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.Users">
+            <summary>
+            Table 'Users':
+            BBS users
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.UsersGroups">
+            <summary>
+            Table 'UsersGroups':
+            Users groups definition
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.DataTier.DBContext.bbsContext.UsersGroupsLinks">
+            <summary>
+            Table 'UsersGroupsLinks':
+            Users groups
             </summary>
         </member>
         <member name="T:Casasoft.BBS.DataTier.DbHelpers">
