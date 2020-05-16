@@ -289,6 +289,144 @@
             </summary>
             <param name="context">The parse tree.</param>
         </member>
+        <member name="T:Casasoft.BBS.Parser.BBSCodeResult">
+            <summary>
+            Result of texts parsing
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeResult.Parsed">
+            <summary>
+            Current parsing result
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.BBSCodeResult.Body">
+            <summary>
+            Body section parsed text
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.BBSCodeResult.Header">
+            <summary>
+            Header section parsed text
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.BBSCodeResult.Footer">
+            <summary>
+            Footer section parsed text
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeResult.HeaderBackground">
+            <summary>
+            Background color of the Header
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeResult.FooterBackground">
+            <summary>
+            Background color of the Footer
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeResult.BodyAlternateBackground">
+            <summary>
+            Alternative background color of the Body
+            </summary>
+        </member>
+        <member name="T:Casasoft.BBS.Parser.BBSCodeResult.Action">
+            <summary>
+            Class for action's parameters
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.BBSCodeResult.Action.module">
+            <summary>
+            Module to activate
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.BBSCodeResult.Action.data">
+            <summary>
+            Module parameters
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.BBSCodeResult.Action.requires">
+            <summary>
+            Required user group to access this action
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.BBSCodeResult.Action.key">
+            <summary>
+            Trigget key
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.Action.#ctor">
+            <summary>
+            Base constructor
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.Action.#ctor(Casasoft.BBS.Parser.Attributes)">
+            <summary>
+            Constructor from attributes
+            </summary>
+            <param name="attr">attributes list</param>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeResult.Actions">
+            <summary>
+            List of available actions
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.GetRows">
+            <summary>
+            Returns the rows of the body
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.GetHeaderRows">
+            <summary>
+            Returns the rows of the header
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.GetFooterRows">
+            <summary>
+            Returns the rows of the footer
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.TextClear">
+            <summary>
+            Clears the current parsed text
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.TextAssign(System.String)">
+            <summary>
+            First assignation of parsed text
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.TextConcat(System.String)">
+            <summary>
+            Concat parsed text
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.TextConcat(System.Char)">
+            <summary>
+            Concat parsed text
+            </summary>
+            <param name="s"></param>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.TextPush">
+            <summary>
+            Pushes text to the internal stack
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.BBSCodeResult.TextPop(System.Boolean)">
+            <summary>
+            Pops text from the internal text
+            </summary>
+            <param name="concat"></param>
+        </member>
         <member name="T:Casasoft.BBS.Parser.BBSCodeTranslator">
             <summary>
             Handles parsing of BBScode

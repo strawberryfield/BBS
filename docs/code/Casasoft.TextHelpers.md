@@ -6,11 +6,11 @@
 - [ANSICodes](#T-Casasoft-BBS-Parser-ANSICodes 'Casasoft.BBS.Parser.ANSICodes')
   - [#ctor()](#M-Casasoft-BBS-Parser-ANSICodes-#ctor 'Casasoft.BBS.Parser.ANSICodes.#ctor')
   - [ColorTable](#F-Casasoft-BBS-Parser-ANSICodes-ColorTable 'Casasoft.BBS.Parser.ANSICodes.ColorTable')
-  - [defaultBackColor](#F-Casasoft-BBS-Parser-ANSICodes-defaultBackColor 'Casasoft.BBS.Parser.ANSICodes.defaultBackColor')
-  - [defaultForeColor](#F-Casasoft-BBS-Parser-ANSICodes-defaultForeColor 'Casasoft.BBS.Parser.ANSICodes.defaultForeColor')
   - [ClearCurrentLine](#P-Casasoft-BBS-Parser-ANSICodes-ClearCurrentLine 'Casasoft.BBS.Parser.ANSICodes.ClearCurrentLine')
   - [RestoreCursorPosition](#P-Casasoft-BBS-Parser-ANSICodes-RestoreCursorPosition 'Casasoft.BBS.Parser.ANSICodes.RestoreCursorPosition')
   - [SaveCursorPosition](#P-Casasoft-BBS-Parser-ANSICodes-SaveCursorPosition 'Casasoft.BBS.Parser.ANSICodes.SaveCursorPosition')
+  - [defaultBackColor](#P-Casasoft-BBS-Parser-ANSICodes-defaultBackColor 'Casasoft.BBS.Parser.ANSICodes.defaultBackColor')
+  - [defaultForeColor](#P-Casasoft-BBS-Parser-ANSICodes-defaultForeColor 'Casasoft.BBS.Parser.ANSICodes.defaultForeColor')
   - [ClearMode()](#M-Casasoft-BBS-Parser-ANSICodes-ClearMode 'Casasoft.BBS.Parser.ANSICodes.ClearMode')
   - [ClearScreen()](#M-Casasoft-BBS-Parser-ANSICodes-ClearScreen 'Casasoft.BBS.Parser.ANSICodes.ClearScreen')
   - [GetColorByName(name,isBack)](#M-Casasoft-BBS-Parser-ANSICodes-GetColorByName-System-String,System-Boolean- 'Casasoft.BBS.Parser.ANSICodes.GetColorByName(System.String,System.Boolean)')
@@ -74,20 +74,6 @@ This constructor has no parameters.
 
 Contains the string to enum table
 
-<a name='F-Casasoft-BBS-Parser-ANSICodes-defaultBackColor'></a>
-### defaultBackColor `constants`
-
-##### Summary
-
-Default background color
-
-<a name='F-Casasoft-BBS-Parser-ANSICodes-defaultForeColor'></a>
-### defaultForeColor `constants`
-
-##### Summary
-
-Default text color
-
 <a name='P-Casasoft-BBS-Parser-ANSICodes-ClearCurrentLine'></a>
 ### ClearCurrentLine `property`
 
@@ -108,6 +94,20 @@ Sequence to restore cursor position on terminal
 ##### Summary
 
 Sequence to save cursor position on terminal
+
+<a name='P-Casasoft-BBS-Parser-ANSICodes-defaultBackColor'></a>
+### defaultBackColor `property`
+
+##### Summary
+
+Default background color
+
+<a name='P-Casasoft-BBS-Parser-ANSICodes-defaultForeColor'></a>
+### defaultForeColor `property`
+
+##### Summary
+
+Default text color
 
 <a name='M-Casasoft-BBS-Parser-ANSICodes-ClearMode'></a>
 ### ClearMode() `method`

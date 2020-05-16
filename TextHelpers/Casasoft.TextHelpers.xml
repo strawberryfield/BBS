@@ -14,12 +14,12 @@
             basic coloror
             </summary>
         </member>
-        <member name="F:Casasoft.BBS.Parser.ANSICodes.defaultForeColor">
+        <member name="P:Casasoft.BBS.Parser.ANSICodes.defaultForeColor">
             <summary>
             Default text color
             </summary>
         </member>
-        <member name="F:Casasoft.BBS.Parser.ANSICodes.defaultBackColor">
+        <member name="P:Casasoft.BBS.Parser.ANSICodes.defaultBackColor">
             <summary>
             Default background color
             </summary>

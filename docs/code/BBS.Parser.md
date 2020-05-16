@@ -3,6 +3,13 @@
 
 ## Contents
 
+- [Action](#T-Casasoft-BBS-Parser-BBSCodeResult-Action 'Casasoft.BBS.Parser.BBSCodeResult.Action')
+  - [#ctor()](#M-Casasoft-BBS-Parser-BBSCodeResult-Action-#ctor 'Casasoft.BBS.Parser.BBSCodeResult.Action.#ctor')
+  - [#ctor(attr)](#M-Casasoft-BBS-Parser-BBSCodeResult-Action-#ctor-Casasoft-BBS-Parser-Attributes- 'Casasoft.BBS.Parser.BBSCodeResult.Action.#ctor(Casasoft.BBS.Parser.Attributes)')
+  - [data](#F-Casasoft-BBS-Parser-BBSCodeResult-Action-data 'Casasoft.BBS.Parser.BBSCodeResult.Action.data')
+  - [key](#F-Casasoft-BBS-Parser-BBSCodeResult-Action-key 'Casasoft.BBS.Parser.BBSCodeResult.Action.key')
+  - [module](#F-Casasoft-BBS-Parser-BBSCodeResult-Action-module 'Casasoft.BBS.Parser.BBSCodeResult.Action.module')
+  - [requires](#F-Casasoft-BBS-Parser-BBSCodeResult-Action-requires 'Casasoft.BBS.Parser.BBSCodeResult.Action.requires')
 - [Attributes](#T-Casasoft-BBS-Parser-Attributes 'Casasoft.BBS.Parser.Attributes')
   - [#ctor()](#M-Casasoft-BBS-Parser-Attributes-#ctor 'Casasoft.BBS.Parser.Attributes.#ctor')
   - [TryAdd(attrName,attrValue)](#M-Casasoft-BBS-Parser-Attributes-TryAdd-System-String,System-String- 'Casasoft.BBS.Parser.Attributes.TryAdd(System.String,System.String)')
@@ -40,6 +47,25 @@
   - [ExitEveryRule()](#M-Casasoft-BBS-Parser-BBSCodeParserBaseListener-ExitEveryRule-Antlr4-Runtime-ParserRuleContext- 'Casasoft.BBS.Parser.BBSCodeParserBaseListener.ExitEveryRule(Antlr4.Runtime.ParserRuleContext)')
   - [VisitErrorNode()](#M-Casasoft-BBS-Parser-BBSCodeParserBaseListener-VisitErrorNode-Antlr4-Runtime-Tree-IErrorNode- 'Casasoft.BBS.Parser.BBSCodeParserBaseListener.VisitErrorNode(Antlr4.Runtime.Tree.IErrorNode)')
   - [VisitTerminal()](#M-Casasoft-BBS-Parser-BBSCodeParserBaseListener-VisitTerminal-Antlr4-Runtime-Tree-ITerminalNode- 'Casasoft.BBS.Parser.BBSCodeParserBaseListener.VisitTerminal(Antlr4.Runtime.Tree.ITerminalNode)')
+- [BBSCodeResult](#T-Casasoft-BBS-Parser-BBSCodeResult 'Casasoft.BBS.Parser.BBSCodeResult')
+  - [#ctor()](#M-Casasoft-BBS-Parser-BBSCodeResult-#ctor 'Casasoft.BBS.Parser.BBSCodeResult.#ctor')
+  - [Body](#F-Casasoft-BBS-Parser-BBSCodeResult-Body 'Casasoft.BBS.Parser.BBSCodeResult.Body')
+  - [Footer](#F-Casasoft-BBS-Parser-BBSCodeResult-Footer 'Casasoft.BBS.Parser.BBSCodeResult.Footer')
+  - [Header](#F-Casasoft-BBS-Parser-BBSCodeResult-Header 'Casasoft.BBS.Parser.BBSCodeResult.Header')
+  - [Actions](#P-Casasoft-BBS-Parser-BBSCodeResult-Actions 'Casasoft.BBS.Parser.BBSCodeResult.Actions')
+  - [BodyAlternateBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-BodyAlternateBackground 'Casasoft.BBS.Parser.BBSCodeResult.BodyAlternateBackground')
+  - [FooterBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-FooterBackground 'Casasoft.BBS.Parser.BBSCodeResult.FooterBackground')
+  - [HeaderBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-HeaderBackground 'Casasoft.BBS.Parser.BBSCodeResult.HeaderBackground')
+  - [Parsed](#P-Casasoft-BBS-Parser-BBSCodeResult-Parsed 'Casasoft.BBS.Parser.BBSCodeResult.Parsed')
+  - [GetFooterRows()](#M-Casasoft-BBS-Parser-BBSCodeResult-GetFooterRows 'Casasoft.BBS.Parser.BBSCodeResult.GetFooterRows')
+  - [GetHeaderRows()](#M-Casasoft-BBS-Parser-BBSCodeResult-GetHeaderRows 'Casasoft.BBS.Parser.BBSCodeResult.GetHeaderRows')
+  - [GetRows()](#M-Casasoft-BBS-Parser-BBSCodeResult-GetRows 'Casasoft.BBS.Parser.BBSCodeResult.GetRows')
+  - [TextAssign(s)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextAssign-System-String- 'Casasoft.BBS.Parser.BBSCodeResult.TextAssign(System.String)')
+  - [TextClear()](#M-Casasoft-BBS-Parser-BBSCodeResult-TextClear 'Casasoft.BBS.Parser.BBSCodeResult.TextClear')
+  - [TextConcat(s)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextConcat-System-String- 'Casasoft.BBS.Parser.BBSCodeResult.TextConcat(System.String)')
+  - [TextConcat(s)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextConcat-System-Char- 'Casasoft.BBS.Parser.BBSCodeResult.TextConcat(System.Char)')
+  - [TextPop(concat)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextPop-System-Boolean- 'Casasoft.BBS.Parser.BBSCodeResult.TextPop(System.Boolean)')
+  - [TextPush()](#M-Casasoft-BBS-Parser-BBSCodeResult-TextPush 'Casasoft.BBS.Parser.BBSCodeResult.TextPush')
 - [BBSCodeTranslator](#T-Casasoft-BBS-Parser-BBSCodeTranslator 'Casasoft.BBS.Parser.BBSCodeTranslator')
   - [#ctor(c,s)](#M-Casasoft-BBS-Parser-BBSCodeTranslator-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.Parser.BBSCodeTranslator.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
   - [GetProcessed(FileName)](#M-Casasoft-BBS-Parser-BBSCodeTranslator-GetProcessed-System-String- 'Casasoft.BBS.Parser.BBSCodeTranslator.GetProcessed(System.String)')
@@ -100,6 +126,69 @@
 - [TagsDict](#T-Casasoft-BBS-Parser-TagsDict 'Casasoft.BBS.Parser.TagsDict')
   - [#ctor()](#M-Casasoft-BBS-Parser-TagsDict-#ctor 'Casasoft.BBS.Parser.TagsDict.#ctor')
   - [TryGetValue(tagname,tag)](#M-Casasoft-BBS-Parser-TagsDict-TryGetValue-System-String,Casasoft-BBS-Parser-Tags@- 'Casasoft.BBS.Parser.TagsDict.TryGetValue(System.String,Casasoft.BBS.Parser.Tags@)')
+
+<a name='T-Casasoft-BBS-Parser-BBSCodeResult-Action'></a>
+## Action `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser.BBSCodeResult
+
+##### Summary
+
+Class for action's parameters
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-Action-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Base constructor
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-Action-#ctor-Casasoft-BBS-Parser-Attributes-'></a>
+### #ctor(attr) `constructor`
+
+##### Summary
+
+Constructor from attributes
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| attr | [Casasoft.BBS.Parser.Attributes](#T-Casasoft-BBS-Parser-Attributes 'Casasoft.BBS.Parser.Attributes') | attributes list |
+
+<a name='F-Casasoft-BBS-Parser-BBSCodeResult-Action-data'></a>
+### data `constants`
+
+##### Summary
+
+Module parameters
+
+<a name='F-Casasoft-BBS-Parser-BBSCodeResult-Action-key'></a>
+### key `constants`
+
+##### Summary
+
+Trigget key
+
+<a name='F-Casasoft-BBS-Parser-BBSCodeResult-Action-module'></a>
+### module `constants`
+
+##### Summary
+
+Module to activate
+
+<a name='F-Casasoft-BBS-Parser-BBSCodeResult-Action-requires'></a>
+### requires `constants`
+
+##### Summary
+
+Required user group to access this action
 
 <a name='T-Casasoft-BBS-Parser-Attributes'></a>
 ## Attributes `type`
@@ -627,6 +716,203 @@ This method has no parameters.
 ##### Remarks
 
 The default implementation does nothing.
+
+<a name='T-Casasoft-BBS-Parser-BBSCodeResult'></a>
+## BBSCodeResult `type`
+
+##### Namespace
+
+Casasoft.BBS.Parser
+
+##### Summary
+
+Result of texts parsing
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-#ctor'></a>
+### #ctor() `constructor`
+
+##### Summary
+
+Constructor
+
+##### Parameters
+
+This constructor has no parameters.
+
+<a name='F-Casasoft-BBS-Parser-BBSCodeResult-Body'></a>
+### Body `constants`
+
+##### Summary
+
+Body section parsed text
+
+<a name='F-Casasoft-BBS-Parser-BBSCodeResult-Footer'></a>
+### Footer `constants`
+
+##### Summary
+
+Footer section parsed text
+
+<a name='F-Casasoft-BBS-Parser-BBSCodeResult-Header'></a>
+### Header `constants`
+
+##### Summary
+
+Header section parsed text
+
+<a name='P-Casasoft-BBS-Parser-BBSCodeResult-Actions'></a>
+### Actions `property`
+
+##### Summary
+
+List of available actions
+
+<a name='P-Casasoft-BBS-Parser-BBSCodeResult-BodyAlternateBackground'></a>
+### BodyAlternateBackground `property`
+
+##### Summary
+
+Alternative background color of the Body
+
+<a name='P-Casasoft-BBS-Parser-BBSCodeResult-FooterBackground'></a>
+### FooterBackground `property`
+
+##### Summary
+
+Background color of the Footer
+
+<a name='P-Casasoft-BBS-Parser-BBSCodeResult-HeaderBackground'></a>
+### HeaderBackground `property`
+
+##### Summary
+
+Background color of the Header
+
+<a name='P-Casasoft-BBS-Parser-BBSCodeResult-Parsed'></a>
+### Parsed `property`
+
+##### Summary
+
+Current parsing result
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-GetFooterRows'></a>
+### GetFooterRows() `method`
+
+##### Summary
+
+Returns the rows of the footer
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-GetHeaderRows'></a>
+### GetHeaderRows() `method`
+
+##### Summary
+
+Returns the rows of the header
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-GetRows'></a>
+### GetRows() `method`
+
+##### Summary
+
+Returns the rows of the body
+
+##### Returns
+
+
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-TextAssign-System-String-'></a>
+### TextAssign(s) `method`
+
+##### Summary
+
+First assignation of parsed text
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| s | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-TextClear'></a>
+### TextClear() `method`
+
+##### Summary
+
+Clears the current parsed text
+
+##### Parameters
+
+This method has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-TextConcat-System-String-'></a>
+### TextConcat(s) `method`
+
+##### Summary
+
+Concat parsed text
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| s | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-TextConcat-System-Char-'></a>
+### TextConcat(s) `method`
+
+##### Summary
+
+Concat parsed text
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| s | [System.Char](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Char 'System.Char') |  |
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-TextPop-System-Boolean-'></a>
+### TextPop(concat) `method`
+
+##### Summary
+
+Pops text from the internal text
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| concat | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') |  |
+
+<a name='M-Casasoft-BBS-Parser-BBSCodeResult-TextPush'></a>
+### TextPush() `method`
+
+##### Summary
+
+Pushes text to the internal stack
+
+##### Parameters
+
+This method has no parameters.
 
 <a name='T-Casasoft-BBS-Parser-BBSCodeTranslator'></a>
 ## BBSCodeTranslator `type`

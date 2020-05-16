@@ -66,6 +66,9 @@ namespace Casasoft.BBS.Parser
             EntitiesTable = new EntitiesDict(Client);
             AttributesTable = new AttributesDict();
             ANSI = new ANSICodes();
+            Parsed.HeaderBackground = ANSI.defaultBackColor;
+            Parsed.FooterBackground = ANSI.defaultBackColor;
+            Parsed.BodyAlternateBackground = ANSI.defaultBackColor;
         }
 
         /// <summary>
@@ -126,7 +129,13 @@ namespace Casasoft.BBS.Parser
                 {
                     case Tags.CLS:
                         if (attr.TryGetValue("FORECOLOR", out value)) ANSI.pushForeColor(value);
-                        if (attr.TryGetValue("BACKCOLOR", out value)) ANSI.pushBackColor(value);
+                        if (attr.TryGetValue("BACKCOLOR", out value))
+                        {
+                            ANSI.pushBackColor(value);
+                            Parsed.HeaderBackground = ANSI.GetColorByName(value, true);
+                            Parsed.FooterBackground = Parsed.HeaderBackground;
+                            Parsed.BodyAlternateBackground = Parsed.HeaderBackground;
+                        }
                         Parsed.TextConcat(ANSI.ClearScreen());
                         Parsed.TextPop(true);
                         break;
@@ -161,7 +170,9 @@ namespace Casasoft.BBS.Parser
                         Parsed.TextPop(true);
                         break;
                     case Tags.P:
-                        Parsed.Parsed = string.Join('\n', TextHelper.WordWrap(Parsed.Parsed, Client.screenWidth).ToArray());
+                        Parsed.TextAssign(string.Join('\n', 
+                            TextHelper.WordWrap(Parsed.Parsed, 
+                            Client.screenWidth).ToArray()));
                         Parsed.TextPop(true);
                         break;
                     case Tags.MOVE:
@@ -174,7 +185,7 @@ namespace Casasoft.BBS.Parser
                         if (!attr.TryGetValue("FONT", out value)) value = "standard";
                         try
                         {
-                            Parsed.Parsed = Figgle.FiggleFonts.Lookup(value.ToLower()).Render(Parsed.Parsed);
+                            Parsed.TextAssign(Figgle.FiggleFonts.Lookup(value.ToLower()).Render(Parsed.Parsed));
                         }
                         catch (Exception)
                         { }
@@ -210,14 +221,20 @@ namespace Casasoft.BBS.Parser
                         Parsed.TextPop(true);
                         break;
                     case Tags.HEADER:
+                        if (attr.TryGetValue("BACKCOLOR", out value))
+                            Parsed.HeaderBackground = ANSI.GetColorByName(value, true);
                         Parsed.Header = Parsed.Parsed;
                         Parsed.TextClear();
                         break;
                     case Tags.FOOTER:
+                        if (attr.TryGetValue("BACKCOLOR", out value))
+                            Parsed.FooterBackground = ANSI.GetColorByName(value, true);
                         Parsed.Footer = Parsed.Parsed;
                         Parsed.TextClear();
                         break;
                     case Tags.BODY:
+                        if (attr.TryGetValue("ALTERNATECOLOR", out value))
+                            Parsed.BodyAlternateBackground = ANSI.GetColorByName(value, true);
                         Parsed.Body = Parsed.Parsed;
                         Parsed.TextClear();
                         break;
@@ -278,7 +295,7 @@ namespace Casasoft.BBS.Parser
         /// <param name="context">The parse tree.</param>
         public override void EnterBbsCodeChardata([NotNull] BBSCodeParser.BbsCodeChardataContext context)
         {
-            Parsed.Parsed += context.GetText();
+            Parsed.TextConcat(context.GetText());
         }
     }
 }

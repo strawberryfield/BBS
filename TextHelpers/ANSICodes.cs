@@ -39,11 +39,11 @@ namespace Casasoft.BBS.Parser
         /// <summary>
         /// Default text color
         /// </summary>
-        private Colors defaultForeColor = Colors.White;
+        public Colors defaultForeColor { get; private set; }
         /// <summary>
         /// Default background color
         /// </summary>
-        private Colors defaultBackColor = Colors.Black;
+        public Colors defaultBackColor { get; private set; }
 
         private Stack<Colors> foreColorStack;
         private Stack<Colors> backColorStack;
@@ -116,9 +116,13 @@ namespace Casasoft.BBS.Parser
                 ColorTable.Add(color.ToString().ToUpper(), color);
             currentMode = 0;
 
+            Colors col;
             NameValueCollection appearance = (NameValueCollection)ConfigurationManager.GetSection("Appearance");
-            ColorTable.TryGetValue(appearance["ForeColor"].ToUpper(), out defaultForeColor);
-            ColorTable.TryGetValue(appearance["BackColor"].ToUpper(), out defaultBackColor);
+            defaultForeColor = ColorTable.TryGetValue(appearance["ForeColor"].ToUpper(), out col) ?
+                col : Colors.White;
+
+            defaultBackColor = ColorTable.TryGetValue(appearance["BackColor"].ToUpper(), out col) ?
+                col : Colors.Black;
 
             foreColorStack = new Stack<Colors>();
             backColorStack = new Stack<Colors>();
