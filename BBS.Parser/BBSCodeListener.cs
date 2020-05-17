@@ -66,9 +66,6 @@ namespace Casasoft.BBS.Parser
             EntitiesTable = new EntitiesDict(Client);
             AttributesTable = new AttributesDict();
             ANSI = new ANSICodes();
-            Parsed.HeaderBackground = ANSI.defaultBackColor;
-            Parsed.FooterBackground = ANSI.defaultBackColor;
-            Parsed.BodyAlternateBackground = ANSI.defaultBackColor;
         }
 
         /// <summary>
@@ -132,9 +129,6 @@ namespace Casasoft.BBS.Parser
                         if (attr.TryGetValue("BACKCOLOR", out value))
                         {
                             ANSI.pushBackColor(value);
-                            Parsed.HeaderBackground = ANSI.GetColorByName(value, true);
-                            Parsed.FooterBackground = Parsed.HeaderBackground;
-                            Parsed.BodyAlternateBackground = Parsed.HeaderBackground;
                         }
                         Parsed.TextConcat(ANSI.ClearScreen());
                         Parsed.TextPop(true);

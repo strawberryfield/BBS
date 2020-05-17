@@ -71,6 +71,7 @@ namespace Casasoft.BBS.UI
         /// <param name="name">File to load</param>
         protected override void ReadText(string name)
         {
+            Data = new Parser.BBSCodeResult();
             if (TextHelper.IsUrl(name))
             {
                 WebClient client = new WebClient();

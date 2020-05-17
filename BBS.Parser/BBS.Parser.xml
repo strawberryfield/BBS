@@ -319,14 +319,29 @@
             Background color of the Header
             </summary>
         </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeResult.HasHeaderBackground">
+            <summary>
+            True if set special background color for the Header
+            </summary>
+        </member>
         <member name="P:Casasoft.BBS.Parser.BBSCodeResult.FooterBackground">
             <summary>
             Background color of the Footer
             </summary>
         </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeResult.HasFooterBackground">
+            <summary>
+            True if set special background color for the Footer
+            </summary>
+        </member>
         <member name="P:Casasoft.BBS.Parser.BBSCodeResult.BodyAlternateBackground">
             <summary>
             Alternative background color of the Body
+            </summary>
+        </member>
+        <member name="P:Casasoft.BBS.Parser.BBSCodeResult.HasBodyAlternateBackground">
+            <summary>
+            True if set alternate background color for the Body
             </summary>
         </member>
         <member name="T:Casasoft.BBS.Parser.BBSCodeResult.Action">

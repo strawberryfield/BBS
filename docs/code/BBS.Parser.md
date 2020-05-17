@@ -55,6 +55,9 @@
   - [Actions](#P-Casasoft-BBS-Parser-BBSCodeResult-Actions 'Casasoft.BBS.Parser.BBSCodeResult.Actions')
   - [BodyAlternateBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-BodyAlternateBackground 'Casasoft.BBS.Parser.BBSCodeResult.BodyAlternateBackground')
   - [FooterBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-FooterBackground 'Casasoft.BBS.Parser.BBSCodeResult.FooterBackground')
+  - [HasBodyAlternateBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-HasBodyAlternateBackground 'Casasoft.BBS.Parser.BBSCodeResult.HasBodyAlternateBackground')
+  - [HasFooterBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-HasFooterBackground 'Casasoft.BBS.Parser.BBSCodeResult.HasFooterBackground')
+  - [HasHeaderBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-HasHeaderBackground 'Casasoft.BBS.Parser.BBSCodeResult.HasHeaderBackground')
   - [HeaderBackground](#P-Casasoft-BBS-Parser-BBSCodeResult-HeaderBackground 'Casasoft.BBS.Parser.BBSCodeResult.HeaderBackground')
   - [Parsed](#P-Casasoft-BBS-Parser-BBSCodeResult-Parsed 'Casasoft.BBS.Parser.BBSCodeResult.Parsed')
   - [GetFooterRows()](#M-Casasoft-BBS-Parser-BBSCodeResult-GetFooterRows 'Casasoft.BBS.Parser.BBSCodeResult.GetFooterRows')
@@ -780,6 +783,27 @@ Alternative background color of the Body
 ##### Summary
 
 Background color of the Footer
+
+<a name='P-Casasoft-BBS-Parser-BBSCodeResult-HasBodyAlternateBackground'></a>
+### HasBodyAlternateBackground `property`
+
+##### Summary
+
+True if set alternate background color for the Body
+
+<a name='P-Casasoft-BBS-Parser-BBSCodeResult-HasFooterBackground'></a>
+### HasFooterBackground `property`
+
+##### Summary
+
+True if set special background color for the Footer
+
+<a name='P-Casasoft-BBS-Parser-BBSCodeResult-HasHeaderBackground'></a>
+### HasHeaderBackground `property`
+
+##### Summary
+
+True if set special background color for the Header
 
 <a name='P-Casasoft-BBS-Parser-BBSCodeResult-HeaderBackground'></a>
 ### HeaderBackground `property`

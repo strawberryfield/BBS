@@ -160,7 +160,7 @@ namespace Casasoft.BBS.UI
             ShowLines(Header, 0, Header.Count, 1);
             ShowLines(Footer, 0, Footer.Count, dataAreaStart + dataAreaSize);
             Write(ANSI.SaveCursorPosition);
-            if (Data.BodyAlternateBackground != ANSI.defaultBackColor) ClearBody();
+            if (Data.HasBodyAlternateBackground) ClearBody();
             int ret = ShowLines();
             Write(ANSI.RestoreCursorPosition);
             return ret;
@@ -418,7 +418,7 @@ namespace Casasoft.BBS.UI
             {
                 int line = ret + offset - start;
                 MoveTo(line, 1);
-                if (isBody && Data.BodyAlternateBackground != ANSI.defaultBackColor)
+                if (isBody && Data.HasBodyAlternateBackground)
                     setColorLine(line);
                 Write(lines[ret]);
             }
@@ -465,7 +465,7 @@ namespace Casasoft.BBS.UI
         {
             for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++)
             {
-                if (Data.BodyAlternateBackground != ANSI.defaultBackColor)
+                if (Data.HasBodyAlternateBackground)
                     setColorLine(j);
                 ClearLine(j);
             }

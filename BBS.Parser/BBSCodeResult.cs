@@ -48,20 +48,59 @@ namespace Casasoft.BBS.Parser
         /// </summary>
         public string Footer;
 
+        private ANSICodes.Colors _headerBackground;
         /// <summary>
         /// Background color of the Header
         /// </summary>
-        public ANSICodes.Colors HeaderBackground { get; internal set; }
+        public ANSICodes.Colors HeaderBackground
+        {
+            get => _headerBackground;
+            internal set
+            {
+                _headerBackground = value;
+                HasHeaderBackground = true;
+            }
+        }
+        /// <summary>
+        /// True if set special background color for the Header
+        /// </summary>
+        public bool HasHeaderBackground { get; internal set; }
 
+        private ANSICodes.Colors _footerBackground;
         /// <summary>
         /// Background color of the Footer
         /// </summary>
-        public ANSICodes.Colors FooterBackground { get; internal set; }
+        public ANSICodes.Colors FooterBackground
+        {
+            get => _footerBackground;
+            internal set
+            {
+                _footerBackground = value;
+                HasFooterBackground = true;
+            }
+        }
+        /// <summary>
+        /// True if set special background color for the Footer
+        /// </summary>
+        public bool HasFooterBackground { get; internal set; }
 
+        private ANSICodes.Colors _bodyAlternateBackground;
         /// <summary>
         /// Alternative background color of the Body
         /// </summary>
-        public ANSICodes.Colors BodyAlternateBackground { get; internal set; }
+        public ANSICodes.Colors BodyAlternateBackground
+        {
+            get => _bodyAlternateBackground;
+            internal set
+            {
+                _bodyAlternateBackground = value;
+                HasBodyAlternateBackground = true;
+            }
+        }
+        /// <summary>
+        /// True if set alternate background color for the Body
+        /// </summary>
+        public bool HasBodyAlternateBackground { get; internal set; }
 
         /// <summary>
         /// Class for action's parameters
@@ -72,7 +111,7 @@ namespace Casasoft.BBS.Parser
             /// Module to activate
             /// </summary>
             public string module;
-            
+
             /// <summary>
             /// Module parameters
             /// </summary>
@@ -82,7 +121,7 @@ namespace Casasoft.BBS.Parser
             /// Required user group to access this action
             /// </summary>
             public string requires;
-            
+
             /// <summary>
             /// Trigget key
             /// </summary>
@@ -130,6 +169,9 @@ namespace Casasoft.BBS.Parser
             Footer = string.Empty;
             Actions = new Dictionary<string, Action>();
             tagsTextStack = new Stack<string>();
+            HasHeaderBackground = false;
+            HasFooterBackground = false;
+            HasBodyAlternateBackground = false;
         }
 
 
@@ -191,8 +233,8 @@ namespace Casasoft.BBS.Parser
         /// Pops text from the internal text
         /// </summary>
         /// <param name="concat"></param>
-        public void TextPop(bool concat) => 
+        public void TextPop(bool concat) =>
             Parsed = tagsTextStack.Pop() + (concat ? Parsed : string.Empty);
-        
+
     }
 }
