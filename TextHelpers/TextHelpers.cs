@@ -28,7 +28,9 @@ namespace Casasoft.TextHelpers
     /// <summary>
     /// Paragraphs text alignment
     /// </summary>
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
     public enum TextAlign { Left, Right, Center, Both }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 
     /// <summary>
     /// Functions for text management

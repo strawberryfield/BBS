@@ -74,7 +74,9 @@ namespace Casasoft.BBS.UI
         /// <summary>
         /// list of states
         /// </summary>
+#pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
         protected enum states { WaitForUsername, WaitForOldPassword, WaitForNewPassword, WaitForConfirm, WaitForContinue }
+#pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
         /// <summary>
         /// current loop status
         /// </summary>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Apr 26, 2020 alle 09:59
+-- Creato il: Mag 17, 2020 alle 21:03
 -- Versione del server: 10.3.22-MariaDB-0+deb10u1
 -- Versione PHP: 7.3.14-1~deb10u1
 
@@ -26,17 +26,34 @@ USE `bbs`;
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `FidoNetworks`
+--
+
+CREATE TABLE `FidoNetworks` (
+  `ID` varchar(30) NOT NULL DEFAULT '' COMMENT 'Fido style network identifier',
+  `zone` int(11) NOT NULL DEFAULT 0,
+  `net` int(11) NOT NULL DEFAULT 0,
+  `host` int(11) NOT NULL DEFAULT 0,
+  `point` int(11) NOT NULL DEFAULT 0,
+  `description` varchar(80) NOT NULL COMMENT 'Network description'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='List of fdo-style networks';
+
+--
+-- RELAZIONI PER TABELLA `FidoNetworks`:
+--
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `Log`
 --
 
-CREATE TABLE IF NOT EXISTS `Log` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `DateTime` datetime NOT NULL DEFAULT current_timestamp(),
-  `Remote` varchar(24) NOT NULL DEFAULT '',
-  `Level` tinyint(4) NOT NULL DEFAULT 1,
-  `Description` varchar(250) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `DateTime` (`DateTime`)
+CREATE TABLE `Log` (
+  `id` int(11) NOT NULL,
+  `DateTime` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'Timestamp of the event, set to current timestamp by default',
+  `Remote` varchar(24) NOT NULL DEFAULT '' COMMENT 'Remote ip address and port of the client (if applicable)',
+  `Level` tinyint(4) NOT NULL DEFAULT 1 COMMENT 'Severity level',
+  `Description` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Events log';
 
 --
@@ -49,15 +66,12 @@ CREATE TABLE IF NOT EXISTS `Log` (
 -- Struttura della tabella `Logins`
 --
 
-CREATE TABLE IF NOT EXISTS `Logins` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `UserId` varchar(30) NOT NULL,
-  `DateTime` datetime NOT NULL DEFAULT current_timestamp(),
-  `From` varchar(24) NOT NULL DEFAULT '',
-  `Success` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`ID`),
-  KEY `UserId` (`UserId`),
-  KEY `DateTime` (`DateTime`)
+CREATE TABLE `Logins` (
+  `ID` int(11) NOT NULL,
+  `UserId` varchar(30) NOT NULL COMMENT 'username supplied for the login',
+  `DateTime` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'timestamp set to current timestamp by default',
+  `From` varchar(24) NOT NULL DEFAULT '' COMMENT 'remote ip address and port of the client',
+  `Success` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'true if login was successful'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users logins';
 
 --
@@ -74,19 +88,13 @@ CREATE TABLE IF NOT EXISTS `Logins` (
 -- Struttura della tabella `MessageAreas`
 --
 
-CREATE TABLE IF NOT EXISTS `MessageAreas` (
-  `ID` varchar(20) NOT NULL,
+CREATE TABLE `MessageAreas` (
+  `ID` varchar(20) NOT NULL COMMENT 'Message area identifier',
   `Description` varchar(200) NOT NULL DEFAULT '',
-  `FIDOID` varchar(30) NOT NULL DEFAULT '',
-  `AREAGROUP` varchar(20) NOT NULL DEFAULT '',
-  `AllowedGroupRead` varchar(30) DEFAULT '',
-  `AllowedGroupWrite` varchar(30) DEFAULT '',
-  PRIMARY KEY (`ID`),
-  KEY `Description` (`Description`),
-  KEY `FIDOID` (`FIDOID`),
-  KEY `MessageAreas_AreaGroupId_MessageAreasGroups` (`AREAGROUP`),
-  KEY `MessageAreas_AllowedRead_UsersGroups` (`AllowedGroupRead`),
-  KEY `MessageAreas_AllowedWrite_UsersGroups` (`AllowedGroupWrite`)
+  `FIDOID` varchar(30) NOT NULL DEFAULT '' COMMENT 'Message area identifier for fido network',
+  `AREAGROUP` varchar(20) NOT NULL DEFAULT '' COMMENT 'Gruop that area belongs to',
+  `AllowedGroupRead` varchar(30) DEFAULT '' COMMENT 'User group needed to access this area',
+  `AllowedGroupWrite` varchar(30) DEFAULT '' COMMENT 'User group needed to write in this area'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Message Areas List';
 
 --
@@ -111,21 +119,19 @@ CREATE TABLE IF NOT EXISTS `MessageAreas` (
 -- Struttura della tabella `MessageAreasGroups`
 --
 
-CREATE TABLE IF NOT EXISTS `MessageAreasGroups` (
-  `ID` varchar(20) NOT NULL,
+CREATE TABLE `MessageAreasGroups` (
+  `ID` varchar(20) NOT NULL DEFAULT '' COMMENT 'Areas group id',
   `Description` varchar(200) NOT NULL DEFAULT '',
-  `AllowedGroupId` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `Description` (`Description`),
-  KEY `MessageAreasGroups_Allowed_UsersGroups` (`AllowedGroupId`)
+  `AllowedGroupId` varchar(30) DEFAULT NULL COMMENT 'User group needed for access this group',
+  `FidoNetwork` varchar(30) DEFAULT NULL COMMENT 'Fido style network for exchange'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- RELAZIONI PER TABELLA `MessageAreasGroups`:
 --   `AllowedGroupId`
---       `UsersGroups` -> `Groupid`
---   `AllowedGroupId`
 --       `UsersGroups` -> `groupid`
+--   `FidoNetwork`
+--       `FidoNetworks` -> `ID`
 --
 
 -- --------------------------------------------------------
@@ -134,13 +140,10 @@ CREATE TABLE IF NOT EXISTS `MessageAreasGroups` (
 -- Struttura della tabella `MessageRead`
 --
 
-CREATE TABLE IF NOT EXISTS `MessageRead` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `MessageRead` (
+  `ID` int(11) NOT NULL,
   `MessgeId` int(11) NOT NULL,
-  `UserId` varchar(30) NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `MessageId` (`MessgeId`),
-  KEY `UserId` (`UserId`) USING BTREE
+  `UserId` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Flags for messages read';
 
 --
@@ -157,8 +160,8 @@ CREATE TABLE IF NOT EXISTS `MessageRead` (
 -- Struttura della tabella `Messages`
 --
 
-CREATE TABLE IF NOT EXISTS `Messages` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `Messages` (
+  `ID` int(11) NOT NULL,
   `Area` varchar(20) DEFAULT NULL,
   `MessageFrom` varchar(100) NOT NULL,
   `MessageTo` varchar(100) DEFAULT NULL,
@@ -175,9 +178,7 @@ CREATE TABLE IF NOT EXISTS `Messages` (
   `DestNet` int(11) NOT NULL DEFAULT 0,
   `DestNode` int(11) NOT NULL DEFAULT 0,
   `DestPoint` int(11) NOT NULL DEFAULT 0,
-  `Body` text NOT NULL DEFAULT '',
-  PRIMARY KEY (`ID`),
-  KEY `Area` (`Area`)
+  `Body` text NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Messages';
 
 --
@@ -194,13 +195,10 @@ CREATE TABLE IF NOT EXISTS `Messages` (
 -- Struttura della tabella `MessageSeenBy`
 --
 
-CREATE TABLE IF NOT EXISTS `MessageSeenBy` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `MessageSeenBy` (
+  `ID` int(11) NOT NULL,
   `MessageId` int(11) NOT NULL,
-  `SeenBy` varchar(50) NOT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `MessageId` (`MessageId`),
-  KEY `SeenBy` (`SeenBy`)
+  `SeenBy` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='System that already received the message';
 
 --
@@ -217,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `MessageSeenBy` (
 -- Struttura della tabella `Users`
 --
 
-CREATE TABLE IF NOT EXISTS `Users` (
+CREATE TABLE `Users` (
   `userid` varchar(30) NOT NULL,
   `realname` varchar(50) NOT NULL DEFAULT '',
   `city` varchar(50) NOT NULL DEFAULT '',
@@ -230,8 +228,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `Registered` datetime NOT NULL DEFAULT current_timestamp(),
   `LastPasswordModify` datetime NOT NULL DEFAULT current_timestamp(),
   `email` varchar(100) NOT NULL DEFAULT '',
-  `Locked` tinyint(1) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`userid`)
+  `Locked` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='BBS users' ROW_FORMAT=COMPACT;
 
 --
@@ -244,10 +241,9 @@ CREATE TABLE IF NOT EXISTS `Users` (
 -- Struttura della tabella `UsersGroups`
 --
 
-CREATE TABLE IF NOT EXISTS `UsersGroups` (
+CREATE TABLE `UsersGroups` (
   `Groupid` varchar(30) NOT NULL DEFAULT '',
-  `Description` varchar(200) NOT NULL DEFAULT '',
-  PRIMARY KEY (`Groupid`)
+  `Description` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups definition' ROW_FORMAT=COMPACT;
 
 --
@@ -260,13 +256,10 @@ CREATE TABLE IF NOT EXISTS `UsersGroups` (
 -- Struttura della tabella `UsersGroupsLinks`
 --
 
-CREATE TABLE IF NOT EXISTS `UsersGroupsLinks` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `UsersGroupsLinks` (
+  `id` int(11) NOT NULL,
   `userid` varchar(30) DEFAULT NULL,
-  `groupid` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `userid` (`userid`),
-  KEY `UsersGroupsLinks_groupid_groups` (`groupid`)
+  `groupid` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups' ROW_FORMAT=COMPACT;
 
 --
@@ -280,6 +273,134 @@ CREATE TABLE IF NOT EXISTS `UsersGroupsLinks` (
 --   `userid`
 --       `Users` -> `userid`
 --
+
+--
+-- Indici per le tabelle scaricate
+--
+
+--
+-- Indici per le tabelle `FidoNetworks`
+--
+ALTER TABLE `FidoNetworks`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Indici per le tabelle `Log`
+--
+ALTER TABLE `Log`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `DateTime` (`DateTime`);
+
+--
+-- Indici per le tabelle `Logins`
+--
+ALTER TABLE `Logins`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `UserId` (`UserId`),
+  ADD KEY `DateTime` (`DateTime`);
+
+--
+-- Indici per le tabelle `MessageAreas`
+--
+ALTER TABLE `MessageAreas`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Description` (`Description`),
+  ADD KEY `FIDOID` (`FIDOID`),
+  ADD KEY `MessageAreas_AreaGroupId_MessageAreasGroups` (`AREAGROUP`),
+  ADD KEY `MessageAreas_AllowedRead_UsersGroups` (`AllowedGroupRead`),
+  ADD KEY `MessageAreas_AllowedWrite_UsersGroups` (`AllowedGroupWrite`);
+
+--
+-- Indici per le tabelle `MessageAreasGroups`
+--
+ALTER TABLE `MessageAreasGroups`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Description` (`Description`),
+  ADD KEY `MessageAreasGroups_Allowed_UsersGroups` (`AllowedGroupId`),
+  ADD KEY `MessageAreasGroups_FidoNetwork_Fidonetworks` (`FidoNetwork`);
+
+--
+-- Indici per le tabelle `MessageRead`
+--
+ALTER TABLE `MessageRead`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `MessageId` (`MessgeId`),
+  ADD KEY `UserId` (`UserId`) USING BTREE;
+
+--
+-- Indici per le tabelle `Messages`
+--
+ALTER TABLE `Messages`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Area` (`Area`);
+
+--
+-- Indici per le tabelle `MessageSeenBy`
+--
+ALTER TABLE `MessageSeenBy`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `MessageId` (`MessageId`),
+  ADD KEY `SeenBy` (`SeenBy`);
+
+--
+-- Indici per le tabelle `Users`
+--
+ALTER TABLE `Users`
+  ADD PRIMARY KEY (`userid`);
+
+--
+-- Indici per le tabelle `UsersGroups`
+--
+ALTER TABLE `UsersGroups`
+  ADD PRIMARY KEY (`Groupid`);
+
+--
+-- Indici per le tabelle `UsersGroupsLinks`
+--
+ALTER TABLE `UsersGroupsLinks`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `UsersGroupsLinks_groupid_groups` (`groupid`);
+
+--
+-- AUTO_INCREMENT per le tabelle scaricate
+--
+
+--
+-- AUTO_INCREMENT per la tabella `Log`
+--
+ALTER TABLE `Log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `Logins`
+--
+ALTER TABLE `Logins`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `MessageRead`
+--
+ALTER TABLE `MessageRead`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `Messages`
+--
+ALTER TABLE `Messages`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `MessageSeenBy`
+--
+ALTER TABLE `MessageSeenBy`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT per la tabella `UsersGroupsLinks`
+--
+ALTER TABLE `UsersGroupsLinks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Limiti per le tabelle scaricate
@@ -303,7 +424,8 @@ ALTER TABLE `MessageAreas`
 -- Limiti per la tabella `MessageAreasGroups`
 --
 ALTER TABLE `MessageAreasGroups`
-  ADD CONSTRAINT `MessageAreasGroups_Allowed_UsersGroups` FOREIGN KEY (`AllowedGroupId`) REFERENCES `UsersGroups` (`groupid`) ON DELETE SET NULL;
+  ADD CONSTRAINT `MessageAreasGroups_Allowed_UsersGroups` FOREIGN KEY (`AllowedGroupId`) REFERENCES `UsersGroups` (`groupid`) ON DELETE SET NULL,
+  ADD CONSTRAINT `MessageAreasGroups_FidoNetwork_Fidonetworks` FOREIGN KEY (`FidoNetwork`) REFERENCES `FidoNetworks` (`ID`) ON DELETE SET NULL;
 
 --
 -- Limiti per la tabella `MessageRead`

@@ -28,6 +28,7 @@ namespace Casasoft.BBS.UI
     /// </summary>
     public class ScreenBase : IScreen
     {
+        #region properties
         /// <summary>
         /// Reference to Telnet client
         /// </summary>
@@ -47,6 +48,7 @@ namespace Casasoft.BBS.UI
         /// Pointer to caller screen (if any)
         /// </summary>
         public IScreen Previous { get; set; }
+        #endregion
 
         #region constructors
         /// <summary>
@@ -76,6 +78,7 @@ namespace Casasoft.BBS.UI
         /// </summary>
         public virtual void Show() { }
 
+        #region messages and control chars handling
         /// <summary>
         /// Empty implementation to ovverride in derived classes
         /// </summary>
@@ -241,7 +244,9 @@ namespace Casasoft.BBS.UI
         /// Empty implementation of F4 handler
         /// </summary>
         protected virtual void HandleF4() { }
+        #endregion
 
+        #region write
         /// <summary>
         /// Writes a string to the terminal
         /// </summary>
@@ -277,5 +282,6 @@ namespace Casasoft.BBS.UI
         /// </summary>
         /// <param name="row"></param>
         protected void ClearLine(int row) => Write(ANSI.Move(1, row) + ANSI.ClearCurrentLine);
+        #endregion
     }
 }

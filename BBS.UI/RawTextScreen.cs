@@ -20,6 +20,7 @@
 
 using Casasoft.BBS.Interfaces;
 using Casasoft.TextHelpers;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -72,13 +73,22 @@ namespace Casasoft.BBS.UI
         protected override void ReadText(string name)
         {
             Data = new Parser.BBSCodeResult();
+            List<string> txt;
             if (TextHelper.IsUrl(name))
             {
                 WebClient client = new WebClient();
-                Text = TextHelper.SplitString(client.DownloadString(name));
+                txt = TextHelper.SplitString(client.DownloadString(name));
             }
             else
-                Text = File.ReadAllLines(GetFile(name)).ToList();
+                txt = File.ReadAllLines(GetFile(name)).ToList();
+
+            foreach(string s in txt)
+            {
+                if(s.Length <= client.screenWidth)
+                    Text.Add(s);
+                else
+                    Text.AddRange(TextHelper.WordWrap(s, client.screenWidth));
+            }
             Footer.Add(string.Empty);
         }
 

@@ -33,6 +33,7 @@ namespace Casasoft.BBS.UI
     /// </summary>
     public class TextScreenBase : ScreenBase
     {
+        #region properties
         /// <summary>
         /// Lines of text body
         /// </summary>
@@ -57,6 +58,7 @@ namespace Casasoft.BBS.UI
         /// List of supplied arguments
         /// </summary>
         protected string[] Params;
+        #endregion
 
         #region constructors
         /// <summary>
@@ -81,7 +83,7 @@ namespace Casasoft.BBS.UI
         /// <param name="s">Server reference</param>
         /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         public TextScreenBase(IBBSClient c, IServer s, string txt) : this(c, s, txt, null) { }
-        
+
         /// <summary>
         /// Complete constructor
         /// </summary>
@@ -96,7 +98,7 @@ namespace Casasoft.BBS.UI
             Footer = new List<string>();
 
             if (!string.IsNullOrWhiteSpace(txt))
-            { 
+            {
                 Params = txt.Split(';');
                 if (!string.IsNullOrWhiteSpace(Params[0]))
                     ReadText(Params[0]);
@@ -189,7 +191,7 @@ namespace Casasoft.BBS.UI
 
         private void GoEnd()
         {
-            if (Text.Count > dataAreaSize && firstDisplayedLine+dataAreaSize < Text.Count) 
+            if (Text.Count > dataAreaSize && firstDisplayedLine + dataAreaSize < Text.Count)
             {
                 firstDisplayedLine = Text.Count - dataAreaSize;
                 ShowScreenLines();
@@ -364,22 +366,7 @@ namespace Casasoft.BBS.UI
             client.screen = ScreenFactory.Create(client, server, "Help", this);
             client.screen.Show();
         }
-        #endregion
 
-        /// <summary>
-        /// Launches default action
-        /// </summary>
-        public override void ShowNext()
-        {
-            execAction(string.Empty);
-            if(Previous != null)
-            {
-                client.screen = Previous;
-                client.screen.Show();
-            }
-        }
-
-        #region special chars handling
         /// <summary>
         /// Implements Ctrl-C handler
         /// </summary>
@@ -400,6 +387,19 @@ namespace Casasoft.BBS.UI
             }
         }
         #endregion
+
+        /// <summary>
+        /// Launches default action
+        /// </summary>
+        public override void ShowNext()
+        {
+            execAction(string.Empty);
+            if (Previous != null)
+            {
+                client.screen = Previous;
+                client.screen.Show();
+            }
+        }
 
         #region show lines
         /// <summary>
@@ -475,6 +475,32 @@ namespace Casasoft.BBS.UI
         {
             if (line % 2 > 0) Write(ANSI.WriteBackColor(Data.BodyAlternateBackground));
             else Write(ANSI.WriteBackColor(ANSI.defaultBackColor));
+        }
+
+        /// <summary>
+        /// Clears all lines of the header
+        /// </summary>
+        protected void ClearHeader()
+        {
+            for (int j = 1; j < dataAreaStart; j++)
+            {
+                if (Data.HasHeaderBackground)
+                    Write(ANSI.WriteBackColor(Data.HeaderBackground));
+                ClearLine(j);
+            }
+        }
+
+        /// <summary>
+        /// Clears all lines of the footer
+        /// </summary>
+        protected void ClearFooter()
+        {
+            for (int j = dataAreaStart + dataAreaSize; j <= client.screenHeight; j++)
+            {
+                if (Data.HasFooterBackground)
+                    Write(ANSI.WriteBackColor(Data.FooterBackground));
+                ClearLine(j);
+            }
         }
         #endregion
 

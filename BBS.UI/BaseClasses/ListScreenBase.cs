@@ -22,6 +22,9 @@ using Casasoft.BBS.Interfaces;
 
 namespace Casasoft.BBS.UI
 {
+    /// <summary>
+    /// Base class for lists
+    /// </summary>
     public class ListScreenBase : TextScreenBase
     {
         #region constructor

@@ -217,7 +217,7 @@ namespace Casasoft.BBS.Parser
         /// <summary>
         /// Concat parsed text
         /// </summary>
-        /// <param name="s"></param>
+        /// <param name="c"></param>
         public void TextConcat(char c) => Parsed += c;
 
         /// <summary>
