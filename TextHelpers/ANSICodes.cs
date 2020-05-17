@@ -251,6 +251,14 @@ namespace Casasoft.BBS.Parser
         public string WriteBackColor() => string.Format("\u001b[{0}m", peekBackColor());
 
         /// <summary>
+        /// Returns sequence to select color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public string WriteBackColor(Colors color) => 
+            string.Format("\u001b[{0}m", (int)color +40);
+
+        /// <summary>
         /// Sequence to clear current line
         /// </summary>
         public string ClearCurrentLine { get => "\u001b[2K"; }

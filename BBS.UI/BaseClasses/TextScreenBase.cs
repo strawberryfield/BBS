@@ -160,6 +160,7 @@ namespace Casasoft.BBS.UI
             ShowLines(Header, 0, Header.Count, 1);
             ShowLines(Footer, 0, Footer.Count, dataAreaStart + dataAreaSize);
             Write(ANSI.SaveCursorPosition);
+            if (Data.BodyAlternateBackground != ANSI.defaultBackColor) ClearBody();
             int ret = ShowLines();
             Write(ANSI.RestoreCursorPosition);
             return ret;
@@ -408,13 +409,17 @@ namespace Casasoft.BBS.UI
         /// <param name="start">first line of text to draw</param>
         /// <param name="len">number of text lines to draw</param>
         /// <param name="offset">first line of screen to use</param>
+        /// <param name="isBody">true is a drawing body request</param>
         /// <returns>last line of text written</returns>
-        protected int ShowLines(List<string> lines, int start, int len, int offset)
+        protected int ShowLines(List<string> lines, int start, int len, int offset, bool isBody = false)
         {
             int ret = start;
             for (; ret < start + len && ret < lines.Count; ++ret)
             {
-                MoveTo(ret + offset - start, 1);
+                int line = ret + offset - start;
+                MoveTo(line, 1);
+                if (isBody && Data.BodyAlternateBackground != ANSI.defaultBackColor)
+                    setColorLine(line);
                 Write(lines[ret]);
             }
             return ret;
@@ -429,7 +434,7 @@ namespace Casasoft.BBS.UI
         /// <remarks>
         /// first screen line used is <see cref="dataAreaStart"/>
         /// </remarks>
-        protected int ShowLines(int start, int len) => ShowLines(Text, start, len, dataAreaStart);
+        protected int ShowLines(int start, int len) => ShowLines(Text, start, len, dataAreaStart, true);
 
         /// <summary>
         /// Draws lines of the text body
@@ -458,7 +463,18 @@ namespace Casasoft.BBS.UI
         /// </summary>
         protected void ClearBody()
         {
-            for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++) ClearLine(j);
+            for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++)
+            {
+                if (Data.BodyAlternateBackground != ANSI.defaultBackColor)
+                    setColorLine(j);
+                ClearLine(j);
+            }
+        }
+
+        private void setColorLine(int line)
+        {
+            if (line % 2 > 0) Write(ANSI.WriteBackColor(Data.BodyAlternateBackground));
+            else Write(ANSI.WriteBackColor(ANSI.defaultBackColor));
         }
         #endregion
 

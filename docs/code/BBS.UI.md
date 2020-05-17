@@ -177,7 +177,7 @@
   - [Redraw()](#M-Casasoft-BBS-UI-TextScreenBase-Redraw 'Casasoft.BBS.UI.TextScreenBase.Redraw')
   - [Show()](#M-Casasoft-BBS-UI-TextScreenBase-Show 'Casasoft.BBS.UI.TextScreenBase.Show')
   - [ShowHelp()](#M-Casasoft-BBS-UI-TextScreenBase-ShowHelp 'Casasoft.BBS.UI.TextScreenBase.ShowHelp')
-  - [ShowLines(lines,start,len,offset)](#M-Casasoft-BBS-UI-TextScreenBase-ShowLines-System-Collections-Generic-List{System-String},System-Int32,System-Int32,System-Int32- 'Casasoft.BBS.UI.TextScreenBase.ShowLines(System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Int32)')
+  - [ShowLines(lines,start,len,offset,isBody)](#M-Casasoft-BBS-UI-TextScreenBase-ShowLines-System-Collections-Generic-List{System-String},System-Int32,System-Int32,System-Int32,System-Boolean- 'Casasoft.BBS.UI.TextScreenBase.ShowLines(System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Int32,System.Boolean)')
   - [ShowLines(start,len)](#M-Casasoft-BBS-UI-TextScreenBase-ShowLines-System-Int32,System-Int32- 'Casasoft.BBS.UI.TextScreenBase.ShowLines(System.Int32,System.Int32)')
   - [ShowLines(start)](#M-Casasoft-BBS-UI-TextScreenBase-ShowLines-System-Int32- 'Casasoft.BBS.UI.TextScreenBase.ShowLines(System.Int32)')
   - [ShowLines()](#M-Casasoft-BBS-UI-TextScreenBase-ShowLines 'Casasoft.BBS.UI.TextScreenBase.ShowLines')
@@ -2380,8 +2380,8 @@ Shows help screen
 
 This method has no parameters.
 
-<a name='M-Casasoft-BBS-UI-TextScreenBase-ShowLines-System-Collections-Generic-List{System-String},System-Int32,System-Int32,System-Int32-'></a>
-### ShowLines(lines,start,len,offset) `method`
+<a name='M-Casasoft-BBS-UI-TextScreenBase-ShowLines-System-Collections-Generic-List{System-String},System-Int32,System-Int32,System-Int32,System-Boolean-'></a>
+### ShowLines(lines,start,len,offset,isBody) `method`
 
 ##### Summary
 
@@ -2399,6 +2399,7 @@ last line of text written
 | start | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | first line of text to draw |
 | len | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | number of text lines to draw |
 | offset | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | first line of screen to use |
+| isBody | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | true is a drawing body request |
 
 <a name='M-Casasoft-BBS-UI-TextScreenBase-ShowLines-System-Int32,System-Int32-'></a>
 ### ShowLines(start,len) `method`

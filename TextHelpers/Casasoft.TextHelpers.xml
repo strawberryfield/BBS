@@ -166,6 +166,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteBackColor(Casasoft.BBS.Parser.ANSICodes.Colors)">
+            <summary>
+            Returns sequence to select color
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
         <member name="P:Casasoft.BBS.Parser.ANSICodes.ClearCurrentLine">
             <summary>
             Sequence to clear current line

@@ -433,7 +433,7 @@
             Return to previous screen if exists or logout 
             </remarks>
         </member>
-        <member name="M:Casasoft.BBS.UI.TextScreenBase.ShowLines(System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Int32)">
+        <member name="M:Casasoft.BBS.UI.TextScreenBase.ShowLines(System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
             Draws lines of text
             </summary>
@@ -441,6 +441,7 @@
             <param name="start">first line of text to draw</param>
             <param name="len">number of text lines to draw</param>
             <param name="offset">first line of screen to use</param>
+            <param name="isBody">true is a drawing body request</param>
             <returns>last line of text written</returns>
         </member>
         <member name="M:Casasoft.BBS.UI.TextScreenBase.ShowLines(System.Int32,System.Int32)">

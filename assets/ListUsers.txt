@@ -2,5 +2,6 @@
 
 Username                       Since      From
 {HR/}{/HEADER}
+{body alternatecolor="green" /}
 {FOOTER}{hr/}
 Press {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to continue{/FOOTER} 
