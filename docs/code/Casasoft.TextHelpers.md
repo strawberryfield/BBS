@@ -21,6 +21,7 @@
   - [SetMode()](#M-Casasoft-BBS-Parser-ANSICodes-SetMode 'Casasoft.BBS.Parser.ANSICodes.SetMode')
   - [SetMode(m)](#M-Casasoft-BBS-Parser-ANSICodes-SetMode-Casasoft-BBS-Parser-ANSICodes-Modes- 'Casasoft.BBS.Parser.ANSICodes.SetMode(Casasoft.BBS.Parser.ANSICodes.Modes)')
   - [WriteBackColor()](#M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor 'Casasoft.BBS.Parser.ANSICodes.WriteBackColor')
+  - [WriteBackColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor-System-Int32- 'Casasoft.BBS.Parser.ANSICodes.WriteBackColor(System.Int32)')
   - [WriteBackColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor-Casasoft-BBS-Parser-ANSICodes-Colors- 'Casasoft.BBS.Parser.ANSICodes.WriteBackColor(Casasoft.BBS.Parser.ANSICodes.Colors)')
   - [WriteForeColor()](#M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor 'Casasoft.BBS.Parser.ANSICodes.WriteForeColor')
   - [WriteMode()](#M-Casasoft-BBS-Parser-ANSICodes-WriteMode 'Casasoft.BBS.Parser.ANSICodes.WriteMode')
@@ -256,6 +257,23 @@ Returns sequence for current backgroud color
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor-System-Int32-'></a>
+### WriteBackColor(color) `method`
+
+##### Summary
+
+Returns sequence to select color
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| color | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
 
 <a name='M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor-Casasoft-BBS-Parser-ANSICodes-Colors-'></a>
 ### WriteBackColor(color) `method`

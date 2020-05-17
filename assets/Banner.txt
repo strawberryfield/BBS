@@ -1,4 +1,4 @@
-{HEADER}{CLS forecolor="Blue" backcolor="White" /}[0;5;37;47m            .. . .... . [0;1;37;47m8[0;1;33;47m@[0;5;37;47m ... . . .   .[0m
+{HEADER}{CLS forecolor="Blue" backcolor="LightGray" /}[0;5;37;47m            .. . .... . [0;1;37;47m8[0;1;33;47m@[0;5;37;47m ... . . .   .[0m
 [0;5;37;47m  .  . .  .  . .:[0;1;37;47m%[0;5;37;47mt ... [0;1;33;47m8[0;1;30;43m@[0;5;37;47m% .. .   .    [0m{COLOR value="Red"}{BACKCOLOR value="White"}Welcome to &BBSname;!{/BACKCOLOR}{/COLOR}
 [0;5;37;47m   .     .  . . [0;1;37;47m@[0;32;43m:[0;1;30;43m;[0;1;37;47m8[0;5;37;47m   [0;1;37;47m8[0;1;30;43m:[0;32;43m%[0;1;33;47mS[0;5;37;47m:. .X; .  .  [0m
 [0;5;37;47m     .    . .  .[0;1;30;43mt;%@[0;5;37;47m  .[0;5;33;43mX[0;1;30;43m8[0;33;42m8[0;1;30;47m@[0;5;37;47m .. Xt .   . [0m{COLOR value="Red"}{BACKCOLOR value="White"}thestrawberryfield.duckdns.org{/BACKCOLOR}{/COLOR}

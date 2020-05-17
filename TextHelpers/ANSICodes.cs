@@ -34,7 +34,11 @@ namespace Casasoft.BBS.Parser
         /// <summary>
         /// basic coloror
         /// </summary>
-        public enum Colors { Black, Red, Green, Yellow, Blue, Magenta, Cyan, White }
+        public enum Colors
+        {
+            Black, Red, Green, Yellow, Blue, Magenta, Cyan, LightGray,
+            Gray, LightRed, LightGreen, LightYellow, LightBlue, LightMagenta, LightCyan, White
+        }
 
         /// <summary>
         /// Default text color
@@ -47,8 +51,23 @@ namespace Casasoft.BBS.Parser
 
         private Stack<Colors> foreColorStack;
         private Stack<Colors> backColorStack;
-        private int peekForeColor() => (int)foreColorStack.Peek() + 30;
-        private int peekBackColor() => (int)backColorStack.Peek() + 40;
+        private string peekForeColor() => ForeColorSeq(foreColorStack.Peek());
+        private string peekBackColor() => BackColorSeq(backColorStack.Peek());
+        private string ForeColorSeq(int color) {
+            if (color > 7)
+                return string.Format("38;5;{0}", color);
+            else 
+                return (color + 30).ToString();
+        }
+        private string BackColorSeq(int color)
+        {
+            if (color > 7)
+                return string.Format("48;5;{0}", color);
+            else
+                return (color + 40).ToString();
+        }
+        private string ForeColorSeq(Colors color) => ForeColorSeq((int)color);
+        private string BackColorSeq(Colors color) => BackColorSeq((int)color);
 
         /// <summary>
         /// Gets enum value from case insensitive string
@@ -59,7 +78,7 @@ namespace Casasoft.BBS.Parser
         public Colors GetColorByName(string name, bool isBack = false)
         {
             Colors color;
-            if(ColorTable.TryGetValue(name.Trim('"').Trim().ToUpper(), out color))
+            if (ColorTable.TryGetValue(name.Trim('"').Trim().ToUpper(), out color))
                 return color;
             else
                 return isBack ? defaultBackColor : defaultForeColor;
@@ -85,7 +104,7 @@ namespace Casasoft.BBS.Parser
         private string ModeFromBits(byte status)
         {
             string ret = "0;";
-            if ((status & ModeBold) != 0) ret += string.Format("{0};",(int)Modes.Bold);
+            if ((status & ModeBold) != 0) ret += string.Format("{0};", (int)Modes.Bold);
             if ((status & ModeUnderline) != 0) ret += string.Format("{0};", (int)Modes.Underline);
             if ((status & ModeBlink) != 0) ret += string.Format("{0};", (int)Modes.Blink);
             if ((status & ModeReverse) != 0) ret += string.Format("{0};", (int)Modes.Reverse);
@@ -237,7 +256,7 @@ namespace Casasoft.BBS.Parser
         /// </summary>
         /// <returns></returns>
         public string WriteMode() =>
-            string.Format("\u001b[{0}{1};{2}m", ModeFromBits(currentMode),  peekForeColor(), peekBackColor());
+            string.Format("\u001b[{0}{1};{2}m", ModeFromBits(currentMode), peekForeColor(), peekBackColor());
 
         /// <summary>
         /// Returns sequence for current text color
@@ -255,8 +274,15 @@ namespace Casasoft.BBS.Parser
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
-        public string WriteBackColor(Colors color) => 
-            string.Format("\u001b[{0}m", (int)color +40);
+        public string WriteBackColor(int color) =>
+            string.Format("\u001b[{0}m", BackColorSeq(color));
+
+        /// <summary>
+        /// Returns sequence to select color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public string WriteBackColor(Colors color) => WriteBackColor((int)color);
 
         /// <summary>
         /// Sequence to clear current line

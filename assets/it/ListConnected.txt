@@ -2,5 +2,6 @@
 
 Nome utente                    Data       Ora      Da
 {HR/}{/HEADER}
+{body alternatecolor="LightGray" /}
 {FOOTER}{hr/}
 Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} per continuare {/FOOTER}

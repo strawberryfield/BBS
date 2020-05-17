@@ -2,5 +2,6 @@
 
 Date       Time     Ok From
 {HR/}{/header}
+{body alternatecolor="LightGray" /}
 {footer}{hr/}
 Press {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to continue {/footer}
