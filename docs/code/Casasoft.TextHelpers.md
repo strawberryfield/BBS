@@ -23,7 +23,11 @@
   - [WriteBackColor()](#M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor 'Casasoft.BBS.Parser.ANSICodes.WriteBackColor')
   - [WriteBackColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor-System-Int32- 'Casasoft.BBS.Parser.ANSICodes.WriteBackColor(System.Int32)')
   - [WriteBackColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor-Casasoft-BBS-Parser-ANSICodes-Colors- 'Casasoft.BBS.Parser.ANSICodes.WriteBackColor(Casasoft.BBS.Parser.ANSICodes.Colors)')
+  - [WriteBackColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor-System-String- 'Casasoft.BBS.Parser.ANSICodes.WriteBackColor(System.String)')
   - [WriteForeColor()](#M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor 'Casasoft.BBS.Parser.ANSICodes.WriteForeColor')
+  - [WriteForeColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor-System-Int32- 'Casasoft.BBS.Parser.ANSICodes.WriteForeColor(System.Int32)')
+  - [WriteForeColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor-Casasoft-BBS-Parser-ANSICodes-Colors- 'Casasoft.BBS.Parser.ANSICodes.WriteForeColor(Casasoft.BBS.Parser.ANSICodes.Colors)')
+  - [WriteForeColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor-System-String- 'Casasoft.BBS.Parser.ANSICodes.WriteForeColor(System.String)')
   - [WriteMode()](#M-Casasoft-BBS-Parser-ANSICodes-WriteMode 'Casasoft.BBS.Parser.ANSICodes.WriteMode')
   - [popBackColor()](#M-Casasoft-BBS-Parser-ANSICodes-popBackColor 'Casasoft.BBS.Parser.ANSICodes.popBackColor')
   - [popForeColor()](#M-Casasoft-BBS-Parser-ANSICodes-popForeColor 'Casasoft.BBS.Parser.ANSICodes.popForeColor')
@@ -292,6 +296,23 @@ Returns sequence to select color
 | ---- | ---- | ----------- |
 | color | [Casasoft.BBS.Parser.ANSICodes.Colors](#T-Casasoft-BBS-Parser-ANSICodes-Colors 'Casasoft.BBS.Parser.ANSICodes.Colors') |  |
 
+<a name='M-Casasoft-BBS-Parser-ANSICodes-WriteBackColor-System-String-'></a>
+### WriteBackColor(color) `method`
+
+##### Summary
+
+Returns sequence to select color
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| color | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
+
 <a name='M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor'></a>
 ### WriteForeColor() `method`
 
@@ -306,6 +327,57 @@ Returns sequence for current text color
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor-System-Int32-'></a>
+### WriteForeColor(color) `method`
+
+##### Summary
+
+Returns sequence to select color
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| color | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor-Casasoft-BBS-Parser-ANSICodes-Colors-'></a>
+### WriteForeColor(color) `method`
+
+##### Summary
+
+Returns sequence to select color
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| color | [Casasoft.BBS.Parser.ANSICodes.Colors](#T-Casasoft-BBS-Parser-ANSICodes-Colors 'Casasoft.BBS.Parser.ANSICodes.Colors') |  |
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor-System-String-'></a>
+### WriteForeColor(color) `method`
+
+##### Summary
+
+Returns sequence to select color
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| color | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-Casasoft-BBS-Parser-ANSICodes-WriteMode'></a>
 ### WriteMode() `method`

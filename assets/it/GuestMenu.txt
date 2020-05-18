@@ -7,7 +7,7 @@ Scegli una opzione:{/HEADER}
 
 {ACTION key="T" text="about/TSF.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[T]{/BACKCOLOR}{/COLOR} - Informazioni su The Strawberry Field{/ACTION}
 {ACTION key="A" text="about/RC.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - Informazioni sull'autore{/ACTION}
-{ACTION key="B" module="RawTextScreen" text="https://raw.githubusercontent.com/strawberryfield/BBS/master/LEGGIMI.md"} {COLOR value="White"}{BACKCOLOR value="Blue"}[B]{/BACKCOLOR}{/COLOR} - Informazioni sul software{/ACTION}
+{ACTION key="B" module="MarkdownScreen" text="https://raw.githubusercontent.com/strawberryfield/BBS/master/LEGGIMI.md"} {COLOR value="White"}{BACKCOLOR value="Blue"}[B]{/BACKCOLOR}{/COLOR} - Informazioni sul software{/ACTION}
 
 {ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - Regolamento della BBS (in inglese){/ACTION}
 {ACTION key="Q" module="Logout" text="it/Logout.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Disconnessione{/ACTION}

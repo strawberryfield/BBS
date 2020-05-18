@@ -76,8 +76,8 @@ namespace Casasoft.BBS.UI
             List<string> txt;
             if (TextHelper.IsUrl(name))
             {
-                WebClient client = new WebClient();
-                txt = TextHelper.SplitString(client.DownloadString(name));
+                WebClient webClient = new WebClient();
+                txt = TextHelper.SplitString(webClient.DownloadString(name));
             }
             else
                 txt = File.ReadAllLines(GetFile(name)).ToList();

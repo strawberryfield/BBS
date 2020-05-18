@@ -66,7 +66,7 @@
   - [TextAssign(s)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextAssign-System-String- 'Casasoft.BBS.Parser.BBSCodeResult.TextAssign(System.String)')
   - [TextClear()](#M-Casasoft-BBS-Parser-BBSCodeResult-TextClear 'Casasoft.BBS.Parser.BBSCodeResult.TextClear')
   - [TextConcat(s)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextConcat-System-String- 'Casasoft.BBS.Parser.BBSCodeResult.TextConcat(System.String)')
-  - [TextConcat(s)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextConcat-System-Char- 'Casasoft.BBS.Parser.BBSCodeResult.TextConcat(System.Char)')
+  - [TextConcat(c)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextConcat-System-Char- 'Casasoft.BBS.Parser.BBSCodeResult.TextConcat(System.Char)')
   - [TextPop(concat)](#M-Casasoft-BBS-Parser-BBSCodeResult-TextPop-System-Boolean- 'Casasoft.BBS.Parser.BBSCodeResult.TextPop(System.Boolean)')
   - [TextPush()](#M-Casasoft-BBS-Parser-BBSCodeResult-TextPush 'Casasoft.BBS.Parser.BBSCodeResult.TextPush')
 - [BBSCodeTranslator](#T-Casasoft-BBS-Parser-BBSCodeTranslator 'Casasoft.BBS.Parser.BBSCodeTranslator')
@@ -902,7 +902,7 @@ Concat parsed text
 | s | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 
 <a name='M-Casasoft-BBS-Parser-BBSCodeResult-TextConcat-System-Char-'></a>
-### TextConcat(s) `method`
+### TextConcat(c) `method`
 
 ##### Summary
 
@@ -912,7 +912,7 @@ Concat parsed text
 
 | Name | Type | Description |
 | ---- | ---- | ----------- |
-| s | [System.Char](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Char 'System.Char') |  |
+| c | [System.Char](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Char 'System.Char') |  |
 
 <a name='M-Casasoft-BBS-Parser-BBSCodeResult-TextPop-System-Boolean-'></a>
 ### TextPop(concat) `method`

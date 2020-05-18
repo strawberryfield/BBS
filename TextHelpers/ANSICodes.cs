@@ -36,8 +36,10 @@ namespace Casasoft.BBS.Parser
         /// </summary>
         public enum Colors
         {
+#pragma warning disable CS1591 // Manca il commento XML per il tipo o il membro visibile pubblicamente
             Black, Red, Green, Yellow, Blue, Magenta, Cyan, LightGray,
             Gray, LightRed, LightGreen, LightYellow, LightBlue, LightMagenta, LightCyan, White
+#pragma warning restore CS1591 // Manca il commento XML per il tipo o il membro visibile pubblicamente
         }
 
         /// <summary>
@@ -94,7 +96,9 @@ namespace Casasoft.BBS.Parser
         /// <summary>
         /// Text modes
         /// </summary>
+#pragma warning disable CS1591 // Manca il commento XML per il tipo o il membro visibile pubblicamente
         public enum Modes { Normal, Bold, Underline = 4, Blink, Reverse = 7 }
+#pragma warning restore CS1591 // Manca il commento XML per il tipo o il membro visibile pubblicamente
         private const byte ModeNormal = 0b00000000;
         private const byte ModeBold = 0b00000010;
         private const byte ModeUnderline = 0b00000100;
@@ -274,6 +278,28 @@ namespace Casasoft.BBS.Parser
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
+        public string WriteForeColor(int color) =>
+            string.Format("\u001b[{0}m", ForeColorSeq(color));
+
+        /// <summary>
+        /// Returns sequence to select color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public string WriteForeColor(Colors color) => WriteForeColor((int)color);
+
+        /// <summary>
+        /// Returns sequence to select color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public string WriteForeColor(string color) => WriteForeColor(GetColorByName(color));
+
+        /// <summary>
+        /// Returns sequence to select color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
         public string WriteBackColor(int color) =>
             string.Format("\u001b[{0}m", BackColorSeq(color));
 
@@ -283,6 +309,13 @@ namespace Casasoft.BBS.Parser
         /// <param name="color"></param>
         /// <returns></returns>
         public string WriteBackColor(Colors color) => WriteBackColor((int)color);
+
+        /// <summary>
+        /// Returns sequence to select color
+        /// </summary>
+        /// <param name="color"></param>
+        /// <returns></returns>
+        public string WriteBackColor(string color) => WriteBackColor(GetColorByName(color, true));
 
         /// <summary>
         /// Sequence to clear current line
