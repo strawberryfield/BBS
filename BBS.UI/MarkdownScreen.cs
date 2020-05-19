@@ -24,8 +24,8 @@ using Microsoft.Toolkit.Parsers.Markdown;
 using Microsoft.Toolkit.Parsers.Markdown.Blocks;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Configuration;
 using System.IO;
-using System.Linq;
 using System.Net;
 
 namespace Casasoft.BBS.UI
@@ -70,6 +70,11 @@ namespace Casasoft.BBS.UI
         #endregion
 
         /// <summary>
+        /// Collection of configured styles
+        /// </summary>
+        protected NameValueCollection mdStyles;
+
+        /// <summary>
         /// Reads the markdown file and stores it in lists of lines
         /// </summary>
         /// <param name="name">File to load</param>
@@ -88,8 +93,10 @@ namespace Casasoft.BBS.UI
             MarkdownDocument md = new MarkdownDocument();
             md.Parse(txt);
 
-            NameValueCollection mdStyles = 
-                (NameValueCollection)System.Configuration.ConfigurationManager.GetSection("Markdown");
+            mdStyles = (NameValueCollection)ConfigurationManager.GetSection("Markdown");
+            string forecolor = string.Empty;
+            string backcolor = string.Empty;
+            string underline = string.Empty;
             foreach(var b in md.Blocks)
             {
                 switch (b.Type)
@@ -97,20 +104,64 @@ namespace Casasoft.BBS.UI
                     case MarkdownBlockType.Root:
                         break;
                     case MarkdownBlockType.Paragraph:
-                        Text.AddRange(TextHelper.WordWrap(b.ToString(), client.screenWidth));
+                        string para = "";
+                        foreach(var i in ((ParagraphBlock)b).Inlines)
+                        {
+                            switch (i.Type)
+                            {
+                                //case MarkdownInlineType.Comment:
+                                //    break;
+                                //case MarkdownInlineType.TextRun:
+                                //    break;
+                                //case MarkdownInlineType.Bold:
+                                //    break;
+                                //case MarkdownInlineType.Italic:
+                                //    break;
+                                //case MarkdownInlineType.MarkdownLink:
+                                //    break;
+                                //case MarkdownInlineType.RawHyperlink:
+                                //    break;
+                                //case MarkdownInlineType.RawSubreddit:
+                                //    break;
+                                //case MarkdownInlineType.Strikethrough:
+                                //    break;
+                                //case MarkdownInlineType.Superscript:
+                                //    break;
+                                //case MarkdownInlineType.Subscript:
+                                //    break;
+                                //case MarkdownInlineType.Code:
+                                //    break;
+                                //case MarkdownInlineType.Image:
+                                //    break;
+                                //case MarkdownInlineType.Emoji:
+                                //    break;
+                                //case MarkdownInlineType.LinkReference:
+                                //    break;
+                                default:
+                                    para += i.ToString();
+                                    break;
+                            }
+                        }
+                        Text.AddRange(TextHelper.WordWrap(para, client.screenWidth));
                         Text.Add(string.Empty);
                         break;
                     case MarkdownBlockType.Quote:
                         break;
                     case MarkdownBlockType.Code:
+                        forecolor = GetForeColor("Code_Color");
+                        backcolor = GetBackColor("Code_Back");
+                        List<string> rows = TextHelper.SplitString(((CodeBlock)b).Text);
+                        foreach (string s in rows)
+                        {
+                            Text.Add(backcolor + forecolor + ANSI.ClearCurrentLine + s);
+                        }
+                        Text.Add(ANSI.WriteMode());
                         break;
                     case MarkdownBlockType.Header:
                         string l = string.Format("H{0}_", ((HeaderBlock)b).HeaderLevel);
-                        string forecolor = mdStyles.Get(l + "Color");
-                        forecolor = string.IsNullOrWhiteSpace(forecolor) ? string.Empty : ANSI.WriteForeColor(forecolor);
-                        string backcolor = mdStyles.Get(l + "Back");
-                        backcolor = string.IsNullOrWhiteSpace(backcolor) ? string.Empty : ANSI.WriteBackColor(backcolor);
-                        string underline = mdStyles.Get(l + "Underline");
+                        forecolor = GetForeColor(l + "Color");
+                        backcolor = GetBackColor(l + "Back");
+                        underline = mdStyles.Get(l + "Underline");
                         foreach(string s in TextHelper.WordWrap(b.ToString(), client.screenWidth))
                         {
                             Text.Add(backcolor + forecolor + ANSI.ClearCurrentLine + s);
@@ -137,6 +188,28 @@ namespace Casasoft.BBS.UI
                 }
             }
             Footer.Add(string.Empty);
+        }
+
+        /// <summary>
+        /// Gets color ansi sequence from a configured style
+        /// </summary>
+        /// <param name="tag">style tag to search</param>
+        /// <returns></returns>
+        protected string GetForeColor(string tag)
+        {
+            string c = mdStyles.Get(tag);
+            return string.IsNullOrWhiteSpace(c) ? string.Empty : ANSI.WriteForeColor(c);
+        }
+
+        /// <summary>
+        /// Gets background color ansi sequence from a configured style
+        /// </summary>
+        /// <param name="tag">style tag to search</param>
+        /// <returns></returns>
+        protected string GetBackColor(string tag)
+        {
+            string c = mdStyles.Get(tag);
+            return string.IsNullOrWhiteSpace(c) ? string.Empty : ANSI.WriteBackColor(c);
         }
 
     }

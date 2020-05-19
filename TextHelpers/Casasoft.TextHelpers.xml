@@ -166,6 +166,27 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteForeColor(System.Int32)">
+            <summary>
+            Returns sequence to select color
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteForeColor(Casasoft.BBS.Parser.ANSICodes.Colors)">
+            <summary>
+            Returns sequence to select color
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteForeColor(System.String)">
+            <summary>
+            Returns sequence to select color
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
         <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteBackColor(System.Int32)">
             <summary>
             Returns sequence to select color
@@ -174,6 +195,13 @@
             <returns></returns>
         </member>
         <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteBackColor(Casasoft.BBS.Parser.ANSICodes.Colors)">
+            <summary>
+            Returns sequence to select color
+            </summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteBackColor(System.String)">
             <summary>
             Returns sequence to select color
             </summary>

@@ -46,6 +46,11 @@
             Sets default action to <see cref="T:Casasoft.BBS.UI.LoginScreen"/>
             </summary>
         </member>
+        <member name="T:Casasoft.BBS.UI.ListScreenBase">
+            <summary>
+            Base class for lists
+            </summary>
+        </member>
         <member name="M:Casasoft.BBS.UI.ListScreenBase.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
             <summary>
             Constructor
@@ -420,11 +425,6 @@
             Shows help screen
             </summary>
         </member>
-        <member name="M:Casasoft.BBS.UI.TextScreenBase.ShowNext">
-            <summary>
-            Launches default action
-            </summary>
-        </member>
         <member name="M:Casasoft.BBS.UI.TextScreenBase.HandleControlC">
             <summary>
             Implements Ctrl-C handler
@@ -432,6 +432,11 @@
             <remarks>
             Return to previous screen if exists or logout 
             </remarks>
+        </member>
+        <member name="M:Casasoft.BBS.UI.TextScreenBase.ShowNext">
+            <summary>
+            Launches default action
+            </summary>
         </member>
         <member name="M:Casasoft.BBS.UI.TextScreenBase.ShowLines(System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Int32,System.Boolean)">
             <summary>
@@ -480,6 +485,16 @@
         <member name="M:Casasoft.BBS.UI.TextScreenBase.ClearBody">
             <summary>
             Clears all lines of the text body
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.TextScreenBase.ClearHeader">
+            <summary>
+            Clears all lines of the header
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.TextScreenBase.ClearFooter">
+            <summary>
+            Clears all lines of the footer
             </summary>
         </member>
         <member name="M:Casasoft.BBS.UI.TextScreenBase.GetFile(System.String)">
@@ -880,6 +895,68 @@
             <summary>
             Shows the message and force disconnection
             </summary>
+        </member>
+        <member name="T:Casasoft.BBS.UI.MarkdownScreen">
+            <summary>
+            Displays a Markdown file
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)">
+            <summary>
+            Complete constructor
+            </summary>
+            <param name="c">Client reference</param>
+            <param name="s">Server reference</param>
+            <param name="txt">Text to parse and optional parameters separated by semicolon</param>
+            <param name="prev">Link to caller screen</param>
+        </member>
+        <member name="F:Casasoft.BBS.UI.MarkdownScreen.mdStyles">
+            <summary>
+            Collection of configured styles
+            </summary>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.ReadText(System.String)">
+            <summary>
+            Reads the markdown file and stores it in lists of lines
+            </summary>
+            <param name="name">File to load</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.GetForeColor(System.String)">
+            <summary>
+            Gets color ansi sequence from a configured style
+            </summary>
+            <param name="tag">style tag to search</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.GetBackColor(System.String)">
+            <summary>
+            Gets background color ansi sequence from a configured style
+            </summary>
+            <param name="tag">style tag to search</param>
+            <returns></returns>
         </member>
         <member name="T:Casasoft.BBS.UI.MessageAreaGroups">
             <summary>

@@ -429,7 +429,7 @@
             <summary>
             Concat parsed text
             </summary>
-            <param name="s"></param>
+            <param name="c"></param>
         </member>
         <member name="M:Casasoft.BBS.Parser.BBSCodeResult.TextPush">
             <summary>
