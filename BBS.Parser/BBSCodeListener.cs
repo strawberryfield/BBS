@@ -235,6 +235,30 @@ namespace Casasoft.BBS.Parser
                     case Tags.HIDDEN:
                         Parsed.TextClear();
                         break;
+                    case Tags.H1:
+                        Parsed.TextAssign(string.Join('\n',
+                            ANSI.Header(Parsed.Parsed, 1,
+                            Client.screenWidth).ToArray()));
+                        Parsed.TextPop(true);
+                        break;
+                    case Tags.H2:
+                        Parsed.TextAssign(string.Join('\n',
+                            ANSI.Header(Parsed.Parsed, 2,
+                            Client.screenWidth).ToArray()));
+                        Parsed.TextPop(true);
+                        break;
+                    case Tags.H3:
+                        Parsed.TextAssign(string.Join('\n',
+                            ANSI.Header(Parsed.Parsed, 3,
+                            Client.screenWidth).ToArray()));
+                        Parsed.TextPop(true);
+                        break;
+                    case Tags.H4:
+                        Parsed.TextAssign(string.Join('\n',
+                            ANSI.Header(Parsed.Parsed, 1,
+                            Client.screenWidth).ToArray()));
+                        Parsed.TextPop(true);
+                        break;
                     default:
                         break;
                 }

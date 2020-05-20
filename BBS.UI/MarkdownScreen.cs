@@ -148,27 +148,18 @@ namespace Casasoft.BBS.UI
                     case MarkdownBlockType.Quote:
                         break;
                     case MarkdownBlockType.Code:
-                        forecolor = GetForeColor("Code_Color");
-                        backcolor = GetBackColor("Code_Back");
+                        forecolor = ANSI.GetStyleForeColor("Code_Color", mdStyles);
+                        backcolor = ANSI.GetStyleBackColor("Code_Back", mdStyles);
                         List<string> rows = TextHelper.SplitString(((CodeBlock)b).Text);
                         foreach (string s in rows)
                         {
-                            Text.Add(backcolor + forecolor + ANSI.ClearCurrentLine + s);
+                            Text.Add(backcolor + forecolor + ANSI.ClearCurrentLine + s + ANSI.WriteMode());
                         }
                         Text.Add(ANSI.WriteMode());
                         break;
                     case MarkdownBlockType.Header:
-                        string l = string.Format("H{0}_", ((HeaderBlock)b).HeaderLevel);
-                        forecolor = GetForeColor(l + "Color");
-                        backcolor = GetBackColor(l + "Back");
-                        underline = mdStyles.Get(l + "Underline");
-                        foreach(string s in TextHelper.WordWrap(b.ToString(), client.screenWidth))
-                        {
-                            Text.Add(backcolor + forecolor + ANSI.ClearCurrentLine + s);
-                        }
-                        if (!string.IsNullOrWhiteSpace(underline))
-                            Text.Add(backcolor + forecolor + TextHelper.HR(underline[0], client.screenWidth));
-                        Text.Add(ANSI.WriteMode());
+                        HeaderBlock hb = (HeaderBlock)b;
+                        Text.AddRange(ANSI.Header(hb.ToString(), hb.HeaderLevel, client.screenWidth));
                         break;
                     case MarkdownBlockType.List:
                         break;
@@ -189,28 +180,5 @@ namespace Casasoft.BBS.UI
             }
             Footer.Add(string.Empty);
         }
-
-        /// <summary>
-        /// Gets color ansi sequence from a configured style
-        /// </summary>
-        /// <param name="tag">style tag to search</param>
-        /// <returns></returns>
-        protected string GetForeColor(string tag)
-        {
-            string c = mdStyles.Get(tag);
-            return string.IsNullOrWhiteSpace(c) ? string.Empty : ANSI.WriteForeColor(c);
-        }
-
-        /// <summary>
-        /// Gets background color ansi sequence from a configured style
-        /// </summary>
-        /// <param name="tag">style tag to search</param>
-        /// <returns></returns>
-        protected string GetBackColor(string tag)
-        {
-            string c = mdStyles.Get(tag);
-            return string.IsNullOrWhiteSpace(c) ? string.Empty : ANSI.WriteBackColor(c);
-        }
-
     }
 }

@@ -18,6 +18,7 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.TextHelpers;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -129,6 +130,8 @@ namespace Casasoft.BBS.Parser
         private byte currentMode;
         #endregion
 
+        private NameValueCollection appearance;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -140,7 +143,7 @@ namespace Casasoft.BBS.Parser
             currentMode = 0;
 
             Colors col;
-            NameValueCollection appearance = (NameValueCollection)ConfigurationManager.GetSection("Appearance");
+            appearance = (NameValueCollection)ConfigurationManager.GetSection("Appearance");
             defaultForeColor = ColorTable.TryGetValue(appearance["ForeColor"].ToUpper(), out col) ?
                 col : Colors.White;
 
@@ -321,5 +324,67 @@ namespace Casasoft.BBS.Parser
         /// Sequence to clear current line
         /// </summary>
         public string ClearCurrentLine { get => "\u001b[2K"; }
+
+        /// <summary>
+        /// Gets color ansi sequence from a configured style
+        /// </summary>
+        /// <param name="tag">style tag to search</param>
+        /// <param name="Styles">Config section</param>
+        /// <returns></returns>
+        public string GetStyleForeColor(string tag, NameValueCollection Styles)
+        {
+            string c = Styles.Get(tag);
+            return string.IsNullOrWhiteSpace(c) ? string.Empty : WriteForeColor(c);
+        }
+
+        /// <summary>
+        /// Gets color ansi sequence from a configured style
+        /// </summary>
+        /// <param name="tag">style tag to search</param>
+        /// <returns></returns>
+        public string GetStyleForeColor(string tag) => GetStyleForeColor(tag, appearance);
+
+        /// <summary>
+        /// Gets background color ansi sequence from a configured style
+        /// </summary>
+        /// <param name="tag">style tag to search</param>
+        /// <param name="Styles">Config section</param>
+        /// <returns></returns>
+        public string GetStyleBackColor(string tag, NameValueCollection Styles)
+        {
+            string c = Styles.Get(tag);
+            return string.IsNullOrWhiteSpace(c) ? string.Empty : WriteBackColor(c);
+        }
+
+        /// <summary>
+        /// Gets background color ansi sequence from a configured style
+        /// </summary>
+        /// <param name="tag">style tag to search</param>
+        /// <returns></returns>
+        public string GetStyleBackColor(string tag) => GetStyleBackColor(tag, appearance);
+
+        /// <summary>
+        /// Formats an header tag
+        /// </summary>
+        /// <param name="s">tag content</param>
+        /// <param name="level">header level</param>
+        /// <param name="width"></param>
+        /// <returns></returns>
+        public List<string> Header(string s, int level, int width)
+        {
+            List<string> Text = new List<string>();
+            string l = string.Format("H{0}_", level);
+            string forecolor = GetStyleForeColor(l + "Color");
+            string backcolor = GetStyleBackColor(l + "Back");
+            string underline = appearance.Get(l + "Underline");
+            foreach (string str in TextHelper.WordWrap(s, width))
+            {
+                Text.Add(backcolor + forecolor + ClearCurrentLine + str + WriteMode());
+            }
+            if (!string.IsNullOrWhiteSpace(underline))
+                Text.Add(backcolor + forecolor + TextHelper.HR(underline[0], width) + WriteMode());
+            Text.Add(WriteMode());
+            return Text;
+        }
     }
 }

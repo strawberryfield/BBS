@@ -78,8 +78,6 @@
   - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-MarkdownScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
   - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-MarkdownScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
   - [mdStyles](#F-Casasoft-BBS-UI-MarkdownScreen-mdStyles 'Casasoft.BBS.UI.MarkdownScreen.mdStyles')
-  - [GetBackColor(tag)](#M-Casasoft-BBS-UI-MarkdownScreen-GetBackColor-System-String- 'Casasoft.BBS.UI.MarkdownScreen.GetBackColor(System.String)')
-  - [GetForeColor(tag)](#M-Casasoft-BBS-UI-MarkdownScreen-GetForeColor-System-String- 'Casasoft.BBS.UI.MarkdownScreen.GetForeColor(System.String)')
   - [ReadText(name)](#M-Casasoft-BBS-UI-MarkdownScreen-ReadText-System-String- 'Casasoft.BBS.UI.MarkdownScreen.ReadText(System.String)')
 - [MessageAreaGroups](#T-Casasoft-BBS-UI-MessageAreaGroups 'Casasoft.BBS.UI.MessageAreaGroups')
   - [#ctor(c,s)](#M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
@@ -1192,40 +1190,6 @@ Complete constructor
 ##### Summary
 
 Collection of configured styles
-
-<a name='M-Casasoft-BBS-UI-MarkdownScreen-GetBackColor-System-String-'></a>
-### GetBackColor(tag) `method`
-
-##### Summary
-
-Gets background color ansi sequence from a configured style
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| tag | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | style tag to search |
-
-<a name='M-Casasoft-BBS-UI-MarkdownScreen-GetForeColor-System-String-'></a>
-### GetForeColor(tag) `method`
-
-##### Summary
-
-Gets color ansi sequence from a configured style
-
-##### Returns
-
-
-
-##### Parameters
-
-| Name | Type | Description |
-| ---- | ---- | ----------- |
-| tag | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | style tag to search |
 
 <a name='M-Casasoft-BBS-UI-MarkdownScreen-ReadText-System-String-'></a>
 ### ReadText(name) `method`

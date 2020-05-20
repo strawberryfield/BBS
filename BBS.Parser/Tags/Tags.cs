@@ -87,7 +87,23 @@ namespace Casasoft.BBS.Parser
         /// <summary>
         /// Defines a paragraph
         /// </summary>
-        P, 
+        P,
+        /// <summary>
+        /// Defines Header level 1
+        /// </summary>
+        H1,
+        /// <summary>
+        /// Defines Header level 2
+        /// </summary>
+        H2,
+        /// <summary>
+        /// Defines Header level 3
+        /// </summary>
+        H3,
+        /// <summary>
+        /// Defines Header level 4
+        /// </summary>
+        H4,
         /// <summary>
         /// Move cursor on terminal
         /// </summary>

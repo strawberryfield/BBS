@@ -691,6 +691,26 @@
             Defines a paragraph
             </summary>
         </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.H1">
+            <summary>
+            Defines Header level 1
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.H2">
+            <summary>
+            Defines Header level 2
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.H3">
+            <summary>
+            Defines Header level 3
+            </summary>
+        </member>
+        <member name="F:Casasoft.BBS.Parser.Tags.H4">
+            <summary>
+            Defines Header level 4
+            </summary>
+        </member>
         <member name="F:Casasoft.BBS.Parser.Tags.MOVE">
             <summary>
             Move cursor on terminal

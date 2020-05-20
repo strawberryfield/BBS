@@ -119,6 +119,10 @@
   - [COLOR](#F-Casasoft-BBS-Parser-Tags-COLOR 'Casasoft.BBS.Parser.Tags.COLOR')
   - [FIGGLE](#F-Casasoft-BBS-Parser-Tags-FIGGLE 'Casasoft.BBS.Parser.Tags.FIGGLE')
   - [FOOTER](#F-Casasoft-BBS-Parser-Tags-FOOTER 'Casasoft.BBS.Parser.Tags.FOOTER')
+  - [H1](#F-Casasoft-BBS-Parser-Tags-H1 'Casasoft.BBS.Parser.Tags.H1')
+  - [H2](#F-Casasoft-BBS-Parser-Tags-H2 'Casasoft.BBS.Parser.Tags.H2')
+  - [H3](#F-Casasoft-BBS-Parser-Tags-H3 'Casasoft.BBS.Parser.Tags.H3')
+  - [H4](#F-Casasoft-BBS-Parser-Tags-H4 'Casasoft.BBS.Parser.Tags.H4')
   - [HEADER](#F-Casasoft-BBS-Parser-Tags-HEADER 'Casasoft.BBS.Parser.Tags.HEADER')
   - [HIDDEN](#F-Casasoft-BBS-Parser-Tags-HIDDEN 'Casasoft.BBS.Parser.Tags.HIDDEN')
   - [HR](#F-Casasoft-BBS-Parser-Tags-HR 'Casasoft.BBS.Parser.Tags.HR')
@@ -1437,6 +1441,34 @@ Writes text with giant characters
 ##### Summary
 
 Defines the footer section
+
+<a name='F-Casasoft-BBS-Parser-Tags-H1'></a>
+### H1 `constants`
+
+##### Summary
+
+Defines Header level 1
+
+<a name='F-Casasoft-BBS-Parser-Tags-H2'></a>
+### H2 `constants`
+
+##### Summary
+
+Defines Header level 2
+
+<a name='F-Casasoft-BBS-Parser-Tags-H3'></a>
+### H3 `constants`
+
+##### Summary
+
+Defines Header level 3
+
+<a name='F-Casasoft-BBS-Parser-Tags-H4'></a>
+### H4 `constants`
+
+##### Summary
+
+Defines Header level 4
 
 <a name='F-Casasoft-BBS-Parser-Tags-HEADER'></a>
 ### HEADER `constants`

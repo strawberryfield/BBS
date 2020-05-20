@@ -14,6 +14,11 @@
   - [ClearMode()](#M-Casasoft-BBS-Parser-ANSICodes-ClearMode 'Casasoft.BBS.Parser.ANSICodes.ClearMode')
   - [ClearScreen()](#M-Casasoft-BBS-Parser-ANSICodes-ClearScreen 'Casasoft.BBS.Parser.ANSICodes.ClearScreen')
   - [GetColorByName(name,isBack)](#M-Casasoft-BBS-Parser-ANSICodes-GetColorByName-System-String,System-Boolean- 'Casasoft.BBS.Parser.ANSICodes.GetColorByName(System.String,System.Boolean)')
+  - [GetStyleBackColor(tag,Styles)](#M-Casasoft-BBS-Parser-ANSICodes-GetStyleBackColor-System-String,System-Collections-Specialized-NameValueCollection- 'Casasoft.BBS.Parser.ANSICodes.GetStyleBackColor(System.String,System.Collections.Specialized.NameValueCollection)')
+  - [GetStyleBackColor(tag)](#M-Casasoft-BBS-Parser-ANSICodes-GetStyleBackColor-System-String- 'Casasoft.BBS.Parser.ANSICodes.GetStyleBackColor(System.String)')
+  - [GetStyleForeColor(tag,Styles)](#M-Casasoft-BBS-Parser-ANSICodes-GetStyleForeColor-System-String,System-Collections-Specialized-NameValueCollection- 'Casasoft.BBS.Parser.ANSICodes.GetStyleForeColor(System.String,System.Collections.Specialized.NameValueCollection)')
+  - [GetStyleForeColor(tag)](#M-Casasoft-BBS-Parser-ANSICodes-GetStyleForeColor-System-String- 'Casasoft.BBS.Parser.ANSICodes.GetStyleForeColor(System.String)')
+  - [Header(s,level,width)](#M-Casasoft-BBS-Parser-ANSICodes-Header-System-String,System-Int32,System-Int32- 'Casasoft.BBS.Parser.ANSICodes.Header(System.String,System.Int32,System.Int32)')
   - [Home()](#M-Casasoft-BBS-Parser-ANSICodes-Home 'Casasoft.BBS.Parser.ANSICodes.Home')
   - [Move(col,row)](#M-Casasoft-BBS-Parser-ANSICodes-Move-System-Int32,System-Int32- 'Casasoft.BBS.Parser.ANSICodes.Move(System.Int32,System.Int32)')
   - [Move(col,row)](#M-Casasoft-BBS-Parser-ANSICodes-Move-System-String,System-String- 'Casasoft.BBS.Parser.ANSICodes.Move(System.String,System.String)')
@@ -158,6 +163,95 @@ Gets enum value from case insensitive string
 | ---- | ---- | ----------- |
 | name | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') |  |
 | isBack | [System.Boolean](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Boolean 'System.Boolean') | (optional) set if color is requested for background |
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-GetStyleBackColor-System-String,System-Collections-Specialized-NameValueCollection-'></a>
+### GetStyleBackColor(tag,Styles) `method`
+
+##### Summary
+
+Gets background color ansi sequence from a configured style
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tag | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | style tag to search |
+| Styles | [System.Collections.Specialized.NameValueCollection](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Specialized.NameValueCollection 'System.Collections.Specialized.NameValueCollection') | Config section |
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-GetStyleBackColor-System-String-'></a>
+### GetStyleBackColor(tag) `method`
+
+##### Summary
+
+Gets background color ansi sequence from a configured style
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tag | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | style tag to search |
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-GetStyleForeColor-System-String,System-Collections-Specialized-NameValueCollection-'></a>
+### GetStyleForeColor(tag,Styles) `method`
+
+##### Summary
+
+Gets color ansi sequence from a configured style
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tag | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | style tag to search |
+| Styles | [System.Collections.Specialized.NameValueCollection](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Collections.Specialized.NameValueCollection 'System.Collections.Specialized.NameValueCollection') | Config section |
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-GetStyleForeColor-System-String-'></a>
+### GetStyleForeColor(tag) `method`
+
+##### Summary
+
+Gets color ansi sequence from a configured style
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| tag | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | style tag to search |
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-Header-System-String,System-Int32,System-Int32-'></a>
+### Header(s,level,width) `method`
+
+##### Summary
+
+Formats an header tag
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| s | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | tag content |
+| level | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') | header level |
+| width | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
 
 <a name='M-Casasoft-BBS-Parser-ANSICodes-Home'></a>
 ### Home() `method`

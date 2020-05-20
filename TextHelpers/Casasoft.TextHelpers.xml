@@ -213,6 +213,45 @@
             Sequence to clear current line
             </summary>
         </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.GetStyleForeColor(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Gets color ansi sequence from a configured style
+            </summary>
+            <param name="tag">style tag to search</param>
+            <param name="Styles">Config section</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.GetStyleForeColor(System.String)">
+            <summary>
+            Gets color ansi sequence from a configured style
+            </summary>
+            <param name="tag">style tag to search</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.GetStyleBackColor(System.String,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Gets background color ansi sequence from a configured style
+            </summary>
+            <param name="tag">style tag to search</param>
+            <param name="Styles">Config section</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.GetStyleBackColor(System.String)">
+            <summary>
+            Gets background color ansi sequence from a configured style
+            </summary>
+            <param name="tag">style tag to search</param>
+            <returns></returns>
+        </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.Header(System.String,System.Int32,System.Int32)">
+            <summary>
+            Formats an header tag
+            </summary>
+            <param name="s">tag content</param>
+            <param name="level">header level</param>
+            <param name="width"></param>
+            <returns></returns>
+        </member>
         <member name="T:Casasoft.TextHelpers.TextAlign">
             <summary>
             Paragraphs text alignment
