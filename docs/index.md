@@ -18,6 +18,12 @@ Docs in english are available [here](en/index.md)
 	
 - [Il linguaggio di markup](markup.md)
 
+- [I tags per il markup](tags.md)
+	
+- [Le abbreviazioni](entities.md)
+	
+- [I moduli](modules.md)
+
 ## Come funziona
 
 - Prossimamente..
