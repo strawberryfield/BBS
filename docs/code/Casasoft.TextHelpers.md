@@ -34,6 +34,7 @@
   - [WriteForeColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor-Casasoft-BBS-Parser-ANSICodes-Colors- 'Casasoft.BBS.Parser.ANSICodes.WriteForeColor(Casasoft.BBS.Parser.ANSICodes.Colors)')
   - [WriteForeColor(color)](#M-Casasoft-BBS-Parser-ANSICodes-WriteForeColor-System-String- 'Casasoft.BBS.Parser.ANSICodes.WriteForeColor(System.String)')
   - [WriteMode()](#M-Casasoft-BBS-Parser-ANSICodes-WriteMode 'Casasoft.BBS.Parser.ANSICodes.WriteMode')
+  - [WriteMode(mode)](#M-Casasoft-BBS-Parser-ANSICodes-WriteMode-Casasoft-BBS-Parser-ANSICodes-Modes- 'Casasoft.BBS.Parser.ANSICodes.WriteMode(Casasoft.BBS.Parser.ANSICodes.Modes)')
   - [popBackColor()](#M-Casasoft-BBS-Parser-ANSICodes-popBackColor 'Casasoft.BBS.Parser.ANSICodes.popBackColor')
   - [popForeColor()](#M-Casasoft-BBS-Parser-ANSICodes-popForeColor 'Casasoft.BBS.Parser.ANSICodes.popForeColor')
   - [pushBackColor(c)](#M-Casasoft-BBS-Parser-ANSICodes-pushBackColor-Casasoft-BBS-Parser-ANSICodes-Colors- 'Casasoft.BBS.Parser.ANSICodes.pushBackColor(Casasoft.BBS.Parser.ANSICodes.Colors)')
@@ -487,6 +488,23 @@ Returns sequence for current modes and colors
 ##### Parameters
 
 This method has no parameters.
+
+<a name='M-Casasoft-BBS-Parser-ANSICodes-WriteMode-Casasoft-BBS-Parser-ANSICodes-Modes-'></a>
+### WriteMode(mode) `method`
+
+##### Summary
+
+Ansi sequence to set requested mode
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| mode | [Casasoft.BBS.Parser.ANSICodes.Modes](#T-Casasoft-BBS-Parser-ANSICodes-Modes 'Casasoft.BBS.Parser.ANSICodes.Modes') |  |
 
 <a name='M-Casasoft-BBS-Parser-ANSICodes-popBackColor'></a>
 ### popBackColor() `method`

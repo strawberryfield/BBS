@@ -266,6 +266,13 @@ namespace Casasoft.BBS.Parser
             string.Format("\u001b[{0}{1};{2}m", ModeFromBits(currentMode), peekForeColor(), peekBackColor());
 
         /// <summary>
+        /// Ansi sequence to set requested mode
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public string WriteMode(Modes mode) => string.Format("\u001b[{0}m", (int)mode);
+
+        /// <summary>
         /// Returns sequence for current text color
         /// </summary>
         /// <returns></returns>

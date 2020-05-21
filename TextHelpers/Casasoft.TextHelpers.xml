@@ -154,6 +154,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteMode(Casasoft.BBS.Parser.ANSICodes.Modes)">
+            <summary>
+            Ansi sequence to set requested mode
+            </summary>
+            <param name="mode"></param>
+            <returns></returns>
+        </member>
         <member name="M:Casasoft.BBS.Parser.ANSICodes.WriteForeColor">
             <summary>
             Returns sequence for current text color

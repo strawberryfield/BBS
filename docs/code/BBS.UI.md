@@ -77,7 +77,9 @@
   - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-MarkdownScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
   - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-MarkdownScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
   - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-MarkdownScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [basePath](#F-Casasoft-BBS-UI-MarkdownScreen-basePath 'Casasoft.BBS.UI.MarkdownScreen.basePath')
   - [mdStyles](#F-Casasoft-BBS-UI-MarkdownScreen-mdStyles 'Casasoft.BBS.UI.MarkdownScreen.mdStyles')
+  - [ProcessInline(i)](#M-Casasoft-BBS-UI-MarkdownScreen-ProcessInline-Microsoft-Toolkit-Parsers-Markdown-Inlines-MarkdownInline- 'Casasoft.BBS.UI.MarkdownScreen.ProcessInline(Microsoft.Toolkit.Parsers.Markdown.Inlines.MarkdownInline)')
   - [ReadText(name)](#M-Casasoft-BBS-UI-MarkdownScreen-ReadText-System-String- 'Casasoft.BBS.UI.MarkdownScreen.ReadText(System.String)')
 - [MessageAreaGroups](#T-Casasoft-BBS-UI-MessageAreaGroups 'Casasoft.BBS.UI.MessageAreaGroups')
   - [#ctor(c,s)](#M-Casasoft-BBS-UI-MessageAreaGroups-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer- 'Casasoft.BBS.UI.MessageAreaGroups.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer)')
@@ -1184,12 +1186,36 @@ Complete constructor
 | txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
 | prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
 
+<a name='F-Casasoft-BBS-UI-MarkdownScreen-basePath'></a>
+### basePath `constants`
+
+##### Summary
+
+Path for relative url
+
 <a name='F-Casasoft-BBS-UI-MarkdownScreen-mdStyles'></a>
 ### mdStyles `constants`
 
 ##### Summary
 
 Collection of configured styles
+
+<a name='M-Casasoft-BBS-UI-MarkdownScreen-ProcessInline-Microsoft-Toolkit-Parsers-Markdown-Inlines-MarkdownInline-'></a>
+### ProcessInline(i) `method`
+
+##### Summary
+
+Inline processing
+
+##### Returns
+
+
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| i | [Microsoft.Toolkit.Parsers.Markdown.Inlines.MarkdownInline](#T-Microsoft-Toolkit-Parsers-Markdown-Inlines-MarkdownInline 'Microsoft.Toolkit.Parsers.Markdown.Inlines.MarkdownInline') |  |
 
 <a name='M-Casasoft-BBS-UI-MarkdownScreen-ReadText-System-String-'></a>
 ### ReadText(name) `method`

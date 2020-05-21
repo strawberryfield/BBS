@@ -938,11 +938,23 @@
             Collection of configured styles
             </summary>
         </member>
+        <member name="F:Casasoft.BBS.UI.MarkdownScreen.basePath">
+            <summary>
+            Path for relative url
+            </summary>
+        </member>
         <member name="M:Casasoft.BBS.UI.MarkdownScreen.ReadText(System.String)">
             <summary>
             Reads the markdown file and stores it in lists of lines
             </summary>
             <param name="name">File to load</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.ProcessInline(Microsoft.Toolkit.Parsers.Markdown.Inlines.MarkdownInline)">
+            <summary>
+            Inline processing
+            </summary>
+            <param name="i"></param>
+            <returns></returns>
         </member>
         <member name="T:Casasoft.BBS.UI.MessageAreaGroups">
             <summary>

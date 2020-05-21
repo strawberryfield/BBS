@@ -19,14 +19,19 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.Interfaces;
+using Casasoft.BBS.Parser;
 using Casasoft.TextHelpers;
 using Microsoft.Toolkit.Parsers.Markdown;
 using Microsoft.Toolkit.Parsers.Markdown.Blocks;
+using Microsoft.Toolkit.Parsers.Markdown.Inlines;
+using Microsoft.Toolkit.Parsers.Markdown.Render;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 using System.IO;
 using System.Net;
+using System.Runtime.InteropServices;
 
 namespace Casasoft.BBS.UI
 {
@@ -75,6 +80,12 @@ namespace Casasoft.BBS.UI
         protected NameValueCollection mdStyles;
 
         /// <summary>
+        /// Path for relative url
+        /// </summary>
+        protected string basePath;
+
+        protected int actionsCount;
+        /// <summary>
         /// Reads the markdown file and stores it in lists of lines
         /// </summary>
         /// <param name="name">File to load</param>
@@ -86,12 +97,18 @@ namespace Casasoft.BBS.UI
             {
                 WebClient webClient = new WebClient();
                 txt = webClient.DownloadString(name);
+                Uri dir = new Uri(new Uri(name), ".");                
+                basePath = dir.OriginalString;
             }
             else
+            {
                 txt = File.ReadAllText(GetFile(name));
+                basePath = Path.GetDirectoryName(name);
+            }
 
             MarkdownDocument md = new MarkdownDocument();
             md.Parse(txt);
+            int actionsCount = 0;
 
             mdStyles = (NameValueCollection)ConfigurationManager.GetSection("Markdown");
             string forecolor = string.Empty;
@@ -106,42 +123,7 @@ namespace Casasoft.BBS.UI
                     case MarkdownBlockType.Paragraph:
                         string para = "";
                         foreach(var i in ((ParagraphBlock)b).Inlines)
-                        {
-                            switch (i.Type)
-                            {
-                                //case MarkdownInlineType.Comment:
-                                //    break;
-                                //case MarkdownInlineType.TextRun:
-                                //    break;
-                                //case MarkdownInlineType.Bold:
-                                //    break;
-                                //case MarkdownInlineType.Italic:
-                                //    break;
-                                //case MarkdownInlineType.MarkdownLink:
-                                //    break;
-                                //case MarkdownInlineType.RawHyperlink:
-                                //    break;
-                                //case MarkdownInlineType.RawSubreddit:
-                                //    break;
-                                //case MarkdownInlineType.Strikethrough:
-                                //    break;
-                                //case MarkdownInlineType.Superscript:
-                                //    break;
-                                //case MarkdownInlineType.Subscript:
-                                //    break;
-                                //case MarkdownInlineType.Code:
-                                //    break;
-                                //case MarkdownInlineType.Image:
-                                //    break;
-                                //case MarkdownInlineType.Emoji:
-                                //    break;
-                                //case MarkdownInlineType.LinkReference:
-                                //    break;
-                                default:
-                                    para += i.ToString();
-                                    break;
-                            }
-                        }
+                            para += ProcessInline(i);
                         Text.AddRange(TextHelper.WordWrap(para, client.screenWidth));
                         Text.Add(string.Empty);
                         break;
@@ -179,6 +161,67 @@ namespace Casasoft.BBS.UI
                 }
             }
             Footer.Add(string.Empty);
+        }
+
+        /// <summary>
+        /// Inline processing
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        protected string ProcessInline(MarkdownInline i)
+        {
+            string para = string.Empty;
+            switch (i.Type)
+            {
+                //case MarkdownInlineType.Comment:
+                //    break;
+                //case MarkdownInlineType.TextRun:
+                //    break;
+                case MarkdownInlineType.Bold:
+                    para += ANSI.WriteMode(ANSICodes.Modes.Bold) +
+                        i.ToString().Trim('*') + ANSI.WriteMode();
+                    break;
+                //case MarkdownInlineType.Italic:
+                //    break;
+                case MarkdownInlineType.MarkdownLink:
+                    MarkdownLinkInline mitLink = (MarkdownLinkInline)i;
+                    if (mitLink.Url.ToLower().EndsWith(".md"))
+                    {
+                        actionsCount++;
+                        para += $"{mitLink.Inlines[0]}[{actionsCount}]";
+                        Data.Actions.Add(actionsCount.ToString(),
+                            new BBSCodeResult.Action()
+                            {
+                                module = "MarkdownScreen",
+                                data = (mitLink.Url.StartsWith("http") ? "" : basePath) + mitLink.Url
+                            });
+                    }
+                    else
+                        para += mitLink.ToString();
+                    break;
+                //case MarkdownInlineType.RawHyperlink:
+                //    break;
+                //case MarkdownInlineType.RawSubreddit:
+                //    break;
+                //case MarkdownInlineType.Strikethrough:
+                //    break;
+                //case MarkdownInlineType.Superscript:
+                //    break;
+                //case MarkdownInlineType.Subscript:
+                //    break;
+                //case MarkdownInlineType.Code:
+                //    break;
+                //case MarkdownInlineType.Image:
+                //    break;
+                //case MarkdownInlineType.Emoji:
+                //    break;
+                //case MarkdownInlineType.LinkReference:
+                //    break;
+                default:
+                    para += i.ToString();
+                    break;
+            }
+            return para;
         }
     }
 }
