@@ -182,6 +182,20 @@ namespace Casasoft.BBS.UI
                     Text.Add(TextHelper.HR('-', maxWidth));
                     break;
                 case MarkdownBlockType.Table:
+                    TableBlock tb = (TableBlock)b;
+                    int colWidth = maxWidth / tb.ColumnDefinitions.Count;
+                    foreach(var tr in tb.Rows)
+                    {
+                        string trs = string.Empty;
+                        foreach(var tc in tr.Cells)
+                        {
+                            string tcs = string.Empty;
+                            foreach (var i in tc.Inlines)
+                                tcs += ProcessInline(i);
+                            trs += TextHelper.Truncate(tcs, colWidth - 1).PadRight(colWidth);
+                        }
+                        Text.Add(trs);
+                    }
                     break;
                 case MarkdownBlockType.LinkReference:
                     break;
