@@ -84,7 +84,11 @@ namespace Casasoft.BBS.UI
         /// </summary>
         protected string basePath;
 
+        /// <summary>
+        /// link number storage
+        /// </summary>
         protected int actionsCount;
+
         /// <summary>
         /// Reads the markdown file and stores it in lists of lines
         /// </summary>
@@ -108,59 +112,85 @@ namespace Casasoft.BBS.UI
 
             MarkdownDocument md = new MarkdownDocument();
             md.Parse(txt);
-            int actionsCount = 0;
 
             mdStyles = (NameValueCollection)ConfigurationManager.GetSection("Markdown");
+            foreach(var b in md.Blocks)
+            {
+                Text.AddRange(BlockProcessing(b, 0));
+            }
+            Footer.Add(string.Empty);
+        }
+
+        /// <summary>
+        /// Markdown blocks processing
+        /// </summary>
+        /// <param name="b"></param>
+        /// <param name="recursionLevel"></param>
+        protected List<string> BlockProcessing(MarkdownBlock b, int recursionLevel)
+        {
             string forecolor = string.Empty;
             string backcolor = string.Empty;
             string underline = string.Empty;
-            foreach(var b in md.Blocks)
+            int maxWidth = client.screenWidth - recursionLevel * 2;
+            List<string> Text = new List<string>();
+            switch (b.Type)
             {
-                switch (b.Type)
-                {
-                    case MarkdownBlockType.Root:
-                        break;
-                    case MarkdownBlockType.Paragraph:
-                        string para = "";
-                        foreach(var i in ((ParagraphBlock)b).Inlines)
-                            para += ProcessInline(i);
-                        Text.AddRange(TextHelper.WordWrap(para, client.screenWidth));
-                        Text.Add(string.Empty);
-                        break;
-                    case MarkdownBlockType.Quote:
-                        break;
-                    case MarkdownBlockType.Code:
-                        forecolor = ANSI.GetStyleForeColor("Code_Color", mdStyles);
-                        backcolor = ANSI.GetStyleBackColor("Code_Back", mdStyles);
-                        List<string> rows = TextHelper.SplitString(((CodeBlock)b).Text);
-                        foreach (string s in rows)
+                case MarkdownBlockType.Root:
+                    break;
+                case MarkdownBlockType.Paragraph:
+                    string para = "";
+                    foreach (var i in ((ParagraphBlock)b).Inlines)
+                        para += ProcessInline(i);
+                    Text.AddRange(TextHelper.WordWrap(para, maxWidth));
+                    Text.Add(string.Empty);
+                    break;
+                case MarkdownBlockType.Quote:
+                    break;
+                case MarkdownBlockType.Code:
+                    forecolor = ANSI.GetStyleForeColor("Code_Color", mdStyles);
+                    backcolor = ANSI.GetStyleBackColor("Code_Back", mdStyles);
+                    List<string> rows = TextHelper.SplitString(((CodeBlock)b).Text);
+                    foreach (string s in rows)
+                    {
+                        Text.Add(backcolor + forecolor + ANSI.ClearCurrentLine + s + ANSI.WriteMode());
+                    }
+                    Text.Add(ANSI.WriteMode());
+                    break;
+                case MarkdownBlockType.Header:
+                    HeaderBlock hb = (HeaderBlock)b;
+                    Text.AddRange(ANSI.Header(hb.ToString(), hb.HeaderLevel, maxWidth));
+                    break;
+                case MarkdownBlockType.List:
+                    ListBlock lb = (ListBlock)b;
+                    string indent = new string(' ', recursionLevel * 2);
+                    foreach (var li in lb.Items)
+                    {
+                        List<string> lir = new List<string>();
+                        bool isFirst = true;
+                        foreach (var lib in li.Blocks)
+                            lir.AddRange(BlockProcessing(lib, recursionLevel + 1));
+                        foreach (string s in lir)
                         {
-                            Text.Add(backcolor + forecolor + ANSI.ClearCurrentLine + s + ANSI.WriteMode());
+                            Text.Add((isFirst ? "- " : "  ") + s);
+                            isFirst = false;
                         }
-                        Text.Add(ANSI.WriteMode());
-                        break;
-                    case MarkdownBlockType.Header:
-                        HeaderBlock hb = (HeaderBlock)b;
-                        Text.AddRange(ANSI.Header(hb.ToString(), hb.HeaderLevel, client.screenWidth));
-                        break;
-                    case MarkdownBlockType.List:
-                        break;
-                    case MarkdownBlockType.ListItemBuilder:
-                        break;
-                    case MarkdownBlockType.HorizontalRule:
-                        Text.Add(TextHelper.HR('-', client.screenWidth));
-                        break;
-                    case MarkdownBlockType.Table:
-                        break;
-                    case MarkdownBlockType.LinkReference:
-                        break;
-                    case MarkdownBlockType.YamlHeader:
-                        break;
-                    default:
-                        break;
-                }
+                    }
+                    break;
+                case MarkdownBlockType.ListItemBuilder:
+                    break;
+                case MarkdownBlockType.HorizontalRule:
+                    Text.Add(TextHelper.HR('-', maxWidth));
+                    break;
+                case MarkdownBlockType.Table:
+                    break;
+                case MarkdownBlockType.LinkReference:
+                    break;
+                case MarkdownBlockType.YamlHeader:
+                    break;
+                default:
+                    break;
             }
-            Footer.Add(string.Empty);
+            return Text;
         }
 
         /// <summary>

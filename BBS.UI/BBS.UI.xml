@@ -943,11 +943,23 @@
             Path for relative url
             </summary>
         </member>
+        <member name="F:Casasoft.BBS.UI.MarkdownScreen.actionsCount">
+            <summary>
+            link number storage
+            </summary>
+        </member>
         <member name="M:Casasoft.BBS.UI.MarkdownScreen.ReadText(System.String)">
             <summary>
             Reads the markdown file and stores it in lists of lines
             </summary>
             <param name="name">File to load</param>
+        </member>
+        <member name="M:Casasoft.BBS.UI.MarkdownScreen.BlockProcessing(Microsoft.Toolkit.Parsers.Markdown.Blocks.MarkdownBlock,System.Int32)">
+            <summary>
+            Markdown blocks processing
+            </summary>
+            <param name="b"></param>
+            <param name="recursionLevel"></param>
         </member>
         <member name="M:Casasoft.BBS.UI.MarkdownScreen.ProcessInline(Microsoft.Toolkit.Parsers.Markdown.Inlines.MarkdownInline)">
             <summary>

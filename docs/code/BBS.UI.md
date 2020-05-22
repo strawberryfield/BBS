@@ -77,8 +77,10 @@
   - [#ctor(c,s,prev)](#M-Casasoft-BBS-UI-MarkdownScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,Casasoft.BBS.Interfaces.IScreen)')
   - [#ctor(c,s,txt)](#M-Casasoft-BBS-UI-MarkdownScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String- 'Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String)')
   - [#ctor(c,s,txt,prev)](#M-Casasoft-BBS-UI-MarkdownScreen-#ctor-Casasoft-BBS-Interfaces-IBBSClient,Casasoft-BBS-Interfaces-IServer,System-String,Casasoft-BBS-Interfaces-IScreen- 'Casasoft.BBS.UI.MarkdownScreen.#ctor(Casasoft.BBS.Interfaces.IBBSClient,Casasoft.BBS.Interfaces.IServer,System.String,Casasoft.BBS.Interfaces.IScreen)')
+  - [actionsCount](#F-Casasoft-BBS-UI-MarkdownScreen-actionsCount 'Casasoft.BBS.UI.MarkdownScreen.actionsCount')
   - [basePath](#F-Casasoft-BBS-UI-MarkdownScreen-basePath 'Casasoft.BBS.UI.MarkdownScreen.basePath')
   - [mdStyles](#F-Casasoft-BBS-UI-MarkdownScreen-mdStyles 'Casasoft.BBS.UI.MarkdownScreen.mdStyles')
+  - [BlockProcessing(b,recursionLevel)](#M-Casasoft-BBS-UI-MarkdownScreen-BlockProcessing-Microsoft-Toolkit-Parsers-Markdown-Blocks-MarkdownBlock,System-Int32- 'Casasoft.BBS.UI.MarkdownScreen.BlockProcessing(Microsoft.Toolkit.Parsers.Markdown.Blocks.MarkdownBlock,System.Int32)')
   - [ProcessInline(i)](#M-Casasoft-BBS-UI-MarkdownScreen-ProcessInline-Microsoft-Toolkit-Parsers-Markdown-Inlines-MarkdownInline- 'Casasoft.BBS.UI.MarkdownScreen.ProcessInline(Microsoft.Toolkit.Parsers.Markdown.Inlines.MarkdownInline)')
   - [ReadText(name)](#M-Casasoft-BBS-UI-MarkdownScreen-ReadText-System-String- 'Casasoft.BBS.UI.MarkdownScreen.ReadText(System.String)')
 - [MessageAreaGroups](#T-Casasoft-BBS-UI-MessageAreaGroups 'Casasoft.BBS.UI.MessageAreaGroups')
@@ -1186,6 +1188,13 @@ Complete constructor
 | txt | [System.String](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.String 'System.String') | Text to parse and optional parameters separated by semicolon |
 | prev | [Casasoft.BBS.Interfaces.IScreen](#T-Casasoft-BBS-Interfaces-IScreen 'Casasoft.BBS.Interfaces.IScreen') | Link to caller screen |
 
+<a name='F-Casasoft-BBS-UI-MarkdownScreen-actionsCount'></a>
+### actionsCount `constants`
+
+##### Summary
+
+link number storage
+
 <a name='F-Casasoft-BBS-UI-MarkdownScreen-basePath'></a>
 ### basePath `constants`
 
@@ -1199,6 +1208,20 @@ Path for relative url
 ##### Summary
 
 Collection of configured styles
+
+<a name='M-Casasoft-BBS-UI-MarkdownScreen-BlockProcessing-Microsoft-Toolkit-Parsers-Markdown-Blocks-MarkdownBlock,System-Int32-'></a>
+### BlockProcessing(b,recursionLevel) `method`
+
+##### Summary
+
+Markdown blocks processing
+
+##### Parameters
+
+| Name | Type | Description |
+| ---- | ---- | ----------- |
+| b | [Microsoft.Toolkit.Parsers.Markdown.Blocks.MarkdownBlock](#T-Microsoft-Toolkit-Parsers-Markdown-Blocks-MarkdownBlock 'Microsoft.Toolkit.Parsers.Markdown.Blocks.MarkdownBlock') |  |
+| recursionLevel | [System.Int32](http://msdn.microsoft.com/query/dev14.query?appId=Dev14IDEF1&l=EN-US&k=k:System.Int32 'System.Int32') |  |
 
 <a name='M-Casasoft-BBS-UI-MarkdownScreen-ProcessInline-Microsoft-Toolkit-Parsers-Markdown-Inlines-MarkdownInline-'></a>
 ### ProcessInline(i) `method`
