@@ -3,5 +3,5 @@
 
 ---
 
-|[Back](config.md)|[Home](index.md)|
-|---|---|
+|[Back](config.md)|[Home](index.md)|[Next](tags.md)|  
+|---|---|---|
