@@ -3,9 +3,10 @@
 Select an option:{/HEADER}
 {BODY}{ACTION key="C" module="ListConnected" text="it/ListConnected.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[C]{/BACKCOLOR}{/COLOR} - Mostra utenti connessi{/ACTION}{move row="9" col="35"/}{ACTION key="T" text="about/TSF.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[T]{/BACKCOLOR}{/COLOR} - Informazioni su The Strawberry Field{/ACTION}
 {ACTION key="U" module="ListUsers"text="it/ListUsers.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[U]{/BACKCOLOR}{/COLOR} - Mostra utenti registrati{/ACTION}{move row="10" col="35"/}{ACTION key="A" text="about/RC.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - Informazioni sull'autore{/ACTION}
-{ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Info sulla connessione (in inglese){/ACTION}{move row="11" col="35"/}{ACTION key="B" module="RawTextScreen" text="https://raw.githubusercontent.com/strawberryfield/BBS/master/LEGGIMI.md"} {COLOR value="White"}{BACKCOLOR value="Blue"}[B]{/BACKCOLOR}{/COLOR} - Informazioni sul software{/ACTION}
+{ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Info sulla connessione (in inglese){/ACTION}{move row="11" col="35"/}{ACTION key="B" module="MarkdownScreen" text="https://raw.githubusercontent.com/strawberryfield/BBS/master/docs/index.md"} {COLOR value="White"}{BACKCOLOR value="Blue"}[B]{/BACKCOLOR}{/COLOR} - Manuale del software per BBS{/ACTION}
 
 {ACTION key="R" text="@Disclaimer"} {COLOR value="White"}{BACKCOLOR value="Blue"}[R]{/BACKCOLOR}{/COLOR} - Regolamento della BBS (in inglese){/ACTION}
+{ACTION key="H" text="@Help"} {COLOR value="White"}{BACKCOLOR value="Blue"}[H]{/BACKCOLOR}{/COLOR} - Aiuto / Come usare questa BBS{/ACTION}
 
 {ACTION key="M" module="MessageAreaGroups"} {COLOR value="White"}{BACKCOLOR value="Blue"}[M]{/BACKCOLOR}{/COLOR} - Aree messaggi{/ACTION}
 
