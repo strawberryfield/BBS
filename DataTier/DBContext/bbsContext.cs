@@ -530,6 +530,7 @@ namespace Casasoft.BBS.DataTier.DBContext
                 entity.Property(e => e.Userid)
                     .HasColumnName("userid")
                     .HasColumnType("varchar(30)")
+                    .HasComment("Nickname")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -538,6 +539,7 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasColumnName("city")
                     .HasColumnType("varchar(50)")
                     .HasDefaultValueSql("''")
+                    .HasComment("city of the user")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -546,6 +548,7 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasColumnName("email")
                     .HasColumnType("varchar(100)")
                     .HasDefaultValueSql("''")
+                    .HasComment("internet email address")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -564,11 +567,23 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("'current_timestamp()'");
 
+                entity.Property(e => e.Locale)
+                    .IsRequired()
+                    .HasColumnName("locale")
+                    .HasColumnType("varchar(5)")
+                    .HasDefaultValueSql("''")
+                    .HasComment("user preferred locale")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Locked).HasComment("true for locked users");
+
                 entity.Property(e => e.Nation)
                     .IsRequired()
                     .HasColumnName("nation")
                     .HasColumnType("varchar(50)")
                     .HasDefaultValueSql("''")
+                    .HasComment("nation of the user")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -585,18 +600,21 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasColumnName("realname")
                     .HasColumnType("varchar(50)")
                     .HasDefaultValueSql("''")
+                    .HasComment("Real name")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.Registered)
                     .HasColumnType("datetime")
-                    .HasDefaultValueSql("'current_timestamp()'");
+                    .HasDefaultValueSql("'current_timestamp()'")
+                    .HasComment("timestamp of registration to the bbs");
 
                 entity.Property(e => e.Signature)
                     .IsRequired()
                     .HasColumnName("signature")
                     .HasColumnType("text")
-                    .HasDefaultValueSql("''")
+                    .HasDefaultValueSql("'\\\\''\\\\'''")
+                    .HasComment("signature for messages")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 

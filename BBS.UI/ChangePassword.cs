@@ -68,6 +68,7 @@ namespace Casasoft.BBS.UI
             status = states.WaitForOldPassword;
             using (bbsContext bbs = new bbsContext())
                 user = bbs.GetUserByUsername(client.username);
+            InitCatalog();
         }
         #endregion
 
@@ -89,7 +90,7 @@ namespace Casasoft.BBS.UI
         {
             base.Show();
             MoveTo(dataAreaStart, 1);
-            LnWrite("Old password: ");
+            LnWrite(catalog.GetString("Old password") + ": ");
             status = states.WaitForOldPassword;
             client.status = EClientStatus.Authenticating;
         }
@@ -124,13 +125,13 @@ namespace Casasoft.BBS.UI
                 case states.WaitForOldPassword:
                     if (user.CheckPassword(msg))
                     {
-                        LnWrite("New password: ");
+                        LnWrite(catalog.GetString("New password") + ": ");
                         status = states.WaitForNewPassword;
                     }
                     else
                     {
-                        LnWrite("Password incorrect. Try again.");
-                        LnWrite("Old password: ");
+                        LnWrite(catalog.GetString("Password incorrect. Try again."));
+                        LnWrite(catalog.GetString("Old password") +": ");
                     }
                     break;
                 case states.WaitForNewPassword:
@@ -156,13 +157,13 @@ namespace Casasoft.BBS.UI
             password = msg;
             if (user.AcceptablePassword(password))
             {
-                LnWrite("Retype password: ");
+                LnWrite(catalog.GetString("Retype password") + ": ");
                 status = states.WaitForConfirm;
             }
             else
             {
-                LnWrite("Password do not meet security criteria.");
-                LnWrite("New password: ");
+                LnWrite(catalog.GetString("Password do not meet security criteria."));
+                LnWrite(catalog.GetString("New password") + ": ");
                 status = states.WaitForNewPassword;
             }
         }
@@ -183,15 +184,15 @@ namespace Casasoft.BBS.UI
                 }
                 EventLogger.Write(
                     string.Format("Password changed successfully for user '{0}'", user.Userid), client.Remote);
-                LnWrite("Password changed successfully.");
+                LnWrite(catalog.GetString("Password changed successfully."));
                 Writeln();
                 client.status = EClientStatus.LoggedIn;
                 status = states.WaitForContinue;
             }
             else
             {
-                LnWrite("The two passwords do not match.");
-                LnWrite("New password: ");
+                LnWrite(catalog.GetString("The two passwords do not match."));
+                LnWrite(catalog.GetString("New password") + ": ");
                 status = states.WaitForNewPassword;
             }
         }

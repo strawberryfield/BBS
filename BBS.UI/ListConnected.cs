@@ -61,7 +61,10 @@ namespace Casasoft.BBS.UI
         /// <param name="s">Server reference</param>
         /// <param name="txt">Text to parse and optional parameters separated by semicolon</param>
         /// <param name="prev">Link to caller screen</param>
-        public ListConnected(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev) { }
+        public ListConnected(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
+        {
+            InitCatalog();
+        }
         #endregion
 
         /// <summary>
@@ -71,7 +74,7 @@ namespace Casasoft.BBS.UI
         {
             foreach (IClient cl in server.clients.Values)
                 Text.Add(TextHelper.Truncate(string.Format("{0,-30} {1:G} {2}",
-                    string.IsNullOrWhiteSpace(client.username) ? "GUEST" : client.username, 
+                    string.IsNullOrWhiteSpace(client.username) ? catalog.GetString("GUEST") : client.username,
                     client.connectedAt, client.Remote),
                     client.screenWidth));
         }

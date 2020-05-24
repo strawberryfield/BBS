@@ -1,0 +1,11 @@
+{HEADER}{CLS backcolor="White" forecolor="Blue" /} &BBSname; 
+{backcolor value="cyan"}{color value="black"}{Figgle} Login {/Figgle}{/color}{/backcolor}{HR/}
+Scrivi {COLOR value="Red"}New{/COLOR} se vuoi registrarti come nuovo utente
+oppure {COLOR value="Red"}Guest{/COLOR} per continuare senza registrazione
+
+Proseguendo il collegamento accetti le regole di questa BBS 
+e accetti che le tua zioni vengano registrate per fini di
+sicurezza e statistica.
+Scrivi {COLOR value="Red"}Logout{/COLOR} per lasciare la BBS.
+{HR/}
+{/HEADER}

@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Casasoft BBS - BBS.UI\n"
+"POT-Creation-Date: 2020-05-24 18:25+0200\n"
+"PO-Revision-Date: 2020-05-24 18:28+0200\n"
+"Last-Translator: Roberto Ceccarelli\n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.3.1\n"
+"X-Poedit-Basepath: ../../../BBS.UI\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: BaseClasses\n"
+"X-Poedit-SearchPath-2: MessageAreas\n"
+
+#: ChangePassword.cs:93 ChangePassword.cs:134
+msgid "Old password"
+msgstr "Vecchia password"
+
+#: ChangePassword.cs:128 ChangePassword.cs:166 ChangePassword.cs:195
+#: ChangePasswordSu.cs:107
+msgid "New password"
+msgstr "Nuova password"
+
+#: ChangePassword.cs:133
+msgid "Password incorrect. Try again."
+msgstr "Password errata. Riprova."
+
+#: ChangePassword.cs:160
+msgid "Retype password"
+msgstr "Riscrivi la password"
+
+#: ChangePassword.cs:165 NewUser.cs:158
+msgid "Password do not meet security criteria."
+msgstr "La password non soddisfa i criteri di sicurezza."
+
+#: ChangePassword.cs:187
+msgid "Password changed successfully."
+msgstr "Password correttamente modificata."
+
+#: ChangePassword.cs:194
+msgid "The two passwords do not match."
+msgstr "Le due password sono diverse."
+
+#: ChangePasswordSu.cs:77 ChangePasswordSu.cs:103 LoginScreen.cs:90
+#: LoginScreen.cs:195 NewUser.cs:90 NewUser.cs:145
+msgid "Username"
+msgstr "Nome utente"
+
+#: ChangePasswordSu.cs:102
+#, csharp-format
+msgid "User '{0}' is not found."
+msgstr "Utente '{0}' non trovato."
+
+#: ListConnected.cs:77
+msgid "GUEST"
+msgstr "OSPITE"
+
+#: LoginScreen.cs:123 NewUser.cs:138 NewUser.cs:159 NewUser.cs:175
+msgid "Password"
+msgstr ""
+
+#: LoginScreen.cs:194
+msgid "Username or password incorrect. Please try again."
+msgstr "Utente o password errati. Riprova."
+
+#: NewUser.cs:105 NewUser.cs:196 NewUser.cs:203
+msgid "Yes"
+msgstr "Si"
+
+#: NewUser.cs:144
+msgid "This name is already in use. Try another."
+msgstr "Nome utente gia' utilizzato. Prova con un altro."
+
+#: NewUser.cs:153
+msgid "Confirm password"
+msgstr "Conferma la password"
+
+#: NewUser.cs:169
+msgid "Your real name"
+msgstr "Il tuo vero nome"
+
+#: NewUser.cs:174
+msgid "The two passwords do not match. Try again."
+msgstr "Le due password sono diverse. Riprova."
+
+#: NewUser.cs:182
+msgid "Your city"
+msgstr "La tua citta'"
+
+#: NewUser.cs:188
+msgid "Your country"
+msgstr "La tua nazione"
+
+#: NewUser.cs:196
+msgid "No"
+msgstr ""
+
+#: NewUser.cs:194
+#, csharp-format
+msgid "Confirm new user creation? [{0}]/{1}"
+msgstr "Confermi la creazione dell'utente? [{0}]/{1}"
+
+#: NewUser.cs:210
+#, csharp-format
+msgid "Created new user '{0}'"
+msgstr "Creato il nuovo utente '{0}'"

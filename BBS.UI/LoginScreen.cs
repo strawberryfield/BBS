@@ -71,6 +71,7 @@ namespace Casasoft.BBS.UI
             status = states.WaitForUsername;
             NameValueCollection SecurityOptions = (NameValueCollection)ConfigurationManager.GetSection("Security");
             maxtries = Convert.ToInt16(SecurityOptions["MaxTries"]);
+            InitCatalog();
         }
         #endregion
 
@@ -86,7 +87,7 @@ namespace Casasoft.BBS.UI
         {
             base.Show();
             MoveTo(dataAreaStart, 1);
-            LnWrite("Username: ");
+            LnWrite(catalog.GetString("Username") + ": ");
             status = states.WaitForUsername;
             tries = 0;
         }
@@ -119,7 +120,7 @@ namespace Casasoft.BBS.UI
                             client.screen.Show();
                             break;
                         default:
-                            server.sendMessageToClient(client, "\r\nPassword: ");
+                            LnWrite(catalog.GetString("Password") + ": ");
                             status = states.WaitForPassword;
                             client.status = EClientStatus.Authenticating;
                             break;
@@ -157,6 +158,7 @@ namespace Casasoft.BBS.UI
                                 EventLogger.Write(string.Format("Successful login for user '{0}'", username),
                                     client.Remote);
                                 client.status = EClientStatus.LoggedIn;
+                                if (string.IsNullOrWhiteSpace(client.locale)) client.locale = user.Locale;
                             }
                             else
                             {
@@ -189,8 +191,8 @@ namespace Casasoft.BBS.UI
                         }
                         else
                         {
-                            server.sendMessageToClient(client, "\r\nUsername or password incorrect. Please try again.");
-                            server.sendMessageToClient(client, "\r\nUsername: ");
+                            LnWrite(catalog.GetString("Username or password incorrect. Please try again."));
+                            LnWrite(catalog.GetString("Username") + ": ");
                             status = states.WaitForUsername;
                         }
                     }

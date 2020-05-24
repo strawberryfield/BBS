@@ -88,6 +88,12 @@ namespace Casasoft.TCPServer
         /// </summary>
         public List<string> terminalTypeCapable { get; set; }
 
+
+        /// <summary>
+        /// Client preferred locale
+        /// </summary>
+        public string locale { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Client"/> class.
         /// </summary>
@@ -106,6 +112,7 @@ namespace Casasoft.TCPServer
             screenHeight = 24;
             terminalType = string.Empty;
             terminalTypeCapable = new List<string>();
+            locale = string.Empty;
         }
 
         /// <summary>

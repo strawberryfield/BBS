@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 		assets\GuestAccess.txt = assets\GuestAccess.txt
 		assets\GuestMenu.txt = assets\GuestMenu.txt
 		assets\Help.txt = assets\Help.txt
-		assets\ListConnected.txt = assets\ListConnected.txt
+		assets\SelectLocale.txt = assets\SelectLocale.txt
 		assets\ListLogins.txt = assets\ListLogins.txt
 		assets\ListUsers.txt = assets\ListUsers.txt
 		assets\LoggedIn.txt = assets\LoggedIn.txt
@@ -81,6 +81,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "it", "it", "{02CA5356-C685-
 		assets\it\ListConnected.txt = assets\it\ListConnected.txt
 		assets\it\ListLogins.txt = assets\it\ListLogins.txt
 		assets\it\ListUsers.txt = assets\it\ListUsers.txt
+		assets\it\Login.txt = assets\it\Login.txt
 		assets\it\Logout.txt = assets\it\Logout.txt
 		assets\it\MainMenu.txt = assets\it\MainMenu.txt
 	EndProjectSection

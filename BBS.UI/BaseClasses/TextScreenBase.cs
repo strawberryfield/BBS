@@ -516,6 +516,10 @@ namespace Casasoft.BBS.UI
             {
                 NameValueCollection texts = (NameValueCollection)ConfigurationManager.GetSection("Texts");
                 data = texts[data.Substring(1)];
+                if (File.Exists(Path.Combine(assets, locale, data)))
+                {
+                    data = Path.Combine(locale, data);
+                }
             }
 
             if (TextHelper.IsUrl(data))

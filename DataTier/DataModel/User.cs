@@ -42,25 +42,29 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// Column 'userid'
+		/// Column 'userid':
+		/// Nickname
 		/// </summary>
 		/// <remarks>Original field type: varchar(30)</remarks>
 		public string Userid { get; set; }
         
 		/// <summary>
-		/// Column 'realname'
+		/// Column 'realname':
+		/// Real name
 		/// </summary>
 		/// <remarks>Original field type: varchar(50)</remarks>
 		public string Realname { get; set; }
         
 		/// <summary>
-		/// Column 'city'
+		/// Column 'city':
+		/// city of the user
 		/// </summary>
 		/// <remarks>Original field type: varchar(50)</remarks>
 		public string City { get; set; }
         
 		/// <summary>
-		/// Column 'nation'
+		/// Column 'nation':
+		/// nation of the user
 		/// </summary>
 		/// <remarks>Original field type: varchar(50)</remarks>
 		public string Nation { get; set; }
@@ -79,7 +83,8 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public string Status { get; set; }
         
 		/// <summary>
-		/// Column 'signature'
+		/// Column 'signature':
+		/// signature for messages
 		/// </summary>
 		/// <remarks>Original field type: text</remarks>
 		public string Signature { get; set; }
@@ -97,7 +102,8 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public DateTime LastLoginDate { get; set; }
         
 		/// <summary>
-		/// Column 'Registered'
+		/// Column 'Registered':
+		/// timestamp of registration to the bbs
 		/// </summary>
 		/// <remarks>Original field type: datetime</remarks>
 		public DateTime Registered { get; set; }
@@ -109,16 +115,25 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public DateTime LastPasswordModify { get; set; }
         
 		/// <summary>
-		/// Column 'email'
+		/// Column 'email':
+		/// internet email address
 		/// </summary>
 		/// <remarks>Original field type: varchar(100)</remarks>
 		public string Email { get; set; }
         
 		/// <summary>
-		/// Column 'Locked'
+		/// Column 'Locked':
+		/// true for locked users
 		/// </summary>
 		/// <remarks>Original field type: </remarks>
 		public bool Locked { get; set; }
+        
+		/// <summary>
+		/// Column 'locale':
+		/// user preferred locale
+		/// </summary>
+		/// <remarks>Original field type: varchar(5)</remarks>
+		public string Locale { get; set; }
 
         
 		/// <summary>

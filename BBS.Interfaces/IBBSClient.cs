@@ -56,5 +56,9 @@ namespace Casasoft.BBS.Interfaces
         /// <returns>true if insert is successful</returns>
         public bool TryAddTerminalType(string tt);
 
+        /// <summary>
+        /// Client preferred locale
+        /// </summary>
+        public string locale { get; set; }
     }
 }

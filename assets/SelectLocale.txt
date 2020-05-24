@@ -1,0 +1,7 @@
+{HEADER}{CLS/} &BBSname;  -  Select language:
+
+Id    Description
+{HR/}{/HEADER}
+{body alternatecolor="LightGray" /}
+{FOOTER}{hr/}
+Enter {COLOR value="red"}Id{/color} or {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to continue {/FOOTER}

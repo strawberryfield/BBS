@@ -74,7 +74,7 @@ namespace Casasoft.BBS.UI
         {
             base.Show(true);
             MoveTo(dataAreaStart, 1);
-            LnWrite("Username: ");
+            LnWrite(catalog.GetString("Username") + ": ");
             status = states.WaitForUsername;
         }
 
@@ -99,12 +99,12 @@ namespace Casasoft.BBS.UI
                         user = bbs.GetUserByUsername(msg);
                     if(user == null)
                     {
-                        LnWrite(string.Format("User '{0}' is not found.", msg));
-                        LnWrite("Username: ");
+                        LnWrite(catalog.GetString("User '{0}' is not found.", msg));
+                        LnWrite(catalog.GetString("Username") + ": ");
                     }
                     else
                     {
-                        LnWrite("New password: ");
+                        LnWrite(catalog.GetString("New password") + ": ");
                         client.status = EClientStatus.Authenticating;
                         status = states.WaitForNewPassword;
                     }

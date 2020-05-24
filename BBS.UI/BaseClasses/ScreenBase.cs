@@ -20,6 +20,9 @@
 
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Parser;
+using NGettext;
+using System.Configuration;
+using System.Globalization;
 
 namespace Casasoft.BBS.UI
 {
@@ -48,6 +51,16 @@ namespace Casasoft.BBS.UI
         /// Pointer to caller screen (if any)
         /// </summary>
         public IScreen Previous { get; set; }
+
+        /// <summary>
+        /// locale data
+        /// </summary>
+        protected ICatalog catalog;
+
+        /// <summary>
+        /// current locale
+        /// </summary>
+        protected string locale;
         #endregion
 
         #region constructors
@@ -70,8 +83,20 @@ namespace Casasoft.BBS.UI
             server = s;
             Previous = prev;
             ANSI = new ANSICodes();
+            locale = string.IsNullOrWhiteSpace(c.locale) ? 
+                ConfigurationManager.AppSettings["defaultLocale"] : c.locale;
         }
         #endregion
+
+        /// <summary>
+        /// loads locale data
+        /// </summary>
+        protected virtual void InitCatalog()
+        {
+            catalog = new Catalog("BBS.UI",
+                ConfigurationManager.AppSettings["locale"],
+                new CultureInfo(locale));
+        }
 
         /// <summary>
         /// Empty implementation to ovverride in derived classes

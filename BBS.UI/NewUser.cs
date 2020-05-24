@@ -22,6 +22,7 @@ using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.BBS.Logger;
+using NGettext;
 
 namespace Casasoft.BBS.UI
 {
@@ -67,6 +68,7 @@ namespace Casasoft.BBS.UI
         {
             status = states.WaitForUsername;
             user = new User();
+            InitCatalog();
         }
         #endregion
 
@@ -85,7 +87,7 @@ namespace Casasoft.BBS.UI
         {
             base.Show();
             MoveTo(dataAreaStart, 1);
-            LnWrite("Username: ");
+            LnWrite(catalog.GetString("Username") + ": ");
             status = states.WaitForUsername;
         }
 
@@ -100,7 +102,7 @@ namespace Casasoft.BBS.UI
             msg = msg.Trim();
             if (string.IsNullOrWhiteSpace(msg))
             {
-                if (status == states.WaitForConfirm) msg = "Yes";
+                if (status == states.WaitForConfirm) msg = catalog.GetString("Yes");
                 else if (status != states.WaitForUsername) return;
             }
             switch (status)
@@ -133,14 +135,14 @@ namespace Casasoft.BBS.UI
                     if (success)
                     {
                         user.Userid = username;
-                        LnWrite("Password: ");
+                        LnWrite(catalog.GetString("Password") + ": ");
                         status = states.WaitForPassword;
                         client.status = EClientStatus.Authenticating;
                     }
                     else
                     {
-                        LnWrite("This name is already in use. Try another.");
-                        LnWrite("Username: ");
+                        LnWrite(catalog.GetString("This name is already in use. Try another."));
+                        LnWrite(catalog.GetString("Username") + ": ");
                     }
                     break;
 
@@ -148,13 +150,13 @@ namespace Casasoft.BBS.UI
                     password = msg;
                     if (user.AcceptablePassword(password))
                     {
-                        LnWrite("Confirm password: ");
+                        LnWrite(catalog.GetString("Confirm password") + ": ");
                         status = states.WaitForConfirmPassword;
                     }
                     else
                     {
-                        LnWrite("Password do not meet security criteria.");
-                        LnWrite("Password: ");
+                        LnWrite(catalog.GetString("Password do not meet security criteria."));
+                        LnWrite(catalog.GetString("Password") + ": ");
                         status = states.WaitForPassword;
                     }
                     break;
@@ -164,45 +166,48 @@ namespace Casasoft.BBS.UI
                     {
                         user.SetPassword(password);
                         client.status = EClientStatus.Guest;
-                        LnWrite("Your real name: ");
+                        LnWrite(catalog.GetString("Your real name") + ": ");
                         status = states.WaitForRealName;
                     }
                     else
                     {
-                        LnWrite("The two passwords do not match. Try again.");
-                        LnWrite("Password: ");
+                        LnWrite(catalog.GetString("The two passwords do not match. Try again."));
+                        LnWrite(catalog.GetString("Password") + ": ");
                         status = states.WaitForPassword;
                     }
                     break;
 
                 case states.WaitForRealName:
                     user.Realname = msg;
-                    LnWrite("Your city: ");
+                    LnWrite(catalog.GetString("Your city") + ": ");
                     status = states.WaitForCity;
                     break;
 
                 case states.WaitForCity:
                     user.City = msg;
-                    LnWrite("Your country: ");
+                    LnWrite(catalog.GetString("Your country")+": ");
                     status = states.WaitForNation;
                     break;
 
                 case states.WaitForNation:
                     user.Nation = msg;
-                    LnWrite("Confirm new user creation? [Yes]/No: ");
+                    LnWrite(catalog.GetString("Confirm new user creation? [{0}]/{1}",
+                        new object[] {
+                            catalog.GetString("Yes"), catalog.GetString("No")
+                        }) + ": ");
                     status = states.WaitForConfirm;
                     break;
 
                 case states.WaitForConfirm:
                     msg = msg.ToUpper();
-                    if (msg == "YES")
+                    if (msg == catalog.GetString("Yes").ToUpper())
                     {
                         using (bbsContext bbs = new bbsContext())
                         {
                             bbs.Users.Add(user);
                             bbs.SaveChanges();
                         }
-                        string m = string.Format("Created new user '{0}'", user.Userid);
+                        string m = catalog.GetString("Created new user '{0}'", user.Userid);
                         EventLogger.Write(m, client.Remote);
                     }
                     client.screen = ScreenFactory.Create(client, server, "LoginScreen");

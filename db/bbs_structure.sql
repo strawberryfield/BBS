@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Mag 17, 2020 alle 21:03
+-- Creato il: Mag 24, 2020 alle 11:47
 -- Versione del server: 10.3.22-MariaDB-0+deb10u1
 -- Versione PHP: 7.3.14-1~deb10u1
 
@@ -38,10 +38,6 @@ CREATE TABLE `FidoNetworks` (
   `description` varchar(80) NOT NULL COMMENT 'Network description'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='List of fdo-style networks';
 
---
--- RELAZIONI PER TABELLA `FidoNetworks`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -56,10 +52,6 @@ CREATE TABLE `Log` (
   `Description` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Events log';
 
---
--- RELAZIONI PER TABELLA `Log`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -73,14 +65,6 @@ CREATE TABLE `Logins` (
   `From` varchar(24) NOT NULL DEFAULT '' COMMENT 'remote ip address and port of the client',
   `Success` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'true if login was successful'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users logins';
-
---
--- RELAZIONI PER TABELLA `Logins`:
---   `UserId`
---       `Users` -> `userid`
---   `UserId`
---       `Users` -> `userid`
---
 
 -- --------------------------------------------------------
 
@@ -97,22 +81,6 @@ CREATE TABLE `MessageAreas` (
   `AllowedGroupWrite` varchar(30) DEFAULT '' COMMENT 'User group needed to write in this area'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Message Areas List';
 
---
--- RELAZIONI PER TABELLA `MessageAreas`:
---   `AREAGROUP`
---       `MessageAreasGroups` -> `ID`
---   `AllowedGroupRead`
---       `UsersGroups` -> `Groupid`
---   `AllowedGroupWrite`
---       `UsersGroups` -> `Groupid`
---   `AllowedGroupRead`
---       `UsersGroups` -> `groupid`
---   `AllowedGroupWrite`
---       `UsersGroups` -> `groupid`
---   `AREAGROUP`
---       `MessageAreasGroups` -> `ID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -126,14 +94,6 @@ CREATE TABLE `MessageAreasGroups` (
   `FidoNetwork` varchar(30) DEFAULT NULL COMMENT 'Fido style network for exchange'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- RELAZIONI PER TABELLA `MessageAreasGroups`:
---   `AllowedGroupId`
---       `UsersGroups` -> `groupid`
---   `FidoNetwork`
---       `FidoNetworks` -> `ID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -145,14 +105,6 @@ CREATE TABLE `MessageRead` (
   `MessgeId` int(11) NOT NULL,
   `UserId` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Flags for messages read';
-
---
--- RELAZIONI PER TABELLA `MessageRead`:
---   `MessgeId`
---       `Messages` -> `ID`
---   `UserId`
---       `Users` -> `userid`
---
 
 -- --------------------------------------------------------
 
@@ -181,14 +133,6 @@ CREATE TABLE `Messages` (
   `Body` text NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Messages';
 
---
--- RELAZIONI PER TABELLA `Messages`:
---   `Area`
---       `MessageAreas` -> `ID`
---   `Area`
---       `MessageAreas` -> `ID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -201,14 +145,6 @@ CREATE TABLE `MessageSeenBy` (
   `SeenBy` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='System that already received the message';
 
---
--- RELAZIONI PER TABELLA `MessageSeenBy`:
---   `MessageId`
---       `Messages` -> `ID`
---   `MessageId`
---       `Messages` -> `ID`
---
-
 -- --------------------------------------------------------
 
 --
@@ -216,24 +152,21 @@ CREATE TABLE `MessageSeenBy` (
 --
 
 CREATE TABLE `Users` (
-  `userid` varchar(30) NOT NULL,
-  `realname` varchar(50) NOT NULL DEFAULT '',
-  `city` varchar(50) NOT NULL DEFAULT '',
-  `nation` varchar(50) NOT NULL DEFAULT '',
+  `userid` varchar(30) NOT NULL COMMENT 'Nickname',
+  `realname` varchar(50) NOT NULL DEFAULT '' COMMENT 'Real name',
+  `city` varchar(50) NOT NULL DEFAULT '' COMMENT 'city of the user',
+  `nation` varchar(50) NOT NULL DEFAULT '' COMMENT 'nation of the user',
   `password` varchar(32) NOT NULL COMMENT 'MD5 Hash of the password',
   `status` varchar(1) NOT NULL DEFAULT '0',
-  `signature` text NOT NULL DEFAULT '',
+  `signature` text NOT NULL DEFAULT '\'\'' COMMENT 'signature for messages',
   `LastLoginFrom` varchar(24) NOT NULL DEFAULT '0.0.0.0',
   `LastLoginDate` datetime NOT NULL DEFAULT current_timestamp(),
-  `Registered` datetime NOT NULL DEFAULT current_timestamp(),
+  `Registered` datetime NOT NULL DEFAULT current_timestamp() COMMENT 'timestamp of registration to the bbs',
   `LastPasswordModify` datetime NOT NULL DEFAULT current_timestamp(),
-  `email` varchar(100) NOT NULL DEFAULT '',
-  `Locked` tinyint(1) NOT NULL DEFAULT 0
+  `email` varchar(100) NOT NULL DEFAULT '' COMMENT 'internet email address',
+  `Locked` tinyint(1) NOT NULL DEFAULT 0 COMMENT 'true for locked users',
+  `locale` varchar(5) NOT NULL DEFAULT '' COMMENT 'user preferred locale'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='BBS users' ROW_FORMAT=COMPACT;
-
---
--- RELAZIONI PER TABELLA `Users`:
---
 
 -- --------------------------------------------------------
 
@@ -246,10 +179,6 @@ CREATE TABLE `UsersGroups` (
   `Description` varchar(200) NOT NULL DEFAULT ''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups definition' ROW_FORMAT=COMPACT;
 
---
--- RELAZIONI PER TABELLA `UsersGroups`:
---
-
 -- --------------------------------------------------------
 
 --
@@ -261,18 +190,6 @@ CREATE TABLE `UsersGroupsLinks` (
   `userid` varchar(30) DEFAULT NULL,
   `groupid` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Users groups' ROW_FORMAT=COMPACT;
-
---
--- RELAZIONI PER TABELLA `UsersGroupsLinks`:
---   `groupid`
---       `UsersGroups` -> `Groupid`
---   `userid`
---       `Users` -> `userid`
---   `groupid`
---       `UsersGroups` -> `groupid`
---   `userid`
---       `Users` -> `userid`
---
 
 --
 -- Indici per le tabelle scaricate
