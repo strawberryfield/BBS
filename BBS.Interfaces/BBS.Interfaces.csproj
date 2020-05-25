@@ -9,7 +9,7 @@
     <Product>Casasoft BBS</Product>
     <Description>Old style telnet BBS - Interfaces and class factory</Description>
     <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
-    <PackageProjectUrl>https://github.com/strawberryfield/BBS</PackageProjectUrl>
+    <PackageProjectUrl>https://strawberryfield.github.io/BBS</PackageProjectUrl>
     <PackageIcon>package.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
@@ -20,6 +20,8 @@
   </PropertyGroup>
   <PropertyGroup>
     <DocumentationMarkdown>$(MSBuildProjectDirectory)\\..\\docs\\code\\$(AssemblyName).md</DocumentationMarkdown>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +29,17 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\package.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
