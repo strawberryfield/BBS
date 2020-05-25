@@ -13,9 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 		assets\ConnectionInfo.txt = assets\ConnectionInfo.txt
 		assets\Disclaimer.txt = assets\Disclaimer.txt
 		assets\GuestAccess.txt = assets\GuestAccess.txt
-		assets\GuestMenu.txt = assets\GuestMenu.txt
 		assets\Help.txt = assets\Help.txt
-		assets\SelectLocale.txt = assets\SelectLocale.txt
 		assets\ListLogins.txt = assets\ListLogins.txt
 		assets\ListUsers.txt = assets\ListUsers.txt
 		assets\LoggedIn.txt = assets\LoggedIn.txt
@@ -28,6 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{BDD4F5
 		assets\MessageScreen.txt = assets\MessageScreen.txt
 		assets\MessagesList.txt = assets\MessagesList.txt
 		assets\NewUser.txt = assets\NewUser.txt
+		assets\SelectLocale.txt = assets\SelectLocale.txt
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BBS.Parser", "BBS.Parser\BBS.Parser.csproj", "{9FE36C8B-DE6F-44BA-B8DA-33B04EAA0562}"
@@ -77,13 +76,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "it", "it", "{02CA5356-C685-
 	ProjectSection(SolutionItems) = preProject
 		assets\it\ChangePassword.txt = assets\it\ChangePassword.txt
 		assets\it\ChangePasswordSu.txt = assets\it\ChangePasswordSu.txt
-		assets\it\GuestMenu.txt = assets\it\GuestMenu.txt
+		assets\it\GuestAccess.txt = assets\it\GuestAccess.txt
+		assets\it\Help.txt = assets\it\Help.txt
 		assets\it\ListConnected.txt = assets\it\ListConnected.txt
 		assets\it\ListLogins.txt = assets\it\ListLogins.txt
 		assets\it\ListUsers.txt = assets\it\ListUsers.txt
+		assets\it\LoggedIn.txt = assets\it\LoggedIn.txt
 		assets\it\Login.txt = assets\it\Login.txt
 		assets\it\Logout.txt = assets\it\Logout.txt
 		assets\it\MainMenu.txt = assets\it\MainMenu.txt
+		assets\it\MessageAreaGroups.txt = assets\it\MessageAreaGroups.txt
+		assets\it\MessageAreas.txt = assets\it\MessageAreas.txt
+		assets\it\MessageScreen.txt = assets\it\MessageScreen.txt
+		assets\it\MessagesList.txt = assets\it\MessagesList.txt
+		assets\it\NewUser.txt = assets\it\NewUser.txt
+		assets\it\SelectLocale.txt = assets\it\SelectLocale.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "about", "about", "{EE906F6C-5D3D-44E4-BF68-52A832A4FBA0}"

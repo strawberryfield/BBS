@@ -1,0 +1,9 @@
+{HEADER}{CLS/} &BBSname;
+{backcolor value="cyan"}{color value="black"}{Figgle} Registrazione {/Figgle}{/color}{/backcolor}{HR/}
+Grazie per aver deciso di unirti a The Strawberry Field.
+Registrandoti a questa BBS tu accetti le regole che trovi in area pubblica.
+
+Lascia vuoto il nome utente per tornare alla schermata precedente.
+oppure scrivi {COLOR value="Red"}LOGOUT{/COLOR} per disconnetterti.
+{HR/}
+{/HEADER}

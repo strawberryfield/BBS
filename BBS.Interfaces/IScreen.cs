@@ -49,5 +49,17 @@ namespace Casasoft.BBS.Interfaces
         /// Pass the control to another screen
         /// </summary>
         public void ShowNext();
+
+        /// <summary>
+        /// Returns the current module name
+        /// </summary>
+        /// <returns></returns>
+        public string ModuleName();
+
+        /// <summary>
+        /// Returns the orginal calling parameters
+        /// </summary>
+        /// <returns></returns>
+        public string ModuleParams();
     }
 }

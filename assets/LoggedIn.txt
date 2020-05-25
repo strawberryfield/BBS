@@ -1,7 +1,11 @@
-{HEADER}{CLS/} &BBSname;  -  Select language
+{HEADER}{CLS/} &BBSname;  -  Welcome back &username;
 {HR/}{/HEADER}
 {BODY}
-{ACTION key="I" text="it/MainMenu.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Italiano{/ACTION}
-{ACTION key="" text="MainMenu.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} - English{/ACTION}
+
+{ACTION key="L" module="ListLogins"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - List previous logins{/ACTION}
+{ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Show connection info{/ACTION}
+{ACTION key="Z" module="SelectLocale"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Z]{/BACKCOLOR}{/COLOR} - Change language{/ACTION}
+
+{ACTION key="" text="@MainMenu"}Hit {COLOR value="White"}{BACKCOLOR value="Blue"}[Return]{/BACKCOLOR}{/COLOR} to continue{/ACTION}
 {/BODY}
 {FOOTER}&choice; {/FOOTER}

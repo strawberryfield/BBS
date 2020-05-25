@@ -1,0 +1,7 @@
+{HEADER}{CLS/} &BBSname;  -  Aree messaggi:
+
+Area                 Msg. New  Unr. Descrizione
+{HR/}{/HEADER}
+{body alternatecolor="LightGray" /}
+{FOOTER}{hr/}
+Scrivi l'{COLOR value="red"}Area{/color} o {COLOR value="White"}{BACKCOLOR value="Blue"}[Invio]{/BACKCOLOR}{/COLOR} per continuare {/FOOTER}

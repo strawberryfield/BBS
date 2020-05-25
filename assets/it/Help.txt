@@ -1,0 +1,20 @@
+{HEADER}{CLS backcolor="black" forecolor="green"/} &BBSname; - Come spostarsi sui testi
+{HR/}
+{/HEADER}
+{body}Per muoverti sui testi puoi usare i seguenti tasti:
+
+  {color value="yellow"}[Home]{/color}                   Vai alla prima linea
+  {color value="yellow"}[Fine]{/color}                   Vai all'ultima linea
+  {color value="yellow"}[Pag.Su]{/color}   o  {color value="yellow"}[Ctrl][B]{/color}  Vai una pagina indietro
+  {color value="yellow"}[Pag.Giu']{/color} o  {color value="yellow"}[Ctrl][F]{/color}  Vai una pagina avanti
+  {color value="yellow"}[Ctrl][U]{/color}                Vai mezza pagina su
+  {color value="yellow"}[Ctrl][D]{/color}                Vai mezza pagina giu'
+  
+  {color value="yellow"}[Ctrl][R]{/color}  o  {color value="yellow"}[Ctrl][L]{/color}  Aggiorna lo schermo
+  {color value="yellow"}[Ctrl][C]{/color}                Torna alla schermata precedente 
+  
+  {color value="yellow"}[F1]{/color}                     Mostra questo aiuto 
+
+{/body} 
+{FOOTER}{HR/} 
+ Premi {color value="yellow"}[Invio]{/color} per chiudere questa pagina {/FOOTER}

@@ -97,6 +97,7 @@ namespace Casasoft.BBS.UI
             Header = new List<string>();
             Footer = new List<string>();
 
+            _moduleParam = txt;
             if (!string.IsNullOrWhiteSpace(txt))
             {
                 Params = txt.Split(';');

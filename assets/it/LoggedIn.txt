@@ -1,0 +1,11 @@
+{HEADER}{CLS/} &BBSname;  -  Bentornato &username;
+{HR/}{/HEADER}
+{BODY}
+
+{ACTION key="L" module="ListLogins"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - Lista logins precedenti{/ACTION}
+{ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Info sulla connessione{/ACTION}
+{ACTION key="Z" module="SelectLocale"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Z]{/BACKCOLOR}{/COLOR} - Cambia lingua{/ACTION}
+
+{ACTION key="" text="@MainMenu"}Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Invio]{/BACKCOLOR}{/COLOR} per  continuare{/ACTION}
+{/BODY}
+{FOOTER}&scelta; {/FOOTER}

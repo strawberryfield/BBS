@@ -11,7 +11,7 @@
   {color value="yellow"}[Ctrl][D]{/color}                Go half page down
   
   {color value="yellow"}[Ctrl][R]{/color}  or {color value="yellow"}[Ctrl][L]{/color}  Refresh the screen
-  {color value="yellow"}[Ctrl][C]{/color}  	             Return to previous screen 
+  {color value="yellow"}[Ctrl][C]{/color}                Return to previous screen 
   
   {color value="yellow"}[F1]{/color}                     Show this help 
 

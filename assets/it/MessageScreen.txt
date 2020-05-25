@@ -1,0 +1,6 @@
+{HEADER}{CLS/} &BBSname; - MsgId: $msgid$  Data: $msgdatetime$
+ Da: $msgfrom$
+ Oggetto: $msgsubj$	
+{HR/}{/HEADER}
+{FOOTER}{hr/}
+Premi {COLOR value="White"}{BACKCOLOR value="Blue"}[Invio]{/BACKCOLOR}{/COLOR} per continuare {/FOOTER}

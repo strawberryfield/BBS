@@ -4,6 +4,7 @@ Scegli una opzione:{/HEADER}
 {BODY}{ACTION key="N" module="NewUser"} {COLOR value="White"}{BACKCOLOR value="Blue"}[N]{/BACKCOLOR}{/COLOR} - Crea un nuovo utente{/ACTION}
 {ACTION key="L" module="LoginScreen"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - Login{/ACTION}
 {ACTION key="I" text="ConnectionInfo.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[I]{/BACKCOLOR}{/COLOR} - Informazioni sulla connessione (in inglese){/ACTION}
+{ACTION key="Z" module="SelectLocale"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Z]{/BACKCOLOR}{/COLOR} - Cambio lingua{/ACTION}
 
 {ACTION key="T" text="about/TSF.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[T]{/BACKCOLOR}{/COLOR} - Informazioni su The Strawberry Field{/ACTION}
 {ACTION key="A" text="about/RC.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[A]{/BACKCOLOR}{/COLOR} - Informazioni sull'autore{/ACTION}

@@ -1,0 +1,7 @@
+{HEADER}{CLS/} &BBSname;  -  Gruppi aree messaggi:
+
+Gruppo             Descrizione aree
+{HR/}{/HEADER}
+{body alternatecolor="LightGray" /}
+{FOOTER}{hr/}
+Scrivi il {COLOR value="red"}Gruppo{/color} o {COLOR value="White"}{BACKCOLOR value="Blue"}[Invio]{/BACKCOLOR}{/COLOR} per continuare {/FOOTER} 

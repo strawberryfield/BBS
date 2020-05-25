@@ -101,7 +101,7 @@ namespace Casasoft.BBS.UI
             string l;
             if(codes.TryGetValue(msg.ToUpper(), out l))
             {
-                locale = l;
+                client.locale = l;
                 if(client.status == EClientStatus.LoggedIn)
                 {
                     using(bbsContext bbs = new bbsContext())
@@ -111,6 +111,8 @@ namespace Casasoft.BBS.UI
                         bbs.SaveChanges();
                     }
                 }
+                client.screen = ScreenFactory.Create(client, server, Previous.ModuleName(), Previous.ModuleParams());
+                client.screen.Show();
             }
         }
     }

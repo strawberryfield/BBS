@@ -23,6 +23,7 @@ using Casasoft.BBS.Parser;
 using NGettext;
 using System.Configuration;
 using System.Globalization;
+using System.Reflection;
 
 namespace Casasoft.BBS.UI
 {
@@ -63,6 +64,28 @@ namespace Casasoft.BBS.UI
         protected string locale;
         #endregion
 
+        #region building data
+        /// <summary>
+        /// Calling parameters storage
+        /// </summary>
+        protected string _moduleParam;
+
+        /// <summary>
+        /// Returns the current module name
+        /// </summary>
+        /// <returns></returns>
+        public virtual string ModuleName() => 
+            ToString().StartsWith("Casasoft.BBS.UI.") ? 
+            ToString().Substring(16) : 
+            ToString() + '@' + Assembly.GetExecutingAssembly().GetName();
+
+        /// <summary>
+        /// Returns the orginal calling parameters
+        /// </summary>
+        /// <returns></returns>
+        public virtual string ModuleParams() => _moduleParam;
+        #endregion
+
         #region constructors
         /// <summary>
         /// Constructor without link to caller
@@ -85,6 +108,7 @@ namespace Casasoft.BBS.UI
             ANSI = new ANSICodes();
             locale = string.IsNullOrWhiteSpace(c.locale) ? 
                 ConfigurationManager.AppSettings["defaultLocale"] : c.locale;
+            _moduleParam = string.Empty;
         }
         #endregion
 
