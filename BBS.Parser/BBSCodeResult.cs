@@ -86,7 +86,7 @@ namespace Casasoft.BBS.Parser
 
         private ANSICodes.Colors _bodyAlternateBackground;
         /// <summary>
-        /// Alternative background color of the Body
+        /// Background color for focused line of the Body
         /// </summary>
         public ANSICodes.Colors BodyAlternateBackground
         {
@@ -98,9 +98,27 @@ namespace Casasoft.BBS.Parser
             }
         }
         /// <summary>
-        /// True if set alternate background color for the Body
+        /// True if set background color for focused line of the Body
         /// </summary>
         public bool HasBodyAlternateBackground { get; internal set; }
+
+        private ANSICodes.Colors _bodyFocusedBackground;
+        /// <summary>
+        /// Alternative background color of the Body
+        /// </summary>
+        public ANSICodes.Colors BodyFocusedBackground
+        {
+            get => _bodyFocusedBackground;
+            internal set
+            {
+                _bodyFocusedBackground = value;
+                HasBodyFocusedBackground = true;
+            }
+        }
+        /// <summary>
+        /// True if set alternate background color for the Body
+        /// </summary>
+        public bool HasBodyFocusedBackground { get; internal set; }
 
         /// <summary>
         /// Class for action's parameters

@@ -10,9 +10,9 @@ Select an option:{/HEADER}
 
 {ACTION key="M" module="MessageAreaGroups"} {COLOR value="White"}{BACKCOLOR value="Blue"}[M]{/BACKCOLOR}{/COLOR} - Message Areas{/ACTION}
 
-{ACTION key="P" module="ChangePassword"} {COLOR value="White"}{BACKCOLOR value="Blue"}[P]{/BACKCOLOR}{/COLOR} - Change Password{/ACTION}{move row="15" col="35"/}{ACTION key="S" module="ChangePasswordSu" requires="ROOT"} {COLOR value="White"}{BACKCOLOR value="Blue"}[S]{/BACKCOLOR}{/COLOR} - Change Password (Administrator){/ACTION}
+{ACTION key="P" module="ChangePassword"} {COLOR value="White"}{BACKCOLOR value="Blue"}[P]{/BACKCOLOR}{/COLOR} - Change Password{/ACTION}{move row="18" col="35"/}{ACTION key="S" module="ChangePasswordSu" requires="ROOT"} {COLOR value="White"}{BACKCOLOR value="Blue"}[S]{/BACKCOLOR}{/COLOR} - Change Password (Administrator){/ACTION}
 {ACTION key="L" module="ListLogins"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - List previous logins{/ACTION}
 
-{ACTION key="Z" module="SelectLocale"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Z]{/BACKCOLOR}{/COLOR} - Change language{/ACTION}{move row="18" col="35"/}{ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Logout{/ACTION}{/BODY}
+{ACTION key="Z" module="SelectLocale"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Z]{/BACKCOLOR}{/COLOR} - Change language{/ACTION}{move row="21" col="35"/}{ACTION key="Q" module="Logout"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Logout{/ACTION}{/BODY}
 
 {FOOTER}&choice; {/FOOTER}

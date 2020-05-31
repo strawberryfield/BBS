@@ -69,5 +69,117 @@ namespace Casasoft.BBS.UI
         /// Empty virtual function where data lines will be added
         /// </summary>
         protected virtual void AddList() { }
+
+        /// <summary>
+        /// Resets active section to body
+        /// </summary>
+        /// <returns></returns>
+        protected override int Redraw()
+        {
+            int ret = base.Redraw();
+            MarkCurrentLine();
+            return ret;
+        }
+
+        /// <summary>
+        /// Disables focused background
+        /// </summary>
+        protected void UnMarkCurrentLine()
+        {
+            Write(ANSI.Move(0, currentScreenLine));
+            setColorLine(currentScreenLine);
+            Write(ANSI.ClearCurrentLine + Text[currentLine]);
+        }
+
+        /// <summary>
+        /// Disables focused background
+        /// </summary>
+        protected void MarkCurrentLine()
+        {
+            Write(ANSI.Move(0, currentScreenLine) + ANSI.WriteBackColor(FocusedBackground) +
+                ANSI.ClearCurrentLine + Text[currentLine] + ANSI.WriteMode() + ANSI.RestoreCursorPosition);
+        }
+
+        #region handle moves
+        /// <summary>
+        /// Implements Half-Page-Down Handler
+        /// </summary>
+        protected override void HandleHalfPageDown()
+        {
+            UnMarkCurrentLine();
+            base.HandleHalfPageDown();
+            MarkCurrentLine();
+        }
+
+        /// <summary>
+        /// Implements Half-Page-Up Handler
+        /// </summary>
+        protected override void HandleHalfPageUp()
+        {
+            UnMarkCurrentLine();
+            base.HandleHalfPageUp();
+            MarkCurrentLine();
+        }
+
+        /// <summary>
+        /// Implements Home Handler
+        /// </summary>
+        protected override void HandleHome()
+        {
+            UnMarkCurrentLine();
+            base.HandleHome();
+            MarkCurrentLine();
+        }
+
+        /// <summary>
+        /// Implements End Handler
+        /// </summary>
+        protected override void HandleEnd()
+        {
+            UnMarkCurrentLine();
+            base.HandleEnd();
+            MarkCurrentLine();
+        }
+
+        /// <summary>
+        /// Implements Page-Up Handler
+        /// </summary>
+        protected override void HandlePageUp()
+        {
+            UnMarkCurrentLine();
+            base.HandlePageUp();
+            MarkCurrentLine();
+        }
+
+        /// <summary>
+        /// Implements Page-Down Handler
+        /// </summary>
+        protected override void HandlePageDown()
+        {
+            UnMarkCurrentLine();
+            base.HandlePageDown();
+            MarkCurrentLine();
+        }
+
+        /// <summary>
+        /// Implements Cursor Up Handler
+        /// </summary>
+        protected override void HandleCursorUp()
+        {
+            UnMarkCurrentLine();
+            base.HandleCursorUp();
+            MarkCurrentLine();
+        }
+
+        /// <summary>
+        /// Implements Cursor Down Handler
+        /// </summary>
+        protected override void HandleCursorDown()
+        {
+            UnMarkCurrentLine();
+            base.HandleCursorDown();
+            MarkCurrentLine();
+        }
+        #endregion
     }
 }

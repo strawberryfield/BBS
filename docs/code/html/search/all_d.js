@@ -1,9 +1,8 @@
 var searchData=
 [
-  ['ograve_253',['OGRAVE',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html#a647be32d98a693b6dd3e40fb81b689eba6faf124158e19facb8df100d6decd2ad',1,'Casasoft::BBS::Parser']]],
-  ['onconfiguring_254',['OnConfiguring',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1bbs_context.html#af66000acedb1a11945284cc7390887d9',1,'Casasoft::BBS::DataTier::bbsContext']]],
-  ['orignet_255',['OrigNet',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#ad9849da3fed0523e922b708705f5f2b4',1,'Casasoft::BBS::DataTier::DataModel::Message']]],
-  ['orignode_256',['OrigNode',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a79d328b05a989cf90603b51f190f2dc7',1,'Casasoft::BBS::DataTier::DataModel::Message']]],
-  ['origpoint_257',['OrigPoint',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#ac53a632074b1c925442edabbd3661a9d',1,'Casasoft::BBS::DataTier::DataModel::Message']]],
-  ['origzone_258',['OrigZone',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a289f5cbecb5a6a8e9a28c86c27a3d8ad',1,'Casasoft::BBS::DataTier::DataModel::Message']]]
+  ['nation_256',['Nation',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_user.html#a07d0b1ec4f6a2eb43ed57ff57e5a0400',1,'Casasoft::BBS::DataTier::DataModel::User']]],
+  ['net_257',['Net',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_fido_network.html#a6ada8a625742928e6273880911d9443e',1,'Casasoft::BBS::DataTier::DataModel::FidoNetwork']]],
+  ['newmessages_258',['NewMessages',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_area.html#a85aee82a25c68b32bb3fa245ab1208b2',1,'Casasoft::BBS::DataTier::DataModel::MessageArea']]],
+  ['newmessagescount_259',['NewMessagesCount',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_area.html#ad6a887d24c201a8a82762362fe7c19b7',1,'Casasoft::BBS::DataTier::DataModel::MessageArea']]],
+  ['newuser_260',['NewUser',['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_new_user.html',1,'Casasoft.BBS.UI.NewUser'],['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_new_user.html#ae8cde6e357253a46328e73e099b7c2ab',1,'Casasoft.BBS.UI.NewUser.NewUser(IBBSClient c, IServer s)'],['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_new_user.html#a698d1161bb2c5c11a469db6d5bc640c1',1,'Casasoft.BBS.UI.NewUser.NewUser(IBBSClient c, IServer s, IScreen prev)'],['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_new_user.html#a15784e75bdf228395d174ff8b4cad151',1,'Casasoft.BBS.UI.NewUser.NewUser(IBBSClient c, IServer s, string txt)'],['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_new_user.html#af31de5b3bb20c822f913aa5b55060872',1,'Casasoft.BBS.UI.NewUser.NewUser(IBBSClient c, IServer s, string txt, IScreen prev)']]]
 ];

@@ -10,9 +10,9 @@ Select an option:{/HEADER}
 
 {ACTION key="M" module="MessageAreaGroups"} {COLOR value="White"}{BACKCOLOR value="Blue"}[M]{/BACKCOLOR}{/COLOR} - Aree messaggi{/ACTION}
 
-{ACTION key="P" module="ChangePassword" text="it/ChangePassword.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[P]{/BACKCOLOR}{/COLOR} - Cambia Password{/ACTION}{move row="15" col="35"/}{ACTION key="S" module="ChangePasswordSu" text="it/ChangePasswordSu.txt" requires="ROOT"} {COLOR value="White"}{BACKCOLOR value="Blue"}[S]{/BACKCOLOR}{/COLOR} - Cambia Passord (Amministratore){/ACTION}
+{ACTION key="P" module="ChangePassword" text="it/ChangePassword.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[P]{/BACKCOLOR}{/COLOR} - Cambia Password{/ACTION}{move row="18" col="35"/}{ACTION key="S" module="ChangePasswordSu" text="it/ChangePasswordSu.txt" requires="ROOT"} {COLOR value="White"}{BACKCOLOR value="Blue"}[S]{/BACKCOLOR}{/COLOR} - Cambia Passord (Amministratore){/ACTION}
 {ACTION key="L" module="ListLogins" text="it/ListLogins.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[L]{/BACKCOLOR}{/COLOR} - Lista dei logins precedenti{/ACTION}
 
-{ACTION key="Z" module="SelectLocale"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Z]{/BACKCOLOR}{/COLOR} - Cambio lingua{/ACTION}{move row="18" col="35"/}{ACTION key="Q" module="Logout" text="it/Logout.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Disconnessione{/ACTION}
+{ACTION key="Z" module="SelectLocale"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Z]{/BACKCOLOR}{/COLOR} - Cambio lingua{/ACTION}{move row="21" col="35"/}{ACTION key="Q" module="Logout" text="it/Logout.txt"} {COLOR value="White"}{BACKCOLOR value="Blue"}[Q]{/BACKCOLOR}{/COLOR} - Disconnessione{/ACTION}
 {/BODY}
 {FOOTER}&scelta; {/FOOTER}

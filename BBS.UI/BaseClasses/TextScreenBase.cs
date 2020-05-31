@@ -60,6 +60,11 @@ namespace Casasoft.BBS.UI
         protected string[] Params;
         #endregion
 
+        /// <summary>
+        /// Avaliable screen sections
+        /// </summary>
+        public enum Sections { Header, Body, Footer }
+
         #region constructors
         /// <summary>
         /// Constructor
@@ -122,6 +127,11 @@ namespace Casasoft.BBS.UI
         protected int dataAreaStart;
 
         /// <summary>
+        /// Focused row background color
+        /// </summary>
+        protected ANSICodes.Colors FocusedBackground;
+
+        /// <summary>
         /// Reads the text and stores it in lists of lines
         /// </summary>
         /// <param name="name">File to load</param>
@@ -129,6 +139,14 @@ namespace Casasoft.BBS.UI
         {
             BBSCodeTranslator translator = new BBSCodeTranslator(client, server);
             Data = translator.GetProcessed(GetFile(name));
+            if (!Data.HasBodyFocusedBackground)
+            {
+                NameValueCollection appearance = (NameValueCollection)ConfigurationManager.GetSection("Appearance");
+                FocusedBackground = ANSI.GetColorByName(appearance["FocusedColor"], true);
+            }
+            else
+                FocusedBackground = Data.BodyFocusedBackground;
+
             Text = Data.GetRows();
             Header = Data.GetHeaderRows();
             Footer = Data.GetFooterRows();
@@ -145,12 +163,18 @@ namespace Casasoft.BBS.UI
         protected int firstDisplayedLine;
 
         /// <summary>
+        /// current active screen line
+        /// </summary>
+        protected int currentScreenLine => currentLine - firstDisplayedLine + dataAreaStart;
+
+        /// <summary>
         /// Displays the text
         /// </summary>
         public override void Show()
         {
             firstDisplayedLine = 0;
-            currentLine = Redraw();
+            Redraw();
+            currentLine = firstDisplayedLine;
         }
 
         /// <summary>
@@ -179,15 +203,122 @@ namespace Casasoft.BBS.UI
         private int ShowScreenLines() => ShowScreenLines(firstDisplayedLine);
         #endregion
 
+        #region show lines
+        /// <summary>
+        /// Draws lines of text
+        /// </summary>
+        /// <param name="lines">Section to draw</param>
+        /// <param name="start">first line of text to draw</param>
+        /// <param name="len">number of text lines to draw</param>
+        /// <param name="offset">first line of screen to use</param>
+        /// <param name="isBody">true is a drawing body request</param>
+        /// <returns>last line of text written</returns>
+        protected int ShowLines(List<string> lines, int start, int len, int offset, bool isBody = false)
+        {
+            int ret = start;
+            for (; ret < start + len && ret < lines.Count; ++ret)
+            {
+                int line = ret + offset - start;
+                MoveTo(line, 1);
+                if (isBody && Data.HasBodyAlternateBackground)
+                    setColorLine(line);
+                Write(lines[ret]);
+            }
+            return ret - 1;
+        }
+
+        /// <summary>
+        /// Draws lines of the text body
+        /// </summary>
+        /// <param name="start">first line of text to draw</param>
+        /// <param name="len">number of text lines to draw</param>
+        /// <returns>last line of text written</returns>
+        /// <remarks>
+        /// first screen line used is <see cref="dataAreaStart"/>
+        /// </remarks>
+        protected int ShowLines(int start, int len) => ShowLines(Text, start, len, dataAreaStart, true);
+
+        /// <summary>
+        /// Draws lines of the text body
+        /// </summary>
+        /// <param name="start">first line of text to draw</param>
+        /// <returns>last line of text written</returns>
+        /// <remarks>
+        /// first screen line used is <see cref="dataAreaStart"/>
+        /// maximum number of lines written is <see cref="dataAreaSize"/>
+        /// </remarks>
+        protected int ShowLines(int start) => ShowLines(start, dataAreaSize);
+
+        /// <summary>
+        /// Draws lines of the text body
+        /// </summary>
+        /// <returns>last line of text written</returns>
+        /// <remarks>
+        /// first drawed line is stored in <see cref="firstDisplayedLine"/>
+        /// first screen line used is <see cref="dataAreaStart"/>
+        /// maximum number of lines written is <see cref="dataAreaSize"/>
+        /// </remarks>
+        protected int ShowLines() => ShowLines(firstDisplayedLine, dataAreaSize);
+
+        /// <summary>
+        /// Clears all lines of the text body
+        /// </summary>
+        protected void ClearBody()
+        {
+            for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++)
+            {
+                if (Data.HasBodyAlternateBackground)
+                    setColorLine(j);
+                ClearLine(j);
+            }
+        }
+
+        /// <summary>
+        /// Sets colors for body line
+        /// </summary>
+        /// <param name="line"></param>
+        protected void setColorLine(int line)
+        {
+            if (line % 2 > 0) Write(ANSI.WriteBackColor(Data.BodyAlternateBackground));
+            else Write(ANSI.WriteBackColor(ANSI.defaultBackColor));
+        }
+
+        /// <summary>
+        /// Clears all lines of the header
+        /// </summary>
+        protected void ClearHeader()
+        {
+            for (int j = 1; j < dataAreaStart; j++)
+            {
+                if (Data.HasHeaderBackground)
+                    Write(ANSI.WriteBackColor(Data.HeaderBackground));
+                ClearLine(j);
+            }
+        }
+
+        /// <summary>
+        /// Clears all lines of the footer
+        /// </summary>
+        protected void ClearFooter()
+        {
+            for (int j = dataAreaStart + dataAreaSize; j <= client.screenHeight; j++)
+            {
+                if (Data.HasFooterBackground)
+                    Write(ANSI.WriteBackColor(Data.FooterBackground));
+                ClearLine(j);
+            }
+        }
+        #endregion
+
         #region text move
         private void GoHome()
         {
-            if (firstDisplayedLine == 0) currentLine = 0;
-            else
+            if (firstDisplayedLine != 0)
             {
                 firstDisplayedLine = 0;
-                currentLine = ShowScreenLines();
+                ShowScreenLines();
             }
+            currentLine = 0;
         }
 
         private void GoEnd()
@@ -206,6 +337,7 @@ namespace Casasoft.BBS.UI
             {
                 firstDisplayedLine += dataAreaSize - 1;
                 currentLine = ShowScreenLines();
+                currentLine = currentLine >= Text.Count ? currentLine - 1 : currentLine;
             }
             else currentLine = Text.Count - 1;
         }
@@ -216,6 +348,7 @@ namespace Casasoft.BBS.UI
             {
                 firstDisplayedLine += dataAreaSize / 2;
                 currentLine = ShowScreenLines();
+                currentLine = currentLine >= Text.Count ? currentLine - 1 : currentLine;
             }
             else currentLine = Text.Count - 1;
         }
@@ -243,6 +376,26 @@ namespace Casasoft.BBS.UI
             }
             else currentLine = 0;
         }
+
+        private void CursorDown()
+        {
+            if (currentLine < firstDisplayedLine + dataAreaSize - 1 && currentLine < Text.Count - 1) currentLine++;
+            else if (currentLine < Text.Count - 1)
+            {
+                HalfPageDown();
+                currentLine = firstDisplayedLine;
+            }
+        }
+
+        private void CursorUp()
+        {
+            if (currentLine > firstDisplayedLine) currentLine--;
+            else if (currentLine > 0)
+            {
+                HalfPageUp();
+                currentLine = firstDisplayedLine + dataAreaSize - 1;
+            }
+        }
         #endregion
 
         #region messages and control chars handling
@@ -254,7 +407,7 @@ namespace Casasoft.BBS.UI
         {
             if (string.IsNullOrWhiteSpace(msg))
             {
-                if (Text.Count > dataAreaSize && currentLine < Text.Count)
+                if (Text.Count > dataAreaSize && firstDisplayedLine + dataAreaSize < Text.Count)
                     PageDown();
                 else
                     ShowNext();
@@ -336,6 +489,16 @@ namespace Casasoft.BBS.UI
         protected override void HandlePageDown() => PageDown();
 
         /// <summary>
+        /// Implements Cursor-Up Handler
+        /// </summary>
+        protected override void HandleCursorUp() => CursorUp();
+
+        /// <summary>
+        /// Implements Cursor-Down Handler
+        /// </summary>
+        protected override void HandleCursorDown() => CursorDown();
+
+        /// <summary>
         /// Implements F1 Handler
         /// </summary>
         /// <remarks>
@@ -387,6 +550,16 @@ namespace Casasoft.BBS.UI
                 client.screen.Show();
             }
         }
+
+
+        /// <summary>
+        /// Implements ESC handler
+        /// </summary>
+        /// <remarks>
+        /// Return to previous screen if exists or logout 
+        /// </remarks>
+        protected override void HandleESC() => HandleControlC();
+
         #endregion
 
         /// <summary>
@@ -402,108 +575,6 @@ namespace Casasoft.BBS.UI
             }
         }
 
-        #region show lines
-        /// <summary>
-        /// Draws lines of text
-        /// </summary>
-        /// <param name="lines">Section to draw</param>
-        /// <param name="start">first line of text to draw</param>
-        /// <param name="len">number of text lines to draw</param>
-        /// <param name="offset">first line of screen to use</param>
-        /// <param name="isBody">true is a drawing body request</param>
-        /// <returns>last line of text written</returns>
-        protected int ShowLines(List<string> lines, int start, int len, int offset, bool isBody = false)
-        {
-            int ret = start;
-            for (; ret < start + len && ret < lines.Count; ++ret)
-            {
-                int line = ret + offset - start;
-                MoveTo(line, 1);
-                if (isBody && Data.HasBodyAlternateBackground)
-                    setColorLine(line);
-                Write(lines[ret]);
-            }
-            return ret;
-        }
-
-        /// <summary>
-        /// Draws lines of the text body
-        /// </summary>
-        /// <param name="start">first line of text to draw</param>
-        /// <param name="len">number of text lines to draw</param>
-        /// <returns>last line of text written</returns>
-        /// <remarks>
-        /// first screen line used is <see cref="dataAreaStart"/>
-        /// </remarks>
-        protected int ShowLines(int start, int len) => ShowLines(Text, start, len, dataAreaStart, true);
-
-        /// <summary>
-        /// Draws lines of the text body
-        /// </summary>
-        /// <param name="start">first line of text to draw</param>
-        /// <returns>last line of text written</returns>
-        /// <remarks>
-        /// first screen line used is <see cref="dataAreaStart"/>
-        /// maximum number of lines written is <see cref="dataAreaSize"/>
-        /// </remarks>
-        protected int ShowLines(int start) => ShowLines(start, dataAreaSize);
-
-        /// <summary>
-        /// Draws lines of the text body
-        /// </summary>
-        /// <returns>last line of text written</returns>
-        /// <remarks>
-        /// first drawed line is stored in <see cref="firstDisplayedLine"/>
-        /// first screen line used is <see cref="dataAreaStart"/>
-        /// maximum number of lines written is <see cref="dataAreaSize"/>
-        /// </remarks>
-        protected int ShowLines() => ShowLines(firstDisplayedLine, dataAreaSize);
-
-        /// <summary>
-        /// Clears all lines of the text body
-        /// </summary>
-        protected void ClearBody()
-        {
-            for (int j = dataAreaStart; j < dataAreaStart + dataAreaSize; j++)
-            {
-                if (Data.HasBodyAlternateBackground)
-                    setColorLine(j);
-                ClearLine(j);
-            }
-        }
-
-        private void setColorLine(int line)
-        {
-            if (line % 2 > 0) Write(ANSI.WriteBackColor(Data.BodyAlternateBackground));
-            else Write(ANSI.WriteBackColor(ANSI.defaultBackColor));
-        }
-
-        /// <summary>
-        /// Clears all lines of the header
-        /// </summary>
-        protected void ClearHeader()
-        {
-            for (int j = 1; j < dataAreaStart; j++)
-            {
-                if (Data.HasHeaderBackground)
-                    Write(ANSI.WriteBackColor(Data.HeaderBackground));
-                ClearLine(j);
-            }
-        }
-
-        /// <summary>
-        /// Clears all lines of the footer
-        /// </summary>
-        protected void ClearFooter()
-        {
-            for (int j = dataAreaStart + dataAreaSize; j <= client.screenHeight; j++)
-            {
-                if (Data.HasFooterBackground)
-                    Write(ANSI.WriteBackColor(Data.FooterBackground));
-                ClearLine(j);
-            }
-        }
-        #endregion
 
         /// <summary>
         /// Returns complete pathname of the file

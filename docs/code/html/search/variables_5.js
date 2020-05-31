@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['firstdisplayedline_605',['firstDisplayedLine',['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html#a6acf1be4f930b2cd92c2469a1fb49a26',1,'Casasoft::BBS::UI::TextScreenBase']]],
-  ['footer_606',['Footer',['../class_casasoft_1_1_b_b_s_1_1_parser_1_1_b_b_s_code_result.html#abfc63865920522f4e5e656fc7e1fefe9',1,'Casasoft.BBS.Parser.BBSCodeResult.Footer()'],['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html#a61f6e368b9e6a23c0ea629c820bdfb01',1,'Casasoft.BBS.UI.TextScreenBase.Footer()']]]
+  ['end_5fline_622',['END_LINE',['../class_casasoft_1_1_t_c_p_server_1_1_server.html#a9041f0992dd7f76cdd4e53c471d951c9',1,'Casasoft::TCPServer::Server']]]
 ];

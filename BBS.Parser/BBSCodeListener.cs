@@ -229,6 +229,8 @@ namespace Casasoft.BBS.Parser
                     case Tags.BODY:
                         if (attr.TryGetValue("ALTERNATECOLOR", out value))
                             Parsed.BodyAlternateBackground = ANSI.GetColorByName(value, true);
+                        if (attr.TryGetValue("FOCUSEDCOLOR", out value))
+                            Parsed.BodyFocusedBackground = ANSI.GetColorByName(value, true);
                         Parsed.Body = Parsed.Parsed;
                         Parsed.TextClear();
                         break;
