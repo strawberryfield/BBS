@@ -41,10 +41,10 @@ Finalmente siamo pronti per partire.
 
 ## Ambiente software
 
-Scritto in C# con .net core 3.1, Entity Framework Core 3.1.1, Antlr 4.8  
+Scritto in C# con .net core 3.1.4, Entity Framework Core 3.1.4, Antlr 4.8  
 Database ospitato su MariaDB 10.3.22
 
-Testato sotto Windows 10 1909 e RaspberryPi 2 (Raspbian buster)
+Testato sotto Windows 10 2004 e RaspberryPi 2 (Raspbian buster)
 
 ## Documentazione
 
