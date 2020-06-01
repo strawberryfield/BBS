@@ -1,7 +1,7 @@
-{HEADER}{CLS backcolor="black" forecolor="green"/} &BBSname; - How to navigate texts
+{HEADER}{CLS backcolor="black" forecolor="green"/} &BBSname; - How to navigate lists
 {HR/}
 {/HEADER}
-{body}To scroll the text you can use the following keys:
+{body}To scroll the list you can use the following keys:
 
   {color value="yellow"}[Home]{/color}                   Go to the first line
   {color value="yellow"}[End]{/color}                    Go to the last line
@@ -9,11 +9,14 @@
   {color value="yellow"}[PageDown]{/color} or {color value="yellow"}[Ctrl][F]{/color}  Go one page forward
   {color value="yellow"}[Ctrl][U]{/color}                Go half page up
   {color value="yellow"}[Ctrl][D]{/color}                Go half page down
+  {color value="yellow"}[Up]{/color}       or {color value="yellow"}[Ctrl][P]{/color}  Go one row up
+  {color value="yellow"}[Down]{/color}     or {color value="yellow"}[Ctrl][N]{/color}  Go one row down
   
   {color value="yellow"}[Ctrl][R]{/color}  or {color value="yellow"}[Ctrl][L]{/color}  Refresh the screen
   {color value="yellow"}[Esc]{/color}      or {color value="yellow"}[Ctrl][C]{/color}  Return to previous screen 
   
   {color value="yellow"}[F1]{/color}                     Show this help 
+  {color value="yellow"}[Return]{/color}                 Exec selected row
 
 {/body} 
 {FOOTER}{HR/} 

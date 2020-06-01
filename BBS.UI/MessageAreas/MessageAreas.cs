@@ -93,6 +93,7 @@ namespace Casasoft.BBS.UI
                         });
                 }
             }
+            KeyLength = 20;
         }
     }
 }

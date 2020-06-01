@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.BBS.Interfaces;
+using Casasoft.TextHelpers;
 
 namespace Casasoft.BBS.UI
 {
@@ -61,6 +62,7 @@ namespace Casasoft.BBS.UI
         public ListScreenBase(IBBSClient c, IServer s, string txt, IScreen prev) : base(c, s, txt, prev)
         {
             Text.Clear();
+            KeyLength = 0;
             AddList();
         }
         #endregion
@@ -70,6 +72,43 @@ namespace Casasoft.BBS.UI
         /// </summary>
         protected virtual void AddList() { }
 
+        /// <summary>
+        /// key chars from beginning of the line
+        /// </summary>
+        protected int KeyLength;
+
+        /// <summary>
+        /// Processes message received from the client
+        /// </summary>
+        /// <param name="msg"></param>
+        public override void HandleMessage(string msg)
+        {
+            if (string.IsNullOrWhiteSpace(msg))
+            {
+                if (KeyLength > 0)
+                    msg = TextHelper.Truncate(Text[currentLine], KeyLength).Trim();
+                else
+                    ShowNext();
+            }
+
+            if (Data != null && Data.Actions.Count > 0) execAction(msg.Trim().ToUpper());
+        }
+
+        /// <summary>
+        /// Shows help screen
+        /// </summary>
+        protected override void ShowHelp()
+        {
+            if (KeyLength > 0)
+            {
+                client.screen = ScreenFactory.Create(client, server, "Help", "@HelpList", this);
+                client.screen.Show();
+            }
+            else
+                base.ShowHelp();
+        }
+
+        #region draw
         /// <summary>
         /// Resets active section to body
         /// </summary>
@@ -99,6 +138,7 @@ namespace Casasoft.BBS.UI
             Write(ANSI.Move(0, currentScreenLine) + ANSI.WriteBackColor(FocusedBackground) +
                 ANSI.ClearCurrentLine + Text[currentLine] + ANSI.WriteMode() + ANSI.RestoreCursorPosition);
         }
+        #endregion
 
         #region handle moves
         /// <summary>

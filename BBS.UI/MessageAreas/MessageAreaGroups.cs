@@ -86,6 +86,7 @@ namespace Casasoft.BBS.UI
                         new Parser.BBSCodeResult.Action() { module = "MessageAreas", data = "@MessageAreas;" + group.Id });
                 }
             }
+            KeyLength = 20;
         }
     }
 }

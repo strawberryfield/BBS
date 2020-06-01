@@ -1,7 +1,7 @@
-{HEADER}{CLS backcolor="black" forecolor="green"/} &BBSname; - Come spostarsi sui testi
+{HEADER}{CLS backcolor="black" forecolor="green"/} &BBSname; - Come spostarsi sulle liste
 {HR/}
 {/HEADER}
-{body}Per muoverti sui testi puoi usare i seguenti tasti:
+{body}Per muoverti sulle liste puoi usare i seguenti tasti:
 
   {color value="yellow"}[Home]{/color}                   Vai alla prima linea
   {color value="yellow"}[Fine]{/color}                   Vai all'ultima linea
@@ -9,11 +9,14 @@
   {color value="yellow"}[Pag.Giu']{/color} o  {color value="yellow"}[Ctrl][F]{/color}  Vai una pagina avanti
   {color value="yellow"}[Ctrl][U]{/color}                Vai mezza pagina su
   {color value="yellow"}[Ctrl][D]{/color}                Vai mezza pagina giu'
+  {color value="yellow"}[Su]{/color}       o  {color value="yellow"}[Ctrl][P]{/color}  Sali di una riga
+  {color value="yellow"}[Giu']{/color}     o  {color value="yellow"}[Ctrl][N]{/color}  Scendi di una riga
   
   {color value="yellow"}[Ctrl][R]{/color}  o  {color value="yellow"}[Ctrl][L]{/color}  Aggiorna lo schermo
   {color value="yellow"}[Esc]{/color}      o  {color value="yellow"}[Ctrl][C]{/color}  Torna alla schermata precedente 
   
   {color value="yellow"}[F1]{/color}                     Mostra questo aiuto 
+  {color value="yellow"}[Invio]{/color}                  Esegui la riga selezionata
 
 {/body} 
 {FOOTER}{HR/} 

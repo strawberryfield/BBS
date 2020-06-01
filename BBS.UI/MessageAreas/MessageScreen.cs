@@ -22,9 +22,6 @@ using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
 using Casasoft.TextHelpers;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Casasoft.BBS.UI
 {

@@ -89,6 +89,7 @@ namespace Casasoft.BBS.UI
                     code, desc), client.screenWidth));
                 codes.Add(code.ToUpper(), code);
             }
+            KeyLength = 5;
         }
 
         /// <summary>
@@ -97,6 +98,9 @@ namespace Casasoft.BBS.UI
         /// <param name="msg"></param>
         public override void HandleMessage(string msg)
         {
+            if (string.IsNullOrWhiteSpace(msg) && KeyLength > 0)
+                msg = TextHelper.Truncate(Text[currentLine], KeyLength).Trim();
+
             base.HandleMessage(msg);
             string l;
             if(codes.TryGetValue(msg.ToUpper(), out l))
