@@ -42,4 +42,8 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(ProjectDir)bin\debug\*.nupkg $(SolutionDir)bin\Plugin_SDK\ /Y" />
+  </Target>
+
 </Project>
