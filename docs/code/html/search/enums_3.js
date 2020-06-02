@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['sections_646',['Sections',['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html#a93d1bcbdb5ea82bf626335a4b4b27b6a',1,'Casasoft::BBS::UI::TextScreenBase']]],
-  ['states_647',['states',['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_change_password.html#a6db04e7afa48488aec1042c97b6db415',1,'Casasoft::BBS::UI::ChangePassword']]]
+  ['operations_766',['Operations',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6',1,'Casasoft::TCPServer::Negotiation']]]
 ];

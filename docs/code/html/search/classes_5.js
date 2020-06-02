@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['help_384',['Help',['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_help.html',1,'Casasoft::BBS::UI']]]
+  ['fidonetwork_478',['FidoNetwork',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_fido_network.html',1,'Casasoft::BBS::DataTier::DataModel']]]
 ];

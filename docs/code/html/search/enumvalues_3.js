@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['eacute_663',['EACUTE',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html#a647be32d98a693b6dd3e40fb81b689eba399fc2aa9932660f391b9dc286476cb8',1,'Casasoft::BBS::Parser']]],
-  ['egrave_664',['EGRAVE',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html#a647be32d98a693b6dd3e40fb81b689eba6e0382e4138ae191820924fa8840b887',1,'Casasoft::BBS::Parser']]]
+  ['dataentryterminal_794',['DataEntryTerminal',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6abda1310285c38f5a7feaba04a9d7ab77',1,'Casasoft::TCPServer::Negotiation']]],
+  ['datamark_795',['DataMark',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fa7b22af4eb9c33df5e49130872cb886d1',1,'Casasoft::TCPServer::Negotiation']]],
+  ['do_796',['DO',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fac23fa9996925b610710d93e28c59a3e2',1,'Casasoft::TCPServer::Negotiation']]],
+  ['dont_797',['DONT',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fad2ededa6cd539b408f7cc27ba503b97b',1,'Casasoft::TCPServer::Negotiation']]]
 ];
