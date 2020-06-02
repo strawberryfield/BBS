@@ -40,6 +40,11 @@ namespace Casasoft.BBS.Interfaces
         public int screenHeight { get; set; }
 
         /// <summary>
+        /// Client has negotiated binary mode
+        /// </summary>
+        public bool BinaryMode { get; set; }
+
+        /// <summary>
         /// Current terminal type
         /// </summary>
         public string terminalType { get; set; }

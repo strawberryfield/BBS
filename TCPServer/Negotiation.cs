@@ -188,7 +188,19 @@ namespace Casasoft.TCPServer
                 if (h != 0) c.screenHeight = h;
             }
         }
-   
+
+        /// <summary>
+        /// Tests if client supports binary transmission
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="offset"></param>
+        /// <param name="c"></param>
+        public static void HandleBinary(byte[] data, int offset, IBBSClient c)
+        {
+            if (data[offset + 1] == (byte)Tokens.DO
+                && data[offset + 2] == (byte)Operations.BinaryTransmission)
+                c.BinaryMode = true;
+        }
 
         /// <summary>
         /// Tests if client support Terminal Type Negotiation RFC884 - RFC1091

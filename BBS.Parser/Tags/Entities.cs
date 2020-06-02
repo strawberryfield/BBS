@@ -90,7 +90,11 @@ namespace Casasoft.BBS.Parser
         /// <summary>
         /// Terminal type id
         /// </summary>
-        TERMINALTYPE
+        TERMINALTYPE,
+        /// <summary>
+        /// Number of bits that client handles
+        /// </summary>
+        BITS
     }
 
     /// <summary>
@@ -161,6 +165,8 @@ namespace Casasoft.BBS.Parser
                         return client.screenHeight.ToString();
                     case Entities.TERMINALTYPE:
                         return client.terminalType;
+                    case Entities.BITS:
+                        return client.BinaryMode ? "8" : "7";
                     default:
                         return string.Empty;
                 }

@@ -8,5 +8,6 @@ Since   : &connectiontime;
 Terminal type: &terminalType;
 Screen width : &screenWidth; 
 Screen height: &screenHeight; 
+Bits for char: &bits;
 {/HEADER}
 {FOOTER}Press [RETURN] to continue {/FOOTER}

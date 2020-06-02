@@ -294,6 +294,7 @@ namespace Casasoft.TCPServer
                     sendBytesToSocket(newSocket, Negotiation.Do(Negotiation.Operations.RemoteFlowControl));
                     sendBytesToSocket(newSocket, Negotiation.Will(Negotiation.Operations.Echo));
                     sendBytesToSocket(newSocket, Negotiation.Will(Negotiation.Operations.SuppressGoAhead));
+                    sendBytesToSocket(newSocket, Negotiation.Will(Negotiation.Operations.BinaryTransmission));
                     sendBytesToSocket(newSocket, Negotiation.Do(Negotiation.Operations.NegotiateAboutWindowSize));
                     sendBytesToSocket(newSocket, Negotiation.Do(Negotiation.Operations.TerminalType));
 
@@ -356,6 +357,7 @@ namespace Casasoft.TCPServer
                     int offset = 0;
                     while (offset < bytesReceived)
                     {
+                        Negotiation.HandleBinary(data, offset, client);
                         Negotiation.HandleWindowSize(data, offset, client);
                         if (Negotiation.ClientWillTerminalType(data, offset))
                             sendBytesToSocket(clientSocket, Negotiation.AskForTerminalType());
