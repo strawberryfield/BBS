@@ -1,0 +1,6 @@
+<map id="Casasoft.BBS.UI.NewUser" name="Casasoft.BBS.UI.NewUser">
+<area shape="rect" id="node1" title="Form to register as a new user" alt="" coords="5,229,181,256"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html" title="Implements a text based screen" alt="" coords="34,155,153,181"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_screen_base.html" title="Implements an empty base screen" alt="" coords="47,80,140,107"/>
+<area shape="rect" id="node4" href="$interface_casasoft_1_1_b_b_s_1_1_interfaces_1_1_i_screen.html" title=" " alt="" coords="60,5,127,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Casasoft.BBS.UI.MarkdownScreen" name="Casasoft.BBS.UI.MarkdownScreen">
+<area shape="rect" id="node1" title="Displays a Markdown file" alt="" coords="5,229,188,271"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html" title="Implements a text based screen" alt="" coords="37,155,156,181"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_screen_base.html" title="Implements an empty base screen" alt="" coords="50,80,143,107"/>
+<area shape="rect" id="node4" href="$interface_casasoft_1_1_b_b_s_1_1_interfaces_1_1_i_screen.html" title=" " alt="" coords="63,5,130,32"/>
+</map>

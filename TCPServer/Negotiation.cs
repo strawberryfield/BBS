@@ -34,39 +34,87 @@ namespace Casasoft.TCPServer
         /// <see cref="http://www.faqs.org/rfcs/rfc854.html"/>
         public enum Tokens
         {
-            SE             = 240, //    End of subnegotiation parameters.
-            NOP            = 241, //    No operation.
-            DataMark       = 242, //    The data stream portion of a Synch.
-                                  //    This should always be accompanied
-                                  //    by a TCP Urgent notification.
-            Break          = 243, //    NVT character BRK.
-            IP             = 244, //    The function IP. Interrupt Process
-            AO             = 245, //    The function AO. Abort output
-            AYT            = 246, //    The function AYT. Are You There
-            EraseChar      = 247, //    The function EC.
-            EraseLine      = 248, //    The function EL.
-            GoAhead        = 249, //    The GA signal.
-            Subnegotiation = 250, //    Indicates that what follows is
-                                  //    subnegotiation of the indicated
-                                  //    option.
-            WILL           = 251, //    Indicates the desire to begin
-                                  //    performing, or confirmation that
-                                  //    you are now performing, the
-                                  //    indicated option.
-            WONT           = 252, //    Indicates the refusal to perform,
-                                  //    or continue performing, the
-                                  //    indicated option.
-            DO             = 253, //    Indicates the request that the
-                                  //    other party perform, or
-                                  //    confirmation that you are expecting
-                                  //    the other party to perform, the
-                                  //    indicated option.
-            DONT           = 254, //    Indicates the demand that the
-                                  //    other party stop performing,
-                                  //    or confirmation that you are no
-                                  //    longer expecting the other party
-                                  //    to perform, the indicated option.
-            IAC            = 255  //    Data Byte 255.
+            /// <summary>
+            /// End of subnegotiation parameters.
+            /// </summary>
+            SE = 240,
+            /// <summary>
+            /// No operation.
+            /// </summary>
+            NOP = 241,
+            /// <summary>
+            /// The data stream portion of a Synch.
+            /// This should always be accompanied
+            /// by a TCP Urgent notification. 
+            /// </summary>
+            DataMark = 242,
+            /// <summary>
+            /// NVT character BRK.
+            /// </summary>
+            Break = 243,
+            /// <summary>
+            /// The function IP. Interrupt Process
+            /// </summary>
+            IP = 244,
+            /// <summary>
+            /// The function AO. Abort output
+            /// </summary>
+            AO = 245,
+            /// <summary>
+            /// The function AYT. Are You There
+            /// </summary>
+            AYT = 246,
+            /// <summary>
+            /// The function EC.
+            /// </summary>
+            EraseChar = 247,
+            /// <summary>
+            /// The function EL.
+            /// </summary>
+            EraseLine = 248,
+            /// <summary>
+            /// The GA signal.
+            /// </summary>
+            GoAhead = 249,
+            /// <summary>
+            /// Indicates that what follows is
+            /// subnegotiation of the indicated
+            /// option. 
+            /// </summary>
+            Subnegotiation = 250,
+            /// <summary>
+            /// Indicates the desire to begin
+            /// performing, or confirmation that
+            /// you are now performing, the
+            /// indicated option. 
+            /// </summary>
+            WILL = 251,
+            /// <summary>
+            /// Indicates the refusal to perform,
+            /// or continue performing, the
+            /// indicated option. 
+            /// </summary>
+            WONT = 252,
+            /// <summary>
+            /// Indicates the request that the
+            /// other party perform, or
+            /// confirmation that you are expecting
+            /// the other party to perform, the
+            /// indicated option. 
+            /// </summary>
+            DO = 253,
+            /// <summary>
+            /// Indicates the demand that the
+            /// other party stop performing,
+            /// or confirmation that you are no
+            /// longer expecting the other party
+            /// to perform, the indicated option. 
+            /// </summary>
+            DONT = 254,
+            /// <summary>
+            /// Data Byte 255.
+            /// </summary>
+            IAC = 255
         }
 
         /// <summary>
@@ -75,60 +123,222 @@ namespace Casasoft.TCPServer
         /// <see cref="https://www.iana.org/assignments/telnet-options/telnet-options.xhtml"/>
         public enum Operations
         {
-            BinaryTransmission              = 0, 	//     [RFC856]
-            Echo                            = 1, 	//     [RFC857]
-            Reconnection                    = 2, 	//     [DDN Protocol Handbook, "Telnet Reconnection Option", "Telnet Output Line Width Option", "Telnet Output Page Size Option", NIC 50005, December 1985.]
-            SuppressGoAhead                 = 3, 	//     [RFC858]
-            ApproxMessageSizeNegotiation    = 4, 	//     ["The Ethernet, A Local Area Network: Data Link Layer and Physical Layer Specification", AA-K759B-TK, Digital Equipment Corporation, Maynard, MA.Also as: "The Ethernet - A Local Area Network", Version 1.0, Digital Equipment Corporation, Intel Corporation, Xerox Corporation, September 1980. And: "The Ethernet, A Local Area Network: Data Link Layer and Physical Layer Specifications", Digital, Intel and Xerox, November 1982. And: XEROX, "The Ethernet, A Local Area Network: Data Link Layer and Physical Layer Specification", X3T51/80-50, Xerox Corporation, Stamford, CT., October 1980.]
-            Status                          = 5, 	//     [RFC859]
-            TimingMark                      = 6, 	//     [RFC860]
-            RemoteControlledTransAndEcho    = 7, 	//     [RFC726]
-            OutputLineWidth                 = 8, 	//     [DDN Protocol Handbook, "Telnet Reconnection Option", "Telnet Output Line Width Option", "Telnet Output Page Size Option", NIC 50005, December 1985.]
-            OutputPageSize                  = 9, 	//     [DDN Protocol Handbook, "Telnet Reconnection Option", "Telnet Output Line Width Option", "Telnet Output Page Size Option", NIC 50005, December 1985.]
-            OutputCarriageReturnDisposition = 10, 	//     [RFC652]
-            OutputHorizontalTabStops        = 11, 	//     [RFC653]
-            OutputHorizontalTabDisposition  = 12, 	//     [RFC654]
-            OutputFormfeedDisposition       = 13, 	//     [RFC655]
-            OutputVerticalTabstops          = 14, 	//     [RFC656]
-            OutputVerticalTabDisposition    = 15, 	//     [RFC657]
-            OutputLinefeedDisposition       = 16, 	//     [RFC658]
-            ExtendedASCII                   = 17, 	//     [RFC698]
-            Logout                          = 18, 	//     [RFC727]
-            ByteMacro                       = 19, 	//     [RFC735]
-            DataEntryTerminal               = 20, 	//     [RFC1043], [RFC732]
-            SUPDUP                          = 21, 	//     [RFC736],  [RFC734]
-            SUPDUPOutput                    = 22, 	//     [RFC749]
-            SendLocation                    = 23, 	//     [RFC779]
-            TerminalType                    = 24, 	//     [RFC1091]
-            EndOfRecord                     = 25, 	//     [RFC885]
-            TACACSUserIdentification        = 26, 	//     [RFC927]
-            OutputMarking                   = 27, 	//     [RFC933]
-            TerminalLocationNumber          = 28, 	//     [RFC946]
-            Telnet3270Regime                = 29, 	//     [RFC1041]
-            X3PAD                           = 30, 	//     [RFC1053]
-            NegotiateAboutWindowSize        = 31, 	//     [RFC1073]
-            TerminalSpeed                   = 32, 	//     [RFC1079]
-            RemoteFlowControl               = 33, 	//     [RFC1372]
-            Linemode                        = 34, 	//     [RFC1184]
-            XDisplayLocation                = 35, 	//     [RFC1096]
-            EnvironmentOption               = 36, 	//     [RFC1408]
-            AuthenticationOption            = 37, 	//     [RFC2941]
-            EncryptionOption                = 38, 	//     [RFC2946]
-            NewEnvironmentOption            = 39, 	//     [RFC1572]
-            TN3270E                         = 40, 	//     [RFC2355]
-            XAUTH                           = 41, 	//     [Rob_Earhart]
-            CHARSET                         = 42, 	//     [RFC2066]
-            TelnetRemoteSerialPort          = 43, 	//     [Robert_Barnes]
-            ComPortControlOption            = 44, 	//     [RFC2217]
-            TelnetSuppressLocalEcho         = 45, 	//     [Wirt_Atmar]
-            TelnetStartTLS                  = 46, 	//     [Michael_Boe]
-            KERMIT                          = 47, 	//     [RFC2840]
-            SEND_URL                        = 48, 	//     [David_Croft]
-            FORWARD_X                       = 49, 	//     [Jeffrey_Altman]
-            TELOPT_PRAGMA_LOGON             = 138,  //    [Steve_McGregory]
-            TELOPT_SSPI_LOGON               = 139,  //    [Steve_McGregory]
-            TELOPT_PRAGMA_HEARTBEAT         = 140,  //    [Steve_McGregory]
-            Extended_Options_List           = 255,  //    [RFC861]
+            /// <summary>
+            /// [RFC856]
+            /// </summary>
+            BinaryTransmission = 0,
+            /// <summary>
+            /// [RFC857]
+            /// </summary>
+            Echo = 1,
+            /// <summary>
+            /// [DDN Protocol Handbook, "Telnet Reconnection Option", "Telnet Output Line Width Option", "Telnet Output Page Size Option", NIC 50005, December 1985.]
+            /// </summary>
+            Reconnection = 2,
+            /// <summary>
+            /// [RFC858]
+            /// </summary>
+            SuppressGoAhead = 3,
+            /// <summary>
+            /// ["The Ethernet, A Local Area Network: Data Link Layer and Physical Layer Specification", AA-K759B-TK, Digital Equipment Corporation, Maynard, MA.Also as: "The Ethernet - A Local Area Network", Version 1.0, Digital Equipment Corporation, Intel Corporation, Xerox Corporation, September 1980. And: "The Ethernet, A Local Area Network: Data Link Layer and Physical Layer Specifications", Digital, Intel and Xerox, November 1982. And: XEROX, "The Ethernet, A Local Area Network: Data Link Layer and Physical Layer Specification", X3T51/80-50, Xerox Corporation, Stamford, CT., October 1980.]
+            /// </summary>
+            ApproxMessageSizeNegotiation = 4,
+            /// <summary>
+            /// [RFC859]
+            /// </summary>
+            Status = 5,
+            /// <summary>
+            /// [RFC860]
+            /// </summary>
+            TimingMark = 6,
+            /// <summary>
+            /// [RFC726]
+            /// </summary>
+            RemoteControlledTransAndEcho = 7,
+            /// <summary>
+            /// [DDN Protocol Handbook, "Telnet Reconnection Option", "Telnet Output Line Width Option", "Telnet Output Page Size Option", NIC 50005, December 1985.]
+            /// </summary>
+            OutputLineWidth = 8,
+            /// <summary>
+            /// [DDN Protocol Handbook, "Telnet Reconnection Option", "Telnet Output Line Width Option", "Telnet Output Page Size Option", NIC 50005, December 1985.]
+            /// </summary>
+            OutputPageSize = 9,
+            /// <summary>
+            /// [RFC652]
+            /// </summary>
+            OutputCarriageReturnDisposition = 10,
+            /// <summary>
+            /// [RFC653]
+            /// </summary>
+            OutputHorizontalTabStops = 11,
+            /// <summary>
+            /// [RFC654]
+            /// </summary>
+            OutputHorizontalTabDisposition = 12,
+            /// <summary>
+            /// [RFC655]
+            /// </summary>
+            OutputFormfeedDisposition = 13,
+            /// <summary>
+            /// [RFC656]
+            /// </summary>
+            OutputVerticalTabstops = 14,
+            /// <summary>
+            /// [RFC657]
+            /// </summary>
+            OutputVerticalTabDisposition = 15,
+            /// <summary>
+            /// [RFC658]
+            /// </summary>
+            OutputLinefeedDisposition = 16,
+            /// <summary>
+            ///  [RFC698]
+            /// </summary>
+            ExtendedASCII = 17,
+            /// <summary>
+            /// [RFC727]
+            /// </summary>
+            Logout = 18,
+            /// <summary>
+            /// [RFC735]
+            /// </summary>
+            ByteMacro = 19,
+            /// <summary>
+            /// [RFC1043], [RFC732]
+            /// </summary>
+            DataEntryTerminal = 20,
+            /// <summary>
+            /// [RFC736],  [RFC734]
+            /// </summary>
+            SUPDUP = 21,
+            /// <summary>
+            /// [RFC749]
+            /// </summary>
+            SUPDUPOutput = 22,
+            /// <summary>
+            /// [RFC779]
+            /// </summary>
+            SendLocation = 23,
+            /// <summary>
+            /// [RFC1091]
+            /// </summary>
+            TerminalType = 24,
+            /// <summary>
+            /// [RFC885]
+            /// </summary>
+            EndOfRecord = 25,
+            /// <summary>
+            /// [RFC927]
+            /// </summary>
+            TACACSUserIdentification = 26,
+            /// <summary>
+            /// [RFC933]
+            /// </summary>
+            OutputMarking = 27,
+            /// <summary>
+            /// [RFC946]
+            /// </summary>
+            TerminalLocationNumber = 28,
+            /// <summary>
+            /// [RFC1041]
+            /// </summary>
+            Telnet3270Regime = 29,
+            /// <summary>
+            /// [RFC1053]
+            /// </summary>
+            X3PAD = 30,
+            /// <summary>
+            /// [RFC1073]
+            /// </summary>
+            NegotiateAboutWindowSize = 31,
+            /// <summary>
+            /// [RFC1079]
+            /// </summary>
+            TerminalSpeed = 32,
+            /// <summary>
+            /// [RFC1372]
+            /// </summary>
+            RemoteFlowControl = 33,
+            /// <summary>
+            /// [RFC1184]
+            /// </summary>
+            Linemode = 34,
+            /// <summary>
+            /// [RFC1096]
+            /// </summary>
+            XDisplayLocation = 35,
+            /// <summary>
+            /// [RFC1408]
+            /// </summary>
+            EnvironmentOption = 36,
+            /// <summary>
+            /// [RFC2941]
+            /// </summary>
+            AuthenticationOption = 37,
+            /// <summary>
+            /// [RFC2946]
+            /// </summary>
+            EncryptionOption = 38,
+            /// <summary>
+            /// [RFC1572]
+            /// </summary>
+            NewEnvironmentOption = 39,
+            /// <summary>
+            /// [RFC2355]
+            /// </summary>
+            TN3270E = 40,
+            /// <summary>
+            /// [Rob_Earhart]
+            /// </summary>
+            XAUTH = 41,
+            /// <summary>
+            /// [RFC2066]
+            /// </summary>
+            CHARSET = 42,
+            /// <summary>
+            /// [Robert_Barnes]
+            /// </summary>
+            TelnetRemoteSerialPort = 43,
+            /// <summary>
+            /// [RFC2217]
+            /// </summary>
+            ComPortControlOption = 44,
+            /// <summary>
+            /// [Wirt_Atmar]
+            /// </summary>
+            TelnetSuppressLocalEcho = 45,
+            /// <summary>
+            /// [Michael_Boe]
+            /// </summary>
+            TelnetStartTLS = 46,
+            /// <summary>
+            /// [RFC2840]
+            /// </summary>
+            KERMIT = 47,
+            /// <summary>
+            /// [David_Croft]
+            /// </summary>
+            SEND_URL = 48,
+            /// <summary>
+            /// [Jeffrey_Altman]
+            /// </summary>
+            FORWARD_X = 49,
+            /// <summary>
+            /// [Steve_McGregory]
+            /// </summary>
+            TELOPT_PRAGMA_LOGON = 138,
+            /// <summary>
+            /// [Steve_McGregory]
+            /// </summary>
+            TELOPT_SSPI_LOGON = 139,
+            /// <summary>
+            /// [Steve_McGregory]
+            /// </summary>
+            TELOPT_PRAGMA_HEARTBEAT = 140,
+            /// <summary>
+            /// [RFC861]
+            /// </summary>
+            Extended_Options_List = 255,
         }
 
         /// <summary>

@@ -1,0 +1,7 @@
+<map id="Casasoft.BBS.UI.MessageAreaGroups" name="Casasoft.BBS.UI.MessageAreaGroups">
+<area shape="rect" id="node1" title="Implements the list of message areas groups" alt="" coords="5,304,209,345"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_list_screen_base.html" title="Base class for lists" alt="" coords="50,229,165,256"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html" title="Implements a text based screen" alt="" coords="48,155,167,181"/>
+<area shape="rect" id="node4" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_screen_base.html" title="Implements an empty base screen" alt="" coords="61,80,154,107"/>
+<area shape="rect" id="node5" href="$interface_casasoft_1_1_b_b_s_1_1_interfaces_1_1_i_screen.html" title=" " alt="" coords="74,5,141,32"/>
+</map>

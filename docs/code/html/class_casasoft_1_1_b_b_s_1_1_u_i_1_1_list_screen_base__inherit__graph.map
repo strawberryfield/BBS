@@ -1,0 +1,13 @@
+<map id="Casasoft.BBS.UI.ListScreenBase" name="Casasoft.BBS.UI.ListScreenBase">
+<area shape="rect" id="node1" title="Base class for lists" alt="" coords="428,165,644,192"/>
+<area shape="rect" id="node5" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_list_connected.html" title="Implements list of connected users" alt="" coords="694,5,901,32"/>
+<area shape="rect" id="node6" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_list_logins.html" title="Implements list of user&#39;s logins" alt="" coords="706,56,889,83"/>
+<area shape="rect" id="node7" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_list_users.html" title="Implements the registered users list" alt="" coords="708,107,887,133"/>
+<area shape="rect" id="node8" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_message_area_groups.html" title="Implements the list of message areas groups" alt="" coords="695,158,899,199"/>
+<area shape="rect" id="node9" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_message_areas.html" title="Implements the list of message areas" alt="" coords="692,224,903,251"/>
+<area shape="rect" id="node10" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_messages_list.html" title="List of messages in echomail area" alt="" coords="695,275,900,301"/>
+<area shape="rect" id="node11" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_select_locale.html" title="Selection of locale" alt="" coords="698,325,897,352"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html" title="Implements a text based screen" alt="" coords="261,165,380,192"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_screen_base.html" title="Implements an empty base screen" alt="" coords="120,165,213,192"/>
+<area shape="rect" id="node4" href="$interface_casasoft_1_1_b_b_s_1_1_interfaces_1_1_i_screen.html" title=" " alt="" coords="5,165,72,192"/>
+</map>

@@ -1,0 +1,24 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$interface_casasoft_1_1_b_b_s_1_1_interfaces_1_1_i_screen.html" title=" " alt="" coords="5,281,173,322"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_screen_base.html" title="Implements an empty base screen" alt="" coords="221,288,416,315"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html" title="Implements a text based screen" alt="" coords="464,288,684,315"/>
+<area shape="rect" id="node4" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_banner.html" title="Implements the screen shown at cliente connection" alt="" coords="762,35,927,61"/>
+<area shape="rect" id="node5" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_change_password.html" title="Change password dialog" alt="" coords="732,85,957,112"/>
+<area shape="rect" id="node7" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_help.html" title="Help screen" alt="" coords="769,136,920,163"/>
+<area shape="rect" id="node8" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_list_screen_base.html" title="Base class for lists" alt="" coords="737,187,953,213"/>
+<area shape="rect" id="node16" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_login_screen.html" title="Handles user login" alt="" coords="747,237,943,264"/>
+<area shape="rect" id="node17" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_logout.html" title="Message before disconnection" alt="" coords="763,288,926,315"/>
+<area shape="rect" id="node18" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_markdown_screen.html" title="Displays a Markdown file" alt="" coords="753,339,936,381"/>
+<area shape="rect" id="node19" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_message_screen.html" title="Shows a message" alt="" coords="735,405,954,432"/>
+<area shape="rect" id="node20" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_new_user.html" title="Form to register as a new user" alt="" coords="757,456,933,483"/>
+<area shape="rect" id="node21" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_raw_text_screen.html" title="Shows a raw text file" alt="" coords="737,507,952,533"/>
+<area shape="rect" id="node22" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen.html" title="Generic Text Screen module" alt="" coords="749,557,940,584"/>
+<area shape="rect" id="node6" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_change_password_su.html" title="Change password in superuser mode" alt="" coords="1005,5,1247,32"/>
+<area shape="rect" id="node9" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_list_connected.html" title="Implements list of connected users" alt="" coords="1023,56,1229,83"/>
+<area shape="rect" id="node10" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_list_logins.html" title="Implements list of user&#39;s logins" alt="" coords="1035,107,1217,133"/>
+<area shape="rect" id="node11" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_list_users.html" title="Implements the registered users list" alt="" coords="1037,157,1215,184"/>
+<area shape="rect" id="node12" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_message_area_groups.html" title="Implements the list of message areas groups" alt="" coords="1024,209,1228,250"/>
+<area shape="rect" id="node13" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_message_areas.html" title="Implements the list of message areas" alt="" coords="1021,275,1231,301"/>
+<area shape="rect" id="node14" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_messages_list.html" title="List of messages in echomail area" alt="" coords="1023,325,1229,352"/>
+<area shape="rect" id="node15" href="$class_casasoft_1_1_b_b_s_1_1_u_i_1_1_select_locale.html" title="Selection of locale" alt="" coords="1027,376,1225,403"/>
+</map>
