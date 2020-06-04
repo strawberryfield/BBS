@@ -122,15 +122,16 @@ namespace Casasoft.BBS.UI
                         default:
                             LnWrite(catalog.GetString("Password") + ": ");
                             status = states.WaitForPassword;
-                            client.status = EClientStatus.Authenticating;
+                            client.inputMode = EInputMode.PasswordMode;
                             break;
                     }
                     break;
                 case states.WaitForPassword:
                     string pwd = msg.Trim();
                     client.status = EClientStatus.Guest;
-
+                    client.inputMode = EInputMode.LineMode;
                     bool success = false;
+
                     using (bbsContext bbs = new bbsContext())
                     {
                         User user = bbs.GetUserByUsername(username);

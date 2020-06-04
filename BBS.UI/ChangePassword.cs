@@ -92,7 +92,7 @@ namespace Casasoft.BBS.UI
             MoveTo(dataAreaStart, 1);
             LnWrite(catalog.GetString("Old password") + ": ");
             status = states.WaitForOldPassword;
-            client.status = EClientStatus.Authenticating;
+            client.inputMode = EInputMode.PasswordMode;
         }
 
         /// <summary>
@@ -186,6 +186,7 @@ namespace Casasoft.BBS.UI
                     string.Format("Password changed successfully for user '{0}'", user.Userid), client.Remote);
                 LnWrite(catalog.GetString("Password changed successfully."));
                 Writeln();
+                client.inputMode = EInputMode.LineMode;
                 client.status = EClientStatus.LoggedIn;
                 status = states.WaitForContinue;
             }

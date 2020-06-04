@@ -411,7 +411,7 @@ namespace Casasoft.TCPServer
 
                             // Echo back the received character
                             // if client is not writing any password
-                            if (client.status != EClientStatus.Authenticating)
+                            if (client.inputMode != EInputMode.PasswordMode)
                                 sendBytesToSocket(clientSocket, new byte[] { data[0] });
 
                             // Echo back asterisks if client is

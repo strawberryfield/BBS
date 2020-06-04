@@ -137,7 +137,7 @@ namespace Casasoft.BBS.UI
                         user.Userid = username;
                         LnWrite(catalog.GetString("Password") + ": ");
                         status = states.WaitForPassword;
-                        client.status = EClientStatus.Authenticating;
+                        client.inputMode = EInputMode.PasswordMode;
                     }
                     else
                     {
@@ -166,6 +166,7 @@ namespace Casasoft.BBS.UI
                     {
                         user.SetPassword(password);
                         client.status = EClientStatus.Guest;
+                        client.inputMode = EInputMode.LineMode;
                         LnWrite(catalog.GetString("Your real name") + ": ");
                         status = states.WaitForRealName;
                     }

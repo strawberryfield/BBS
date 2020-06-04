@@ -48,6 +48,11 @@ namespace Casasoft.TCPServer
         /// The client's current status.
         /// </summary>
         public EClientStatus status { get; set; }
+
+        /// <summary>
+        /// The client's current input mode.
+        /// </summary>
+        public EInputMode inputMode { get; set; }
         /// <summary>
         /// The last received data from the client.
         /// </summary>
@@ -106,13 +111,14 @@ namespace Casasoft.TCPServer
         /// <param name="remoteAddress">The remote address.</param>
         public Client(uint clientId, IPEndPoint remoteAddress)
         {
-            this.id = clientId;
-            this.remoteAddr = remoteAddress;
-            this.connectedAt = DateTime.Now;
-            this.status = EClientStatus.Guest;
-            this.receivedData = string.Empty;
-            this.username = string.Empty;
-            this.lastActivity = DateTime.Now;
+            id = clientId;
+            remoteAddr = remoteAddress;
+            connectedAt = DateTime.Now;
+            status = EClientStatus.Guest;
+            inputMode = EInputMode.LineMode;
+            receivedData = string.Empty;
+            username = string.Empty;
+            lastActivity = DateTime.Now;
             screenWidth = 80;
             screenHeight = 24;
             terminalType = string.Empty;

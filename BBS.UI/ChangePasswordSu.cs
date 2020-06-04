@@ -105,7 +105,7 @@ namespace Casasoft.BBS.UI
                     else
                     {
                         LnWrite(catalog.GetString("New password") + ": ");
-                        client.status = EClientStatus.Authenticating;
+                        client.inputMode = EInputMode.PasswordMode;
                         status = states.WaitForNewPassword;
                     }
                     break;

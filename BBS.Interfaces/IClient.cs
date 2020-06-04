@@ -23,6 +23,9 @@ using System.Net;
 
 namespace Casasoft.BBS.Interfaces
 {
+    /// <summary>
+    /// Current login status
+    /// </summary>
     public enum EClientStatus
     {
         /// <summary>
@@ -38,6 +41,25 @@ namespace Casasoft.BBS.Interfaces
         /// The client is logged in.
         /// </summary>
         LoggedIn = 2
+    }
+
+    /// <summary>
+    /// Modes of input handling
+    /// </summary>
+    public enum EInputMode
+    {
+        /// <summary>
+        /// A line of text is sent to the client when return is pressed
+        /// </summary>
+        LineMode,
+        /// <summary>
+        /// Any single char is sent to the client
+        /// </summary>
+        CharMode,
+        /// <summary>
+        /// Like linemode, but echo is masked
+        /// </summary>
+        PasswordMode
     }
 
     public interface IClient
@@ -84,6 +106,11 @@ namespace Casasoft.BBS.Interfaces
         /// The client's current status.
         /// </summary>
         public EClientStatus status { get; set; }
+
+        /// <summary>
+        /// The client's current input mode.
+        /// </summary>
+        public EInputMode inputMode { get; set; }
 
         /// <summary>
         /// The last received data from the client.

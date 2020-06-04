@@ -539,6 +539,7 @@ namespace Casasoft.BBS.UI
         /// </remarks>
         protected override void HandleControlC()
         {
+            client.inputMode = EInputMode.LineMode;
             if (Previous != null)
             {
                 client.screen = Previous;
