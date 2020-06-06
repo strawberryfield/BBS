@@ -1,23 +1,33 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AssemblyName>Casasoft.BBS.Fidonet</AssemblyName>
-    <RootNamespace>Casasoft.BBS.Fidonet</RootNamespace>
+    <RootNamespace>Casasoft.Packer</RootNamespace>
+    <PackageId>Casasoft.Packer</PackageId>
     <Authors>Roberto Ceccarelli - Casasoft</Authors>
     <Company>Casasoft</Company>
     <Product>Casasoft BBS</Product>
-    <Description>Old style telnet BBS - Fidonet interface</Description>
+    <Description>Old style telnet BBS</Description>
     <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
-    <PackageProjectUrl>https://strawberryfield.github.io/BBS</PackageProjectUrl>
-    <PackageIcon>package.png</PackageIcon>
+    <PackageLicenseFile>..\LICENSE.txt</PackageLicenseFile>
+    <ApplicationIcon>..\terminal.ico</ApplicationIcon>
+    <PackageProjectUrl>https://github.com/strawberryfield/BBS</PackageProjectUrl>
+    <PackageIcon>..\package.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>  </PropertyGroup>
+    <PackageTags>BBS, fidonet, entity framework</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>C:\projects\BBS\bin\</OutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Fidonet\Fidonet.csproj" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\LICENSE.txt">

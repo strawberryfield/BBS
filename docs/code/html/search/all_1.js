@@ -26,7 +26,7 @@ var searchData=
   ['areagroupnavigation_24',['AreagroupNavigation',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_area.html#aa03bf2bb897303e422b2652db3417208',1,'Casasoft::BBS::DataTier::DataModel::MessageArea']]],
   ['areanavigation_25',['AreaNavigation',['../class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a3e667fac6fe6170a23a7e90a8b333ffe',1,'Casasoft::BBS::DataTier::DataModel::Message']]],
   ['askforterminaltype_26',['AskForTerminalType',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a394eea41c9da81a141128ff63c0e1614',1,'Casasoft::TCPServer::Negotiation']]],
-  ['attr_27',['attr',['../class_casasoft_1_1_b_b_s_1_1_fidonet_1_1_packed_message.html#a190be5222dbc7e84601dafd145aaf8e2',1,'Casasoft::BBS::Fidonet::PackedMessage']]],
+  ['attr_27',['attr',['../class_casasoft_1_1_fidonet_1_1_packed_message.html#acaf409b2e780c0b0951297cd0cd8b0e8',1,'Casasoft::Fidonet::PackedMessage']]],
   ['attributes_28',['Attributes',['../class_casasoft_1_1_b_b_s_1_1_parser_1_1_attributes.html',1,'Casasoft.BBS.Parser.Attributes'],['../class_casasoft_1_1_b_b_s_1_1_parser_1_1_attributes.html#af9bbd8960cf12943fbe61097cc72d40e',1,'Casasoft.BBS.Parser.Attributes.Attributes()']]],
   ['attributesdict_29',['AttributesDict',['../class_casasoft_1_1_b_b_s_1_1_parser_1_1_attributes_dict.html',1,'Casasoft.BBS.Parser.AttributesDict'],['../class_casasoft_1_1_b_b_s_1_1_parser_1_1_attributes_dict.html#a6ce0011ceb361df249542a60c401e3cb',1,'Casasoft.BBS.Parser.AttributesDict.AttributesDict()']]],
   ['authenticating_30',['Authenticating',['../namespace_casasoft_1_1_b_b_s_1_1_interfaces.html#a6365bc097592ed30ebf039258f4e77a9aedb214653d9f3cecd840463790ac2894',1,'Casasoft::BBS::Interfaces']]],

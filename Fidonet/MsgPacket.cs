@@ -21,7 +21,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Casasoft.BBS.Fidonet
+namespace Casasoft.Fidonet
 {
     /// <summary>
     /// Handles a packet of messages
@@ -115,6 +115,7 @@ namespace Casasoft.BBS.Fidonet
     /// </remarks>
     public class MsgPacket
     {
+        #region properties
         /// <summary>
         /// FTSC Product code <see cref="http://ftsc.org/docs/ftscprod.019"/>
         /// </summary>
@@ -152,7 +153,11 @@ namespace Casasoft.BBS.Fidonet
         /// List of Messages
         /// </summary>
         public List<PackedMessage> Messages { get; set; }
+        #endregion
 
+        /// <summary>
+        /// Empty constructor
+        /// </summary>
         public MsgPacket()
         {
             orig = new FidoAddress();
@@ -161,6 +166,48 @@ namespace Casasoft.BBS.Fidonet
             Baud = 64000;
             Password = string.Empty;
             Messages = new List<PackedMessage>();
+        }
+
+        /// <summary>
+        /// Parses packet from raw data
+        /// </summary>
+        /// <param name="rawdata"></param>
+        public MsgPacket(byte[] rawdata) : this()
+        {
+            if (FidonetHelpers.GetUShort(rawdata, 18) != 2) return;
+
+            orig.node = FidonetHelpers.GetUShort(rawdata, 0);
+            dest.node = FidonetHelpers.GetUShort(rawdata, 2);
+            orig.net = FidonetHelpers.GetUShort(rawdata, 20);
+            dest.net = FidonetHelpers.GetUShort(rawdata, 22);
+            orig.zone = FidonetHelpers.GetUShort(rawdata, 34);
+            dest.zone = FidonetHelpers.GetUShort(rawdata, 36);
+            Baud = FidonetHelpers.GetUShort(rawdata, 16);
+
+            Timestamp = new DateTime(FidonetHelpers.GetUShort(rawdata, 4),
+                FidonetHelpers.GetUShort(rawdata, 6) + 1,
+                FidonetHelpers.GetUShort(rawdata, 8),
+                FidonetHelpers.GetUShort(rawdata, 10),
+                FidonetHelpers.GetUShort(rawdata, 12),
+                FidonetHelpers.GetUShort(rawdata, 14));
+            Password = FidonetHelpers.BytesToString(rawdata, 24, 8);
+
+            // Scan messages
+            int ptr = 58;
+            while(FidonetHelpers.GetUShort(rawdata, ptr) == 2)
+            {
+                int end = ptr + 34; // skip msg header
+                int zerofound = 0;
+                while(zerofound < 4)
+                {
+                    if (rawdata[end] == 0) zerofound++;
+                    end++;
+                }
+                byte[] msg = new byte[end - ptr];
+                Array.Copy(rawdata, ptr, msg, 0, end - ptr);
+                Messages.Add(new PackedMessage(msg));
+                ptr = end;
+            }
         }
     }
 }

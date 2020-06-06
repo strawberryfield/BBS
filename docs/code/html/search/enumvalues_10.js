@@ -1,13 +1,13 @@
 var searchData=
 [
-  ['screenheight_902',['SCREENHEIGHT',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html#a647be32d98a693b6dd3e40fb81b689ebadb2d3f8fe99b7eb134786aa4f63f1f90',1,'Casasoft::BBS::Parser']]],
-  ['screenwidth_903',['SCREENWIDTH',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html#a647be32d98a693b6dd3e40fb81b689ebaa39d48bf456d327ea471e1e063e90109',1,'Casasoft::BBS::Parser']]],
-  ['se_904',['SE',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6faf003c44deab679aa2edfaff864c77402',1,'Casasoft::TCPServer::Negotiation']]],
-  ['send_5furl_905',['SEND_URL',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6adf6420dd4a92d281c3cecf8d16fd2432',1,'Casasoft::TCPServer::Negotiation']]],
-  ['sendlocation_906',['SendLocation',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6adefc4bdfe31e142b4e7b1846d53b4f63',1,'Casasoft::TCPServer::Negotiation']]],
-  ['status_907',['Status',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6aec53a8c4f07baed5d8825072c89799be',1,'Casasoft::TCPServer::Negotiation']]],
-  ['subnegotiation_908',['Subnegotiation',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fa3a5a09c614a96d095a1f145afebea183',1,'Casasoft::TCPServer::Negotiation']]],
-  ['supdup_909',['SUPDUP',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6ac0db09431c722c0d53019fb5f51f10fb',1,'Casasoft::TCPServer::Negotiation']]],
-  ['supdupoutput_910',['SUPDUPOutput',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6acc49464ca62658d36085fe2fe40d92fc',1,'Casasoft::TCPServer::Negotiation']]],
-  ['suppressgoahead_911',['SuppressGoAhead',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6a0260f7dbcbd77a40ad1af58989e1b20f',1,'Casasoft::TCPServer::Negotiation']]]
+  ['screenheight_911',['SCREENHEIGHT',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html#a647be32d98a693b6dd3e40fb81b689ebadb2d3f8fe99b7eb134786aa4f63f1f90',1,'Casasoft::BBS::Parser']]],
+  ['screenwidth_912',['SCREENWIDTH',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html#a647be32d98a693b6dd3e40fb81b689ebaa39d48bf456d327ea471e1e063e90109',1,'Casasoft::BBS::Parser']]],
+  ['se_913',['SE',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6faf003c44deab679aa2edfaff864c77402',1,'Casasoft::TCPServer::Negotiation']]],
+  ['send_5furl_914',['SEND_URL',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6adf6420dd4a92d281c3cecf8d16fd2432',1,'Casasoft::TCPServer::Negotiation']]],
+  ['sendlocation_915',['SendLocation',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6adefc4bdfe31e142b4e7b1846d53b4f63',1,'Casasoft::TCPServer::Negotiation']]],
+  ['status_916',['Status',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6aec53a8c4f07baed5d8825072c89799be',1,'Casasoft::TCPServer::Negotiation']]],
+  ['subnegotiation_917',['Subnegotiation',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fa3a5a09c614a96d095a1f145afebea183',1,'Casasoft::TCPServer::Negotiation']]],
+  ['supdup_918',['SUPDUP',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6ac0db09431c722c0d53019fb5f51f10fb',1,'Casasoft::TCPServer::Negotiation']]],
+  ['supdupoutput_919',['SUPDUPOutput',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6acc49464ca62658d36085fe2fe40d92fc',1,'Casasoft::TCPServer::Negotiation']]],
+  ['suppressgoahead_920',['SuppressGoAhead',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6a0260f7dbcbd77a40ad1af58989e1b20f',1,'Casasoft::TCPServer::Negotiation']]]
 ];

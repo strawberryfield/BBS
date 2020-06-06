@@ -18,43 +18,17 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-namespace Casasoft.BBS.Fidonet
+using Casasoft.Fidonet;
+using System.IO;
+
+namespace Casasoft.Packer
 {
-    /// <summary>
-    /// 4D Fidonet address handler
-    /// </summary>
-    public class FidoAddress
+    class Program
     {
-        /// <summary>
-        /// zone
-        /// </summary>
-        public ushort zone { get; set; }
-
-        /// <summary>
-        /// net
-        /// </summary>
-        public ushort net { get; set; }
-
-        /// <summary>
-        /// node
-        /// </summary>
-        public ushort node { get; set; }
-
-        /// <summary>
-        /// point
-        /// </summary>
-        public ushort point { get; set; }
-
-        /// <summary>
-        /// Empty constructor
-        /// </summary>
-        public FidoAddress()
+        static void Main(string[] args)
         {
-            zone = 0;
-            net = 0;
-            node = 0;
-            point = 0;
+            byte[] rawpkt = File.ReadAllBytes(args[0]);
+            MsgPacket pkt = new MsgPacket(rawpkt);
         }
-
     }
 }

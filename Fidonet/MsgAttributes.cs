@@ -18,7 +18,7 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
-namespace Casasoft.BBS.Fidonet
+namespace Casasoft.Fidonet
 {
     /// <summary>
     /// Attributes of messages

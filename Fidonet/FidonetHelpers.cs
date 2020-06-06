@@ -21,7 +21,7 @@
 using System;
 using System.Globalization;
 
-namespace Casasoft.BBS.Fidonet
+namespace Casasoft.Fidonet
 {
     /// <summary>
     /// Utilities for Fidonet messages
@@ -87,5 +87,47 @@ namespace Casasoft.BBS.Fidonet
         /// <returns></returns>
         static public byte HighOrder(ushort w) => (byte)((w >> 8) & 0xff);
 
+        /// <summary>
+        /// Gets ushort value from byte array
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="pointer"></param>
+        /// <returns></returns>
+        static public ushort GetUShort(byte[] data, int pointer) => (ushort)(data[pointer] + data[pointer + 1] * 256);
+
+        /// <summary>
+        /// Converts a byte array to string
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="offset"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
+        static public string BytesToString(byte[] buffer, int offset, int length)
+        {
+            if (buffer.Length < offset + length) length = buffer.Length - offset;
+            unsafe
+            {
+                fixed (byte* pAscii = buffer)
+                {
+                    return new string((sbyte*)pAscii, offset, length);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Converts a null terminated byte array to string
+        /// </summary>
+        /// <param name="buffer"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
+        static public string NullTerminatedBytesToString(byte[] buffer, int offset)
+        {
+            int end = offset;
+            while (end < buffer.Length && buffer[end] != 0)
+            {
+                end++;
+            }
+            return BytesToString(buffer, offset, end - offset);
+        }
     }
 }

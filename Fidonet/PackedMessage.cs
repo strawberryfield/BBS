@@ -19,8 +19,9 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Diagnostics;
 
-namespace Casasoft.BBS.Fidonet
+namespace Casasoft.Fidonet
 {
     /// <summary>
     /// Handles a message in format suitable for packets
@@ -151,6 +152,32 @@ namespace Casasoft.BBS.Fidonet
             DestUser = string.Empty;
             Text = string.Empty;
             Timestamp = FidonetHelpers.FidoFormatDatetime(DateTime.Now);
+        }
+
+        /// <summary>
+        /// build message from raw data
+        /// </summary>
+        /// <param name="rawdata"></param>
+        public PackedMessage(byte[] rawdata) : this()
+        {
+            if (FidonetHelpers.GetUShort(rawdata, 0) != 2) return;
+
+            orig.node = FidonetHelpers.GetUShort(rawdata, 2);
+            dest.node = FidonetHelpers.GetUShort(rawdata, 4);
+            orig.net = FidonetHelpers.GetUShort(rawdata, 6);
+            dest.net = FidonetHelpers.GetUShort(rawdata, 8);
+            attr = new MsgAttributes(FidonetHelpers.GetUShort(rawdata, 10));
+            Cost = FidonetHelpers.GetUShort(rawdata, 12);
+            Timestamp = FidonetHelpers.BytesToString(rawdata, 14, 20);
+
+            int ptr = 34;
+            DestUser = FidonetHelpers.NullTerminatedBytesToString(rawdata, ptr);
+            ptr += DestUser.Length + 1;
+            FromUser = FidonetHelpers.NullTerminatedBytesToString(rawdata, ptr);
+            ptr += FromUser.Length + 1;
+            Subject = FidonetHelpers.NullTerminatedBytesToString(rawdata, ptr);
+            ptr += Subject.Length + 1;
+            Text = FidonetHelpers.NullTerminatedBytesToString(rawdata, ptr);
         }
     }
 }
