@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['tags_769',['Tags',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html#ae9b0cb5523cbb88e4687599a57ff4d86',1,'Casasoft::BBS::Parser']]],
-  ['textalign_770',['TextAlign',['../namespace_casasoft_1_1_text_helpers.html#a0e35f8b9582d96dbc11d8520fd9378b7',1,'Casasoft::TextHelpers']]],
-  ['tokens_771',['Tokens',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6f',1,'Casasoft::TCPServer::Negotiation']]]
+  ['sections_817',['Sections',['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_text_screen_base.html#a93d1bcbdb5ea82bf626335a4b4b27b6a',1,'Casasoft::BBS::UI::TextScreenBase']]],
+  ['states_818',['states',['../class_casasoft_1_1_b_b_s_1_1_u_i_1_1_change_password.html#a6db04e7afa48488aec1042c97b6db415',1,'Casasoft::BBS::UI::ChangePassword']]]
 ];

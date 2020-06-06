@@ -115,6 +115,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "bbs", "bbs", "{86688497-C39
 		assets\bbs\BBSdocs.txt = assets\bbs\BBSdocs.txt
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BBS.Fidonet", "BBS.Fidonet\BBS.Fidonet.csproj", "{88194998-2699-411E-9DD7-57C01C4092CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,11 +155,16 @@ Global
 		{A9007B66-312B-4141-B66F-F8089975DF55}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A9007B66-312B-4141-B66F-F8089975DF55}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A9007B66-312B-4141-B66F-F8089975DF55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88194998-2699-411E-9DD7-57C01C4092CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88194998-2699-411E-9DD7-57C01C4092CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88194998-2699-411E-9DD7-57C01C4092CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88194998-2699-411E-9DD7-57C01C4092CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{559F89ED-2E1F-4DF3-9699-DDD5396A7C41} = {69028C6D-53D5-46D4-938D-38A146A37E0B}
 		{4D2F34BF-6BD1-4A85-95C1-08BB0A59886F} = {4791A72C-C34B-4616-9381-765DB64A605B}
 		{02CA5356-C685-4738-A42F-B30190D04FC5} = {BDD4F5C2-590A-4BD8-BF22-7E8231B518FB}
 		{EE906F6C-5D3D-44E4-BF68-52A832A4FBA0} = {BDD4F5C2-590A-4BD8-BF22-7E8231B518FB}

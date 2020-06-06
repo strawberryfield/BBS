@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Casasoft.BBS.Fidonet</AssemblyName>
+    <RootNamespace>Casasoft.BBS.Fidonet</RootNamespace>
+    <Authors>Roberto Ceccarelli - Casasoft</Authors>
+    <Company>Casasoft</Company>
+    <Product>Casasoft BBS</Product>
+    <Description>Old style telnet BBS - Fidonet interface</Description>
+    <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
+    <PackageProjectUrl>https://strawberryfield.github.io/BBS</PackageProjectUrl>
+    <PackageIcon>package.png</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>C:\projects\BBS\bin\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\package.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

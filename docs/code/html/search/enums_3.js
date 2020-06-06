@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['operations_766',['Operations',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6',1,'Casasoft::TCPServer::Negotiation']]]
+  ['modes_815',['Modes',['../class_casasoft_1_1_b_b_s_1_1_parser_1_1_a_n_s_i_codes.html#a40f92587bbb5645d18f3253174806d03',1,'Casasoft::BBS::Parser::ANSICodes']]]
 ];
