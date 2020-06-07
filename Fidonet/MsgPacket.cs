@@ -155,6 +155,7 @@ namespace Casasoft.Fidonet
         public List<PackedMessage> Messages { get; set; }
         #endregion
 
+        #region constructors
         /// <summary>
         /// Empty constructor
         /// </summary>
@@ -207,6 +208,53 @@ namespace Casasoft.Fidonet
                 Array.Copy(rawdata, ptr, msg, 0, end - ptr);
                 Messages.Add(new PackedMessage(msg));
                 ptr = end;
+            }
+        }
+        #endregion
+
+        public byte[] Binary
+        {
+            get
+            {
+                List<byte> ret = new List<byte>();
+                ret.Add(FidonetHelpers.LowOrder(orig.node));
+                ret.Add(FidonetHelpers.HighOrder(orig.node));
+                ret.Add(FidonetHelpers.LowOrder(dest.node));
+                ret.Add(FidonetHelpers.HighOrder(dest.node));
+                ret.Add(FidonetHelpers.LowOrder(Timestamp.Year));
+                ret.Add(FidonetHelpers.HighOrder(Timestamp.Year));
+                ret.Add(FidonetHelpers.LowOrder(Timestamp.Month - 1));
+                ret.Add(FidonetHelpers.HighOrder(Timestamp.Month - 1));
+                ret.Add(FidonetHelpers.LowOrder(Timestamp.Day));
+                ret.Add(FidonetHelpers.HighOrder(Timestamp.Day));
+                ret.Add(FidonetHelpers.LowOrder(Timestamp.Hour));
+                ret.Add(FidonetHelpers.HighOrder(Timestamp.Hour));
+                ret.Add(FidonetHelpers.LowOrder(Timestamp.Minute));
+                ret.Add(FidonetHelpers.HighOrder(Timestamp.Minute));
+                ret.Add(FidonetHelpers.LowOrder(Timestamp.Second));
+                ret.Add(FidonetHelpers.HighOrder(Timestamp.Second));
+                ret.Add(FidonetHelpers.LowOrder(Baud));
+                ret.Add(FidonetHelpers.HighOrder(Baud));
+                ret.Add(2);
+                ret.Add(0);
+                ret.Add(FidonetHelpers.LowOrder(orig.net));
+                ret.Add(FidonetHelpers.HighOrder(orig.net));
+                ret.Add(FidonetHelpers.LowOrder(dest.net));
+                ret.Add(FidonetHelpers.HighOrder(dest.net));
+                ret.Add(ProductCode);
+                ret.Add(0);
+                ret.AddRange(FidonetHelpers.ToFixedLength(Password, 8));
+                ret.Add(FidonetHelpers.LowOrder(orig.zone));
+                ret.Add(FidonetHelpers.HighOrder(orig.zone));
+                ret.Add(FidonetHelpers.LowOrder(dest.zone));
+                ret.Add(FidonetHelpers.HighOrder(dest.zone));
+                ret.AddRange(FidonetHelpers.ToFixedLength(string.Empty, 20));
+
+                foreach (PackedMessage m in Messages) ret.AddRange(m.ByteList);
+
+                ret.Add(0);
+                ret.Add(0);
+                return ret.ToArray();
             }
         }
     }

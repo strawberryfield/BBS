@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Casasoft.Fidonet
@@ -81,11 +82,25 @@ namespace Casasoft.Fidonet
         static public byte LowOrder(ushort w) => (byte)(w & 0xff);
 
         /// <summary>
+        /// Low order byte of a int
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        static public byte LowOrder(int i) => (byte)(i & 0xff);
+
+        /// <summary>
         /// High order byte of a word
         /// </summary>
         /// <param name="w"></param>
         /// <returns></returns>
         static public byte HighOrder(ushort w) => (byte)((w >> 8) & 0xff);
+
+        /// <summary>
+        /// High order byte of a int
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        static public byte HighOrder(int i) => (byte)((i >> 8) & 0xff);
 
         /// <summary>
         /// Gets ushort value from byte array
@@ -129,5 +144,40 @@ namespace Casasoft.Fidonet
             }
             return BytesToString(buffer, offset, end - offset);
         }
+
+        /// <summary>
+        /// Converts a string to a fixed length list of bytes
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        static public List<byte> ToFixedLength(string s, int len)
+        {
+            List<byte> ret = new List<byte>(len);
+            for (int j = 0; j < len; j++) ret[j] = 0;
+            for (int j = 0; j < len || j < s.Length; j++) ret[j] = (byte)s[j];
+            return ret;
+        }
+
+        /// <summary>
+        /// Converts a string to a maximum length list of bytes
+        /// </summary>
+        /// <param name="s"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
+        static public List<byte> ToMaxLength(string s, int len)
+        {
+            List<byte> ret = new List<byte>(len);
+            for (int j = 0; j < len - 1 || j < s.Length; j++) ret[j] = (byte)s[j];
+            ret[len - 1] = 0;
+            return ret;
+        }
+
+        /// <summary>
+        /// Converts a string to a null terminated list of bytes
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        static public List<byte> ToUnbounded(string s) => ToMaxLength(s, s.Length + 1); 
     }
 }

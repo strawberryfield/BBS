@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace Casasoft.Fidonet
@@ -139,6 +140,7 @@ namespace Casasoft.Fidonet
         public string Text { get; set; }
         #endregion
 
+        #region constructors
         /// <summary>
         /// Empty constructor
         /// </summary>
@@ -179,5 +181,45 @@ namespace Casasoft.Fidonet
             ptr += Subject.Length + 1;
             Text = FidonetHelpers.NullTerminatedBytesToString(rawdata, ptr);
         }
+        #endregion
+
+        #region exports
+        /// <summary>
+        /// Packed message as list of bytes
+        /// </summary>
+        public List<byte> ByteList
+        {
+            get
+            {
+                List<byte> ret = new List<byte>();
+                ret.Add(2);
+                ret.Add(0);
+                ret.Add(FidonetHelpers.LowOrder(orig.node));
+                ret.Add(FidonetHelpers.HighOrder(orig.node));
+                ret.Add(FidonetHelpers.LowOrder(dest.node));
+                ret.Add(FidonetHelpers.HighOrder(dest.node));
+                ret.Add(FidonetHelpers.LowOrder(orig.net));
+                ret.Add(FidonetHelpers.HighOrder(orig.net));
+                ret.Add(FidonetHelpers.LowOrder(dest.net));
+                ret.Add(FidonetHelpers.HighOrder(dest.net));
+                ret.Add(FidonetHelpers.LowOrder(attr.Binary));
+                ret.Add(FidonetHelpers.HighOrder(attr.Binary));
+                ret.Add(FidonetHelpers.LowOrder(Cost));
+                ret.Add(FidonetHelpers.HighOrder(Cost));
+                ret.AddRange(FidonetHelpers.ToFixedLength(Timestamp, 20));
+                ret.AddRange(FidonetHelpers.ToMaxLength(DestUser, 36));
+                ret.AddRange(FidonetHelpers.ToMaxLength(FromUser, 36));
+                ret.AddRange(FidonetHelpers.ToMaxLength(Subject, 72));
+                ret.AddRange(FidonetHelpers.ToUnbounded(Text));
+                return ret;
+            }
+        }
+
+        /// <summary>
+        /// Packed message in binary format
+        /// </summary>
+        public byte[] Binary { get => ByteList.ToArray(); }
+
+        #endregion
     }
 }
