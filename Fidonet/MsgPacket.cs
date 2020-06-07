@@ -27,93 +27,10 @@ namespace Casasoft.Fidonet
     /// Handles a packet of messages
     /// </summary>
     /// <remarks>
-    /// Format as described in FTSC-0001 <see cref="http://ftsc.org/docs/fts-0001.016"/>
-    /// <code>
-    ///                                 Packet Header
-    ///     Offset
-    ///    dec hex
-    ///               .-----------------------------------------------.
-    ///         0   0 | origNode(low order)  | origNode(high order)   |
-    ///               +-----------------------+-----------------------+
-    ///         2   2 | destNode(low order)  | destNode(high order)   |
-    ///               +-----------------------+-----------------------+
-    ///         4   4 |   year(low order)    |   year(high order)     |
-    ///               +-----------------------+-----------------------+
-    ///         6   6 |  month(low order)    |  month(high order)     |
-    ///               +-----------------------+-----------------------+
-    ///         8   8 |   day(low order)     |   day(high order)      |
-    ///               +-----------------------+-----------------------+
-    ///        10   A |   hour(low order)    |   hour(high order)     |
-    ///               +-----------------------+-----------------------+
-    ///        12   C |  minute(low order)   |  minute(high order)    |
-    ///               +-----------------------+-----------------------+
-    ///        14   E |  second(low order)   |  second(high order)    |
-    ///               +-----------------------+-----------------------+
-    ///        16  10 |   baud(low order)    |   baud(high order)     |
-    ///               +-----------------------+-----------------------+
-    ///        18  12 |    0     |     2      |    0      |    0      |
-    ///               +-----------------------+-----------------------+
-    ///        20  14 | origNet(low order)   | origNet(high order)    |
-    ///               +-----------------------+-----------------------+
-    ///        22  16 | destNet(low order)   | destNet(high order)    |
-    ///               +-----------------------+-----------------------+
-    ///        24  18 |       prodCode        |       serialNo        |
-    ///               +-----------------------+-----------------------+
-    ///        26  1A |                                               |
-    ///               |             password(some impls)              |
-    ///               |                  eight bytes                  |
-    ///               |                  null padded                  |
-    ///               |                                               |
-    ///               +-----------------------+-----------------------+
-    ///        34  22 | origZone(low) (opt)  | origZone(high) (opt)   |
-    ///               +-----------------------+-----------------------+
-    ///        36  24 | destZone(low) (opt)  | destZone(high) (opt)   |
-    ///               +-----------------------+-----------------------+
-    ///        38  26 |                     fill                      |
-    ///               ~                   20 bytes                    ~
-    ///               |                                               |
-    ///               +-----------------------+-----------------------+
-    ///        58  3A |                 zero or more                  |
-    ///               ~                    packed                     ~
-    ///               |                   messages                    |
-    ///               +-----------------------+-----------------------+
-    ///               |    0     |     0      |    0     |     0      |
-    ///               `-----------------------+-----------------------'
-    /// 
-    /// 
-    ///       Packet       = PacketHeader  { PakdMessage }  00H 00H
-    /// 
-    /// PacketHeader =       origNode(*of packet, not of messages in packet *)
-    ///                      destNode(* of packet, not of messages in packet*)
-    ///                      year(* of packet creation, e.g. 1986 *)
-    ///                      month(* of packet creation, 0-11 for Jan-Dec*)
-    ///                      day(* of packet creation, 1-31 *)
-    ///                      hour(* of packet creation, 0-23 *)
-    ///                      minute(* of packet creation, 0-59 *)
-    ///                      second(* of packet creation, 0-59 *)
-    ///                      baud(* max baud rate of orig and dest, 0=SEA*)
-    ///                      PacketType(* old type-1 packets now obsolete*)
-    ///                      origNet(* of packet, not of messages in packet*)
-    ///                      destNet(* of packet, not of messages in packet*)
-    ///                      prodCode(* 0 for Fido, write to FTSC for others*)
-    ///                      serialNo(* binary serial number (otherwise null)*)
-    ///                      password(* session password  (otherwise null)   *)
-    ///                      origZone(* zone of pkt sender (otherwise null)  *)
-    ///                      destZone(* zone of pkt receiver (otherwise null)*)
-    ///                      fill[20]
-    /// 
-    ///       PacketType = 02H 00H(* 01H 00H was used by Fido versions before 10
-    ///                                which did not support local nets.  The packed
-    ///                                message header was also different for those
-    ///                                versions *)
-    /// 
-    ///       prodCode     = (  00H(* Fido*)
-    ///                      |  ...
-    ///                      |  ??H(* Please apply for new codes*)
-    ///                      )
-    /// </code>
+    /// <para>Format as described in FTSC-0001 <see cref="http://ftsc.org/docs/fts-0001.016"/></para>
+    /// See <see cref="IMsgPacket"/>
     /// </remarks>
-    public class MsgPacket
+    public class MsgPacket : IMsgPacket
     {
         #region properties
         /// <summary>
@@ -127,32 +44,32 @@ namespace Casasoft.Fidonet
         /// <summary>
         /// Fidonet address of node that creates the packet
         /// </summary>
-        public FidoAddress orig { get; set; }
+        public virtual FidoAddress orig { get; set; }
 
         /// <summary>
         /// Fidonet address of destination node
         /// </summary>
-        public FidoAddress dest { get; set; }
+        public virtual FidoAddress dest { get; set; }
 
         /// <summary>
         /// Packet creation timestamp
         /// </summary>
-        public DateTime Timestamp { get; set; }
+        public virtual DateTime Timestamp { get; set; }
 
         /// <summary>
         /// Connections speed
         /// </summary>
-        public ushort Baud { get; set; }
+        public virtual ushort Baud { get; set; }
 
         /// <summary>
         /// Some implementation
         /// </summary>
-        public string Password { get; set; }
+        public virtual string Password { get; set; }
 
         /// <summary>
         /// List of Messages
         /// </summary>
-        public List<PackedMessage> Messages { get; set; }
+        public virtual List<IPackedMessage> Messages { get; set; }
         #endregion
 
         #region constructors
@@ -166,7 +83,7 @@ namespace Casasoft.Fidonet
             Timestamp = DateTime.Now;
             Baud = 64000;
             Password = string.Empty;
-            Messages = new List<PackedMessage>();
+            Messages = new List<IPackedMessage>();
         }
 
         /// <summary>
@@ -215,7 +132,7 @@ namespace Casasoft.Fidonet
         /// <summary>
         /// Packet in binary format
         /// </summary>
-        public byte[] Binary
+        public virtual byte[] Binary
         {
             get
             {
@@ -253,7 +170,7 @@ namespace Casasoft.Fidonet
                 ret.Add(FidonetHelpers.HighOrder(dest.zone));
                 ret.AddRange(FidonetHelpers.ToFixedLength(string.Empty, 20));
 
-                foreach (PackedMessage m in Messages) ret.AddRange(m.ByteList);
+                foreach (IPackedMessage m in Messages) ret.AddRange(m.ByteList);
 
                 ret.Add(0);
                 ret.Add(0);
