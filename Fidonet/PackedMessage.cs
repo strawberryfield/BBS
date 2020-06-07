@@ -137,7 +137,7 @@ namespace Casasoft.Fidonet
         /// <summary>
         /// Text of message
         /// </summary>
-        public string Text { get; set; }
+        public MsgText Text { get; set; }
         #endregion
 
         #region constructors
@@ -152,7 +152,7 @@ namespace Casasoft.Fidonet
             Cost = 0;
             FromUser = string.Empty;
             DestUser = string.Empty;
-            Text = string.Empty;
+            Text = new MsgText();
             Timestamp = FidonetHelpers.FidoFormatDatetime(DateTime.Now);
         }
 
@@ -179,7 +179,7 @@ namespace Casasoft.Fidonet
             ptr += FromUser.Length + 1;
             Subject = FidonetHelpers.NullTerminatedBytesToString(rawdata, ptr);
             ptr += Subject.Length + 1;
-            Text = FidonetHelpers.NullTerminatedBytesToString(rawdata, ptr);
+            Text = new MsgText(FidonetHelpers.NullTerminatedBytesToString(rawdata, ptr));
         }
         #endregion
 
@@ -210,7 +210,7 @@ namespace Casasoft.Fidonet
                 ret.AddRange(FidonetHelpers.ToMaxLength(DestUser, 36));
                 ret.AddRange(FidonetHelpers.ToMaxLength(FromUser, 36));
                 ret.AddRange(FidonetHelpers.ToMaxLength(Subject, 72));
-                ret.AddRange(FidonetHelpers.ToUnbounded(Text));
+                ret.AddRange(FidonetHelpers.ToUnbounded(Text.Text));
                 return ret;
             }
         }

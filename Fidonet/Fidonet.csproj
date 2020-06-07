@@ -13,7 +13,8 @@
     <PackageIcon>package.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>  </PropertyGroup>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>  
+  </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>C:\projects\BBS\bin\</OutputPath>
@@ -29,6 +30,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TextHelpers\TextHelpers.csproj" />
   </ItemGroup>
 
 </Project>

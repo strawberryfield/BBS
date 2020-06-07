@@ -212,6 +212,9 @@ namespace Casasoft.Fidonet
         }
         #endregion
 
+        /// <summary>
+        /// Packet in binary format
+        /// </summary>
         public byte[] Binary
         {
             get
