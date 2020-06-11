@@ -3,12 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Casasoft.Packer</RootNamespace>
-    <PackageId>Casasoft.Packer</PackageId>
+    <RootNamespace>Casasoft.BBS.Packer</RootNamespace>
+    <PackageId>Casasoft.BBS.Packer</PackageId>
     <Authors>Roberto Ceccarelli - Casasoft</Authors>
     <Company>Casasoft</Company>
     <Product>Casasoft BBS</Product>
-    <Description>Old style telnet BBS</Description>
+    <Description>Old style telnet BBS - Fidonet packer / tosser</Description>
     <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
     <PackageLicenseFile>..\LICENSE.txt</PackageLicenseFile>
     <ApplicationIcon>..\terminal.ico</ApplicationIcon>

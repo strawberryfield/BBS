@@ -19,15 +19,67 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.Fidonet;
+using Mono.Options;
+using System;
+using System.Collections.Generic;
 using System.IO;
 
-namespace Casasoft.Packer
+namespace Casasoft.BBS.Packer
 {
     class Program
     {
+        private static string exeName = "Packer.exe"; 
+
         static void Main(string[] args)
         {
-            byte[] rawpkt = File.ReadAllBytes(args[0]);
+            List<string> extra;
+
+            var shouldShowHelp = false;
+            var domain = string.Empty;
+            var packet = string.Empty;
+            OptionSet options = new OptionSet()
+            {
+                { "d|domain=",      "Network domain to use",                n => domain = n },
+                { "t|toss-packet=", "Network domain to use",                n => packet = n },
+                { "h|help",         "show this message and exit",           h => shouldShowHelp = h != null },
+            };
+
+            try
+            {
+                extra = options.Parse(args);
+            }
+            catch (OptionException e)
+            {
+                Console.Write($"{exeName}: ");
+                Console.WriteLine(e.Message);
+                Console.WriteLine($"Try `{exeName} --help' for more information.");
+                return;
+            }
+
+            if (shouldShowHelp)
+            {
+                ShowHelp(options);
+                return;
+            }
+
+            if(!string.IsNullOrWhiteSpace(packet))
+            {
+                toss(packet, domain);
+            }
+        }
+
+        private static void ShowHelp(OptionSet p)
+        {
+            Console.WriteLine($"Usage: {exeName} [OPTIONS]");
+            Console.WriteLine("Create or toss a fidonet messages packet");
+            Console.WriteLine();
+            Console.WriteLine("Options:");
+            p.WriteOptionDescriptions(Console.Out);
+        }
+
+        private static void toss(string packetFile, string domain)
+        {
+            byte[] rawpkt = File.ReadAllBytes(packetFile);
             MsgPacket pkt = new MsgPacket(rawpkt);
         }
     }

@@ -2,7 +2,7 @@
   "profiles": {
     "Packer": {
       "commandName": "Project",
-      "commandLineArgs": "c:\\projects\\bbs\\bin\\09103701.PKT"
+      "commandLineArgs": "--toss-packet=c:\\projects\\bbs\\bin\\09103701.PKT"
     }
   }
 }
