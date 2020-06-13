@@ -1,5 +1,6 @@
 {HEADER}{CLS/} &BBSname; - MsgId: $msgid$  Dated: $msgdatetime$
- From: $msgfrom$
+ From: $msgfrom$ ($msgorig$)
+ To:   $msgto$ ($msgdest$)
  Subj: $msgsubj$	
 {HR/}{/HEADER}
 {FOOTER}{hr/}

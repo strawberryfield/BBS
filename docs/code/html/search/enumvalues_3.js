@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['dataentryterminal_895',['DataEntryTerminal',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6abda1310285c38f5a7feaba04a9d7ab77',1,'Casasoft::TCPServer::Negotiation']]],
-  ['datamark_896',['DataMark',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fa7b22af4eb9c33df5e49130872cb886d1',1,'Casasoft::TCPServer::Negotiation']]],
-  ['do_897',['DO',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fac23fa9996925b610710d93e28c59a3e2',1,'Casasoft::TCPServer::Negotiation']]],
-  ['dont_898',['DONT',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fad2ededa6cd539b408f7cc27ba503b97b',1,'Casasoft::TCPServer::Negotiation']]]
+  ['dataentryterminal_906',['DataEntryTerminal',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6abda1310285c38f5a7feaba04a9d7ab77',1,'Casasoft::TCPServer::Negotiation']]],
+  ['datamark_907',['DataMark',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fa7b22af4eb9c33df5e49130872cb886d1',1,'Casasoft::TCPServer::Negotiation']]],
+  ['do_908',['DO',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fac23fa9996925b610710d93e28c59a3e2',1,'Casasoft::TCPServer::Negotiation']]],
+  ['dont_909',['DONT',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#aa2aa0582a5bc358c616943261f96ac6fad2ededa6cd539b408f7cc27ba503b97b',1,'Casasoft::TCPServer::Negotiation']]]
 ];

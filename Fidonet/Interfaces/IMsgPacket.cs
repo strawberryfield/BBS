@@ -155,9 +155,17 @@ namespace Casasoft.Fidonet
         public List<IPackedMessage> Messages { get; set; }
         #endregion
 
+        #region exports
         /// <summary>
         /// Packet in binary format
         /// </summary>
         public byte[] Binary { get; }
+
+        /// <summary>
+        /// Toss the message in the message base
+        /// </summary>
+        /// <param name="network">Network to use</param>
+        public void Toss(string network);
+        #endregion
     }
 }

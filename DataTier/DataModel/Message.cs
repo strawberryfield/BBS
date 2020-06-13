@@ -185,7 +185,7 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public virtual MessageArea AreaNavigation { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessagePath {'MessgeId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Messge
+		/// ForeignKey: MessagePath {'MessageId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Message
 		/// </summary>
 		public virtual ICollection<MessagePath> MessagePaths { get; set; }
         

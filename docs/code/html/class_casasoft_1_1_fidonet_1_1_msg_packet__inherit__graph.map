@@ -1,4 +1,5 @@
 <map id="Casasoft.Fidonet.MsgPacket" name="Casasoft.Fidonet.MsgPacket">
-<area shape="rect" id="node1" title="Handles a packet of messages" alt="" coords="5,80,196,107"/>
-<area shape="rect" id="node2" href="$interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html" title="Handles a packet of messages" alt="" coords="55,5,146,32"/>
+<area shape="rect" id="node1" title="Handles a packet of messages" alt="" coords="13,80,203,107"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_packer_1_1_b_b_s_msg_packet.html" title="Handles a packet of messages from casasoft BBS message base" alt="" coords="5,155,211,196"/>
+<area shape="rect" id="node2" href="$interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html" title="Handles a packet of messages" alt="" coords="63,5,153,32"/>
 </map>

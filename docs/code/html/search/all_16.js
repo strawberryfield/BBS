@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['x3pad_517',['X3PAD',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6ac0fc615e5daa32d692f2bfd92eb935b1',1,'Casasoft::TCPServer::Negotiation']]],
-  ['xauth_518',['XAUTH',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6aad9d258819fa0bbd4c0f9b15fcdd2aa8',1,'Casasoft::TCPServer::Negotiation']]],
-  ['xdisplaylocation_519',['XDisplayLocation',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6a1e71f08bdb475dd45b02a52bed148590',1,'Casasoft::TCPServer::Negotiation']]]
+  ['x3pad_522',['X3PAD',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6ac0fc615e5daa32d692f2bfd92eb935b1',1,'Casasoft::TCPServer::Negotiation']]],
+  ['xauth_523',['XAUTH',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6aad9d258819fa0bbd4c0f9b15fcdd2aa8',1,'Casasoft::TCPServer::Negotiation']]],
+  ['xdisplaylocation_524',['XDisplayLocation',['../class_casasoft_1_1_t_c_p_server_1_1_negotiation.html#a0840e6a8bb39059c98cead615bc3a9e6a1e71f08bdb475dd45b02a52bed148590',1,'Casasoft::TCPServer::Negotiation']]]
 ];

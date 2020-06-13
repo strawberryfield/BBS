@@ -69,6 +69,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#properties">Properties</a> &#124;
 <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -90,6 +91,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a89c3c71f14f12c5304c0f5ec730ec5cc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a89c3c71f14f12c5304c0f5ec730ec5cc">IsRead</a> (string username)</td></tr>
 <tr class="memdesc:a89c3c71f14f12c5304c0f5ec730ec5cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test if the user has already read the message  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a89c3c71f14f12c5304c0f5ec730ec5cc">More...</a><br /></td></tr>
 <tr class="separator:a89c3c71f14f12c5304c0f5ec730ec5cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:acc47388290afc8a8e9273aba81644a59"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#acc47388290afc8a8e9273aba81644a59">PathLines</a> =&gt; MessagePaths.Select(l =&gt; l.Path).ToList()</td></tr>
+<tr class="memdesc:acc47388290afc8a8e9273aba81644a59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets path lines as list of strings  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#acc47388290afc8a8e9273aba81644a59">More...</a><br /></td></tr>
+<tr class="separator:acc47388290afc8a8e9273aba81644a59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e625d5ccb590758f174bca3879de9d9"><td class="memItemLeft" align="right" valign="top">List&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a9e625d5ccb590758f174bca3879de9d9">SeenByLines</a> =&gt; MessagesSeenBy.Select(l =&gt; l.SeenBy).ToList()</td></tr>
+<tr class="memdesc:a9e625d5ccb590758f174bca3879de9d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets seen-by lines as list of strings  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a9e625d5ccb590758f174bca3879de9d9">More...</a><br /></td></tr>
+<tr class="separator:a9e625d5ccb590758f174bca3879de9d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -160,7 +170,7 @@ Properties</h2></td></tr>
 <tr class="memdesc:a3e667fac6fe6170a23a7e90a8b333ffe"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForeignKey: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a> {'Area'} -&gt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_area.html" title="Elements of the table &#39;MessageAreas&#39;: Message Areas List">MessageArea</a> {'Id'} ToDependent: Messages ToPrincipal: AreaNavigation  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a3e667fac6fe6170a23a7e90a8b333ffe">More...</a><br /></td></tr>
 <tr class="separator:a3e667fac6fe6170a23a7e90a8b333ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53f60dfe44190ecc24a271a12d811177"><td class="memItemLeft" align="right" valign="top">virtual ICollection&lt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_path.html">MessagePath</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a53f60dfe44190ecc24a271a12d811177">MessagePaths</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a53f60dfe44190ecc24a271a12d811177"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForeignKey: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_path.html" title="Elements of the table &#39;MessagePath&#39;: Path lines of messages">MessagePath</a> {'MessgeId'} -&gt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a> {'Id'} ToDependent: MessagePaths ToPrincipal: Messge  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a53f60dfe44190ecc24a271a12d811177">More...</a><br /></td></tr>
+<tr class="memdesc:a53f60dfe44190ecc24a271a12d811177"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForeignKey: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_path.html" title="Elements of the table &#39;MessagePath&#39;: Path lines of messages">MessagePath</a> {'MessageId'} -&gt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a> {'Id'} ToDependent: MessagePaths ToPrincipal: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a>  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a53f60dfe44190ecc24a271a12d811177">More...</a><br /></td></tr>
 <tr class="separator:a53f60dfe44190ecc24a271a12d811177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a682a894eb738748e0d766501bf0c8a16"><td class="memItemLeft" align="right" valign="top">virtual ICollection&lt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_read.html">MessageRead</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a682a894eb738748e0d766501bf0c8a16">MessageReads</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a682a894eb738748e0d766501bf0c8a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForeignKey: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_read.html" title="Elements of the table &#39;MessageRead&#39;: Flags for messages read">MessageRead</a> {'MessgeId'} -&gt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a> {'Id'} ToDependent: MessageReads ToPrincipal: Messge  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html#a682a894eb738748e0d766501bf0c8a16">More...</a><br /></td></tr>
@@ -244,6 +254,39 @@ virtual ICollection&lt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_ti
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="acc47388290afc8a8e9273aba81644a59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc47388290afc8a8e9273aba81644a59">&#9670;&nbsp;</a></span>PathLines</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;string&gt; Casasoft.BBS.DataTier.DataModel.Message.PathLines =&gt; MessagePaths.Select(l =&gt; l.Path).ToList()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets path lines as list of strings </p>
+
+</div>
+</div>
+<a id="a9e625d5ccb590758f174bca3879de9d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e625d5ccb590758f174bca3879de9d9">&#9670;&nbsp;</a></span>SeenByLines</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;string&gt; Casasoft.BBS.DataTier.DataModel.Message.SeenByLines =&gt; MessagesSeenBy.Select(l =&gt; l.SeenBy).ToList()</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets seen-by lines as list of strings </p>
 
 </div>
 </div>
@@ -592,7 +635,7 @@ virtual ICollection&lt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_ti
 </table>
 </div><div class="memdoc">
 
-<p>ForeignKey: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_path.html" title="Elements of the table &#39;MessagePath&#39;: Path lines of messages">MessagePath</a> {'MessgeId'} -&gt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a> {'Id'} ToDependent: MessagePaths ToPrincipal: Messge </p>
+<p>ForeignKey: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_path.html" title="Elements of the table &#39;MessagePath&#39;: Path lines of messages">MessagePath</a> {'MessageId'} -&gt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a> {'Id'} ToDependent: MessagePaths ToPrincipal: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a> </p>
 
 </div>
 </div>

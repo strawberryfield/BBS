@@ -84,8 +84,9 @@ Inheritance diagram for Casasoft.Fidonet.MsgPacket:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_casasoft_1_1_fidonet_1_1_msg_packet__inherit__graph.png" border="0" usemap="#_casasoft_8_fidonet_8_msg_packet_inherit__map" alt="Inheritance graph"/></div>
 <map name="_casasoft_8_fidonet_8_msg_packet_inherit__map" id="_casasoft_8_fidonet_8_msg_packet_inherit__map">
-<area shape="rect" title="Handles a packet of messages" alt="" coords="5,80,196,107"/>
-<area shape="rect" href="interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html" title="Handles a packet of messages" alt="" coords="55,5,146,32"/>
+<area shape="rect" title="Handles a packet of messages" alt="" coords="13,80,203,107"/>
+<area shape="rect" href="class_casasoft_1_1_b_b_s_1_1_packer_1_1_b_b_s_msg_packet.html" title="Handles a packet of messages from casasoft BBS message base" alt="" coords="5,155,211,196"/>
+<area shape="rect" href="interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html" title="Handles a packet of messages" alt="" coords="63,5,153,32"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -97,6 +98,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7bc988a7e169794d02522ac763152841"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_fidonet_1_1_msg_packet.html#a7bc988a7e169794d02522ac763152841">MsgPacket</a> (byte[] rawdata)</td></tr>
 <tr class="memdesc:a7bc988a7e169794d02522ac763152841"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses packet from raw data  <a href="class_casasoft_1_1_fidonet_1_1_msg_packet.html#a7bc988a7e169794d02522ac763152841">More...</a><br /></td></tr>
 <tr class="separator:a7bc988a7e169794d02522ac763152841"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b4af86c09e60b71ea7d70371997376"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_fidonet_1_1_msg_packet.html#ad1b4af86c09e60b71ea7d70371997376">AddMessage</a> (byte[] msg)</td></tr>
+<tr class="memdesc:ad1b4af86c09e60b71ea7d70371997376"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a binary packed msg to the packet  <a href="class_casasoft_1_1_fidonet_1_1_msg_packet.html#ad1b4af86c09e60b71ea7d70371997376">More...</a><br /></td></tr>
+<tr class="separator:ad1b4af86c09e60b71ea7d70371997376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf412972b783bdba9ea499b0d0940c9c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_fidonet_1_1_msg_packet.html#aaf412972b783bdba9ea499b0d0940c9c">Toss</a> (string network)</td></tr>
+<tr class="memdesc:aaf412972b783bdba9ea499b0d0940c9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toss the message in the message base  <a href="class_casasoft_1_1_fidonet_1_1_msg_packet.html#aaf412972b783bdba9ea499b0d0940c9c">More...</a><br /></td></tr>
+<tr class="separator:aaf412972b783bdba9ea499b0d0940c9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -201,6 +208,79 @@ Properties</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ad1b4af86c09e60b71ea7d70371997376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1b4af86c09e60b71ea7d70371997376">&#9670;&nbsp;</a></span>AddMessage()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Casasoft.Fidonet.MsgPacket.AddMessage </td>
+          <td>(</td>
+          <td class="paramtype">byte[]&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Adds a binary packed msg to the packet </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented in <a class="el" href="class_casasoft_1_1_b_b_s_1_1_packer_1_1_b_b_s_msg_packet.html#a9f3a59fe883f6cfdee97efac94c57e10">Casasoft.BBS.Packer.BBSMsgPacket</a>.</p>
+
+</div>
+</div>
+<a id="aaf412972b783bdba9ea499b0d0940c9c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf412972b783bdba9ea499b0d0940c9c">&#9670;&nbsp;</a></span>Toss()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Casasoft.Fidonet.MsgPacket.Toss </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>network</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Toss the message in the message base </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td>Network to use</td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html#a26ac7a6b21632b55c77a4bdb1490496b">Casasoft.Fidonet.IMsgPacket</a>.</p>
 
 </div>
 </div>

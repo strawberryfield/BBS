@@ -667,14 +667,14 @@ namespace Casasoft.BBS.DataTier.DBContext
 
                 entity.HasComment("Path lines of messages");
 
-                entity.HasIndex(e => e.MessgeId)
+                entity.HasIndex(e => e.MessageId)
                     .HasName("MessageId");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.MessgeId)
+                entity.Property(e => e.MessageId)
                     .HasColumnType("int(11)")
                     .HasComment("Internal ID of rhe message");
 
@@ -686,9 +686,9 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
-                entity.HasOne(d => d.Messge)
+                entity.HasOne(d => d.Message)
                     .WithMany(p => p.MessagePaths)
-                    .HasForeignKey(d => d.MessgeId)
+                    .HasForeignKey(d => d.MessageId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("MessagePath_MessageId_Messages");
             });

@@ -123,12 +123,19 @@ namespace Casasoft.Fidonet
                 }
                 byte[] msg = new byte[end - ptr];
                 Array.Copy(rawdata, ptr, msg, 0, end - ptr);
-                Messages.Add(new PackedMessage(msg));
+                AddMessage(msg);
                 ptr = end;
             }
         }
         #endregion
 
+        /// <summary>
+        /// Adds a binary packed msg to the packet
+        /// </summary>
+        /// <param name="msg"></param>
+        public virtual void AddMessage(byte[] msg) => Messages.Add(new PackedMessage(msg));
+
+        #region exports
         /// <summary>
         /// Packet in binary format
         /// </summary>
@@ -177,5 +184,16 @@ namespace Casasoft.Fidonet
                 return ret.ToArray();
             }
         }
+
+        /// <summary>
+        /// Toss the message in the message base
+        /// </summary>
+        /// <param name="network">Network to use</param>
+        public virtual void Toss(string network)
+        {
+            foreach (IPackedMessage m in Messages) m.Toss(network);
+        }
+
+        #endregion
     }
 }

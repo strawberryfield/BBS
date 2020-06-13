@@ -1,4 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html" title="Handles a packet of messages" alt="" coords="5,5,199,32"/>
-<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_msg_packet.html" title="Handles a packet of messages" alt="" coords="247,5,437,32"/>
+<area shape="rect" id="node1" href="$interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html" title="Handles a packet of messages" alt="" coords="5,13,199,39"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_msg_packet.html" title="Handles a packet of messages" alt="" coords="247,13,437,39"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_packer_1_1_b_b_s_msg_packet.html" title="Handles a packet of messages from casasoft BBS message base" alt="" coords="485,5,691,47"/>
 </map>

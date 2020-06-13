@@ -39,7 +39,7 @@ namespace Casasoft.BBS.Packer
 
             var shouldShowHelp = false;
             var packet = string.Empty;
-            FidoAddress myAddress = null;
+            FidoAddress myAddress = new FidoAddress();
             OptionSet options = new OptionSet()
             {
                 { "t|toss-packet=", "Network domain to use",                n => packet = n },
@@ -82,7 +82,8 @@ namespace Casasoft.BBS.Packer
         private static void toss(string packetFile, FidoAddress addr)
         {
             byte[] rawpkt = File.ReadAllBytes(packetFile);
-            MsgPacket pkt = new MsgPacket(rawpkt);
+            BBSMsgPacket pkt = new BBSMsgPacket(rawpkt);
+            pkt.Toss(addr.domain);
         }
     }
 }

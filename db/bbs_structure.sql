@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Creato il: Giu 13, 2020 alle 14:57
+-- Creato il: Giu 13, 2020 alle 17:36
 -- Versione del server: 10.3.22-MariaDB-0+deb10u1
 -- Versione PHP: 7.3.14-1~deb10u1
 
@@ -215,15 +215,15 @@ CREATE TABLE `MessageAreasGroups` (
 
 CREATE TABLE `MessagePath` (
   `ID` int(11) NOT NULL,
-  `MessgeId` int(11) NOT NULL COMMENT 'Internal ID of rhe message',
+  `MessageId` int(11) NOT NULL COMMENT 'Internal ID of rhe message',
   `Path` varchar(80) NOT NULL DEFAULT '' COMMENT 'Path of the message'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Path lines of messages';
 
 --
 -- RELAZIONI PER TABELLA `MessagePath`:
---   `MessgeId`
+--   `MessageId`
 --       `Messages` -> `ID`
---   `MessgeId`
+--   `MessageId`
 --       `Messages` -> `ID`
 --
 
@@ -447,7 +447,7 @@ ALTER TABLE `MessageAreasGroups`
 --
 ALTER TABLE `MessagePath`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `MessageId` (`MessgeId`);
+  ADD KEY `MessageId` (`MessageId`);
 
 --
 -- Indici per le tabelle `MessageRead`
@@ -603,7 +603,7 @@ ALTER TABLE `MessageAreasGroups`
 -- Limiti per la tabella `MessagePath`
 --
 ALTER TABLE `MessagePath`
-  ADD CONSTRAINT `MessagePath_MessageId_Messages` FOREIGN KEY (`MessgeId`) REFERENCES `Messages` (`ID`);
+  ADD CONSTRAINT `MessagePath_MessageId_Messages` FOREIGN KEY (`MessageId`) REFERENCES `Messages` (`ID`);
 
 --
 -- Limiti per la tabella `MessageRead`

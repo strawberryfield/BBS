@@ -159,6 +159,11 @@ namespace Casasoft.Fidonet
         /// </summary>
         public byte[] Binary { get => ByteList.ToArray(); }
 
+        /// <summary>
+        /// Toss the message in the message base
+        /// </summary>
+        /// <param name="network">Network to use</param>
+        public virtual void Toss(string network) { }
         #endregion
     }
 }

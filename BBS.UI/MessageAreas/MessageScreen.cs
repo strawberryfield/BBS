@@ -94,6 +94,8 @@ namespace Casasoft.BBS.UI
                 .Replace("$msgsubj$", msg.Subject);
             Header = Data.GetHeaderRows();
             Text = TextHelper.SplitString(msg.Body);
+            if (!string.IsNullOrWhiteSpace(msg.TearLine)) Text.Add($"--- {msg.TearLine}");
+            if (!string.IsNullOrWhiteSpace(msg.OriginLine)) Text.Add($" * Origin: {msg.OriginLine}");
         }
     }
 }

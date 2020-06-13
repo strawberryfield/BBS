@@ -1,0 +1,5 @@
+<map id="Casasoft.BBS.Packer.BBSMsgPacket" name="Casasoft.BBS.Packer.BBSMsgPacket">
+<area shape="rect" id="node1" title="Handles a packet of messages from casasoft BBS message base" alt="" coords="5,155,211,196"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_msg_packet.html" title="Handles a packet of messages" alt="" coords="64,80,152,107"/>
+<area shape="rect" id="node3" href="$interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html" title="Handles a packet of messages" alt="" coords="63,5,153,32"/>
+</map>

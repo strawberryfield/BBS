@@ -38,11 +38,11 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public int Id { get; set; }
         
 		/// <summary>
-		/// Column 'MessgeId':
+		/// Column 'MessageId':
 		/// Internal ID of rhe message
 		/// </summary>
 		/// <remarks>Original field type: int(11)</remarks>
-		public int MessgeId { get; set; }
+		public int MessageId { get; set; }
         
 		/// <summary>
 		/// Column 'Path':
@@ -53,8 +53,8 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: MessagePath {'MessgeId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Messge
+		/// ForeignKey: MessagePath {'MessageId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Message
 		/// </summary>
-		public virtual Message Messge { get; set; }
+		public virtual Message Message { get; set; }
     }
 }

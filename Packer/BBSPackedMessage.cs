@@ -18,6 +18,7 @@
 // along with CasaSoft BBS.  
 // If not, see <http://www.gnu.org/licenses/>.
 
+using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.Fidonet;
 using Casasoft.TextHelpers;
@@ -54,12 +55,62 @@ namespace Casasoft.BBS.Packer
             DestUser = m.MessageTo;
             Timestamp = FidonetHelpers.FidoFormatDatetime(m.DateTime);
             Subject = m.Subject;
+            attr = new MsgAttributes((ushort)m.Attributes);
             Text.Area = m.Area;
             Text.MsgId = m.FidoId;
             Text.ReplyId = m.FidoReplyTo;
+            Text.Tear = m.TearLine;
+            Text.Origin = m.OriginLine;
             Text.Lines = TextHelper.SplitString(m.Body);
+            Text.Path = m.PathLines;
+            Text.SeenBy = m.SeenByLines;
         }
         #endregion
 
+        /// <summary>
+        /// Toss the message in the message base
+        /// </summary>
+        /// <param name="network">Network to use</param>
+        public override void Toss(string network)
+        {
+            Message m = new Message();
+            m.Area = Text.Area.ToUpper();
+            m.MessageFrom = FromUser;
+            m.MessageTo = DestUser;
+            m.Subject = Subject;
+            m.FidoId = Text.MsgId;
+            m.FidoReplyTo = Text.ReplyId;
+            m.TearLine = Text.Tear;
+            m.OriginLine = Text.Origin;
+            m.OrigZone = orig.zone;
+            m.OrigNet = orig.net;
+            m.OrigNode = orig.node;
+            m.OrigPoint = orig.point;
+            m.DestZone = dest.zone;
+            m.DestNet = dest.net;
+            m.DestNode = dest.node;
+            m.DestPoint = dest.point;
+            m.Attributes = attr.Binary;
+            m.Body = string.Join('\n', Text.Lines);
+
+            using(bbsContext db = new bbsContext())
+            {
+                db.Messages.Add(m);
+                db.SaveChanges();
+                foreach (string s in Text.SeenBy)
+                    db.MessagesSeenBy.Add(new MessageSeenBy()
+                    {
+                        MessageId = m.Id,
+                        SeenBy = s
+                    });
+                foreach (string s in Text.Path)
+                    db.MessagePaths.Add(new MessagePath()
+                    {
+                        MessageId = m.Id,
+                        Path = s
+                    });
+                db.SaveChanges();
+            }
+        }
     }
 }

@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Casasoft.BBS.DataTier.DataModel
@@ -41,5 +42,15 @@ namespace Casasoft.BBS.DataTier.DataModel
         /// <param name="username"></param>
         /// <returns></returns>
         public bool IsRead(string username) => MessageReads.Select(u => u.UserId).Contains(username);
+
+        /// <summary>
+        /// Gets path lines as list of strings
+        /// </summary>
+        public List<string> PathLines => MessagePaths.Select(l => l.Path).ToList();
+
+        /// <summary>
+        /// Gets seen-by lines as list of strings
+        /// </summary>
+        public List<string> SeenByLines => MessagesSeenBy.Select(l => l.SeenBy).ToList();
     }
 } 
