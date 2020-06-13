@@ -75,6 +75,7 @@ namespace Casasoft.BBS.Packer
         {
             Message m = new Message();
             m.Area = Text.Area.ToUpper();
+            m.DateTime = FidonetHelpers.ParseDatetime(Timestamp);
             m.MessageFrom = FromUser;
             m.MessageTo = DestUser;
             m.Subject = Subject;

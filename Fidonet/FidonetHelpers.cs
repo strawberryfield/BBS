@@ -46,7 +46,22 @@ namespace Casasoft.Fidonet
         /// </code>
         /// </remarks>
         static public string SEAdogFormatDatetime(DateTime dt) =>
-            string.Format(CultureInfo.InvariantCulture, "{0:ddd} {1,2} {2:dd MMM yy HH:mm}", dt, dt.Day, dt );
+            string.Format(CultureInfo.InvariantCulture, "{0:ddd} {1,2} {2:MMM yy HH:mm}", dt, dt.Day, dt );
+
+        /// <summary>
+        /// Gets a datetime from a SEAdog formatted string
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        static public DateTime ParseSEAdogDatetime(string ds)
+        {
+            DateTime ret;
+            if (!DateTime.TryParseExact(ds.Trim('\0').Trim(), "ddd dd MMM yy HH:mm", 
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.AllowInnerWhite, out ret))
+                ret = DateTime.MinValue;
+            return ret;
+        }
 
         /// <summary>
         /// Formats a datetime in Fido format
@@ -73,6 +88,34 @@ namespace Casasoft.Fidonet
         /// </remarks>
         static public string FidoFormatDatetime(DateTime dt) =>
             dt.ToString("dd MMM yy  HH:mm:ss", CultureInfo.InvariantCulture);
+
+        /// <summary>
+        /// Gets a datetime from a Fido formatted string
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        static public DateTime ParseFidoDatetime(string ds)
+        {
+            DateTime ret;
+            if (!DateTime.TryParseExact(ds.Trim('\0').Trim(), "dd MMM yy  HH:mm:ss",
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.AllowInnerWhite, out ret))
+                ret = DateTime.MinValue;
+            return ret;
+        }
+
+        /// <summary>
+        /// Parses a datetime string
+        /// </summary>
+        /// <param name="ds"></param>
+        /// <returns></returns>
+        static public DateTime ParseDatetime(string ds)
+        {
+            if (char.IsLetter(ds.Trim()[0]))
+                return ParseSEAdogDatetime(ds);
+            else
+                return ParseFidoDatetime(ds);
+        }
 
         /// <summary>
         /// Low order byte of a word
