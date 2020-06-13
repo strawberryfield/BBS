@@ -35,6 +35,9 @@ namespace Casasoft.BBS.DataTier.DataModel
 		/// </summary>
 		public FidoNetwork()
         {
+            FidoAlias = new HashSet<FidoAlias>();
+            FidoDownlinks = new HashSet<FidoDownlink>();
+            FidoUplinks = new HashSet<FidoUplink>();
             MessageAreasGroups = new HashSet<MessageAreasGroup>();
         }
 
@@ -71,12 +74,33 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public int Point { get; set; }
         
 		/// <summary>
+		/// Column 'domain'
+		/// </summary>
+		/// <remarks>Original field type: varchar(100)</remarks>
+		public string Domain { get; set; }
+        
+		/// <summary>
 		/// Column 'description':
 		/// Network description
 		/// </summary>
 		/// <remarks>Original field type: varchar(80)</remarks>
 		public string Description { get; set; }
 
+        
+		/// <summary>
+		/// ForeignKey: FidoAlias {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoAlias ToPrincipal: FidoNetworkNavigation
+		/// </summary>
+		public virtual ICollection<FidoAlias> FidoAlias { get; set; }
+        
+		/// <summary>
+		/// ForeignKey: FidoDownlink {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoDownlinks ToPrincipal: FidoNetworkNavigation
+		/// </summary>
+		public virtual ICollection<FidoDownlink> FidoDownlinks { get; set; }
+        
+		/// <summary>
+		/// ForeignKey: FidoUplink {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoUplinks ToPrincipal: FidoNetworkNavigation
+		/// </summary>
+		public virtual ICollection<FidoUplink> FidoUplinks { get; set; }
         
 		/// <summary>
 		/// ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation

@@ -84,10 +84,10 @@ Properties</h2></td></tr>
 <tr class="memdesc:a702ca40b08ef4893b97508dca7e048ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column 'ID'  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#a702ca40b08ef4893b97508dca7e048ec">More...</a><br /></td></tr>
 <tr class="separator:a702ca40b08ef4893b97508dca7e048ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae9b9eb949791314974005c4a9b862350"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#ae9b9eb949791314974005c4a9b862350">MessageId</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:ae9b9eb949791314974005c4a9b862350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column 'MessageId'  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#ae9b9eb949791314974005c4a9b862350">More...</a><br /></td></tr>
+<tr class="memdesc:ae9b9eb949791314974005c4a9b862350"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column 'MessageId': Internal id of message  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#ae9b9eb949791314974005c4a9b862350">More...</a><br /></td></tr>
 <tr class="separator:ae9b9eb949791314974005c4a9b862350"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0ceb6bbb0147f308374ef8afc81d13dd"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#a0ceb6bbb0147f308374ef8afc81d13dd">SeenBy</a><code> [get, set]</code></td></tr>
-<tr class="memdesc:a0ceb6bbb0147f308374ef8afc81d13dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column 'SeenBy'  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#a0ceb6bbb0147f308374ef8afc81d13dd">More...</a><br /></td></tr>
+<tr class="memdesc:a0ceb6bbb0147f308374ef8afc81d13dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Column 'SeenBy': List of nodes that already saw the messase  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#a0ceb6bbb0147f308374ef8afc81d13dd">More...</a><br /></td></tr>
 <tr class="separator:a0ceb6bbb0147f308374ef8afc81d13dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a70821259062671a026ce8964186dd2f8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html">Message</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#a70821259062671a026ce8964186dd2f8">Message</a><code> [get, set]</code></td></tr>
 <tr class="memdesc:a70821259062671a026ce8964186dd2f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ForeignKey: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html" title="Elements of the table &#39;MessageSeenBy&#39;: System that already received the message">MessageSeenBy</a> {'MessageId'} -&gt; <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a> {'Id'} ToDependent: MessageSeenBies ToPrincipal: <a class="el" href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message.html" title="Elements of the table &#39;Messages&#39;: Messages">Message</a>  <a href="class_casasoft_1_1_b_b_s_1_1_data_tier_1_1_data_model_1_1_message_seen_by.html#a70821259062671a026ce8964186dd2f8">More...</a><br /></td></tr>
@@ -165,7 +165,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Column 'MessageId' </p>
+<p>Column 'MessageId': Internal id of message </p>
 <p>Original field type: int(11)</p>
 
 </div>
@@ -190,8 +190,8 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Column 'SeenBy' </p>
-<p>Original field type: varchar(50)</p>
+<p>Column 'SeenBy': List of nodes that already saw the messase </p>
+<p>Original field type: varchar(80)</p>
 
 </div>
 </div>

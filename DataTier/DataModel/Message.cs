@@ -35,6 +35,7 @@ namespace Casasoft.BBS.DataTier.DataModel
 		/// </summary>
 		public Message()
         {
+            MessagePaths = new HashSet<MessagePath>();
             MessageReads = new HashSet<MessageRead>();
             MessagesSeenBy = new HashSet<MessageSeenBy>();
         }
@@ -47,43 +48,50 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public int Id { get; set; }
         
 		/// <summary>
-		/// Column 'Area'
+		/// Column 'Area':
+		/// Echomail area Id
 		/// </summary>
 		/// <remarks>Original field type: varchar(20)</remarks>
 		public string Area { get; set; }
         
 		/// <summary>
-		/// Column 'MessageFrom'
+		/// Column 'MessageFrom':
+		/// Name of the sender
 		/// </summary>
 		/// <remarks>Original field type: varchar(100)</remarks>
 		public string MessageFrom { get; set; }
         
 		/// <summary>
-		/// Column 'MessageTo'
+		/// Column 'MessageTo':
+		/// Name of the recipient
 		/// </summary>
 		/// <remarks>Original field type: varchar(100)</remarks>
 		public string MessageTo { get; set; }
         
 		/// <summary>
-		/// Column 'Subject'
+		/// Column 'Subject':
+		/// Subject of the message
 		/// </summary>
 		/// <remarks>Original field type: varchar(72)</remarks>
 		public string Subject { get; set; }
         
 		/// <summary>
-		/// Column 'DateTime'
+		/// Column 'DateTime':
+		/// Timestamp of message creation
 		/// </summary>
 		/// <remarks>Original field type: datetime</remarks>
 		public DateTime DateTime { get; set; }
         
 		/// <summary>
-		/// Column 'FidoID'
+		/// Column 'FidoID':
+		/// Fidonet style ID as in FTS-0009
 		/// </summary>
 		/// <remarks>Original field type: varchar(50)</remarks>
 		public string FidoId { get; set; }
         
 		/// <summary>
-		/// Column 'FidoReplyTo'
+		/// Column 'FidoReplyTo':
+		/// Fidonet style reply ID as in FTS-0009
 		/// </summary>
 		/// <remarks>Original field type: varchar(50)</remarks>
 		public string FidoReplyTo { get; set; }
@@ -143,16 +151,43 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public int DestPoint { get; set; }
         
 		/// <summary>
-		/// Column 'Body'
+		/// Column 'Attributes':
+		/// Binary attributes
+		/// </summary>
+		/// <remarks>Original field type: int(11) unsigned</remarks>
+		public uint Attributes { get; set; }
+        
+		/// <summary>
+		/// Column 'Body':
+		/// Body of the message
 		/// </summary>
 		/// <remarks>Original field type: text</remarks>
 		public string Body { get; set; }
+        
+		/// <summary>
+		/// Column 'TearLine':
+		/// Tear Line
+		/// </summary>
+		/// <remarks>Original field type: varchar(80)</remarks>
+		public string TearLine { get; set; }
+        
+		/// <summary>
+		/// Column 'OriginLine':
+		/// Origin Line
+		/// </summary>
+		/// <remarks>Original field type: varchar(80)</remarks>
+		public string OriginLine { get; set; }
 
         
 		/// <summary>
 		/// ForeignKey: Message {'Area'} -> MessageArea {'Id'} ToDependent: Messages ToPrincipal: AreaNavigation
 		/// </summary>
 		public virtual MessageArea AreaNavigation { get; set; }
+        
+		/// <summary>
+		/// ForeignKey: MessagePath {'MessgeId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Messge
+		/// </summary>
+		public virtual ICollection<MessagePath> MessagePaths { get; set; }
         
 		/// <summary>
 		/// ForeignKey: MessageRead {'MessgeId'} -> Message {'Id'} ToDependent: MessageReads ToPrincipal: Messge

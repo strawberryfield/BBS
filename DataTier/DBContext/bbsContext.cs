@@ -42,10 +42,28 @@ namespace Casasoft.BBS.DataTier.DBContext
 
         
 		/// <summary>
+		/// Table 'FidoAliases':
+		/// Alias adresses
+		/// </summary>
+		public virtual DbSet<FidoAlias> FidoAliases { get; set; }
+        
+		/// <summary>
+		/// Table 'FidoDownlinks':
+		/// Downlinks for fido networks
+		/// </summary>
+		public virtual DbSet<FidoDownlink> FidoDownlinks { get; set; }
+        
+		/// <summary>
 		/// Table 'FidoNetworks':
 		/// List of fdo-style networks
 		/// </summary>
 		public virtual DbSet<FidoNetwork> FidoNetworks { get; set; }
+        
+		/// <summary>
+		/// Table 'FidoUplinks':
+		/// Uplinks for fido networks
+		/// </summary>
+		public virtual DbSet<FidoUplink> FidoUplinks { get; set; }
         
 		/// <summary>
 		/// Table 'Log':
@@ -75,6 +93,12 @@ namespace Casasoft.BBS.DataTier.DBContext
 		/// Table 'MessageAreasGroups'
 		/// </summary>
 		public virtual DbSet<MessageAreasGroup> MessageAreasGroups { get; set; }
+        
+		/// <summary>
+		/// Table 'MessagePath':
+		/// Path lines of messages
+		/// </summary>
+		public virtual DbSet<MessagePath> MessagePaths { get; set; }
         
 		/// <summary>
 		/// Table 'MessageRead':
@@ -117,9 +141,108 @@ namespace Casasoft.BBS.DataTier.DBContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<FidoAlias>(entity =>
+            {
+                entity.HasComment("Alias adresses");
+
+                entity.HasIndex(e => e.FidoNetwork)
+                    .HasName("FidoNetwork");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(80)")
+                    .HasDefaultValueSql("''")
+                    .HasComment("Alias description")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.FidoNetwork)
+                    .IsRequired()
+                    .HasColumnType("varchar(30)")
+                    .HasComment("Fido network of this alias")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Net)
+                    .HasColumnName("net")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Node)
+                    .HasColumnName("node")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Point)
+                    .HasColumnName("point")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Zone)
+                    .HasColumnName("zone")
+                    .HasColumnType("int(11)");
+
+                entity.HasOne(d => d.FidoNetworkNavigation)
+                    .WithMany(p => p.FidoAlias)
+                    .HasForeignKey(d => d.FidoNetwork)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FidoAliases_FidoNetwork_Fidonetworks");
+            });
+
+            modelBuilder.Entity<FidoDownlink>(entity =>
+            {
+                entity.HasComment("Downlinks for fido networks");
+
+                entity.HasIndex(e => e.FidoNetwork)
+                    .HasName("FidoNetwork");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(80)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.FidoNetwork)
+                    .IsRequired()
+                    .HasColumnType("varchar(30)")
+                    .HasComment("Fido network for the downlink")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Net)
+                    .HasColumnName("net")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Node)
+                    .HasColumnName("node")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Point)
+                    .HasColumnName("point")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Zone)
+                    .HasColumnName("zone")
+                    .HasColumnType("int(11)");
+
+                entity.HasOne(d => d.FidoNetworkNavigation)
+                    .WithMany(p => p.FidoDownlinks)
+                    .HasForeignKey(d => d.FidoNetwork)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FidoDownlinks_FidoNetwork_FidoNetworks");
+            });
+
             modelBuilder.Entity<FidoNetwork>(entity =>
             {
                 entity.HasComment("List of fdo-style networks");
+
+                entity.HasIndex(e => e.Domain)
+                    .HasName("domain");
 
                 entity.Property(e => e.Id)
                     .HasColumnName("ID")
@@ -134,6 +257,14 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasColumnName("description")
                     .HasColumnType("varchar(80)")
                     .HasComment("Network description")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Domain)
+                    .IsRequired()
+                    .HasColumnName("domain")
+                    .HasColumnType("varchar(100)")
+                    .HasDefaultValueSql("''")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -152,6 +283,53 @@ namespace Casasoft.BBS.DataTier.DBContext
                 entity.Property(e => e.Zone)
                     .HasColumnName("zone")
                     .HasColumnType("int(11)");
+            });
+
+            modelBuilder.Entity<FidoUplink>(entity =>
+            {
+                entity.HasComment("Uplinks for fido networks");
+
+                entity.HasIndex(e => e.FidoNetwork)
+                    .HasName("FidoNetwork");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Description)
+                    .IsRequired()
+                    .HasColumnType("varchar(80)")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.FidoNetwork)
+                    .IsRequired()
+                    .HasColumnType("varchar(30)")
+                    .HasComment("Network of the uplink")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Net)
+                    .HasColumnName("net")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Node)
+                    .HasColumnName("node")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Point)
+                    .HasColumnName("point")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.Zone)
+                    .HasColumnName("zone")
+                    .HasColumnType("int(11)");
+
+                entity.HasOne(d => d.FidoNetworkNavigation)
+                    .WithMany(p => p.FidoUplinks)
+                    .HasForeignKey(d => d.FidoNetwork)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FidoUplinks_FidoNetwork_FidoNetworks");
             });
 
             modelBuilder.Entity<Log>(entity =>
@@ -248,19 +426,26 @@ namespace Casasoft.BBS.DataTier.DBContext
 
                 entity.Property(e => e.Area)
                     .HasColumnType("varchar(20)")
+                    .HasComment("Echomail area Id")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.Attributes)
+                    .HasColumnType("int(11) unsigned")
+                    .HasComment("Binary attributes");
 
                 entity.Property(e => e.Body)
                     .IsRequired()
                     .HasColumnType("text")
-                    .HasDefaultValueSql("''")
+                    .HasDefaultValueSql("'\\\\''\\\\'''")
+                    .HasComment("Body of the message")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.DateTime)
                     .HasColumnType("datetime")
-                    .HasDefaultValueSql("'current_timestamp()'");
+                    .HasDefaultValueSql("'current_timestamp()'")
+                    .HasComment("Timestamp of message creation");
 
                 entity.Property(e => e.DestNet).HasColumnType("int(11)");
 
@@ -275,6 +460,7 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasColumnName("FidoID")
                     .HasColumnType("varchar(50)")
                     .HasDefaultValueSql("''")
+                    .HasComment("Fidonet style ID as in FTS-0009")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -282,17 +468,20 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .IsRequired()
                     .HasColumnType("varchar(50)")
                     .HasDefaultValueSql("''")
+                    .HasComment("Fidonet style reply ID as in FTS-0009")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.MessageFrom)
                     .IsRequired()
                     .HasColumnType("varchar(100)")
+                    .HasComment("Name of the sender")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
                 entity.Property(e => e.MessageTo)
                     .HasColumnType("varchar(100)")
+                    .HasComment("Name of the recipient")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -304,10 +493,27 @@ namespace Casasoft.BBS.DataTier.DBContext
 
                 entity.Property(e => e.OrigZone).HasColumnType("int(11)");
 
+                entity.Property(e => e.OriginLine)
+                    .IsRequired()
+                    .HasColumnType("varchar(80)")
+                    .HasDefaultValueSql("''")
+                    .HasComment("Origin Line")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
                 entity.Property(e => e.Subject)
                     .IsRequired()
                     .HasColumnType("varchar(72)")
                     .HasDefaultValueSql("''")
+                    .HasComment("Subject of the message")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.TearLine)
+                    .IsRequired()
+                    .HasColumnType("varchar(80)")
+                    .HasDefaultValueSql("''")
+                    .HasComment("Tear Line")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 
@@ -455,6 +661,38 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasConstraintName("MessageAreasGroups_FidoNetwork_Fidonetworks");
             });
 
+            modelBuilder.Entity<MessagePath>(entity =>
+            {
+                entity.ToTable("MessagePath");
+
+                entity.HasComment("Path lines of messages");
+
+                entity.HasIndex(e => e.MessgeId)
+                    .HasName("MessageId");
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .HasColumnType("int(11)");
+
+                entity.Property(e => e.MessgeId)
+                    .HasColumnType("int(11)")
+                    .HasComment("Internal ID of rhe message");
+
+                entity.Property(e => e.Path)
+                    .IsRequired()
+                    .HasColumnType("varchar(80)")
+                    .HasDefaultValueSql("''")
+                    .HasComment("Path of the message")
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.HasOne(d => d.Messge)
+                    .WithMany(p => p.MessagePaths)
+                    .HasForeignKey(d => d.MessgeId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("MessagePath_MessageId_Messages");
+            });
+
             modelBuilder.Entity<MessageRead>(entity =>
             {
                 entity.ToTable("MessageRead");
@@ -508,11 +746,14 @@ namespace Casasoft.BBS.DataTier.DBContext
                     .HasColumnName("ID")
                     .HasColumnType("int(11)");
 
-                entity.Property(e => e.MessageId).HasColumnType("int(11)");
+                entity.Property(e => e.MessageId)
+                    .HasColumnType("int(11)")
+                    .HasComment("Internal id of message");
 
                 entity.Property(e => e.SeenBy)
                     .IsRequired()
-                    .HasColumnType("varchar(50)")
+                    .HasColumnType("varchar(80)")
+                    .HasComment("List of nodes that already saw the messase")
                     .HasCharSet("utf8")
                     .HasCollation("utf8_general_ci");
 

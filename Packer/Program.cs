@@ -32,15 +32,18 @@ namespace Casasoft.BBS.Packer
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Casasoft ObjectMatrix/NET 0.1");
+            Console.WriteLine("copyright (c) 2020 Roberto Ceccarelli - Casasoft\n");
+
             List<string> extra;
 
             var shouldShowHelp = false;
-            var domain = string.Empty;
             var packet = string.Empty;
+            FidoAddress myAddress = null;
             OptionSet options = new OptionSet()
             {
-                { "d|domain=",      "Network domain to use",                n => domain = n },
                 { "t|toss-packet=", "Network domain to use",                n => packet = n },
+                { "a|my-address=",  "Local 5D fidonet address",             a => myAddress = new FidoAddress(a) },
                 { "h|help",         "show this message and exit",           h => shouldShowHelp = h != null },
             };
 
@@ -50,7 +53,6 @@ namespace Casasoft.BBS.Packer
             }
             catch (OptionException e)
             {
-                Console.Write($"{exeName}: ");
                 Console.WriteLine(e.Message);
                 Console.WriteLine($"Try `{exeName} --help' for more information.");
                 return;
@@ -64,7 +66,7 @@ namespace Casasoft.BBS.Packer
 
             if(!string.IsNullOrWhiteSpace(packet))
             {
-                toss(packet, domain);
+                toss(packet, myAddress);
             }
         }
 
@@ -77,7 +79,7 @@ namespace Casasoft.BBS.Packer
             p.WriteOptionDescriptions(Console.Out);
         }
 
-        private static void toss(string packetFile, string domain)
+        private static void toss(string packetFile, FidoAddress addr)
         {
             byte[] rawpkt = File.ReadAllBytes(packetFile);
             MsgPacket pkt = new MsgPacket(rawpkt);

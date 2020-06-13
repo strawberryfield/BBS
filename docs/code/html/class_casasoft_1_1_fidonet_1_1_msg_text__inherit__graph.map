@@ -1,0 +1,4 @@
+<map id="Casasoft.Fidonet.MsgText" name="Casasoft.Fidonet.MsgText">
+<area shape="rect" id="node1" title="Body of the message with echomail extensions" alt="" coords="5,80,180,107"/>
+<area shape="rect" id="node2" href="$interface_casasoft_1_1_fidonet_1_1_i_msg_text.html" title="Body of the message with echomail extensions" alt="" coords="55,5,130,32"/>
+</map>

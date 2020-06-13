@@ -21,6 +21,7 @@
 using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.BBS.Interfaces;
+using Casasoft.Fidonet;
 using Casasoft.TextHelpers;
 
 namespace Casasoft.BBS.UI
@@ -87,6 +88,9 @@ namespace Casasoft.BBS.UI
             Data.Header = Data.Header.Replace("$msgid$", Params[1])
                 .Replace("$msgdatetime$", msg.DateTime.ToString("G"))
                 .Replace("$msgfrom$", msg.MessageFrom)
+                .Replace("$msgto$", msg.MessageTo)
+                .Replace("$msgorig$", new FidoAddress(msg.OrigZone, msg.OrigNet, msg.OrigNode, msg.OrigPoint).address4D)
+                .Replace("$msgdest$", new FidoAddress(msg.DestZone, msg.DestNet, msg.DestNode, msg.DestPoint).address4D)
                 .Replace("$msgsubj$", msg.Subject);
             Header = Data.GetHeaderRows();
             Text = TextHelper.SplitString(msg.Body);

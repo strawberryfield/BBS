@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_casasoft_1_1_t_c_p_server_1_1_negotiation.html" title="Handles Telnet negotiation" alt="" coords="5,5,212,32"/>
+<area shape="rect" id="node1" href="$interface_casasoft_1_1_fidonet_1_1_i_msg_packet.html" title="Handles a packet of messages" alt="" coords="5,5,199,32"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_msg_packet.html" title="Handles a packet of messages" alt="" coords="247,5,437,32"/>
 </map>

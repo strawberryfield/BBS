@@ -38,15 +38,17 @@ namespace Casasoft.BBS.DataTier.DataModel
 		public int Id { get; set; }
         
 		/// <summary>
-		/// Column 'MessageId'
+		/// Column 'MessageId':
+		/// Internal id of message
 		/// </summary>
 		/// <remarks>Original field type: int(11)</remarks>
 		public int MessageId { get; set; }
         
 		/// <summary>
-		/// Column 'SeenBy'
+		/// Column 'SeenBy':
+		/// List of nodes that already saw the messase
 		/// </summary>
-		/// <remarks>Original field type: varchar(50)</remarks>
+		/// <remarks>Original field type: varchar(80)</remarks>
 		public string SeenBy { get; set; }
 
         

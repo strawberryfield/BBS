@@ -26,6 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DataTier\DataTier.csproj" />
     <ProjectReference Include="..\Fidonet\Fidonet.csproj" />
   </ItemGroup>
 
