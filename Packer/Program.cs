@@ -46,7 +46,7 @@ namespace Casasoft.BBS.Packer
             FidoAddress destAddress = new FidoAddress();
             OptionSet options = new OptionSet()
             {
-                { "t|toss-packet=", "Network domain to use",                n => packet = n },
+                { "t|toss-packet=", "Toss this packet",                     n => packet = n },
                 { "p|packet-for=",  "Create packet for this address",       a => destAddress = new FidoAddress(a) },
                 { "a|my-address=",  "Local 5D fidonet address",             a => myAddress = new FidoAddress(a) },
                 { "o|output-file=", "Output filename",                      o => outfile = o },
