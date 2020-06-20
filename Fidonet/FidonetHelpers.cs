@@ -46,7 +46,7 @@ namespace Casasoft.Fidonet
         /// </code>
         /// </remarks>
         static public string SEAdogFormatDatetime(DateTime dt) =>
-            string.Format(CultureInfo.InvariantCulture, "{0:ddd} {1,2} {2:MMM yy HH:mm}", dt, dt.Day, dt );
+            string.Format(CultureInfo.InvariantCulture, "{0:ddd} {1,2} {2:MMM yy HH:mm}", dt, dt.Day, dt);
 
         /// <summary>
         /// Gets a datetime from a SEAdog formatted string
@@ -56,7 +56,7 @@ namespace Casasoft.Fidonet
         static public DateTime ParseSEAdogDatetime(string ds)
         {
             DateTime ret;
-            if (!DateTime.TryParseExact(ds.Trim('\0').Trim(), "ddd dd MMM yy HH:mm", 
+            if (!DateTime.TryParseExact(ds.Trim('\0').Trim(), "ddd dd MMM yy HH:mm",
                 CultureInfo.InvariantCulture,
                 DateTimeStyles.AllowInnerWhite, out ret))
                 ret = DateTime.MinValue;
@@ -151,7 +151,29 @@ namespace Casasoft.Fidonet
         /// <param name="data"></param>
         /// <param name="pointer"></param>
         /// <returns></returns>
-        static public ushort GetUShort(byte[] data, int pointer) => (ushort)(data[pointer] + data[pointer + 1] * 256);
+        static public ushort GetUShort(byte[] data, int pointer) =>
+            (ushort)(data[pointer] + data[pointer + 1] * 256);
+
+        /// <summary>
+        /// Gets int value from byte array
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="pointer"></param>
+        /// <returns></returns>
+        static public int GetInt(byte[] data, int pointer) =>
+            GetUShort(data, pointer) + GetUShort(data, pointer + 2) * 256;
+
+        /// <summary>
+        /// Gets a Pascal-like string
+        /// </summary>
+        /// <remarks>
+        /// First byte contains the string length
+        /// </remarks>
+        /// <param name="buffer"></param>
+        /// <param name="offset"></param>
+        /// <returns></returns>
+        static public string GetPascalString(byte[] buffer, int offset) =>
+            BytesToString(buffer, offset + 1, buffer[offset]);
 
         /// <summary>
         /// Converts a byte array to string
@@ -197,8 +219,8 @@ namespace Casasoft.Fidonet
         static public List<byte> ToFixedLength(string s, int len)
         {
             List<byte> ret = new List<byte>(len);
-            for (int j = 0; j < len; j++) ret[j] = 0;
-            for (int j = 0; j < len || j < s.Length; j++) ret[j] = (byte)s[j];
+            for (int j = 0; j < len; j++) ret.Add(0);
+            for (int j = 0; j < len && j < s.Length; j++) ret[j] = (byte)s[j];
             return ret;
         }
 
@@ -211,8 +233,13 @@ namespace Casasoft.Fidonet
         static public List<byte> ToMaxLength(string s, int len)
         {
             List<byte> ret = new List<byte>(len);
-            for (int j = 0; j < len - 1 || j < s.Length; j++) ret[j] = (byte)s[j];
-            ret[len - 1] = 0;
+            int retSize = Math.Min(len, s.Length);
+            for (int j = 0; j < retSize; j++) ret.Add(0);
+            for (int j = 0; j < retSize; j++) ret[j] = (byte)s[j];
+            if (s.Length >= len) 
+                ret[len - 1] = 0;
+            else 
+                ret.Add(0);
             return ret;
         }
 
@@ -221,6 +248,6 @@ namespace Casasoft.Fidonet
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        static public List<byte> ToUnbounded(string s) => ToMaxLength(s, s.Length + 1); 
+        static public List<byte> ToUnbounded(string s) => ToMaxLength(s, s.Length + 1);
     }
 }

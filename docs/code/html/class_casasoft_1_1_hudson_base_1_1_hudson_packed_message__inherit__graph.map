@@ -1,0 +1,5 @@
+<map id="Casasoft.HudsonBase.HudsonPackedMessage" name="Casasoft.HudsonBase.HudsonPackedMessage">
+<area shape="rect" id="node1" title="Handles a Hudson&#45;base message in format suitable for packets" alt="" coords="5,155,204,196"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="45,80,164,107"/>
+<area shape="rect" id="node3" href="$interface_casasoft_1_1_fidonet_1_1_i_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="43,5,166,32"/>
+</map>

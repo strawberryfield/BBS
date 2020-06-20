@@ -2,7 +2,7 @@
   "profiles": {
     "Packer": {
       "commandName": "Project",
-      "commandLineArgs": "--toss-packet=c:\\projects\\bbs\\bin\\09103701.PKT"
+      "commandLineArgs": "--messagebase=hudson --packet-for=\"2:332/305\" --output-file=\"c:\\projects\\BBS\\bin\\amarcord.pkt"
     }
   }
 }

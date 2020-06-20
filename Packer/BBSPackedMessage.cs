@@ -25,6 +25,13 @@ using Casasoft.TextHelpers;
 
 namespace Casasoft.BBS.Packer
 {
+    /// <summary>
+    /// Handles a message in format suitable for packets
+    /// </summary>
+    /// <remarks>
+    /// <para>Format as described in FTSC-0001 <see cref="http://ftsc.org/docs/fts-0001.016"/></para>
+    /// See <see cref="IPackedMessage"/>
+    /// </remarks>
     public class BBSPackedMessage : PackedMessage
     {
         #region constructors

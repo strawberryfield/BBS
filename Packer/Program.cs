@@ -19,6 +19,7 @@
 // If not, see <http://www.gnu.org/licenses/>.
 
 using Casasoft.Fidonet;
+using Casasoft.HudsonBase;
 using Mono.Options;
 using System;
 using System.Collections.Generic;
@@ -37,13 +38,19 @@ namespace Casasoft.BBS.Packer
 
             List<string> extra;
 
-            var shouldShowHelp = false;
-            var packet = string.Empty;
+            bool shouldShowHelp = false;
+            string packet = string.Empty;
+            string outfile = string.Empty;
+            string messagebase = "Internal";
             FidoAddress myAddress = new FidoAddress();
+            FidoAddress destAddress = new FidoAddress();
             OptionSet options = new OptionSet()
             {
                 { "t|toss-packet=", "Network domain to use",                n => packet = n },
+                { "p|packet-for=",  "Create packet for this address",       a => destAddress = new FidoAddress(a) },
                 { "a|my-address=",  "Local 5D fidonet address",             a => myAddress = new FidoAddress(a) },
+                { "o|output-file=", "Output filename",                      o => outfile = o },
+                { "messagebase=",   "Internal (default) or Hudson",         b => messagebase = b },
                 { "h|help",         "show this message and exit",           h => shouldShowHelp = h != null },
             };
 
@@ -67,6 +74,17 @@ namespace Casasoft.BBS.Packer
             if(!string.IsNullOrWhiteSpace(packet))
             {
                 toss(packet, myAddress);
+                return;
+            }
+
+            if(destAddress.net != 0)
+            {
+                if (messagebase.ToUpper() == "HUDSON")
+                    packHudson(destAddress, myAddress, outfile);
+                else
+                    pack(destAddress, myAddress, outfile);
+
+                return;
             }
         }
 
@@ -84,6 +102,22 @@ namespace Casasoft.BBS.Packer
             byte[] rawpkt = File.ReadAllBytes(packetFile);
             BBSMsgPacket pkt = new BBSMsgPacket(rawpkt);
             pkt.Toss(addr.domain);
+        }
+
+        private static void packHudson(FidoAddress destAddress, FidoAddress myAddress, string outfile)
+        {
+            Messages mb = new Messages();
+            MsgPacket pkt = new MsgPacket();
+            pkt.dest = destAddress;
+            pkt.orig = myAddress;
+            foreach (MsgHdr.MsgHdrRecord h in mb.Headers.Data)
+                pkt.Messages.Add(new HudsonPackedMessage(mb, h.MsgNum));
+            File.WriteAllBytes(outfile, pkt.Binary);
+        }
+
+        private static void pack(FidoAddress destAddress, FidoAddress myAddress, string outfile)
+        {
+
         }
     }
 }

@@ -1,5 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$interface_casasoft_1_1_fidonet_1_1_i_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="5,5,176,47"/>
-<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="224,13,445,39"/>
-<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_packer_1_1_b_b_s_packed_message.html" title=" " alt="" coords="493,5,717,47"/>
+<area shape="rect" id="node1" href="$interface_casasoft_1_1_fidonet_1_1_i_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="5,39,176,80"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="224,46,445,73"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_packer_1_1_b_b_s_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="493,5,717,47"/>
+<area shape="rect" id="node4" href="$class_casasoft_1_1_hudson_base_1_1_hudson_packed_message.html" title="Handles a Hudson&#45;base message in format suitable for packets" alt="" coords="506,71,705,112"/>
 </map>

@@ -28,6 +28,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DataTier\DataTier.csproj" />
     <ProjectReference Include="..\Fidonet\Fidonet.csproj" />
+    <ProjectReference Include="..\HudsonBase\HudsonBase.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,5 +1,5 @@
 <map id="Casasoft.BBS.Packer.BBSPackedMessage" name="Casasoft.BBS.Packer.BBSPackedMessage">
-<area shape="rect" id="node1" title=" " alt="" coords="5,155,229,196"/>
+<area shape="rect" id="node1" title="Handles a message in format suitable for packets" alt="" coords="5,155,229,196"/>
 <area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="58,80,177,107"/>
 <area shape="rect" id="node3" href="$interface_casasoft_1_1_fidonet_1_1_i_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="56,5,179,32"/>
 </map>

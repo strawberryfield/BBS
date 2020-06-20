@@ -50,11 +50,12 @@ var searchData=
   ['datatier_109',['DataTier',['../namespace_casasoft_1_1_b_b_s_1_1_data_tier.html',1,'Casasoft::BBS']]],
   ['dbcontext_110',['DBContext',['../namespace_casasoft_1_1_b_b_s_1_1_data_tier_1_1_d_b_context.html',1,'Casasoft::BBS::DataTier']]],
   ['fidonet_111',['Fidonet',['../namespace_casasoft_1_1_fidonet.html',1,'Casasoft']]],
-  ['interfaces_112',['Interfaces',['../namespace_casasoft_1_1_b_b_s_1_1_interfaces.html',1,'Casasoft::BBS']]],
-  ['logger_113',['Logger',['../namespace_casasoft_1_1_b_b_s_1_1_logger.html',1,'Casasoft::BBS']]],
-  ['packer_114',['Packer',['../namespace_casasoft_1_1_b_b_s_1_1_packer.html',1,'Casasoft::BBS']]],
-  ['parser_115',['Parser',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html',1,'Casasoft::BBS']]],
-  ['tcpserver_116',['TCPServer',['../namespace_casasoft_1_1_t_c_p_server.html',1,'Casasoft']]],
-  ['texthelpers_117',['TextHelpers',['../namespace_casasoft_1_1_text_helpers.html',1,'Casasoft']]],
-  ['ui_118',['UI',['../namespace_casasoft_1_1_b_b_s_1_1_u_i.html',1,'Casasoft::BBS']]]
+  ['hudsonbase_112',['HudsonBase',['../namespace_casasoft_1_1_hudson_base.html',1,'Casasoft']]],
+  ['interfaces_113',['Interfaces',['../namespace_casasoft_1_1_b_b_s_1_1_interfaces.html',1,'Casasoft::BBS']]],
+  ['logger_114',['Logger',['../namespace_casasoft_1_1_b_b_s_1_1_logger.html',1,'Casasoft::BBS']]],
+  ['packer_115',['Packer',['../namespace_casasoft_1_1_b_b_s_1_1_packer.html',1,'Casasoft::BBS']]],
+  ['parser_116',['Parser',['../namespace_casasoft_1_1_b_b_s_1_1_parser.html',1,'Casasoft::BBS']]],
+  ['tcpserver_117',['TCPServer',['../namespace_casasoft_1_1_t_c_p_server.html',1,'Casasoft']]],
+  ['texthelpers_118',['TextHelpers',['../namespace_casasoft_1_1_text_helpers.html',1,'Casasoft']]],
+  ['ui_119',['UI',['../namespace_casasoft_1_1_b_b_s_1_1_u_i.html',1,'Casasoft::BBS']]]
 ];

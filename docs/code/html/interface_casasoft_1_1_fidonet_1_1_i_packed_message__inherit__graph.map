@@ -1,5 +1,6 @@
 <map id="Casasoft.Fidonet.IPackedMessage" name="Casasoft.Fidonet.IPackedMessage">
-<area shape="rect" id="node1" title="Handles a message in format suitable for packets" alt="" coords="32,5,203,47"/>
-<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="7,95,228,121"/>
-<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_packer_1_1_b_b_s_packed_message.html" title=" " alt="" coords="5,169,229,211"/>
+<area shape="rect" id="node1" title="Handles a message in format suitable for packets" alt="" coords="149,5,320,47"/>
+<area shape="rect" id="node2" href="$class_casasoft_1_1_fidonet_1_1_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="124,95,345,121"/>
+<area shape="rect" id="node3" href="$class_casasoft_1_1_b_b_s_1_1_packer_1_1_b_b_s_packed_message.html" title="Handles a message in format suitable for packets" alt="" coords="5,169,229,211"/>
+<area shape="rect" id="node4" href="$class_casasoft_1_1_hudson_base_1_1_hudson_packed_message.html" title="Handles a Hudson&#45;base message in format suitable for packets" alt="" coords="254,169,453,211"/>
 </map>
