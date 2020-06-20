@@ -22,6 +22,7 @@ using Casasoft.BBS.DataTier;
 using Casasoft.BBS.DataTier.DataModel;
 using Casasoft.Fidonet;
 using Casasoft.TextHelpers;
+using System;
 
 namespace Casasoft.BBS.Packer
 {
@@ -101,6 +102,7 @@ namespace Casasoft.BBS.Packer
             m.Attributes = attr.Binary;
             m.Body = string.Join('\n', Text.Lines);
 
+            Console.WriteLine($"Processing message for area: {m.Area}");
             using(bbsContext db = new bbsContext())
             {
                 db.Messages.Add(m);

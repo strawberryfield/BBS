@@ -148,20 +148,20 @@ namespace Casasoft.Fidonet
                 Lines.RemoveAt(f);
             }
 
-            f = Lines.FindIndex(s => s.StartsWith("SEEN-BY: "));
+            f = Lines.FindIndex(s => s.StartsWith("SEEN-BY"));
             while (f >= 0)
             {
                 SeenBy.Add(Lines[f].Substring(8).Trim());
                 Lines.RemoveAt(f);
-                f = Lines.FindIndex(s => s.StartsWith("SEEN-BY: "));
+                f = Lines.FindIndex(s => s.StartsWith("SEEN-BY"));
             }
 
-            f = Lines.FindIndex(s => s.StartsWith("\u0001PATH: "));
+            f = Lines.FindIndex(s => s.StartsWith("\u0001PATH"));
             while (f >= 0)
             {
                 Path.Add(Lines[f].Substring(6).Trim());
                 Lines.RemoveAt(f);
-                f = Lines.FindIndex(s => s.StartsWith("\u0001PATH: "));
+                f = Lines.FindIndex(s => s.StartsWith("\u0001PATH"));
             }
         }
         #endregion

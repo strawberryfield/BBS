@@ -99,9 +99,12 @@ namespace Casasoft.BBS.Packer
 
         private static void toss(string packetFile, FidoAddress addr)
         {
+            Console.WriteLine($"Tossing packet: {packetFile}");
             byte[] rawpkt = File.ReadAllBytes(packetFile);
             BBSMsgPacket pkt = new BBSMsgPacket(rawpkt);
+            Console.WriteLine($"{pkt.Messages.Count} messages found.");
             pkt.Toss(addr.domain);
+            Console.WriteLine("Toss completed.");
         }
 
         private static void packHudson(FidoAddress destAddress, FidoAddress myAddress, string outfile)

@@ -155,7 +155,7 @@ namespace Casasoft.TextHelpers
         /// <param name="s"></param>
         /// <returns></returns>
         static public List<string> SplitString(string s) =>
-            Regex.Split(s.Replace("\r", ""), "\n").ToList();
+            Regex.Split(Regex.Replace(s, @"\r\n|\n\r|\r|\n", "\n"), "\n").ToList();
 
         /// <summary>
         /// Tests if the string contains an url
