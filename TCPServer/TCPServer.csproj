@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Casasoft.TCPServer</RootNamespace>
     <PackageId>Casasoft.TCPServer</PackageId>
     <Authors>Roberto Ceccarelli - Casasoft</Authors>
@@ -22,10 +22,11 @@
   </PropertyGroup>
   <PropertyGroup>
     <DocumentationMarkdown>$(MSBuildProjectDirectory)\\..\\docs\\code\\$(AssemblyName).md</DocumentationMarkdown>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

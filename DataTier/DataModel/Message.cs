@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -180,17 +182,17 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: Message {'Area'} -> MessageArea {'Id'} ToDependent: Messages ToPrincipal: AreaNavigation
+		/// ForeignKey: Message {'Area'} -> MessageArea {'Id'} ToDependent: Messages ToPrincipal: AreaNavigation SetNull
 		/// </summary>
 		public virtual MessageArea AreaNavigation { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessagePath {'MessageId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Message
+		/// ForeignKey: MessagePath {'MessageId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Message ClientSetNull
 		/// </summary>
 		public virtual ICollection<MessagePath> MessagePaths { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessageRead {'MessgeId'} -> Message {'Id'} ToDependent: MessageReads ToPrincipal: Messge
+		/// ForeignKey: MessageRead {'MessgeId'} -> Message {'Id'} ToDependent: MessageReads ToPrincipal: Messge ClientSetNull
 		/// </summary>
 		public virtual ICollection<MessageRead> MessageReads { get; set; }
         public virtual ICollection<MessageSeenBy> MessagesSeenBy { get; set; }

@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -67,7 +69,7 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: Login {'UserId'} -> User {'Userid'} ToDependent: Logins ToPrincipal: User
+		/// ForeignKey: Login {'UserId'} -> User {'Userid'} ToDependent: Logins ToPrincipal: User ClientSetNull
 		/// </summary>
 		public virtual User User { get; set; }
     }

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Casasoft.BBS.UI</RootNamespace>
     <PackageId>Casasoft.BBS.UI</PackageId>
     <Authors>Roberto Ceccarelli - Casasoft</Authors>
@@ -25,9 +25,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Toolkit.Parsers" Version="6.1.0" />
-    <PackageReference Include="NGettext" Version="0.6.5" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Toolkit.Parsers" Version="6.1.1" />
+    <PackageReference Include="NGettext" Version="0.6.6" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -53,7 +55,7 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: MessagePath {'MessageId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Message
+		/// ForeignKey: MessagePath {'MessageId'} -> Message {'Id'} ToDependent: MessagePaths ToPrincipal: Message ClientSetNull
 		/// </summary>
 		public virtual Message Message { get; set; }
     }

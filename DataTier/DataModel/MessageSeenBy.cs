@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -53,7 +55,7 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: MessageSeenBy {'MessageId'} -> Message {'Id'} ToDependent: MessageSeenBies ToPrincipal: Message
+		/// ForeignKey: MessageSeenBy {'MessageId'} -> Message {'Id'} ToDependent: MessageSeenBies ToPrincipal: Message ClientSetNull
 		/// </summary>
 		public virtual Message Message { get; set; }
     }

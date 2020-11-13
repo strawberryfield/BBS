@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -56,22 +58,22 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: MessageArea {'AllowedGroupRead'} -> UsersGroup {'Groupid'} ToDependent: MessageAreaAllowedGroupReadNavigations ToPrincipal: AllowedGroupReadNavigation
+		/// ForeignKey: MessageArea {'AllowedGroupRead'} -> UsersGroup {'Groupid'} ToDependent: MessageAreaAllowedGroupReadNavigations ToPrincipal: AllowedGroupReadNavigation SetNull
 		/// </summary>
 		public virtual ICollection<MessageArea> MessageAreaAllowedGroupReadNavigations { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessageArea {'AllowedGroupWrite'} -> UsersGroup {'Groupid'} ToDependent: MessageAreaAllowedGroupWriteNavigations ToPrincipal: AllowedGroupWriteNavigation
+		/// ForeignKey: MessageArea {'AllowedGroupWrite'} -> UsersGroup {'Groupid'} ToDependent: MessageAreaAllowedGroupWriteNavigations ToPrincipal: AllowedGroupWriteNavigation SetNull
 		/// </summary>
 		public virtual ICollection<MessageArea> MessageAreaAllowedGroupWriteNavigations { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup
+		/// ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup SetNull
 		/// </summary>
 		public virtual ICollection<MessageAreasGroup> MessageAreasGroups { get; set; }
         
 		/// <summary>
-		/// ForeignKey: UsersGroupsLink {'Groupid'} -> UsersGroup {'Groupid'} ToDependent: UsersGroupsLinks ToPrincipal: Group
+		/// ForeignKey: UsersGroupsLink {'Groupid'} -> UsersGroup {'Groupid'} ToDependent: UsersGroupsLinks ToPrincipal: Group ClientSetNull
 		/// </summary>
 		public virtual ICollection<UsersGroupsLink> UsersGroupsLinks { get; set; }
     }

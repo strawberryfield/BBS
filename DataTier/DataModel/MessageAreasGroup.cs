@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -67,17 +69,17 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup
+		/// ForeignKey: MessageAreasGroup {'AllowedGroupId'} -> UsersGroup {'Groupid'} ToDependent: MessageAreasGroups ToPrincipal: AllowedGroup SetNull
 		/// </summary>
 		public virtual UsersGroup AllowedGroup { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation
+		/// ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation SetNull
 		/// </summary>
 		public virtual FidoNetwork FidoNetworkNavigation { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessageArea {'Areagroup'} -> MessageAreasGroup {'Id'} ToDependent: MessageAreas ToPrincipal: AreagroupNavigation
+		/// ForeignKey: MessageArea {'Areagroup'} -> MessageAreasGroup {'Id'} ToDependent: MessageAreas ToPrincipal: AreagroupNavigation ClientSetNull
 		/// </summary>
 		public virtual ICollection<MessageArea> MessageAreas { get; set; }
     }

@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -88,22 +90,22 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: FidoAlias {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoAlias ToPrincipal: FidoNetworkNavigation
+		/// ForeignKey: FidoAlias {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoAlias ToPrincipal: FidoNetworkNavigation ClientSetNull
 		/// </summary>
 		public virtual ICollection<FidoAlias> FidoAlias { get; set; }
         
 		/// <summary>
-		/// ForeignKey: FidoDownlink {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoDownlinks ToPrincipal: FidoNetworkNavigation
+		/// ForeignKey: FidoDownlink {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoDownlinks ToPrincipal: FidoNetworkNavigation ClientSetNull
 		/// </summary>
 		public virtual ICollection<FidoDownlink> FidoDownlinks { get; set; }
         
 		/// <summary>
-		/// ForeignKey: FidoUplink {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoUplinks ToPrincipal: FidoNetworkNavigation
+		/// ForeignKey: FidoUplink {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoUplinks ToPrincipal: FidoNetworkNavigation ClientSetNull
 		/// </summary>
 		public virtual ICollection<FidoUplink> FidoUplinks { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation
+		/// ForeignKey: MessageAreasGroup {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: MessageAreasGroups ToPrincipal: FidoNetworkNavigation SetNull
 		/// </summary>
 		public virtual ICollection<MessageAreasGroup> MessageAreasGroups { get; set; }
     }

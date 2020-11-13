@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -137,17 +139,17 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: Login {'UserId'} -> User {'Userid'} ToDependent: Logins ToPrincipal: User
+		/// ForeignKey: Login {'UserId'} -> User {'Userid'} ToDependent: Logins ToPrincipal: User ClientSetNull
 		/// </summary>
 		public virtual ICollection<Login> Logins { get; set; }
         
 		/// <summary>
-		/// ForeignKey: MessageRead {'UserId'} -> User {'Userid'} ToDependent: MessageReads ToPrincipal: User
+		/// ForeignKey: MessageRead {'UserId'} -> User {'Userid'} ToDependent: MessageReads ToPrincipal: User ClientSetNull
 		/// </summary>
 		public virtual ICollection<MessageRead> MessageReads { get; set; }
         
 		/// <summary>
-		/// ForeignKey: UsersGroupsLink {'Userid'} -> User {'Userid'} ToDependent: UsersGroupsLinks ToPrincipal: User
+		/// ForeignKey: UsersGroupsLink {'Userid'} -> User {'Userid'} ToDependent: UsersGroupsLinks ToPrincipal: User ClientSetNull
 		/// </summary>
 		public virtual ICollection<UsersGroupsLink> UsersGroupsLinks { get; set; }
     }

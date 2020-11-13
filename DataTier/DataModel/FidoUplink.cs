@@ -21,6 +21,8 @@
 using System;
 using System.Collections.Generic;
 
+#nullable disable
+
 namespace Casasoft.BBS.DataTier.DataModel
 {
     /// <summary>
@@ -76,7 +78,7 @@ namespace Casasoft.BBS.DataTier.DataModel
 
         
 		/// <summary>
-		/// ForeignKey: FidoUplink {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoUplinks ToPrincipal: FidoNetworkNavigation
+		/// ForeignKey: FidoUplink {'FidoNetwork'} -> FidoNetwork {'Id'} ToDependent: FidoUplinks ToPrincipal: FidoNetworkNavigation ClientSetNull
 		/// </summary>
 		public virtual FidoNetwork FidoNetworkNavigation { get; set; }
     }
