@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <RootNamespace>Casasoft.BBS.Plugin.Interface</RootNamespace>
+    <PackageIcon>package.png</PackageIcon>
+    <PackageId>Casasoft.BBS.Plugin.Interface</PackageId>
+    <Authors>Roberto Ceccarelli - Casasoft</Authors>
+    <Company>Casasoft</Company>
+    <Product>Casasoft BBS</Product>
+    <Description>Old style telnet BBS - Plugins interface</Description>
+    <Copyright>copyright (c) 2020 Roberto Ceccarelli - Casasoft</Copyright>
+    <PackageProjectUrl>https://strawberryfield.github.io/BBS</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/strawberryfield/BBS.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\package.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy $(ProjectDir)bin\debug\*.nupkg $(SolutionDir)bin\Plugin_SDK\ /Y" />
+  </Target>
+
+</Project>

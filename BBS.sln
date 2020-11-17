@@ -119,7 +119,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fidonet", "Fidonet\Fidonet.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Packer", "Packer\Packer.csproj", "{CB8A340E-5166-4B0F-A0F9-EBACBA6E7F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HudsonBase", "HudsonBase\HudsonBase.csproj", "{28779E39-99B4-43F6-9260-96EC229CB7CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HudsonBase", "HudsonBase\HudsonBase.csproj", "{28779E39-99B4-43F6-9260-96EC229CB7CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BBS.Plugin.Interface", "BBS.Plugin.Interface\BBS.Plugin.Interface.csproj", "{1EEC1150-5C73-4BDD-9F9A-BADA4368B321}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,6 +173,10 @@ Global
 		{28779E39-99B4-43F6-9260-96EC229CB7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28779E39-99B4-43F6-9260-96EC229CB7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28779E39-99B4-43F6-9260-96EC229CB7CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EEC1150-5C73-4BDD-9F9A-BADA4368B321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EEC1150-5C73-4BDD-9F9A-BADA4368B321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EEC1150-5C73-4BDD-9F9A-BADA4368B321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EEC1150-5C73-4BDD-9F9A-BADA4368B321}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
